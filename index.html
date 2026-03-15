@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Guardrail Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #111111;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 64px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header img {
+      height: 34px;
+      width: auto;
+      filter: invert(0);
+    }
+
+    header .site-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #111111;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 120px 64px 130px;
+      flex: 1;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: #cccccc;
+      max-width: 680px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      padding: 28px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer .footer-left {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #666666;
+      letter-spacing: 0.02em;
+    }
+
+    footer .footer-right {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #666666;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 640px) {
+      header, .hero, footer {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="guardrail_project_logo_clean_transparent.png" alt="Guardrail Project Logo">
+    <span class="site-name">The Guardrail Project</span>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Using civic engagement to spur AI regulation.</h1>
+      <p>The Guardrail Project builds political will for safe AI by partnering with civil society groups, particularly those vulnerable to the harms of reckless AI development. We start by advocating at the state level, paving the way for hallmark legislation by the US Congress.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-left">The Guardrail Project</span>
+    <span class="footer-right">&copy; 2026 The Guardrail Project</span>
+  </footer>
+
+</body>
+</html>
