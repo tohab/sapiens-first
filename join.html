@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join — The Guardrail Project</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+  <link rel="manifest" href="favicons/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="site-link">
+      <img src="guardrail_project_logo_clean_transparent.png" alt="Guardrail Project Logo">
+      <span class="site-name">The Guardrail Project</span>
+    </a>
+    <nav>
+      <a href="learn.html">Learn</a>
+      <a href="join.html" class="active">Join</a>
+      <a href="support.html">Support</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="learn.html">Learn</a>
+    <a href="join.html">Join</a>
+    <a href="support.html">Support</a>
+  </div>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <h1>Add your voice.</h1>
+        <p>Whether you want to stay informed or get involved on the ground, we want to hear from you.</p>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section class="section section-white form-section">
+      <div class="section-inner">
+        <div class="form-inner">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first_name" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last_name" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="zip">ZIP Code</label>
+            <input type="text" id="zip" name="zip" autocomplete="postal-code" style="max-width: 180px;">
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="volunteer" name="volunteer">
+            <label for="volunteer">I'm interested in volunteering with The Guardrail Project</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Me Up &rarr;</button>
+          <p class="form-note">We'll never sell your information. You can unsubscribe any time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Below form -->
+    <section class="below-form">
+      <div class="below-form-inner">
+        <p>Right now we're building our list, making connections, and preparing for campaigns at the state and federal level. When you join, you'll be among the first to know when we launch — and the first to be asked to act.</p>
+        <p>Whether you're a parent, a veteran, a technologist, or simply a citizen who believes democracy should come before algorithms — there's a role for you here.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <span class="footer-org">Guardrail Project Inc.</span>
+        <span class="footer-copy">&copy; 2026 Guardrail Project Inc. All rights reserved.</span>
+      </div>
+      <p class="footer-legal">
+        Guardrail Project Inc. is a nonprofit corporation with 501(c)(3) status pending. EIN: 41-4917212. Contributions may be tax-deductible retroactively upon IRS approval. Consult your tax advisor.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
+
+</body>
+</html>

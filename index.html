@@ -12,417 +12,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f4f4;
-      color: #111111;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ── Header ── */
-    header {
-      background-color: #f4f4f4;
-      border-bottom: 1px solid #ddd;
-      padding: 0 64px;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    header img {
-      height: 34px;
-      width: auto;
-    }
-
-    header .site-name {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.12rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #111111;
-      white-space: nowrap;
-    }
-
-    /* ── Nav ── */
-    nav {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-shrink: 0;
-    }
-
-    nav a {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #555555;
-      text-decoration: none;
-      transition: color 0.2s ease;
-      white-space: nowrap;
-    }
-
-    nav a:hover {
-      color: #d95f2b;
-    }
-
-    /* Hamburger button */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 36px;
-      height: 36px;
-      background: none;
-      border: 1px solid #ddd;
-      cursor: pointer;
-      padding: 8px;
-      margin-left: auto;
-      transition: border-color 0.2s ease;
-    }
-
-    .nav-toggle:hover {
-      border-color: #999;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 100%;
-      height: 1.5px;
-      background-color: #111111;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform-origin: center;
-    }
-
-    /* Hamburger → X animation */
-    .nav-toggle.open span:nth-child(1) {
-      transform: translateY(6.5px) rotate(45deg);
-    }
-    .nav-toggle.open span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-    .nav-toggle.open span:nth-child(3) {
-      transform: translateY(-6.5px) rotate(-45deg);
-    }
-
-    /* Mobile nav drawer */
-    .nav-drawer {
-      display: none;
-      position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background-color: #f4f4f4;
-      border-bottom: 1px solid #ddd;
-      padding: 0 28px;
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                  padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                  padding-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 99;
-    }
-
-    .nav-drawer.open {
-      max-height: 320px;
-      padding-top: 16px;
-      padding-bottom: 20px;
-    }
-
-    .nav-drawer a {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #555555;
-      text-decoration: none;
-      padding: 12px 0;
-      border-bottom: 1px solid #e8e8e8;
-      transition: color 0.2s ease;
-    }
-
-    .nav-drawer a:last-child {
-      border-bottom: none;
-    }
-
-    .nav-drawer a:hover {
-      color: #d95f2b;
-    }
-
-    /* ── Hero ── */
-    .hero {
-      position: relative;
-      color: #111111;
-      padding: 100px 64px 120px;
-      border-top: 3px solid #d95f2b;
-      overflow: hidden;
-    }
-
-    /* Programmatic background pattern */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        -55deg,
-        transparent,
-        transparent 99px,
-        rgba(160, 80, 30, 0.12) 99px,
-        rgba(160, 80, 30, 0.12) 100px
-      );
-      z-index: 0;
-    }
-
-    .hero-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 6.5vw, 5.5rem);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 48px;
-      color: #111111;
-    }
-
-    .hero hr {
-      border: none;
-      border-top: 1px solid rgba(0,0,0,0.15);
-      margin-bottom: 48px;
-      max-width: 1000px;
-    }
-
-    .hero p {
-      font-family: 'Source Serif 4', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      line-height: 1.75;
-      color: #1a1410;
-      max-width: 660px;
-    }
-
-    /* ── Content Sections ── */
-    .section {
-      padding: 96px 64px;
-      border-top: 1px solid #ddd;
-    }
-
-    .section:nth-child(odd) {
-      background-color: #ffffff;
-    }
-
-    .section:nth-child(even) {
-      background-color: #f9f8f6;
-    }
-
-    .section-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 32px;
-      color: #111111;
-    }
-
-    .section p {
-      font-family: 'Source Serif 4', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      line-height: 1.75;
-      color: #1a1410;
-      max-width: 680px;
-      margin-bottom: 20px;
-    }
-
-    .section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .section-accent {
-      display: block;
-      width: 48px;
-      height: 3px;
-      background-color: #d95f2b;
-      margin-bottom: 32px;
-    }
-
-    .section-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .section-cols .section-text {
-      max-width: 100%;
-    }
-
-    .section-cols .section-text p {
-      max-width: 100%;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-    }
-
-    .card {
-      background-color: #f4f4f4;
-      border: 1px solid #e0e0e0;
-      padding: 32px;
-    }
-
-    .card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 400;
-      margin-bottom: 16px;
-      color: #111111;
-    }
-
-    .card p {
-      font-family: 'Source Serif 4', serif;
-      font-size: 1.05rem;
-      font-weight: 400;
-      line-height: 1.75;
-      color: #1a1410;
-      max-width: 100%;
-      margin-bottom: 0;
-    }
-
-    /* ── Footer ── */
-    footer {
-      background-color: #e8e8e8;
-      border-top: 1px solid #ddd;
-      padding: 40px 64px;
-    }
-
-    .footer-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .footer-top {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .footer-org {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #333333;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .footer-copy {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: #777777;
-    }
-
-    .footer-legal {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #888888;
-      line-height: 1.6;
-      border-top: 1px solid #d4d4d4;
-      padding-top: 16px;
-    }
-
-    @media (max-width: 1100px) {
-      header {
-        padding-left: 32px;
-        padding-right: 32px;
-      }
-    }
-
-    @media (max-width: 960px) {
-      nav {
-        display: none;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-
-      .nav-drawer {
-        display: block;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .section-cols {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      header, .hero, .section, footer {
-        padding-left: 28px;
-        padding-right: 28px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <header>
-    <img src="guardrail_project_logo_clean_transparent.png" alt="Guardrail Project Logo">
-    <span class="site-name">The Guardrail Project</span>
+    <a href="index.html" class="site-link">
+      <img src="guardrail_project_logo_clean_transparent.png" alt="Guardrail Project Logo">
+      <span class="site-name">The Guardrail Project</span>
+    </a>
     <nav>
-      <a href="#section-what">Lorem ipsum</a>
-      <a href="#section-how">Ut enim</a>
-      <a href="#section-why">Quis nostrud</a>
-      <a href="#section-get">Ullamco laboris</a>
+      <a href="learn.html">Learn</a>
+      <a href="join.html">Join</a>
+      <a href="support.html">Support</a>
     </nav>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
@@ -432,80 +34,105 @@
   </header>
 
   <div class="nav-drawer" id="nav-drawer">
-    <a href="#section-what">Lorem ipsum</a>
-    <a href="#section-how">Ut enim</a>
-    <a href="#section-why">Quis nostrud</a>
-    <a href="#section-get">Ullamco laboris</a>
+    <a href="learn.html">Learn</a>
+    <a href="join.html">Join</a>
+    <a href="support.html">Support</a>
   </div>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <h1>Lorem ipsum dolor sit amet consectetur.</h1>
-      <hr>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    </div>
-  </section>
+  <main>
 
-  <section class="section" id="section-what">
-    <div class="section-inner">
-      <span class="section-accent"></span>
-      <div class="section-cols">
-        <div>
-          <h2>Lorem ipsum dolor sit.</h2>
-        </div>
-        <div class="section-text">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>AI is making decisions about your life.<br>Who gave it permission?</h1>
+        <hr>
+        <p>AI systems are denying benefits, running surveillance, enabling scams, and generating deepfakes of real people — including children. There are almost no rules, and almost no accountability.</p>
+        <p>The Guardrail Project is the civic movement to change that.</p>
+        <div class="btn-group">
+          <a href="join.html" class="btn btn-primary">Take Action &rarr;</a>
+          <a href="learn.html" class="btn btn-outline">Learn Why &rarr;</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="section-how">
-    <div class="section-inner">
-      <span class="section-accent"></span>
-      <h2>Ut enim ad minim.</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Lorem ipsum</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        </div>
-        <div class="card">
-          <h3>Dolor sit</h3>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
-        </div>
-        <div class="card">
-          <h3>Amet consectetur</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
+    <!-- What We Do -->
+    <section class="section section-white">
+      <div class="section-inner">
+        <span class="section-accent"></span>
+        <div class="section-cols">
+          <div>
+            <h2>What We Do</h2>
+          </div>
+          <div class="section-text">
+            <p>We organize Americans — across party lines, across zip codes — to demand that AI answer to the same democratic principles we expect from every other powerful institution.</p>
+            <p>That means:</p>
+            <ul class="feature-list">
+              <li>Mandatory safety evaluations before high-stakes AI systems are deployed into schools, hospitals, and government agencies.</li>
+              <li>Real accountability when AI causes harm — to individuals, to families, to communities.</li>
+              <li>Checks on government power. AI should never give the state unchecked ability to surveil, score, or sort its own citizens.</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="section-why">
-    <div class="section-inner">
-      <span class="section-accent"></span>
-      <div class="section-cols">
-        <div>
-          <h2>Quis nostrud exercitation.</h2>
-        </div>
-        <div class="section-text">
-          <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur.</p>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+    <!-- What's Already Happening -->
+    <section class="section section-tint">
+      <div class="section-inner">
+        <span class="section-accent"></span>
+        <h2>What's Already Happening</h2>
+        <p>This isn't about a distant future. It's about what's already going on.</p>
+        <div class="card-grid-2">
+          <div class="card">
+            <h3>AI-powered scams are targeting the most vulnerable.</h3>
+            <p>Criminals are using AI to clone voices, impersonate family members, and run sophisticated fraud operations — disproportionately targeting the elderly and veterans. These aren't technical glitches. They're predictable harms from deploying powerful tools without adequate safeguards.</p>
+          </div>
+          <div class="card">
+            <h3>Deepfakes are a weapon with no legal defense.</h3>
+            <p>AI can now generate realistic images, audio, and video of anyone — from politicians to private citizens to children. It's being used for harassment, fraud, and disinformation at scale. There are still no federal standards governing its use.</p>
+          </div>
+          <div class="card">
+            <h3>Surveillance is expanding faster than the law.</h3>
+            <p>AI-powered facial recognition, predictive policing, and automated government decision-making are already operating in American communities. These tools give the state new powers that no democratic society has agreed to grant — and almost no mechanism to challenge them.</p>
+          </div>
+          <div class="card">
+            <h3>Algorithms are making high-stakes decisions with no accountability.</h3>
+            <p>From veterans' disability claims to hiring decisions to school behavior monitoring, AI is rendering judgments that affect people's lives — with no transparency, no meaningful appeal, and no clear legal liability when it gets things wrong.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="section-get">
-    <div class="section-inner">
-      <span class="section-accent"></span>
-      <h2>Ullamco laboris nisi.</h2>
-      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-      <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis voluptatibus maiores.</p>
-    </div>
-  </section>
+    <!-- Why Now -->
+    <section class="section section-white">
+      <div class="section-inner">
+        <span class="section-accent"></span>
+        <div class="section-cols">
+          <div>
+            <h2>Why Now</h2>
+          </div>
+          <div class="section-text">
+            <p>The window to shape how AI is governed is closing fast.</p>
+            <p>History shows that safety rules get written in moments of organized public pressure — for cars, for pharmaceuticals, for nuclear power. Every time, it took ordinary people refusing to accept that the risks of a powerful technology should be passed on to them.</p>
+            <p>We're building that pressure now. Not after the next crisis. Before it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="section-inner">
+        <h2>This movement needs your name on it.</h2>
+        <p>Join Americans who believe AI should answer to the people — not the other way around.</p>
+        <div class="btn-group">
+          <a href="join.html" class="btn btn-primary">Join Us &rarr;</a>
+          <a href="support.html" class="btn btn-outline-light">Support the Work &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
     <div class="footer-inner">
@@ -514,7 +141,7 @@
         <span class="footer-copy">&copy; 2026 Guardrail Project Inc. All rights reserved.</span>
       </div>
       <p class="footer-legal">
-        Guardrail Project Inc. is a nonprofit corporation with 501(c)(3) status pending. EIN: 41-4917212. Contributions may be tax-deductible retroactively upon IRS approval.
+        Guardrail Project Inc. is a nonprofit corporation with 501(c)(3) status pending. EIN: 41-4917212. Contributions may be tax-deductible retroactively upon IRS approval. Consult your tax advisor.
       </p>
     </div>
   </footer>
@@ -529,7 +156,6 @@
       toggle.setAttribute('aria-expanded', isOpen);
     });
 
-    // Close drawer when a link is clicked
     drawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         drawer.classList.remove('open');
