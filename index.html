@@ -44,11 +44,11 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-inner">
-        <h1>No system is above the law.</h1>
+        <h1 class="hero-headline">No system is above the <span class="accent-word">law</span>.</h1>
         <hr>
-        <p>AI is being used to empower terrorists, fuel sophisticated scams, and generate deepfakes of children. The rules haven't caught up.</p>
+        <p class="hero-callout">AI is being used to empower terrorists, fuel sophisticated scams, and generate deepfakes of children. The rules haven't caught up.</p>
         <p>The Guardrail Project is the civic movement to change that.</p>
-        <div class="btn-group">
+        <div class="btn-group hero-cta">
           <a href="join.html" class="btn btn-primary">Take Action &rarr;</a>
           <a href="about.html" class="btn btn-outline">Learn Why &rarr;</a>
         </div>
@@ -56,12 +56,11 @@
     </section>
 
     <!-- What We Do -->
-    <section class="section section-white">
+    <section class="section section-white reveal">
       <div class="section-inner">
-        <span class="section-accent"></span>
         <div class="section-cols">
           <div>
-            <h2>What We Do</h2>
+            <h2 class="section-heading">What We Do</h2>
           </div>
           <div class="section-text">
             <p>We organize Americans to demand that AI answer to the same democratic principles we expect from every other powerful institution.</p>
@@ -77,10 +76,9 @@
     </section>
 
     <!-- What's Already Happening -->
-    <section class="section section-tint">
+    <section class="section section-tint reveal">
       <div class="section-inner">
-        <span class="section-accent"></span>
-        <h2>What's Already Happening</h2>
+        <h2 class="section-heading">What's Already Happening</h2>
         <p>AI is already here, and it's affecting real Americans across the country.</p>
         <div class="card-grid-2">
           <div class="card">
@@ -104,12 +102,11 @@
     </section>
 
     <!-- Why Now -->
-    <section class="section section-white">
+    <section class="section section-white reveal">
       <div class="section-inner">
-        <span class="section-accent"></span>
         <div class="section-cols">
           <div>
-            <h2>Why Now</h2>
+            <h2 class="section-heading">Why Now</h2>
           </div>
           <div class="section-text">
             <p>History shows that safety rules get written in moments of organized public pressure — for cars, for nuclear power, for financial reform. Every time, ordinary people demanded accountability for a powerful new technology, and won.</p>
@@ -120,7 +117,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="cta-section">
+    <section class="cta-section section-dark reveal">
       <div class="section-inner">
         <h2>This movement needs your name on it.</h2>
         <p>Join Americans who believe AI should answer to the people — not the other way around.</p>
@@ -146,6 +143,14 @@
   </footer>
 
   <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     const toggle = document.querySelector('.nav-toggle');
     const drawer = document.getElementById('nav-drawer');
 

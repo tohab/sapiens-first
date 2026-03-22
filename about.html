@@ -50,10 +50,9 @@
     </section>
 
     <!-- Our Platform -->
-    <section class="section section-white">
+    <section class="section section-white reveal">
       <div class="section-inner">
-        <span class="section-accent"></span>
-        <h2>Our Platform</h2>
+        <h2 class="section-heading">Our Platform</h2>
         <div class="principles-list">
           <div class="principle">
             <h3>Legal Liability</h3>
@@ -68,12 +67,11 @@
     </section>
 
     <!-- A Familiar Fight -->
-    <section class="section section-tint">
+    <section class="section section-tint reveal">
       <div class="section-inner">
-        <span class="section-accent"></span>
         <div class="section-cols">
           <div>
-            <h2>A Familiar Fight</h2>
+            <h2 class="section-heading">A Familiar Fight</h2>
           </div>
           <div class="section-text">
             <p>Most Americans already want guardrails on AI — polls consistently show supermajority support for comprehensive oversight. We've fought this battle before. Public consensus has driven every major safety reform in American history: child labor laws, seatbelts, drug approval standards, civil rights protections. It came from ordinary people who decided that powerful institutions had to answer to them.</p>
@@ -84,7 +82,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="cta-section">
+    <section class="cta-section section-dark reveal">
       <div class="section-inner">
         <h2>Want to go deeper?</h2>
         <p>Get updates on policy developments, campaign milestones, and concrete ways to take action.</p>
@@ -109,6 +107,14 @@
   </footer>
 
   <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     const toggle = document.querySelector('.nav-toggle');
     const drawer = document.getElementById('nav-drawer');
 

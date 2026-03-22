@@ -50,21 +50,16 @@
     </section>
 
     <!-- Short Pitch -->
-    <section class="section section-white">
+    <section class="section section-white reveal">
       <div class="section-inner">
-        <span class="section-accent"></span>
-        <div class="section-cols">
-          <div class="section-text">
-            <p>We're in early days, which means your support goes further right now than it ever will again.</p>
-            <p>A contribution today helps us build the foundation of a durable, effective movement — one that protects people from AI-enabled fraud, defends civil liberties against unchecked surveillance, and ensures that when AI causes harm, someone is held accountable.</p>
-            <p>We're a lean operation by design. Contributions go directly toward organizing, outreach, and campaign infrastructure — not overhead.</p>
-          </div>
-        </div>
+        <p>We're in early days, which means your support goes further right now than it ever will again.</p>
+        <p>A contribution today helps us build the foundation of a durable, effective movement — one that protects people from AI-enabled fraud, defends civil liberties against unchecked surveillance, and ensures that when AI causes harm, someone is held accountable.</p>
+        <p>We're a lean operation by design. Contributions go directly toward organizing, outreach, and campaign infrastructure — not overhead.</p>
       </div>
     </section>
 
     <!-- Donation Form -->
-    <section class="section section-tint form-section">
+    <section class="section section-tint form-section reveal">
       <div class="section-inner">
         <div class="form-inner">
           <h2>Make a contribution.</h2>
@@ -105,6 +100,14 @@
   </footer>
 
   <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     const toggle = document.querySelector('.nav-toggle');
     const drawer = document.getElementById('nav-drawer');
 

@@ -50,7 +50,7 @@
     </section>
 
     <!-- Form -->
-    <section class="section section-white form-section">
+    <section class="section section-white form-section reveal">
       <div class="section-inner">
         <div class="form-inner">
           <div class="form-row">
@@ -82,7 +82,7 @@
     </section>
 
     <!-- Below form -->
-    <section class="below-form">
+    <section class="below-form reveal">
       <div class="below-form-inner">
         <p>Right now we're building our list, making connections, and preparing for campaigns at the state and federal level. When you join, you'll be among the first to know when we launch — and the first to be asked to act.</p>
         <p>Whether you're a parent, a veteran, a technologist, or simply a citizen who believes democracy should come before algorithms — there's a role for you here.</p>
@@ -104,6 +104,14 @@
   </footer>
 
   <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     const toggle = document.querySelector('.nav-toggle');
     const drawer = document.getElementById('nav-drawer');
 
