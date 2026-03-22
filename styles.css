@@ -207,10 +207,10 @@ nav a.active {
 .hero {
   position: relative;
   color: var(--text-primary);
-  padding: var(--space-2xl) var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
   border-top: 3px solid var(--accent);
   overflow: hidden;
-  min-height: 75vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
 }
@@ -280,15 +280,8 @@ nav a.active {
   margin-bottom: 0;
 }
 
-/* ── Hero Callout (consolidated) ── */
+/* ── Hero Callout ── */
 .hero-callout {
-  border-left: 3px solid var(--accent);
-  padding-left: 1.5rem;
-  font-size: 1.2rem;
-  line-height: 1.75;
-  color: var(--text-primary);
-  max-width: 600px;
-  margin-bottom: var(--space-md);
   animation: fade-up 0.7s 0.2s ease both;
 }
 
