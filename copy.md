@@ -1,133 +1,104 @@
-# The Guardrail Project — Website Copy
+# **The Guardrail Project — Website Copy**
 
 ---
 
-## Page 1: Home
+## **Page 1: Home**
 
-### Hero
+### **Hero**
 
-**Building the civic infrastructure for AI accountability.**
+**No system is above the law.**
 
-<!-- AI needs independent oversight, clear rules, and an organized public demanding both. That's what The Guardrail Project is building. -->
-
-AI systems are denying benefits, running surveillance, enabling scams, and generating deepfakes of real people — including children. There are almost no rules, and almost no accountability.
+AI is being used to empower terrorists, fuel sophisticated scams, and generate deepfakes of children. The rules haven't caught up.
 
 **The Guardrail Project is the civic movement to change that.**
 
-[ Take Action → ] [ Learn Why → ]
+\[ Take Action → \] \[ Learn Why → \]
 
 ---
 
-### What We Do
+### **What We Do**
 
 We organize Americans to demand that AI answer to the same democratic principles we expect from every other powerful institution.
 
 That means:
 
-- **Building coalitions** across left and right — from civil liberties advocates to faith communities to parents — around shared concerns about AI's impact on everyday life.
-- **Mobilizing voters** through town halls, canvassing, and letter-writing campaigns that put AI accountability on the political agenda — locally and in Washington.
-- **Running civic pressure campaigns** — petitions, comment drives, and constituent outreach — so that policymakers hear from real people, not just industry lobbyists.
+* **Building coalitions** across left and right — from civil liberties advocates to faith communities to parents — around shared concerns about AI's impact on everyday life.  
+* **Mobilizing voters** through town halls, canvassing, and letter-writing campaigns that put AI accountability on the political agenda — locally and in Washington.  
+* **Running civic pressure campaigns** — petitions, comment drives, and constituent outreach — so that policymakers hear from real people, not just industry lobbyists.
 
 ---
 
-### What's Already Happening
+### **What's Already Happening**
 
-*This isn't about a distant future. It's about what's already going on.*
+AI is already here, and it's affecting real Americans across the country.
 
-**AI-powered scams are targeting the most vulnerable.**
-Criminals are using AI to clone voices, impersonate family members, and run sophisticated fraud operations — disproportionately targeting the elderly and veterans. These aren't technical glitches. They're predictable harms from deploying powerful tools without adequate safeguards.
+**AI-powered scams are targeting the most vulnerable.** Criminals are using AI to clone voices, impersonate family members, and run sophisticated fraud operations — disproportionately targeting the elderly and veterans. These aren't technical glitches. They're predictable harms from deploying powerful tools without adequate safeguards.
 
-**Deepfakes are a weapon with no legal defense.**
-AI can now generate realistic images, audio, and video of anyone — from politicians to private citizens to children. It's being used for harassment, fraud, and disinformation at scale. There are still no federal standards governing its use.
+**Deepfakes are a weapon with no legal defense.** AI can now generate realistic images, audio, and video of anyone — from politicians to private citizens to children. It's being used for harassment, fraud, and disinformation at scale. There are still no federal standards governing its use.
 
-**Surveillance is expanding faster than the law.**
-AI-powered facial recognition, predictive policing, and automated government decision-making are already operating in American communities. These tools give the state new powers that no democratic society has agreed to grant — and almost no mechanism to challenge them.
+**Surveillance is expanding faster than the law.** AI-powered facial recognition, predictive policing, and automated government decision-making are already operating in American communities. These tools give the state new powers that no democratic society has agreed to grant — and almost no mechanism to challenge them.
 
-**Algorithms are making high-stakes decisions with no accountability.**
-From veterans' disability claims to hiring decisions to school behavior monitoring, AI is rendering judgments that affect people's lives — with no transparency, no meaningful appeal, and no clear legal liability when it gets things wrong.
+**AI is empowering American adversaries.** Today’s AI systems can be easily jail-broken and empower foreign governments and terrorist networks to spread information, create biological weapons, and disrupt our political process. Without better safeguards on these systems, we’re handing our greatest enemies tools to harm our nation.
 
 ---
 
-### Why Now
+### **Why Now**
 
-The window to shape how AI is governed is closing fast.
+History shows that safety rules get written in moments of organized public pressure — for cars, for nuclear power, for financial reform. Every time, ordinary people demanded accountability for a powerful new technology, and won.
 
-History shows that safety rules get written in moments of organized public pressure — for cars, for pharmaceuticals, for nuclear power. Every time, it took ordinary people refusing to accept that the risks of a powerful technology should be passed on to them.
-
-**We're building that pressure now. Not after the next crisis. Before it.**
+**We’re building political power now. Not after the next crisis.**
 
 ---
 
-### CTA
+### **CTA**
 
-> **This movement needs your name on it.**
-> Join Americans who believe AI should answer to the people — not the other way around.
+**This movement needs your name on it.** Join Americans who believe AI should answer to the people — not the other way around.
 
-[ Join Us → ] [ Support the Work → ]
-
----
-
-## Page 2: Learn
-
-### Header
-
-**We've done this before.**
-
-Every technology that transformed American life eventually got rules — written by the people who demanded them. Here's why AI needs guardrails, and what those guardrails should look like.
+\[ Join Us → \] \[ Support the Work → \]
 
 ---
 
-### The Pattern
+## **Page 2: About**
 
-We didn't always have seatbelts. Pharmaceutical companies once sold untested drugs. Nuclear plants operated without independent safety reviews.
+### **Header**
 
-Then people organized, demanded accountability, and changed the law.
+**Every era of American reform started with organized citizens.**
 
-Each time, the same story played out: a powerful new technology, enormous benefits, real risks — and a fight to make sure ordinary people weren't left holding the bill. **AI is the next chapter.**
-
----
-
-### What's At Stake
-
-**Scams and fraud.**
-AI has made it dramatically cheaper and easier to impersonate people, clone voices, and automate sophisticated fraud. Elderly Americans and veterans are disproportionately targeted. The technology is advancing faster than law enforcement can respond — and the companies deploying it bear no legal responsibility when it's weaponized against the public.
-
-**Deepfakes and disinformation.**
-AI-generated images, audio, and video are already being used to harass private individuals, defame public figures, spread political disinformation, and generate nonconsensual intimate imagery — including of minors. There are no federal standards, no mandatory safeguards, and no clear legal remedies for victims.
-
-**Surveillance and government power.**
-AI-powered facial recognition, predictive policing tools, and automated scoring systems are being deployed by government agencies across the country — often without public knowledge, legislative authorization, or judicial oversight. The Constitution was written for a world where surveillance had natural limits. Those limits no longer exist without laws that create them.
-
-**Opaque, unaccountable decisions.**
-AI is making or heavily influencing decisions about veterans' benefits, employment, credit, healthcare, and education. When these systems make mistakes — and they do — there is often no transparency about how the decision was made, no meaningful path to appeal, and no legal accountability for the companies or agencies responsible.
+Every technology that transformed American life eventually got rules — written by the people who demanded them. Here's what guardrails on AI look like and how we get there.
 
 ---
 
-### What We're Fighting For
+### **Our Platform**
 
-**Safety evaluations.**
-Just as the FDA tests drugs before they reach patients, high-stakes AI systems should be rigorously evaluated for serious risks before deployment at scale — especially in government, healthcare, and education.
+**Legal Liability**
 
-**Tort liability.**
-When AI causes documented harm, there must be a legal path to accountability — for individuals and for the companies that cut corners. No technology should be above the law.
+When AI causes documented harm, there must be a legal path to accountability. That means expanding tort law so individuals can sue when AI systems injure them, and ensuring that companies — not just victims — bear the cost of cutting corners. AI agents operating in the world should be identifiable and traceable, just like a car with a license plate. No technology should be above the law.
 
-**Democratic oversight.**
-The same checks and balances that govern every other powerful institution should apply to AI. Public participation. Transparency requirements. Meaningful limits on how the government can use these tools against the people it serves.
+**Checks and Balances**
 
----
-
-### CTA
-
-> **Want to go deeper?**
-> Get updates on policy developments, campaign milestones, and concrete ways to take action.
-
-[ Join the List → ]
+Every powerful institution in American life operates within a system of checks and balances — and AI should be no different. We support the establishment of an independent federal agency, like the Fed or the FDA, with the authority to set safety standards, conduct oversight, and ensure that AI systems are tested before they're deployed at scale. This isn't regulation for its own sake. It's the same accountability Americans have always demanded from powerful institutions.
 
 ---
 
-## Page 3: Join
+### **A Familiar Fight**
 
-### Header
+Most Americans already want guardrails on AI — polls consistently show supermajority support for comprehensive oversight. We’ve fought this battle before. Public consensus has driven every major safety reform in American history: child labor laws, seatbelts, drug approval standards, civil rights protections. It came from ordinary people who decided that powerful institutions had to answer to them. 
+
+A small, organized minority of engaged citizens has changed the law before — and **it can happen again.**
+
+---
+
+### **CTA**
+
+**Want to go deeper?** Get updates on policy developments, campaign milestones, and concrete ways to take action.
+
+\[ Join the List → \]
+
+---
+
+## **Page 3: Join**
+
+### **Header**
 
 **Add your voice.**
 
@@ -135,16 +106,16 @@ Whether you want to stay informed or get involved on the ground, we want to hear
 
 ---
 
-### Form
+### **Form**
 
-| | |
-|---|---|
+|  |  |
+| ----- | ----- |
 | First Name | Last Name |
 | Email Address | ZIP Code |
 
 ☐ I'm interested in volunteering with The Guardrail Project
 
-[ Sign Me Up ]
+\[ Sign Me Up \]
 
 *We'll never sell your information. You can unsubscribe any time.*
 
@@ -156,9 +127,9 @@ Whether you're a parent, a veteran, a technologist, or simply a citizen who beli
 
 ---
 
-## Page 4: Support
+## **Page 4: Support**
 
-### Header
+### **Header**
 
 **Fuel the work.**
 
@@ -166,24 +137,24 @@ The Guardrail Project is a nonprofit building the civic infrastructure for AI ac
 
 ---
 
-### Short Pitch
+### **Short Pitch**
 
 We're in early days, which means your support goes further right now than it ever will again. A contribution today helps us build the foundation of a durable, effective movement — one that protects people from AI-enabled fraud, defends civil liberties against unchecked surveillance, and ensures that when AI causes harm, someone is held accountable.
 
 ---
 
-### Donation Form
+### **Donation Form**
 
-[ $25 ] [ $50 ] [ $100 ] [ Other: ______ ]
+\[ $25 \] \[ $50 \] \[ $100 \] \[ Other: \_\_\_\_\_\_ \]
 
-[ Donate Now ]
+\[ Donate Now \]
 
-> The Guardrail Project (Guardrail Project Inc.) has applied for recognition as a 501(c)(3) nonprofit organization with the IRS. Our application is currently pending. Donations may be tax-deductible retroactively once status is approved. **EIN: 41-4917212.**
+The Guardrail Project (Guardrail Project Inc.) has applied for recognition as a 501(c)(3) nonprofit organization with the IRS. Our application is currently pending. Donations may be tax-deductible retroactively once status is approved. **EIN: 41-4917212.**
 
 ---
 
-### Transparency Note
+### **Transparency Note**
 
 We're a lean operation by design. Contributions go directly toward organizing, outreach, and campaign infrastructure — not overhead.
 
-Questions? Reach us at [info@guardrailproject.org](mailto:info@guardrailproject.org)
+Questions? Reach us at info@guardrailproject.org
