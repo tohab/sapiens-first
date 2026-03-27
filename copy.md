@@ -8,7 +8,7 @@
 
 **Protecting Americans from the dangers of advanced AI.**
 
-Reckless development of AI is threatening children, scamming veterans, and endangering our democracy.
+Reckless development of AI is threatening our country’s most vulnerable, and endangering our democracy.
 
 **The Guardrail Project is the civic movement to change that.**
 
