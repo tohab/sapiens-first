@@ -366,7 +366,10 @@ nav a.active {
   line-height: 1.75;
   color: #1a1410;
   max-width: 640px;
+  margin-bottom: var(--space-sm);
 }
+
+.page-hero p:last-child { margin-bottom: 0; }
 
 /* ── Support Page Hero Override ── */
 .support-hero h1 {
@@ -514,6 +517,7 @@ nav a.active {
 .feature-list {
   list-style: none;
   margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
