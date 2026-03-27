@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link href='https://actionnetwork.org/css/style-embed-v3.css' rel='stylesheet' type='text/css' />
 </head>
 <body>
 
@@ -53,30 +54,8 @@
     <section class="section section-white form-section reveal">
       <div class="section-inner">
         <div class="form-inner">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="first-name">First Name</label>
-              <input type="text" id="first-name" name="first_name" autocomplete="given-name">
-            </div>
-            <div class="form-group">
-              <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" name="last_name" autocomplete="family-name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" autocomplete="email">
-          </div>
-          <div class="form-group">
-            <label for="zip">ZIP Code</label>
-            <input type="text" id="zip" name="zip" autocomplete="postal-code" style="max-width: 180px;">
-          </div>
-          <div class="checkbox-group">
-            <input type="checkbox" id="volunteer" name="volunteer">
-            <label for="volunteer">I'm interested in volunteering with The Guardrail Project</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign Me Up &rarr;</button>
-          <p class="form-note">We'll never sell your information. You can unsubscribe any time.</p>
+          <script src='https://actionnetwork.org/widgets/v6/form/join-the-guardrail-project?format=js&source=widget'></script>
+          <div id='can-form-area-join-the-guardrail-project' style='width: 100%'><!-- this div is the target for our HTML insertion --></div>
         </div>
       </div>
     </section>

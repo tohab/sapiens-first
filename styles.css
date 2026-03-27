@@ -980,3 +980,297 @@ a:not(.btn):not(.site-link):not(nav a):not(.nav-drawer a):hover {
 
   .btn { text-align: center; }
 }
+
+/* ── Action Network Embed Overrides (shared) ── */
+.can-embed-wrapper {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-primary);
+}
+
+/* ── Action Network Embed Overrides ── */
+#can-form-area-join-the-guardrail-project {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-primary);
+}
+
+/* Hide AN branding, logo, header chrome */
+#can-form-area-join-the-guardrail-project .can_embed_form_header,
+#can-form-area-join-the-guardrail-project .can_logo_link,
+#can-form-area-join-the-guardrail-project .action_logo,
+#can-form-area-join-the-guardrail-project .can_embed_form > h4,
+#can-form-area-join-the-guardrail-project .action_status_strong,
+#can-form-area-join-the-guardrail-project .action_widget_powered_by {
+  display: none !important;
+}
+
+/* Form wrapper */
+#can-form-area-join-the-guardrail-project .can_embed_form,
+#can-form-area-join-the-guardrail-project .action_widget {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Form title */
+#can-form-area-join-the-guardrail-project h2,
+#can-form-area-join-the-guardrail-project h3,
+#can-form-area-join-the-guardrail-project .action_widget h2 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 400 !important;
+  color: var(--text-primary) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Labels */
+#can-form-area-join-the-guardrail-project label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color: #666666 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
+
+/* Text / email / tel inputs */
+#can-form-area-join-the-guardrail-project input[type="text"],
+#can-form-area-join-the-guardrail-project input[type="email"],
+#can-form-area-join-the-guardrail-project input[type="tel"],
+#can-form-area-join-the-guardrail-project input[type="number"],
+#can-form-area-join-the-guardrail-project select,
+#can-form-area-join-the-guardrail-project textarea {
+  width: 100% !important;
+  padding: 13px 16px !important;
+  font-family: 'Source Serif 4', serif !important;
+  font-size: 1rem !important;
+  color: var(--text-primary) !important;
+  background-color: #f9f8f6 !important;
+  border: 1px solid #d4d4d4 !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  transition: border-color 0.25s ease, background-color 0.25s ease !important;
+}
+
+#can-form-area-join-the-guardrail-project input[type="text"]:focus,
+#can-form-area-join-the-guardrail-project input[type="email"]:focus,
+#can-form-area-join-the-guardrail-project input[type="tel"]:focus,
+#can-form-area-join-the-guardrail-project select:focus,
+#can-form-area-join-the-guardrail-project textarea:focus {
+  border-color: var(--accent) !important;
+  background-color: #ffffff !important;
+}
+
+/* Checkbox */
+#can-form-area-join-the-guardrail-project input[type="checkbox"] {
+  accent-color: var(--accent) !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Submit button */
+#can-form-area-join-the-guardrail-project input[type="submit"],
+#can-form-area-join-the-guardrail-project button[type="submit"],
+#can-form-area-join-the-guardrail-project .can_submit input {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  padding: 14px 32px !important;
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--accent) !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+  -webkit-appearance: none !important;
+}
+
+#can-form-area-join-the-guardrail-project input[type="submit"]:hover,
+#can-form-area-join-the-guardrail-project button[type="submit"]:hover,
+#can-form-area-join-the-guardrail-project .can_submit input:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(192, 68, 26, 0.3) !important;
+}
+
+/* Thank-you / confirmation state */
+#can-form-area-join-the-guardrail-project .can_thank_you,
+#can-form-area-join-the-guardrail-project .action_confirmation {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: 1.1rem !important;
+  color: var(--text-primary) !important;
+  line-height: 1.75 !important;
+}
+
+/* Error messages */
+#can-form-area-join-the-guardrail-project .error,
+#can-form-area-join-the-guardrail-project .field_with_errors label {
+  color: var(--accent) !important;
+}
+
+#can-form-area-join-the-guardrail-project .field_with_errors input {
+  border-color: var(--accent) !important;
+}
+
+/* ── Action Network Fundraising Overrides ── */
+#can-fundraising-area-support-the-guardrail-project {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-primary);
+}
+
+/* Hide branding/chrome */
+#can-fundraising-area-support-the-guardrail-project .can_embed_form_header,
+#can-fundraising-area-support-the-guardrail-project .can_logo_link,
+#can-fundraising-area-support-the-guardrail-project .action_logo,
+#can-fundraising-area-support-the-guardrail-project .can_embed_form > h4,
+#can-fundraising-area-support-the-guardrail-project .action_widget_powered_by {
+  display: none !important;
+}
+
+/* Wrapper */
+#can-fundraising-area-support-the-guardrail-project .can_embed_form,
+#can-fundraising-area-support-the-guardrail-project .action_widget {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Headings */
+#can-fundraising-area-support-the-guardrail-project h2,
+#can-fundraising-area-support-the-guardrail-project h3 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 400 !important;
+  color: var(--text-primary) !important;
+  line-height: 1.15 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Labels */
+#can-fundraising-area-support-the-guardrail-project label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  color: #666666 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
+
+/* Inputs */
+#can-fundraising-area-support-the-guardrail-project input[type="text"],
+#can-fundraising-area-support-the-guardrail-project input[type="email"],
+#can-fundraising-area-support-the-guardrail-project input[type="tel"],
+#can-fundraising-area-support-the-guardrail-project input[type="number"],
+#can-fundraising-area-support-the-guardrail-project select,
+#can-fundraising-area-support-the-guardrail-project textarea {
+  width: 100% !important;
+  padding: 13px 16px !important;
+  font-family: 'Source Serif 4', serif !important;
+  font-size: 1rem !important;
+  color: var(--text-primary) !important;
+  background-color: #f9f8f6 !important;
+  border: 1px solid #d4d4d4 !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  transition: border-color 0.25s ease, background-color 0.25s ease !important;
+}
+
+#can-fundraising-area-support-the-guardrail-project input[type="text"]:focus,
+#can-fundraising-area-support-the-guardrail-project input[type="email"]:focus,
+#can-fundraising-area-support-the-guardrail-project input[type="tel"]:focus,
+#can-fundraising-area-support-the-guardrail-project input[type="number"]:focus,
+#can-fundraising-area-support-the-guardrail-project select:focus,
+#can-fundraising-area-support-the-guardrail-project textarea:focus {
+  border-color: var(--accent) !important;
+  background-color: #ffffff !important;
+}
+
+/* Amount buttons (AN renders these as radio buttons or styled anchors) */
+#can-fundraising-area-support-the-guardrail-project .donation_amounts a,
+#can-fundraising-area-support-the-guardrail-project .donation_amounts label,
+#can-fundraising-area-support-the-guardrail-project .amount_selection a {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  padding: 0.6rem 1.25rem !important;
+  background-color: var(--bg) !important;
+  border: 1px solid #d4d4d4 !important;
+  border-radius: 0 !important;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  transition: border-color 0.25s ease, color 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+#can-fundraising-area-support-the-guardrail-project .donation_amounts a:hover,
+#can-fundraising-area-support-the-guardrail-project .donation_amounts a.selected,
+#can-fundraising-area-support-the-guardrail-project .donation_amounts a.active,
+#can-fundraising-area-support-the-guardrail-project .amount_selection a:hover,
+#can-fundraising-area-support-the-guardrail-project .amount_selection a.selected {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background-color: rgba(192, 68, 26, 0.04) !important;
+}
+
+/* Submit button */
+#can-fundraising-area-support-the-guardrail-project input[type="submit"],
+#can-fundraising-area-support-the-guardrail-project button[type="submit"],
+#can-fundraising-area-support-the-guardrail-project .can_submit input {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  padding: 14px 32px !important;
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--accent) !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  -webkit-appearance: none !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+}
+
+#can-fundraising-area-support-the-guardrail-project input[type="submit"]:hover,
+#can-fundraising-area-support-the-guardrail-project button[type="submit"]:hover,
+#can-fundraising-area-support-the-guardrail-project .can_submit input:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(192, 68, 26, 0.3) !important;
+}
+
+/* Confirmation / thank-you */
+#can-fundraising-area-support-the-guardrail-project .can_thank_you,
+#can-fundraising-area-support-the-guardrail-project .action_confirmation {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: 1.1rem !important;
+  color: var(--text-primary) !important;
+  line-height: 1.75 !important;
+}
+
+/* Errors */
+#can-fundraising-area-support-the-guardrail-project .error,
+#can-fundraising-area-support-the-guardrail-project .field_with_errors label {
+  color: var(--accent) !important;
+}
+
+#can-fundraising-area-support-the-guardrail-project .field_with_errors input {
+  border-color: var(--accent) !important;
+}
