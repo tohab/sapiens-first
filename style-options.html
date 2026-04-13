@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Options — Guardrail Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    /* ── PAGE CHROME ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #e8e6e0;
+      font-family: 'Montserrat', sans-serif;
+      color: #111;
+    }
+
+    .page-header {
+      background: #111;
+      color: #f5f4f0;
+      padding: 2rem 3rem;
+      border-bottom: 4px solid #C0441A;
+    }
+
+    .page-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #C0441A;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    .options-grid {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    /* ── OPTION WRAPPER ── */
+    .option {
+      background: #fff;
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+
+    .option-meta {
+      background: #111;
+      color: #f5f4f0;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .option-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #C0441A;
+    }
+
+    .option-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f5f4f0;
+    }
+
+    .option-fonts {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #888;
+      margin-left: auto;
+    }
+
+    .option-fonts strong {
+      color: #ccc;
+    }
+
+    .spec-table {
+      background: #1a1a1a;
+      padding: 1.25rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+      border-bottom: 1px solid #333;
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .spec-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .spec-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #999;
+      line-height: 1.5;
+    }
+
+    .option-mockup {
+      background: #f5f4f0;
+    }
+
+    /* ── SHARED ACCENT ── */
+    .acc { color: #C0441A; }
+
+    /* ─────────────────────────────────────────────
+       OPTION 1: Scaled Playfair (Evolution of Current)
+    ───────────────────────────────────────────── */
+
+    .o1 { --accent: #C0441A; }
+
+    .o1 .mock-header {
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .o1 .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .o1 .mock-logo-icon {
+      height: 36px;
+      width: 36px;
+      background: #111;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .o1 .mock-site-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #111;
+    }
+
+    .o1 .mock-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .o1 .mock-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .o1 .mock-hero {
+      padding: 4rem 2.5rem 3rem;
+      border-top: 3px solid var(--accent);
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .o1 .mock-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: #111;
+      max-width: 720px;
+      margin-bottom: 1.5rem;
+    }
+
+    .o1 .mock-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 560px;
+    }
+
+    .o1 .mock-section {
+      padding: 3.5rem 2.5rem;
+      background: #f9f8f6;
+      border-top: 1px solid #ddd;
+    }
+
+    .o1 .mock-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 2rem;
+      line-height: 1.15;
+    }
+
+    .o1 .mock-section h2::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .o1 .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .o1 .mock-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem;
+    }
+
+    .o1 .mock-pillar {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .o1 .mock-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #444;
+    }
+
+    .o1 .mock-body {
+      padding: 3rem 2.5rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .o1 .mock-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1410;
+      max-width: 680px;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 2: Campaign Poster — Oswald Condensed
+    ───────────────────────────────────────────── */
+
+    .o2 { --accent: #C0441A; }
+
+    .o2 .mock-header {
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .o2 .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .o2 .mock-logo-icon {
+      height: 36px;
+      width: 36px;
+      background: #111;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .o2 .mock-site-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .o2 .mock-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .o2 .mock-nav a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .o2 .mock-hero {
+      padding: 4rem 2.5rem 3rem;
+      border-top: 3px solid var(--accent);
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .o2 .mock-hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 5.5rem;
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: #111;
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+
+    .o2 .mock-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 560px;
+    }
+
+    .o2 .mock-section {
+      padding: 3.5rem 2.5rem;
+      background: #f9f8f6;
+      border-top: 1px solid #ddd;
+    }
+
+    .o2 .mock-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+      letter-spacing: 0.03em;
+    }
+
+    .o2 .mock-section h2::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .o2 .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .o2 .mock-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem;
+    }
+
+    .o2 .mock-pillar {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .o2 .mock-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #444;
+    }
+
+    .o2 .mock-body {
+      padding: 3rem 2.5rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .o2 .mock-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1410;
+      max-width: 680px;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 3: Bold Sans Throughout — Montserrat 800
+    ───────────────────────────────────────────── */
+
+    .o3 { --accent: #C0441A; }
+
+    .o3 .mock-header {
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .o3 .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .o3 .mock-logo-icon {
+      height: 36px;
+      width: 36px;
+      background: #111;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .o3 .mock-site-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .o3 .mock-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .o3 .mock-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .o3 .mock-hero {
+      padding: 4rem 2.5rem 3rem;
+      border-top: 3px solid var(--accent);
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .o3 .mock-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4.75rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #111;
+      max-width: 780px;
+      margin-bottom: 1.5rem;
+    }
+
+    .o3 .mock-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 560px;
+    }
+
+    .o3 .mock-section {
+      padding: 3.5rem 2.5rem;
+      background: #f9f8f6;
+      border-top: 1px solid #ddd;
+    }
+
+    .o3 .mock-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 2rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .o3 .mock-section h2::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .o3 .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .o3 .mock-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem;
+    }
+
+    .o3 .mock-pillar {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .o3 .mock-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #444;
+    }
+
+    .o3 .mock-body {
+      padding: 3rem 2.5rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .o3 .mock-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1410;
+      max-width: 680px;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 4: Libre Baskerville — Sturdy Civic
+    ───────────────────────────────────────────── */
+
+    .o4 { --accent: #C0441A; }
+
+    .o4 .mock-header {
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .o4 .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .o4 .mock-logo-icon {
+      height: 36px;
+      width: 36px;
+      background: #111;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .o4 .mock-site-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .o4 .mock-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .o4 .mock-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .o4 .mock-hero {
+      padding: 4rem 2.5rem 3rem;
+      border-top: 3px solid var(--accent);
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .o4 .mock-hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #111;
+      max-width: 720px;
+      margin-bottom: 1.5rem;
+    }
+
+    .o4 .mock-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 560px;
+    }
+
+    .o4 .mock-section {
+      padding: 3.5rem 2.5rem;
+      background: #f9f8f6;
+      border-top: 1px solid #ddd;
+    }
+
+    .o4 .mock-section h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 2rem;
+      line-height: 1.15;
+    }
+
+    .o4 .mock-section h2::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .o4 .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .o4 .mock-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem;
+    }
+
+    .o4 .mock-pillar {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .o4 .mock-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #444;
+    }
+
+    .o4 .mock-body {
+      padding: 3rem 2.5rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .o4 .mock-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1410;
+      max-width: 680px;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 5: DM Serif Display — Big Display + Bold Sans Sections
+    ───────────────────────────────────────────── */
+
+    .o5 { --accent: #C0441A; }
+
+    .o5 .mock-header {
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .o5 .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .o5 .mock-logo-icon {
+      height: 36px;
+      width: 36px;
+      background: #111;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .o5 .mock-site-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #111;
+    }
+
+    .o5 .mock-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .o5 .mock-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .o5 .mock-hero {
+      padding: 4rem 2.5rem 3rem;
+      border-top: 3px solid var(--accent);
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .o5 .mock-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 5.25rem;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: #111;
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+
+    .o5 .mock-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 560px;
+    }
+
+    .o5 .mock-section {
+      padding: 3.5rem 2.5rem;
+      background: #f9f8f6;
+      border-top: 1px solid #ddd;
+    }
+
+    .o5 .mock-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 2rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .o5 .mock-section h2::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .o5 .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .o5 .mock-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem;
+    }
+
+    .o5 .mock-pillar {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .o5 .mock-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #444;
+    }
+
+    .o5 .mock-body {
+      padding: 3rem 2.5rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .o5 .mock-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1410;
+      max-width: 680px;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 6: Reversed Contrast — Playfair Hero, Montserrat 800 Sections
+    ───────────────────────────────────────────── */
+
+    .o6 { --accent: #C0441A; }
+
+    .o6 .mock-header {
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .o6 .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .o6 .mock-logo-icon {
+      height: 36px;
+      width: 36px;
+      background: #111;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .o6 .mock-site-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .o6 .mock-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .o6 .mock-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .o6 .mock-hero {
+      padding: 4rem 2.5rem 3rem;
+      border-top: 3px solid var(--accent);
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .o6 .mock-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: #111;
+      max-width: 740px;
+      margin-bottom: 1.5rem;
+    }
+
+    .o6 .mock-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 560px;
+    }
+
+    .o6 .mock-section {
+      padding: 3.5rem 2.5rem;
+      background: #f9f8f6;
+      border-top: 1px solid #ddd;
+    }
+
+    .o6 .mock-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 2rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .o6 .mock-section h2::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .o6 .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .o6 .mock-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem;
+    }
+
+    .o6 .mock-pillar {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .o6 .mock-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #444;
+    }
+
+    .o6 .mock-body {
+      padding: 3rem 2.5rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .o6 .mock-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1410;
+      max-width: 680px;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 7: Campaign Poster — Oswald + Heavier Subhead
+    ───────────────────────────────────────────── */
+
+    .o7 { --accent: #C0441A; }
+
+    .o7 .mock-header {
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      padding: 0 2.5rem;
+      gap: 1rem;
+    }
+
+    .o7 .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .o7 .mock-logo-icon {
+      height: 36px;
+      width: 36px;
+      background: #111;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .o7 .mock-site-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .o7 .mock-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .o7 .mock-nav a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2705rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+    }
+
+    .o7 .mock-hero {
+      padding: 4rem 2.5rem 3rem;
+      border-top: 3px solid var(--accent);
+      background: #f5f4f0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .o7 .mock-hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 4.675rem;
+      font-weight: 700;
+      line-height: 1.21;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: #111;
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ↓ 15% larger (1.1 × 1.15 = 1.265rem), 15% bolder (400 → 500) */
+    .o7 .mock-hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.265rem;
+      font-weight: 500;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 560px;
+    }
+
+    .o7 .mock-section {
+      padding: 3.5rem 2.5rem;
+      background: #f9f8f6;
+      border-top: 1px solid #ddd;
+    }
+
+    .o7 .mock-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+      letter-spacing: 0.03em;
+    }
+
+    .o7 .mock-section h2::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .o7 .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .o7 .mock-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid var(--accent);
+      padding: 1.5rem;
+    }
+
+    .o7 .mock-pillar {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.56rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .o7 .mock-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.138rem;
+      font-weight: 500;
+      line-height: 1.75;
+      color: #444;
+    }
+
+    .o7 .mock-body {
+      padding: 3rem 2.5rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .o7 .mock-body p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.138rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1410;
+      max-width: 680px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>Style Options — Guardrail Project</h1>
+    <p>Six typographic systems. Each mockup shows: header + site name, nav links, hero h1, subhead paragraph, section h2, pillar card labels, card body text, and regular body paragraph.</p>
+  </div>
+
+  <div class="options-grid">
+
+    <!-- ══════════════════════════════════════
+         OPTION 1: Scaled Playfair
+    ══════════════════════════════════════ -->
+    <div class="option o1">
+      <div class="option-meta">
+        <span class="option-number">Option 1</span>
+        <span class="option-name">Scaled Playfair — Evolution of Current</span>
+        <span class="option-fonts"><strong>Headlines:</strong> Playfair Display 700 &nbsp;|&nbsp; <strong>Body:</strong> Montserrat 400 &nbsp;|&nbsp; <strong>Labels:</strong> Montserrat 800</span>
+      </div>
+      <div class="spec-table">
+        <div class="spec-item">
+          <span class="spec-label">Site Name</span>
+          <span class="spec-value">Playfair 700<br>1.45rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Nav Links</span>
+          <span class="spec-value">Montserrat 600<br>0.95rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Hero H1</span>
+          <span class="spec-value">Playfair 700<br>4.5rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Section H2</span>
+          <span class="spec-value">Playfair 700<br>2.5rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Pillar Label</span>
+          <span class="spec-value">Montserrat 800<br>1rem, UC + tracked</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Body / Cards</span>
+          <span class="spec-value">Montserrat 400<br>1.05–1.1rem</span>
+        </div>
+      </div>
+      <div class="option-mockup">
+        <div class="mock-header">
+          <div class="mock-logo">
+            <div class="mock-logo-icon"></div>
+            <span class="mock-site-name">Guardrail Project</span>
+          </div>
+          <div class="mock-nav">
+            <a>About</a><a>Join</a><a>Support</a>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h1>AI is transforming everything. Who decides the rules?</h1>
+          <p>The Guardrail Project is a civic movement building political power so that artificial intelligence serves the public interest — not just the companies that build it.</p>
+        </div>
+        <div class="mock-section">
+          <h2>What We Fight For</h2>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-pillar">Freedom</div>
+              <p>Privacy. Protection for children. The right to speak the truth about dangerous AI.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Democracy</div>
+              <p>Oversight of powerful AI. Distributed power. Elections free from AI manipulation.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Justice</div>
+              <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mock-body">
+          <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         OPTION 2: Campaign Poster — Oswald
+    ══════════════════════════════════════ -->
+    <div class="option o2">
+      <div class="option-meta">
+        <span class="option-number">Option 2</span>
+        <span class="option-name">Campaign Poster — Oswald Condensed</span>
+        <span class="option-fonts"><strong>Headlines:</strong> Oswald 700 &nbsp;|&nbsp; <strong>Body:</strong> Montserrat 400 &nbsp;|&nbsp; <strong>Nav:</strong> Oswald 500</span>
+      </div>
+      <div class="spec-table">
+        <div class="spec-item">
+          <span class="spec-label">Site Name</span>
+          <span class="spec-value">Oswald 700<br>1.55rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Nav Links</span>
+          <span class="spec-value">Oswald 500<br>1.05rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Hero H1</span>
+          <span class="spec-value">Oswald 700<br>5.5rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Section H2</span>
+          <span class="spec-value">Oswald 600<br>2.75rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Pillar Label</span>
+          <span class="spec-value">Oswald 700<br>1.3rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Body / Cards</span>
+          <span class="spec-value">Montserrat 400<br>1.05–1.1rem</span>
+        </div>
+      </div>
+      <div class="option-mockup">
+        <div class="mock-header">
+          <div class="mock-logo">
+            <div class="mock-logo-icon"></div>
+            <span class="mock-site-name">Guardrail Project</span>
+          </div>
+          <div class="mock-nav">
+            <a>About</a><a>Join</a><a>Support</a>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h1>AI is transforming everything. Who decides the rules?</h1>
+          <p>The Guardrail Project is a civic movement building political power so that artificial intelligence serves the public interest — not just the companies that build it.</p>
+        </div>
+        <div class="mock-section">
+          <h2>What We Fight For</h2>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-pillar">Freedom</div>
+              <p>Privacy. Protection for children. The right to speak the truth about dangerous AI.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Democracy</div>
+              <p>Oversight of powerful AI. Distributed power. Elections free from AI manipulation.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Justice</div>
+              <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mock-body">
+          <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         OPTION 3: Bold Sans — Montserrat 800
+    ══════════════════════════════════════ -->
+    <div class="option o3">
+      <div class="option-meta">
+        <span class="option-number">Option 3</span>
+        <span class="option-name">Bold Sans Throughout — Montserrat Only</span>
+        <span class="option-fonts"><strong>Headlines:</strong> Montserrat 800 &nbsp;|&nbsp; <strong>Body:</strong> Montserrat 400 &nbsp;|&nbsp; <strong>One font, full range</strong></span>
+      </div>
+      <div class="spec-table">
+        <div class="spec-item">
+          <span class="spec-label">Site Name</span>
+          <span class="spec-value">Montserrat 800<br>1.35rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Nav Links</span>
+          <span class="spec-value">Montserrat 700<br>0.95rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Hero H1</span>
+          <span class="spec-value">Montserrat 800<br>4.75rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Section H2</span>
+          <span class="spec-value">Montserrat 800<br>2.25rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Pillar Label</span>
+          <span class="spec-value">Montserrat 800<br>1.1rem, UC + tracked</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Body / Cards</span>
+          <span class="spec-value">Montserrat 400<br>1.05–1.1rem</span>
+        </div>
+      </div>
+      <div class="option-mockup">
+        <div class="mock-header">
+          <div class="mock-logo">
+            <div class="mock-logo-icon"></div>
+            <span class="mock-site-name">Guardrail Project</span>
+          </div>
+          <div class="mock-nav">
+            <a>About</a><a>Join</a><a>Support</a>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h1>AI is transforming everything. Who decides the rules?</h1>
+          <p>The Guardrail Project is a civic movement building political power so that artificial intelligence serves the public interest — not just the companies that build it.</p>
+        </div>
+        <div class="mock-section">
+          <h2>What We Fight For</h2>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-pillar">Freedom</div>
+              <p>Privacy. Protection for children. The right to speak the truth about dangerous AI.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Democracy</div>
+              <p>Oversight of powerful AI. Distributed power. Elections free from AI manipulation.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Justice</div>
+              <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mock-body">
+          <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         OPTION 4: Libre Baskerville — Sturdy Civic
+    ══════════════════════════════════════ -->
+    <div class="option o4">
+      <div class="option-meta">
+        <span class="option-number">Option 4</span>
+        <span class="option-name">Sturdy Civic — Libre Baskerville</span>
+        <span class="option-fonts"><strong>Headlines:</strong> Libre Baskerville 700 &nbsp;|&nbsp; <strong>Body + Nav:</strong> Montserrat 400/600 &nbsp;|&nbsp; <strong>Courthouse feel</strong></span>
+      </div>
+      <div class="spec-table">
+        <div class="spec-item">
+          <span class="spec-label">Site Name</span>
+          <span class="spec-value">Libre Baskerville 700<br>1.3rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Nav Links</span>
+          <span class="spec-value">Montserrat 600<br>0.95rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Hero H1</span>
+          <span class="spec-value">Libre Baskerville 700<br>4rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Section H2</span>
+          <span class="spec-value">Libre Baskerville 700<br>2.4rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Pillar Label</span>
+          <span class="spec-value">Montserrat 800<br>1rem, UC + tracked</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Body / Cards</span>
+          <span class="spec-value">Montserrat 400<br>1.05–1.1rem</span>
+        </div>
+      </div>
+      <div class="option-mockup">
+        <div class="mock-header">
+          <div class="mock-logo">
+            <div class="mock-logo-icon"></div>
+            <span class="mock-site-name">Guardrail Project</span>
+          </div>
+          <div class="mock-nav">
+            <a>About</a><a>Join</a><a>Support</a>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h1>AI is transforming everything. Who decides the rules?</h1>
+          <p>The Guardrail Project is a civic movement building political power so that artificial intelligence serves the public interest — not just the companies that build it.</p>
+        </div>
+        <div class="mock-section">
+          <h2>What We Fight For</h2>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-pillar">Freedom</div>
+              <p>Privacy. Protection for children. The right to speak the truth about dangerous AI.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Democracy</div>
+              <p>Oversight of powerful AI. Distributed power. Elections free from AI manipulation.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Justice</div>
+              <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mock-body">
+          <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         OPTION 5: DM Serif Display
+    ══════════════════════════════════════ -->
+    <div class="option o5">
+      <div class="option-meta">
+        <span class="option-number">Option 5</span>
+        <span class="option-name">Broadsheet Display — DM Serif + Montserrat 800 Sections</span>
+        <span class="option-fonts"><strong>Hero + Site Name:</strong> DM Serif Display &nbsp;|&nbsp; <strong>Sections:</strong> Montserrat 800 UC &nbsp;|&nbsp; <strong>Body:</strong> Montserrat 400</span>
+      </div>
+      <div class="spec-table">
+        <div class="spec-item">
+          <span class="spec-label">Site Name</span>
+          <span class="spec-value">DM Serif Display<br>1.55rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Nav Links</span>
+          <span class="spec-value">Montserrat 600<br>0.95rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Hero H1</span>
+          <span class="spec-value">DM Serif Display<br>5.25rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Section H2</span>
+          <span class="spec-value">Montserrat 800<br>2rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Pillar Label</span>
+          <span class="spec-value">Montserrat 800<br>1rem, UC + tracked</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Body / Cards</span>
+          <span class="spec-value">Montserrat 400<br>1.05–1.1rem</span>
+        </div>
+      </div>
+      <div class="option-mockup">
+        <div class="mock-header">
+          <div class="mock-logo">
+            <div class="mock-logo-icon"></div>
+            <span class="mock-site-name">Guardrail Project</span>
+          </div>
+          <div class="mock-nav">
+            <a>About</a><a>Join</a><a>Support</a>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h1>AI is transforming everything. Who decides the rules?</h1>
+          <p>The Guardrail Project is a civic movement building political power so that artificial intelligence serves the public interest — not just the companies that build it.</p>
+        </div>
+        <div class="mock-section">
+          <h2>What We Fight For</h2>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-pillar">Freedom</div>
+              <p>Privacy. Protection for children. The right to speak the truth about dangerous AI.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Democracy</div>
+              <p>Oversight of powerful AI. Distributed power. Elections free from AI manipulation.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Justice</div>
+              <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mock-body">
+          <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         OPTION 6: Reversed Contrast
+    ══════════════════════════════════════ -->
+    <div class="option o6">
+      <div class="option-meta">
+        <span class="option-number">Option 6</span>
+        <span class="option-name">Reversed Contrast — Playfair Hero, Montserrat 800 Sections, Playfair Pillars</span>
+        <span class="option-fonts"><strong>Hero H1:</strong> Playfair 700 &nbsp;|&nbsp; <strong>H2:</strong> Montserrat 800 &nbsp;|&nbsp; <strong>Pillars:</strong> Playfair 700 &nbsp;|&nbsp; <strong>Body:</strong> Montserrat 400</span>
+      </div>
+      <div class="spec-table">
+        <div class="spec-item">
+          <span class="spec-label">Site Name</span>
+          <span class="spec-value">Montserrat 800<br>1.4rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Nav Links</span>
+          <span class="spec-value">Montserrat 700<br>0.95rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Hero H1</span>
+          <span class="spec-value">Playfair 700<br>5rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Section H2</span>
+          <span class="spec-value">Montserrat 800<br>2rem</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Pillar Label</span>
+          <span class="spec-value">Playfair 700<br>1.3rem (no UC)</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Body / Cards</span>
+          <span class="spec-value">Montserrat 400<br>1.05–1.1rem</span>
+        </div>
+      </div>
+      <div class="option-mockup">
+        <div class="mock-header">
+          <div class="mock-logo">
+            <div class="mock-logo-icon"></div>
+            <span class="mock-site-name">Guardrail Project</span>
+          </div>
+          <div class="mock-nav">
+            <a>About</a><a>Join</a><a>Support</a>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h1>AI is transforming everything. Who decides the rules?</h1>
+          <p>The Guardrail Project is a civic movement building political power so that artificial intelligence serves the public interest — not just the companies that build it.</p>
+        </div>
+        <div class="mock-section">
+          <h2>What We Fight For</h2>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-pillar">Freedom</div>
+              <p>Privacy. Protection for children. The right to speak the truth about dangerous AI.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Democracy</div>
+              <p>Oversight of powerful AI. Distributed power. Elections free from AI manipulation.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Justice</div>
+              <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mock-body">
+          <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         OPTION 7: Campaign Poster — Oswald + Heavier Subhead
+    ══════════════════════════════════════ -->
+    <div class="option o7">
+      <div class="option-meta">
+        <span class="option-number">Option 7</span>
+        <span class="option-name">Option 2 + Heavier Subhead — Oswald, Montserrat 500 / 1.265rem</span>
+        <span class="option-fonts"><strong>Headlines:</strong> Oswald 700 &nbsp;|&nbsp; <strong>Subhead:</strong> Montserrat 500 @ 1.265rem (+15% size &amp; weight) &nbsp;|&nbsp; <strong>Body:</strong> Montserrat 400</span>
+      </div>
+      <div class="spec-table">
+        <div class="spec-item">
+          <span class="spec-label">Site Name</span>
+          <span class="spec-value">Oswald 700<br>1.55rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Nav Links</span>
+          <span class="spec-value">Oswald 500<br>1.05rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Hero H1</span>
+          <span class="spec-value">Oswald 700<br>4.675rem ← −15%</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Section H2</span>
+          <span class="spec-value">Oswald 600<br>2.75rem, UC</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Pillar Label</span>
+          <span class="spec-value">Oswald 700<br>1.56rem ← +20%</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Subhead + Cards + Body</span>
+          <span class="spec-value">Montserrat 500<br>1.265rem ← +15%</span>
+        </div>
+      </div>
+      <div class="option-mockup">
+        <div class="mock-header">
+          <div class="mock-logo">
+            <div class="mock-logo-icon"></div>
+            <span class="mock-site-name">Guardrail Project</span>
+          </div>
+          <div class="mock-nav">
+            <a>About</a><a>Join</a><a>Support</a>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h1>AI is transforming everything. Who decides the rules?</h1>
+          <p>The Guardrail Project is a civic movement building political power so that artificial intelligence serves the public interest — not just the companies that build it.</p>
+        </div>
+        <div class="mock-section">
+          <h2>What We Fight For</h2>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="mock-pillar">Freedom</div>
+              <p>Privacy. Protection for children. The right to speak the truth about dangerous AI.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Democracy</div>
+              <p>Oversight of powerful AI. Distributed power. Elections free from AI manipulation.</p>
+            </div>
+            <div class="mock-card">
+              <div class="mock-pillar">Justice</div>
+              <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mock-body">
+          <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
