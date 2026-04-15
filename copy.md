@@ -1,150 +1,195 @@
-# **The Guardrail Project — Website Copy**
+# Copy — The Guardrail Project Website
+
+All English text on the live website, organized by page and section. This file is the source of truth for content. Update it whenever copy changes, and apply changes here to the HTML.
 
 ---
 
-## **Page 1: Home**
+## Global (all pages)
 
-### **Hero**
+### Site Name
+Guardrail Project
 
-**Protecting Americans from the dangers of advanced AI.**
+### Navigation
+About · Join · Donate
 
-Reckless development of AI is threatening our country’s most vulnerable, and endangering our democracy.
+### Footer
+**Org line:** Guardrail Project Inc.
 
-**The Guardrail Project is the civic movement to change that.**
+**Copyright:** © 2026 Guardrail Project Inc. All rights reserved.
 
-\[ Take Action → \] \[ Learn Why → \]
+**Legal:** Guardrail Project Inc. is a nonprofit corporation with 501(c)(3) status pending. EIN: 41-4917212. Contributions may be tax-deductible retroactively upon IRS approval. Consult your tax advisor.
 
----
-
-### **The Danger Ahead**
-
-Advanced artificial intelligence is here, and its harms are growing with each passing day.
-
-**AI-powered scams are targeting the most vulnerable.** Criminals are using AI to clone voices, impersonate family members, and run sophisticated fraud operations — disproportionately targeting the elderly and veterans. These aren't technical glitches. They're predictable harms from deploying powerful tools without adequate safeguards.
-
-**Deepfakes are harming children and our politics.** AI can now generate realistic images, audio, and video of anyone — from politicians to private citizens to children. It's being used for harassment, fraud, and disinformation at scale. There are still no federal standards governing its use.
-
-**Surveillance is expanding faster than the law.** AI-powered facial recognition, predictive policing, and automated government decision-making are already operating in American communities. These tools give the state new powers that no democratic society has agreed to grant — and almost no mechanism to challenge them.
-
-**AI is empowering American adversaries.** Today's AI systems can be easily jail-broken by foreign governments and terrorists to spread information, create biological weapons, and disrupt our political process. Without better safeguards on these systems, we're handing out our best tools to harm our nation.
+*(donate.html uses a slightly longer variant: "Guardrail Project Inc. (Guardrail Project Inc.) has applied for recognition as a 501(c)(3) nonprofit organization with the IRS. Our application is currently pending. Donations may be tax-deductible retroactively once status is approved, but we recommend consulting your tax advisor. EIN: 41-4917212.")*
 
 ---
 
-### **What We Do**
+## Home (index.html)
 
-We organize Americans to demand that AI answer to the same democratic principles we expect from any powerful technology.
+### Hero
 
-That means:
+**Headline:** Protecting Americans from the dangers of advanced AI.
 
-* **Mobilizing voters** through town halls, deep canvassing, and strategic campaigns that put AI accountability on the political agenda.
-* **Building coalitions** across the spectrum — from concerned parents to civil liberties advocates — around AI's harms to everyday people.
-* **Running political campaigns** at the local, state, and federal levels so that policymakers hear from real citizens, not just Big Tech.
+**Subheadline:** The Guardrail Project is the political movement for the democratic governance of artificial intelligence.
 
-**We're building political power now. Not after the next crisis.**
+**CTAs:** Join the Movement · Learn More
 
 ---
 
-### **CTA**
+### The Problem
 
-**This movement needs your name on it.** Join Americans who believe AI should answer to the people — not the other way around.
-
-\[ Join Us → \] \[ Support the Work → \]
+Over 80% of Americans support guardrails on AI. We're here to turn that consensus into legislative change.
 
 ---
 
-## **Page 2: About**
+### What We Fight For
 
-### **Header**
+**Section heading:** What We Fight For
 
-**Every American reform has started with ordinary people.**
+**Freedom** — Protection for children. Privacy. The right to speak the truth about dangerous AI.
 
-Time and time again in history, a dedicated, consistent group of citizens – coupled with public sentiment – have brought about transformative change.
+**Democracy** — Oversight of AI systems. Distributed power. Elections free from AI manipulation.
 
-In each case – whether it's child labor laws, drug approval standards, or civil rights – it took ordinary people standing up and deciding that powerful institutions had to answer to them.
+**Justice** — Legal accountability. Creator rights. Shared prosperity from AI's gains.
 
-A supermajority of Americans support AI regulation. **Now is the time for real change.**
-
----
-
-### **Our Platform**
-
-**Legal Liability**
-
-When AI causes documented harm, there must be a legal path to accountability. That means expanding tort law so individuals can sue when AI systems injure them, and ensuring that companies — not just victims — bear the cost of cutting corners. AI agents operating in the world should be identifiable and traceable, just like a car with a license plate. No technology should be above the law.
-
-**Democratic Oversight**
-
-Every powerful institution in American life operates within a system of checks and balances — and AI should be no different. We support the establishment of an independent agency,  with the authority to set safety standards and ensure that AI systems are tested before they're deployed at scale.
+**Link:** See our full political program →
 
 ---
 
-### **CTA**
+### How We Do It
 
-**Want to go deeper?** Get updates on policy developments, campaign milestones, and concrete ways to take action.
+**Section heading:** How We Do It
 
-\[ Join the List → \]
+We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.
 
----
-
-## **Page 3: Join**
-
-### **Header**
-
-**Add your voice.**
-
-Whether you want to stay informed or get involved on the ground, we want to hear from you.
+**CTA:** Learn more about our approach →
 
 ---
 
-### **Form**
+### Current Campaign
 
-|  |  |
-| ----- | ----- |
-| First Name | Last Name |
-| Email Address | ZIP Code |
+**Section heading:** Current Campaign
 
-☐ I'm interested in volunteering with The Guardrail Project
+**Location label:** Berkeley, California
 
-\[ Sign Me Up \]
+Our first campaign is about to launch. Stay tuned.
 
-*We'll never sell your information. You can unsubscribe any time.*
+**CTA:** See how you can help →
 
 ---
 
-Right now we're building our list and preparing for campaigns at the state and federal level. By joining, you'll be among the first to know when we launch.
+### Join CTA
 
-Whether you're a parent, a veteran, a technologist, or simply a citizen who believes democracy should come before algorithms — there's a role for you here.
+**Headline:** Join the movement.
 
----
+Join Americans who believe in freedom, democracy, and justice in the era of AI.
 
-## **Page 4: Support**
-
-### **Header**
-
-**Fuel the work.**
-
-The Guardrail Project is a nonprofit building the civic infrastructure for AI accountability — from voter contact to policy research to coalition organizing. All of it runs on people like you.
+**CTAs:** Join Us · Donate
 
 ---
 
-### **Short Pitch**
+## About (about.html)
 
-We're in early days, which means your support goes further right now than it ever will again. A contribution today helps us build the foundation of a durable, effective movement — one that ensures that when AI causes harm, someone is held accountable.
+### Page Hero
+
+**Headline:** AI that serves the people
+
+The Guardrail Project is a civic movement dedicated to the democratic governance of artificial intelligence. 
+---
+
+### Who We Are
+
+**Section heading:** Who We Are
+
+We believe that AI — like every powerful technology before it — must be accountable to the people it affects.
+
+We organize ordinary Americans to demand political change: starting in their cities, scaling to their states, and building toward federal action. We believe that grassroots political power is the only force that reliably turns public consensus into legislation.
+
+We advocate for freedom, democracy, and justice in the age of AI.
 
 ---
 
-### **Donation Form**
+### Our Political Program
 
-\[ $25 \] \[ $50 \] \[ $100 \] \[ Other: \_\_\_\_\_\_ \]
+**Section heading:** Our Political Program
 
-\[ Donate Now \]
+We fight for rights that every American deserves in the era of AI.
 
-The Guardrail Project (Guardrail Project Inc.) has applied for recognition as a 501(c)(3) nonprofit organization with the IRS. Our application is currently pending. Donations may be tax-deductible retroactively once status is approved. **EIN: 41-4917212.**
+#### Freedom
+
+**The Right to Grow Up Free.** Every child deserves to grow up free — free to be curious, to play, to dream — without AI systems exploiting their psychology. Children deserve technology that promotes human flourishing.
+
+**The Right to Speak Up.** The people who build AI must be free to tell the truth about it. Workers on the inside see the dangers most clearly, and they deserve the protection to say so.
+
+**The Right to Privacy.** Every American deserves full ownership of their digital life. We demand the right to know what is collected and the right to withhold consent.
+
+#### Democracy
+
+**The Right to Liberty.** We demand that AI is used as a tool for liberation, not autocracy. Large models must be secured from foreign adversaries, terrorists, and cannot be abused by Big Tech.
+
+**The Right to Free Elections.** Our elections must be free from AI manipulation. Our democracy depends on our ability to tell truth from fabrication — and we demand that right be protected.
+
+**The Right to a Future.** We demand transparent, independent oversight of models capable of catastrophic harm. We demand non-proliferation treaties with foreign powers. We demand a safe future for the American people.
+
+#### Justice
+
+**The Right to Legal Action.** Legal accountability must follow AI wherever it causes harm. Every American harmed by these systems deserves recourse, compensation, and justice.
+
+**The Right to Our Art.** Artists, writers, musicians, coders, and creators must own what they make — and must be compensated when their work is used to train AI systems.
+
+**The Right to Economic Dignity.** The gains of AI must be returned to the people whose labor made them possible. The prosperity AI creates belongs not to a handful of companies, but to the workers and communities who built the foundation it stands on.
 
 ---
 
-### **Transparency Note**
+### Our Origins
 
-We're a lean operation by design. Contributions go directly toward organizing, outreach, and campaign infrastructure — not overhead.
+**Section heading:** Our Origins
 
-Questions? Reach us at rohan@guardrailproject.org
+The Guardrail Project (GRP) was founded on the premise that the most important technology of our era should be answerable to the American people.
+
+The founder, Rohan Prasad, is an educator, activist, and AI safety researcher. We are advised by experts in law, technology and social change.
+
+---
+
+### CTA
+
+**Headline:** Learn More
+
+Get updates on policy developments, campaign milestones, and concrete ways to take action.
+
+**CTA:** Join the List →
+
+---
+
+## Join (join.html)
+
+### Page Hero
+
+**Headline:** Join the movement
+
+Whether you want to stay informed or get involved on the ground — in your city, or beyond — we want to hear from you.
+
+---
+
+### Below Form
+
+We're building the infrastructure for campaigns across the country.
+
+Whether you're a parent, a veteran, an artist, a technologist, or a concerned citizen, there's a role for you.
+
+---
+
+## Donate (donate.html)
+
+### Page Hero
+
+**Headline:** Fund the Movement.
+
+We are funded by people who believe that AI should serve the public interest.
+
+---
+
+### Pitch
+
+Your donation supports grassroots organizing, local campaigns, coalition building, and the political infrastructure this country needs to govern AI democratically.
+
+Every dollar goes toward building political power — training organizers, running local campaigns, supporting coalition partners, and growing a movement that can scale from city councils to Congress.
