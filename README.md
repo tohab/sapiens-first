@@ -1,3 +1,0 @@
-# The Guardrail Project
-
-The Guardrail Project begins by connecting with voters & civic organizations. We build trust and relationships with groups and people around the country, and channel that energy to bring about civic engagement. By civic engagement, we mean sustained, active engagement by citizens with their local representatives via. letter-writing campaigns, petitions, townhalls, or public demonstrations. Coordinated civic engagement across key legislators in a state can lead to serious state-level legislation that reflects public opinion. Lastly, when a few states have passed serious reforms on tech regulation, it builds the traction to pass a bill at the federal level.

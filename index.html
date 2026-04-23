@@ -11,162 +11,1038 @@
   <link rel="manifest" href="favicons/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="palette.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      /* subtle linen weave — the scrapbook paper feel */
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(100, 65, 10, 0.028) 0px,
+          rgba(100, 65, 10, 0.028) 1px,
+          transparent 1px,
+          transparent 9px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(100, 65, 10, 0.02) 0px,
+          rgba(100, 65, 10, 0.02) 1px,
+          transparent 1px,
+          transparent 9px
+        );
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── GRAIN ─────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 1;
+      mix-blend-mode: multiply;
+    }
+
+    /* ─── ORBS ─────────────────────────── */
+    .orb {
+      position: absolute; /* absolute inside fixed .orb-wrap — change back to fixed (and remove .orb-wrap HTML) to disable parallax */
+      border-radius: 50%;
+      filter: blur(110px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
+      top: -220px; right: -220px;
+      animation: drift1 14s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 65%);
+      bottom: 10vh; left: -200px;
+      animation: drift2 18s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, var(--blue-dim) 0%, transparent 65%);
+      top: 55vh; right: -120px;
+      animation: drift1 22s ease-in-out infinite reverse;
+    }
+    @keyframes drift1 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      40% { transform: translate(-35px, 25px) scale(1.06); }
+      70% { transform: translate(20px, -30px) scale(0.96); }
+    }
+    @keyframes drift2 {
+      0%,100% { transform: translate(0,0) scale(1); }
+      35% { transform: translate(40px, -20px) scale(1.09); }
+      70% { transform: translate(-20px, 35px) scale(0.94); }
+    }
+
+    /* ─── LAYOUT ─────────────────────────── */
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── WORDMARK ────────────────────────── */
+    .wordmark {
+      position: fixed;
+      top: 32px;
+      left: 40px;
+      z-index: 100;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1s;
+    }
+    .wordmark span {
+      color: var(--accent);
+    }
+
+    /* ─── BADGE ─────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      color: var(--text-dim);
+      background: var(--badge-bg);
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue-glow);
+      animation: pulse 2.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue-glow); }
+      50% { opacity: 0.35; box-shadow: 0 0 4px var(--blue); }
+    }
+
+    /* ─── HERO ──────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 130px 0 80px;
+      position: relative;
+    }
+
+    .hero-badge {
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.25s;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(68px, 11vw, 118px);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.45s;
+    }
+    .hero-headline .accent { color: var(--accent); }
+    .hero-headline .dim { color: var(--text); }
+
+    .hero-body {
+      font-size: 20px;
+      line-height: 1.72;
+      color: var(--text-mid);
+      max-width: 750px;
+      font-weight: 300;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.65s;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 17px 34px;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      border-radius: 6px;
+      box-shadow: 0 0 32px var(--navy-glow), 0 0 64px var(--navy-glow);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s;
+    }
+    .hero-cta:hover {
+      box-shadow: 0 0 50px var(--navy-glow), 0 0 100px var(--navy-glow);
+      transform: translateY(-2px);
+    }
+    .hero-cta .arr {
+      transition: transform 0.2s ease;
+      font-size: 15px;
+    }
+    .hero-cta:hover .arr { transform: translateX(4px); }
+
+    /* ─── SCAN BAR ──────────────────────── */
+    .scanbar-wrap {
+      margin-top: 88px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1.4s;
+    }
+    .scanbar {
+      width: 100%;
+      height: 2px;
+      background: var(--track-bg);
+      border-radius: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .scanbar::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      width: 28%;
+      background: linear-gradient(90deg, transparent 0%, var(--accent) 45%, var(--accent) 55%, transparent 100%);
+      animation: sweep 4s ease-in-out infinite 2s;
+    }
+    @keyframes sweep {
+      0% { transform: translateX(-160%); }
+      100% { transform: translateX(450%); }
+    }
+    .scanbar-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+    }
+
+    /* ─── DIVIDER ───────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── SECTIONS ──────────────────────── */
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 52px;
+    }
+    .section-label .mark {
+      display: block;
+      width: 20px; height: 1px;
+      background: var(--accent);
+    }
+    .section-label .num { color: var(--accent); }
+
+    /* ─── STATS ─────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 52px;
+      box-shadow: 0 1px 3px rgba(80, 50, 10, 0.07), 0 4px 14px rgba(80, 50, 10, 0.04);
+    }
+    .stat {
+      padding: 32px 26px 28px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-val {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(44px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .stat-track {
+      height: 2px;
+      background: var(--track-bg);
+      border-radius: 100px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .stat-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 100px;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .stat-fill.animated { transform: scaleX(1); }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ─── BODY TEXT ─────────────────────── */
+    .body-large {
+      font-size: 22px;
+      line-height: 1.72;
+      font-weight: 300;
+      color: var(--text-mid);
+      margin-bottom: 22px;
+    }
+    .body-large strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .body-text {
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--text-dim);
+    }
+
+    /* ─── PILLARS ───────────────────────── */
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 52px;
+    }
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 26px;
+      padding: 26px 28px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 1px 2px rgba(80, 50, 10, 0.06), 0 3px 10px rgba(80, 50, 10, 0.04);
+      transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: default;
+    }
+    .pillar:hover {
+      border-color: var(--pillar-hover-border);
+      background: var(--pillar-hover-bg);
+      transform: translateX(4px);
+    }
+    .pillar-num {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      padding-top: 4px;
+      flex-shrink: 0;
+      width: 24px;
+    }
+    .pillar-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .pillar-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-dim);
+    }
+
+    /* ─── CTA SECTION ───────────────────── */
+    .cta-section {
+      padding: 140px 0 120px;
+      text-align: center;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--border), transparent);
+    }
+
+    .cta-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .cta-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(56px, 9vw, 100px);
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+    }
+
+    .cta-sub {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 380px;
+      margin: 0 auto 52px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .cta-input {
+      flex: 1;
+      padding: 16px 20px;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .cta-input::placeholder { color: var(--text-dim); }
+    .cta-input:focus {
+      border-color: var(--input-focus-border);
+      background: var(--input-focus-bg);
+    }
+    .cta-btn {
+      padding: 16px 26px;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 0 32px var(--navy-glow);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+    .cta-btn:hover {
+      box-shadow: 0 0 48px var(--navy-glow), 0 0 90px var(--navy-glow);
+      transform: translateY(-1px);
+    }
+
+    /* ─── FOOTER ────────────────────────── */
+    .footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 2;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── ANIMATIONS ────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── SCROLL PROGRESS ──────────────────── */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--blue) 100%);
+      transform-origin: left center;
+      transform: scaleX(0);
+      z-index: 10001;
+      pointer-events: none;
+    }
+
+    /* ─── HERO DOT GRID ─────────────────────── */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26, 58, 102, 0.18) 1px, transparent 1px);
+      background-size: 30px 30px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 70%);
+      mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       REVERSIBLE EFFECTS — to remove any effect, delete its labeled
+       CSS block, its HTML comment block, and its JS block (if any).
+       ══════════════════════════════════════════════════════════════ */
+
+    /* [EFFECT: ORB PARALLAX] ─────────────────────────────────────
+       Fixed wrappers let JS move orbs at different scroll rates.
+       Remove: delete .orb-wrap CSS + HTML wrappers + JS block,
+               revert .orb above from position:absolute → fixed.     */
+    .orb-wrap {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+    }
+
+    /* [EFFECT: VIGNETTE] ─────────────────────────────────────────
+       Darkens edges to give the page a curved, lit-from-center feel.
+       Remove: delete .vignette CSS + <div class="vignette"> in HTML. */
+    .vignette {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 42%, rgba(26, 58, 102, 0.07) 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* [EFFECT: US MAP BACKGROUND] ───────────────────────────────
+       US map + city dot overlay behind the Theory of Change section.
+       Remove: delete .us-map-bg + .us-map-dots CSS and both HTML elements. */
+    .toc-section { overflow: hidden; }
+    .us-map-bg,
+    .us-map-dots {
+      position: absolute;
+      top: 50%;
+      left: 62%;
+      transform: translate(-50%, -50%);
+      width: 44%;
+      max-width: none;
+      height: auto;
+      pointer-events: none;
+    }
+    .us-map-bg {
+      z-index: 0;
+      opacity: 0.04;
+      filter: invert(1) sepia(1) saturate(0.6) hue-rotate(190deg) brightness(1.4);
+    }
+    .us-map-dots {
+      z-index: 1;
+      overflow: visible;
+    }
+    .city-dot {
+      fill: #2C56B3;
+      opacity: 0.12;
+      transition: opacity 0.7s ease, r 0.7s ease;
+    }
+
+    /* [EFFECT: TOPO LINES] ───────────────────────────────────────
+       Topographic survey contours behind section 02 content.
+       Remove: delete .topo-svg CSS + <svg class="topo-svg"> in HTML. */
+    .topo-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+      opacity: 1;
+    }
+
+    /* [EFFECT: REGISTER MARKS] ───────────────────────────────────
+       Diagonal bracket corners around the stats grid.
+       Remove: delete .reg-frame CSS + wrapper div in HTML,
+               move margin-bottom: 52px back onto .stats-grid.        */
+    .reg-frame {
+      position: relative;
+      margin-bottom: 52px;
+    }
+    .stats-grid { margin-bottom: 0; }
+    .reg-frame::before,
+    .reg-frame::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+    .reg-frame::before {
+      top: -6px; left: -6px;
+      border-top: 1px solid var(--accent);
+      border-left: 1px solid var(--accent);
+    }
+    .reg-frame::after {
+      bottom: -6px; right: -6px;
+      border-bottom: 1px solid var(--accent);
+      border-right: 1px solid var(--accent);
+    }
+
+    /* [EFFECT: HALFTONE CTA] ─────────────────────────────────────
+       Dot pattern that wells up from the bottom of the CTA section.
+       Remove: delete this .cta-section::after block entirely.        */
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26, 58, 102, 0.17) 1.5px, transparent 1.5px);
+      background-size: 18px 18px;
+      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
+      mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── RESPONSIVE ────────────────────── */
+    @media (max-width: 600px) {
+      .container { padding: 0 24px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .cta-form { flex-direction: column; }
+      .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
+      .wordmark { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="site-link">
-      <img src="guardrail_project_logo_clean_transparent.png" alt="Guardrail Project Logo">
-      <span class="site-name">Guardrail Project</span>
-    </a>
-    <nav>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-      <a href="donate.html">Donate</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
+  <!-- ─── PROGRESS BAR ────────────────────── -->
+  <div class="progress-bar"></div>
 
-  <div class="nav-drawer" id="nav-drawer">
-    <a href="about.html">About</a>
-    <a href="join.html">Join</a>
-    <a href="donate.html">Donate</a>
-  </div>
+  <!-- ─── BACKGROUND + DEPTH ──────────────── -->
+  <!-- [EFFECT: ORB PARALLAX] remove wrappers + revert .orb to position:fixed to disable -->
+  <div class="orb-wrap" data-rate="0.10"><div class="orb orb-1"></div></div>
+  <div class="orb-wrap" data-rate="-0.06"><div class="orb orb-2"></div></div>
+  <div class="orb-wrap" data-rate="0.16"><div class="orb orb-3"></div></div>
+  <!-- [EFFECT: VIGNETTE] remove div below to disable -->
+  <div class="vignette"></div>
 
-  <main>
+  <!-- ─── WORDMARK ──────────────────────── -->
+  <div class="wordmark"><span>GRP</span> · GUARDRAIL PROJECT</div>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-inner">
-        <h1 class="hero-headline">Protecting Americans from the dangers of advanced AI.</h1>
-        <hr>
-        <p>The Guardrail Project is the political movement for the democratic governance of artificial intelligence.</p>
-        <div class="btn-group hero-cta">
-          <a href="join.html" class="btn btn-primary">Join the Movement &rarr;</a>
-          <a href="about.html" class="btn btn-outline">Learn More &rarr;</a>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HERO                                    -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+
+      <div class="hero-badge">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          BERKELEY, CALIFORNIA · EST. 2026
         </div>
       </div>
-    </section>
 
-    <!-- The Problem -->
-    <section class="section section-white reveal">
-      <div class="section-inner">
-        <p class="problem-statement">Over 80% of Americans support guardrails on AI. We're here to turn that consensus into legislative change.</p>
-      </div>
-    </section>
+      <h1 class="hero-headline">
+        <span class="dim">Local</span><br>
+        <span class="accent">organizing</span><br>
+        <span>for a</span><br>
+        <span>brighter</span><br>
+        <span>future.</span>
+      </h1>
 
-    <!-- What We Fight For -->
-    <section class="section section-tint reveal">
-      <div class="section-inner">
-        <h2 class="section-heading">What We Fight For</h2>
-        <div class="card-grid pillar-grid">
-          <div class="card pillar-card">
-            <div class="pillar-label">Freedom</div>
-            <p>Protection for children. Privacy. The right to speak the truth about dangerous AI.</p>
-          </div>
-          <div class="card pillar-card">
-            <div class="pillar-label">Democracy</div>
-            <p>Oversight of AI systems. Distributed power. Elections free from AI manipulation.</p>
-          </div>
-          <div class="card pillar-card">
-            <div class="pillar-label">Justice</div>
-            <p>Legal accountability. Creator rights. Shared prosperity from AI's gains.</p>
-          </div>
-        </div>
-        <div class="pillar-link">
-          <a href="about.html#agenda" class="text-link">See our full political program &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- How We Do It -->
-    <section class="section section-white reveal">
-      <div class="section-inner">
-        <div class="section-cols">
-          <div>
-            <h2 class="section-heading">How We Do It</h2>
-          </div>
-          <div class="section-text">
-            <p>We build political power from the ground up — organizing in cities and states to pass real legislation, just like the movements that won civil rights, marriage equality, and safe driving laws.</p>
-            <div class="btn-group" style="margin-top: var(--space-md);">
-              <a href="about.html" class="btn btn-outline">Learn more about our approach &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Campaign Spotlight -->
-    <section class="section section-tint reveal">
-      <div class="section-inner">
-        <h2 class="section-heading">Current Campaign</h2>
-        <div class="campaign-spotlight">
-          <div class="campaign-location">Berkeley, California</div>
-          <p>Our first campaign is about to launch. Stay tuned.</p>
-          <div class="btn-group">
-            <a href="join.html" class="btn btn-primary">See how you can help &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Join CTA -->
-    <section class="cta-section section-dark reveal">
-      <div class="section-inner">
-        <h2>Join the movement.</h2>
-        <p>Join Americans who believe in freedom, democracy, and justice in the era of AI.</p>
-        <div class="btn-group">
-          <a href="join.html" class="btn btn-primary">Join Us &rarr;</a>
-          <a href="donate.html" class="btn btn-outline-light">Donate &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <span class="footer-org">Guardrail Project Inc.</span>
-        <span class="footer-copy">&copy; 2026 Guardrail Project Inc. All rights reserved.</span>
-      </div>
-      <p class="footer-legal">
-        Guardrail Project Inc. is a nonprofit corporation with 501(c)(3) status pending. EIN: 41-4917212. Contributions may be tax-deductible retroactively upon IRS approval. Consult your tax advisor.
+      <p class="hero-body">
+        AI is transforming the world. Public concern is overwhelming. Political action hasn't followed. We're here to change that.
       </p>
+
+      <a href="#connect" class="hero-cta">
+        GET CONNECTED <span class="arr">→</span>
+      </a>
+
+      <div class="scanbar-wrap">
+        <div class="scanbar"></div>
+        <div class="scanbar-label">
+          <span>GUARDRAIL PROJECT · ACTIVE</span>
+          <span>BERKELEY → CALIFORNIA → FEDERAL</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- THE CHALLENGE                           -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label reveal">
+        <span class="mark"></span>
+        <span class="num">01</span>
+        THE CHALLENGE
+      </div>
+
+      <!-- [EFFECT: REGISTER MARKS] remove .reg-frame div (keep inner stats-grid), add margin-bottom:52px back to .stats-grid -->
+      <div class="reg-frame">
+      <div class="stats-grid reveal">
+        <div class="stat">
+          <div class="stat-val" data-count="73" data-suffix="%">73%</div>
+          <div class="stat-track"><div class="stat-fill" data-width="73"></div></div>
+          <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val" data-count="7" data-suffix=" MO">7 MO</div>
+          <div class="stat-track"><div class="stat-fill" data-width="60"></div></div>
+          <div class="stat-label">AI CAPABILITY<br>DOUBLING TIME</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val" data-count="215" data-prefix="$" data-suffix="M">$215M</div>
+          <div class="stat-track"><div class="stat-fill" data-width="92"></div></div>
+          <div class="stat-label">RAISED BY PRO-DEREGULATION<br>AI INTERESTS IN 2024</div>
+        </div>
+      </div>
+      </div><!-- /.reg-frame -->
+
+      <p class="body-large reveal">
+        Public opinion strongly favors AI oversight.
+        <strong>But it hasn't translated into political change.</strong>
+      </p>
+      <p class="body-text reveal reveal-delay-1">
+        The industry has spent hundreds of millions to keep government away. Ordinary people's concerns — job loss, algorithmic harm, democratic accountability — go unheard.
+      </p>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- THEORY OF CHANGE                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="section toc-section">
+    <!-- [EFFECT: US MAP BACKGROUND] remove img + svg below to disable -->
+    <img class="us-map-bg" src="us.svg" aria-hidden="true" alt="">
+    <svg class="us-map-dots" viewBox="0 0 1000 589" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+      <!-- Tier 1: major cities -->
+      <circle class="city-dot" data-tier="1" data-city="san-francisco" cx="133" cy="292" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="los-angeles"   cx="152" cy="368" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="seattle"       cx="148" cy="118" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="portland"      cx="148" cy="168" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="denver"        cx="438" cy="270" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="phoenix"       cx="222" cy="388" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="las-vegas"     cx="188" cy="328" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="chicago"       cx="614" cy="228" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="detroit"       cx="665" cy="212" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="minneapolis"   cx="530" cy="182" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="new-york"      cx="808" cy="225" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="boston"        cx="848" cy="190" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="washington-dc" cx="778" cy="262" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="atlanta"       cx="652" cy="360" r="3.5"/>
+      <circle class="city-dot" data-tier="1" data-city="miami"         cx="698" cy="455" r="3.5"/>
+      <!-- Tier 2: secondary cities -->
+      <circle class="city-dot" data-tier="2" data-city="houston"       cx="470" cy="428" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="dallas"        cx="452" cy="390" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="austin"        cx="444" cy="418" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="kansas-city"   cx="538" cy="292" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="st-louis"      cx="592" cy="286" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="nashville"     cx="635" cy="318" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="memphis"       cx="590" cy="348" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="new-orleans"   cx="578" cy="442" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="philadelphia"  cx="792" cy="242" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="pittsburgh"    cx="742" cy="238" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="charlotte"     cx="728" cy="328" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="indianapolis"  cx="638" cy="258" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="columbus"      cx="685" cy="245" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="salt-lake"     cx="262" cy="255" r="3"/>
+      <circle class="city-dot" data-tier="2" data-city="albuquerque"   cx="338" cy="368" r="3"/>
+    </svg>
+    <div class="container">
+
+      <div class="section-label reveal">
+        <span class="mark"></span>
+        <span class="num">02</span>
+        THEORY OF CHANGE
+      </div>
+
+      <p class="body-large reveal">
+        Political movements don't win in Washington first.
+        <strong>They win at home — then build.</strong>
+      </p>
+      <p class="body-text reveal reveal-delay-1">
+        We start where people live. City by city, we pass resolutions, grow our base, and demonstrate that the public will for AI accountability is real. Then we scale — to statehouses, then Congress.
+      </p>
+
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-num">01</div>
+          <div>
+            <div class="pillar-title">City Council Resolutions</div>
+            <div class="pillar-text">Starting in Berkeley, we pass local resolutions calling for AI accountability. Each resolution is a proof of concept, a coalition-builder, and a media moment that maps public will onto the record.</div>
+          </div>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <div class="pillar-num">02</div>
+          <div>
+            <div class="pillar-title">State Laws</div>
+            <div class="pillar-text">We scale from cities to statehouses — organizing constituent pressure in Sacramento and beyond. A 2028 California ballot initiative brings the fight to millions of voters and creates national precedent.</div>
+          </div>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <div class="pillar-num">03</div>
+          <div>
+            <div class="pillar-title">Federal Policy</div>
+            <div class="pillar-text">With organized, vocal constituents in every district, we hold Congress accountable. The political cost of inaction becomes higher than the cost of reform.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- POLICY                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="section">
+    <!-- [EFFECT: TOPO LINES] remove svg below to disable -->
+    <svg class="topo-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <g stroke="#E86020" fill="none" stroke-width="0.75">
+        <ellipse cx="820" cy="300" rx="55"  ry="38"  opacity="0.28"/>
+        <ellipse cx="820" cy="300" rx="115" ry="78"  opacity="0.24"/>
+        <ellipse cx="820" cy="300" rx="180" ry="122" opacity="0.20"/>
+        <ellipse cx="820" cy="300" rx="250" ry="168" opacity="0.16"/>
+        <ellipse cx="820" cy="300" rx="325" ry="218" opacity="0.12"/>
+        <ellipse cx="820" cy="300" rx="405" ry="270" opacity="0.09"/>
+        <ellipse cx="820" cy="300" rx="490" ry="325" opacity="0.06"/>
+        <ellipse cx="820" cy="300" rx="580" ry="385" opacity="0.04"/>
+        <ellipse cx="820" cy="300" rx="680" ry="450" opacity="0.03"/>
+      </g>
+    </svg>
+    <div class="container">
+
+      <div class="section-label reveal">
+        <span class="mark"></span>
+        <span class="num">03</span>
+        POLICY
+      </div>
+
+      <p class="body-large reveal">
+        We know exactly what we're fighting for.
+        <strong>Three policies that would meaningfully constrain AI's worst risks.</strong>
+      </p>
+
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-num">01</div>
+          <div>
+            <div class="pillar-title">AI Dividend</div>
+            <div class="pillar-text">The benefits of AI shouldn't accrue only to its developers. We push for a public dividend — a share of AI-generated value returned to the people whose data, labor, and society made it possible.</div>
+          </div>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <div class="pillar-num">02</div>
+          <div>
+            <div class="pillar-title">Legal Liability</div>
+            <div class="pillar-text">When AI systems cause harm, developers should be accountable. We fight to close the liability gaps that let AI companies escape responsibility for algorithmic discrimination, job displacement, and safety failures.</div>
+          </div>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <div class="pillar-num">03</div>
+          <div>
+            <div class="pillar-title">Independent Oversight</div>
+            <div class="pillar-text">AI is too consequential to self-regulate. We advocate for a dedicated federal agency with real authority over the most powerful technology companies in the world — independent from both industry and short-term political pressure.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CTA                                     -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="cta-section" id="connect">
+    <div class="container">
+
+      <div class="cta-eyebrow reveal">Nobody voted for this</div>
+      <div class="cta-headline reveal">
+        Get<br>connected.
+      </div>
+      <p class="cta-sub reveal">
+        Join organizers fighting for democratic AI accountability.
+      </p>
+      <form class="cta-form reveal" onsubmit="handleSubmit(event)">
+        <input type="email" class="cta-input" placeholder="your@email.com" required>
+        <button type="submit" class="cta-btn">JOIN →</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ──────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Guardrail Project</div>
+        <div class="footer-meta">BERKELEY, CA &nbsp;·&nbsp; 501(C)(4) &nbsp;·&nbsp; rohan@guardrailproject.org</div>
+      </div>
     </div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
+    // ─── [EFFECT: ORB PARALLAX] ───────────────
+    // Remove this block (and .orb-wrap HTML, revert .orb to position:fixed) to disable.
+    const orbWraps = document.querySelectorAll('.orb-wrap[data-rate]');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      orbWraps.forEach(wrap => {
+        const rate = parseFloat(wrap.dataset.rate);
+        wrap.style.transform = `translateY(${y * rate}px)`;
       });
-    }, { threshold: 0.12 });
+    }, { passive: true });
+
+    // ─── SCROLL PROGRESS ──────────────────────
+    const progressBar = document.querySelector('.progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${maxScroll > 0 ? scrolled / maxScroll : 0})`;
+    }, { passive: true });
+
+    // ─── SCROLL REVEAL ────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Trigger stat bar fills
+          const fills = entry.target.querySelectorAll('.stat-fill[data-width]');
+          fills.forEach(fill => {
+            setTimeout(() => {
+              const w = parseFloat(fill.getAttribute('data-width'));
+              fill.style.width = w + '%';
+              fill.classList.add('animated');
+            }, 300);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    const toggle = document.querySelector('.nav-toggle');
-    const drawer = document.getElementById('nav-drawer');
+    // Also observe the stats grid for bar animation
+    const statsGrid = document.querySelector('.stats-grid');
+    if (statsGrid) {
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.stat-fill').forEach((fill, i) => {
+              const w = parseFloat(fill.getAttribute('data-width'));
+              setTimeout(() => { fill.classList.add('animated'); }, 400 + i * 150);
+            });
+            barObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      barObserver.observe(statsGrid);
+    }
 
-    toggle.addEventListener('click', () => {
-      const isOpen = drawer.classList.toggle('open');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen);
-    });
-
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        drawer.classList.remove('open');
-        toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', false);
-      });
-    });
+    // ─── CTA FORM ────────────────────────────
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.cta-btn');
+      const input = e.target.querySelector('.cta-input');
+      btn.textContent = 'JOINED ✓';
+      const blueGlow = getComputedStyle(document.documentElement).getPropertyValue('--blue-glow').trim();
+      btn.style.background = getComputedStyle(document.documentElement).getPropertyValue('--blue').trim();
+      btn.style.color = '#fff';
+      btn.style.boxShadow = `0 0 40px ${blueGlow}`;
+      input.value = '';
+      input.placeholder = 'See you on the other side.';
+      input.disabled = true;
+      btn.disabled = true;
+    }
   </script>
 
 </body>
