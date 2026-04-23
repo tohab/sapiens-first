@@ -12,7 +12,7 @@
    ────────────────────────────────────────────────────────────── */
 :root {
   /* base */
-  --bg:             #EDE4D1; /* warm parchment beige */
+  --bg:             #F6F2E8; /* warm parchment beige */
   --surface:        rgba(13, 27, 62, 0.05);
   --border:         rgba(13, 27, 62, 0.10);
   --text:           #0D1B3E;
@@ -20,9 +20,9 @@
   --text-mid:       rgba(13, 27, 62, 0.85);
 
   /* tangerine — decorative marks, scanbar, accent headline word */
-  --accent:              #E86020;
-  --accent-glow:         rgba(232, 96, 32, 0.22);
-  --accent-dim:          rgba(232, 96, 32, 0.12);
+  --accent:              #DF5C1F;
+  --accent-glow:         rgba(223, 92, 31, 0.22);
+  --accent-dim:          rgba(223, 92, 31, 0.12);
 
   /* royal blue — interactive states (closer to original) */
   --blue:                #2C56B3; /* slightly brighter, more lively */
@@ -39,8 +39,8 @@
   --input-bg:            rgba(13, 27, 62, 0.04);
   --input-focus-border:  rgba(44, 86, 179, 0.4);
   --input-focus-bg:      rgba(44, 86, 179, 0.06);
-  --pillar-hover-border: rgba(232, 96, 32, 0.3);
-  --pillar-hover-bg:     rgba(232, 96, 32, 0.06);
+  --pillar-hover-border: rgba(223, 92, 31, 0.3);
+  --pillar-hover-bg:     rgba(223, 92, 31, 0.06);
 
   /* typography */
   --font-display: 'Barlow Condensed', sans-serif;

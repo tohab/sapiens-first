@@ -62,12 +62,6 @@
       pointer-events: none;
       z-index: 0;
     }
-    .orb-1 {
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
-      top: -220px; right: -220px;
-      animation: drift1 14s ease-in-out infinite;
-    }
 .orb-3 {
       width: 400px; height: 400px;
       background: radial-gradient(circle, var(--blue-dim) 0%, transparent 65%);
@@ -272,11 +266,10 @@
       margin-bottom: 52px;
     }
     .section-label .mark {
-      display: block;
-      width: 20px; height: 1px;
-      background: var(--accent);
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
     }
-    .section-label .num { color: var(--accent); }
+    .section-label .title { color: var(--accent); }
 
     /* ─── STATS ─────────────────────────── */
     .stats-grid {
@@ -394,6 +387,23 @@
       line-height: 1.75;
       color: var(--text-dim);
     }
+    .fn-sup {
+      font-family: var(--font-mono);
+      font-size: 7.5px;
+      letter-spacing: 0;
+      vertical-align: super;
+      line-height: 0;
+      margin-left: 3px;
+    }
+    .fn-sup a {
+      color: var(--accent);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s ease;
+    }
+    .fn-sup a::before { content: '['; }
+    .fn-sup a::after  { content: ']'; }
+    .fn-sup a:hover { opacity: 1; }
 
     /* ─── CTA SECTION ───────────────────── */
     .cta-section {
@@ -543,18 +553,6 @@
       pointer-events: none;
     }
 
-    /* ─── HERO DOT GRID ─────────────────────── */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(26, 58, 102, 0.18) 1px, transparent 1px);
-      background-size: 30px 30px;
-      -webkit-mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 70%);
-      mask-image: radial-gradient(ellipse 70% 90% at 85% 50%, black 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-    }
 
     /* ══════════════════════════════════════════════════════════════
        REVERSIBLE EFFECTS — to remove any effect, delete its labeled
@@ -592,16 +590,16 @@
     .us-map-dots {
       position: absolute;
       top: 50%;
-      left: 62%;
+      left: 82%;
       transform: translate(-50%, -50%);
-      width: 44%;
+      width: 57.2%;
       max-width: none;
       height: auto;
       pointer-events: none;
     }
     .us-map-bg {
       z-index: 0;
-      opacity: 0.04;
+      opacity: 0.028;
       filter: invert(1) sepia(1) saturate(0.6) hue-rotate(190deg) brightness(1.4);
     }
     .us-map-dots {
@@ -676,15 +674,170 @@
       z-index: 0;
     }
 
+    /* ─── NAVBAR (commented out — uncomment CSS here + HTML block below to restore)
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 40px;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: all;
+    }
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      transition: color 0.2s ease, background 0.2s ease;
+      cursor: default;
+      position: relative;
+    }
+    .nav-link:hover {
+      color: var(--text);
+      background: rgba(13, 27, 62, 0.06);
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-item:hover .nav-dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    .nav-chevron {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 9px;
+      opacity: 0.55;
+      transition: transform 0.2s ease;
+    }
+    .nav-item:hover .nav-chevron {
+      transform: rotate(180deg);
+    }
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 140px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      box-shadow: 0 4px 20px rgba(13, 27, 62, 0.1);
+    }
+    .nav-dropdown a {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 9px 12px;
+      border-radius: 4px;
+      cursor: default;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .nav-dropdown a:hover {
+      color: var(--text);
+      background: rgba(13, 27, 62, 0.06);
+    }
+    .nav-donate {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 5px;
+      background: var(--accent);
+      cursor: default;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      margin-left: 6px;
+    }
+    .nav-donate:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+    ─── */
+
     /* ─── RESPONSIVE ────────────────────── */
+
+    /* ── Tablet (≤768px) ── */
+    @media (max-width: 768px) {
+      .hero { padding: 100px 0 60px; }
+      .hero-body { font-size: 23px; }
+      .section { padding: 80px 0; }
+      .cta-section { padding: 100px 0 80px; }
+      .body-large { font-size: 20px; }
+    }
+
+    /* ── Mobile (≤600px) ── */
     @media (max-width: 600px) {
-      .container { padding: 0 24px; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); }
-      .stat:last-child { border-bottom: none; }
-      .cta-form { flex-direction: column; }
-      .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
+      .container { padding: 0 20px; }
       .wordmark { display: none; }
+
+      /* Hero */
+      .hero { padding: 68px 0 52px; }
+      .hero-headline { font-size: clamp(52px, 14vw, 72px); }
+      .hero-body { font-size: 18px; line-height: 1.65; margin-bottom: 40px; }
+
+      /* Sections */
+      .section { padding: 60px 0; }
+      .section-label { font-size: 13px; letter-spacing: 0.14em; margin-bottom: 36px; }
+
+      /* Stats */
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
+      .stat:last-child { border-bottom: none; }
+
+      /* Body text */
+      .body-large { font-size: 18px; }
+
+      /* Pillars — tighter layout, disable X-slide on touch */
+      .pillar { padding: 18px 20px; gap: 18px; }
+      .pillar:hover { transform: none; }
+
+      /* Hide US map — positioned for widescreen only */
+      .us-map-bg { display: none; }
+
+      /* CTA */
+      .cta-section { padding: 80px 0 64px; }
+      .cta-headline { font-size: clamp(44px, 12vw, 56px); }
+      .cta-sub { font-size: 16px; margin-bottom: 36px; }
+      .cta-form { flex-direction: column; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
+      .footer-meta { font-size: 9px; line-height: 1.7; overflow-wrap: anywhere; }
+    }
+
+    /* ── Small phones (≤375px) ── */
+    @media (max-width: 375px) {
+      .container { padding: 0 16px; }
+      .hero-body { font-size: 16px; }
+      .body-large { font-size: 16px; }
+      .pillar-text { font-size: 14px; }
     }
   </style>
 </head>
@@ -695,13 +848,28 @@
 
   <!-- ─── BACKGROUND + DEPTH ──────────────── -->
   <!-- [EFFECT: ORB PARALLAX] remove wrappers + revert .orb to position:fixed to disable -->
-  <div class="orb-wrap" data-rate="0.10"><div class="orb orb-1"></div></div>
   <div class="orb-wrap" data-rate="0.16"><div class="orb orb-3"></div></div>
   <!-- [EFFECT: VIGNETTE] remove div below to disable -->
   <div class="vignette"></div>
 
   <!-- ─── WORDMARK ──────────────────────── -->
-  <div class="wordmark"><span>GRP</span> · GUARDRAIL PROJECT</div>
+  <div class="wordmark">GUARDRAIL PROJECT</div>
+
+  <!-- ─── NAVBAR (commented out — uncomment CSS above + this block to restore) ───
+  <nav class="navbar">
+    <div class="navbar-links">
+      <div class="nav-item">
+        <a href="#" class="nav-link">About <span class="nav-chevron">▾</span></a>
+        <div class="nav-dropdown">
+          <a href="#">Policy</a>
+          <a href="#">Team</a>
+        </div>
+      </div>
+      <a href="#" class="nav-link">Get Involved</a>
+      <a href="#" class="nav-donate">Donate</a>
+    </div>
+  </nav>
+  ─── -->
 
   <!-- ═══════════════════════════════════════ -->
   <!-- HERO                                    -->
@@ -712,18 +880,17 @@
       <h1 class="hero-headline">
         <span class="dim">Local</span><br>
         <span class="accent">organizing</span><br>
-        <span>for a</span><br>
-        <span>brighter</span><br>
-        <span>future.</span>
+        <span>in the</span><br>
+        <span>age of AI.</span>
       </h1>
 
       <p class="hero-body">
-        AI is transforming the world. Public concern is overwhelming. Political action hasn't followed. We're here to change that.
+        AI is transforming the world. The law isn't keeping up. <br> We're turning public concern into legislative change.
       </p>
 
-      <a href="#connect" class="hero-cta">
+      <!-- <a href="#connect" class="hero-cta">
         STAY TUNED <span class="arr">→</span>
-      </a>
+      </a> -->
 
       <!-- 
       <div class="scanbar-wrap">
@@ -747,9 +914,7 @@
     <div class="container">
 
       <div class="section-label reveal">
-        <span class="mark"></span>
-        <span class="num">01</span>
-        THE CHALLENGE
+<span class="title">THE CHALLENGE</span>
       </div>
 
       <!-- [EFFECT: REGISTER MARKS] remove .reg-frame div (keep inner stats-grid), add margin-bottom:52px back to .stats-grid -->
@@ -758,27 +923,24 @@
         <div class="stat">
           <div class="stat-val" data-count="73" data-suffix="%">73%</div>
           <div class="stat-track"><div class="stat-fill" data-width="73"></div></div>
-          <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT</div>
+          <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT<sup class="fn-sup"><a href="https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/" target="_blank" rel="noopener">1</a></sup></div>
         </div>
         <div class="stat">
-          <div class="stat-val" data-count="7" data-suffix=" MO">7 MO</div>
+          <div class="stat-val" data-count="3" data-suffix="X">3X</div>
           <div class="stat-track"><div class="stat-fill" data-width="60"></div></div>
-          <div class="stat-label">AI CAPABILITY<br>DOUBLING TIME</div>
+          <div class="stat-label">DATA CENTER CONSTRUCTION<br>SPENDING SINCE 2023<sup class="fn-sup"><a href="https://programs.com/resources/data-center-statistics/" target="_blank" rel="noopener">2</a></sup></div>
         </div>
         <div class="stat">
-          <div class="stat-val" data-count="215" data-prefix="$" data-suffix="M">$215M</div>
+          <div class="stat-val" data-count="100" data-prefix=">$" data-suffix="M">&gt;$100M</div>
           <div class="stat-track"><div class="stat-fill" data-width="92"></div></div>
-          <div class="stat-label">RAISED BY PRO-DEREGULATION<br>AI INTERESTS IN 2024</div>
+          <div class="stat-label">RAISED BY INDUSTRY<br>LOBBYISTS IN 2026<sup class="fn-sup"><a href="https://qz.com/ai-2026-election-policy-regulation" target="_blank" rel="noopener">3</a></sup></div>
         </div>
       </div>
       </div><!-- /.reg-frame -->
 
       <p class="body-large reveal">
         Public opinion strongly favors AI oversight.
-        <strong>But it hasn't translated into political change.</strong>
-      </p>
-      <p class="body-text reveal reveal-delay-1">
-        The industry has spent hundreds of millions to keep government away. Ordinary people's concerns — job loss, algorithmic harm, democratic accountability — go unheard.
+        <strong>But it hasn't translated into political action.</strong>
       </p>
 
     </div>
@@ -796,39 +958,33 @@
     <div class="container">
 
       <div class="section-label reveal">
-        <span class="mark"></span>
-        <span class="num">02</span>
-        THEORY OF CHANGE
+<span class="title">THEORY OF CHANGE</span>
       </div>
 
       <p class="body-large reveal">
-        Political movements don't win in Washington first.
-        <strong>They win at home — then build.</strong>
-      </p>
-      <p class="body-text reveal reveal-delay-1">
-        We start where people live. City by city, we pass resolutions, grow our base, and demonstrate that the public will for AI accountability is real. Then we scale — to statehouses, then Congress.
+        <strong>Real change starts local.</strong>
       </p>
 
       <div class="pillars">
         <div id="toc-pillar-1" class="pillar reveal">
           <div class="pillar-num">01</div>
           <div>
-            <div class="pillar-title">City Council Resolutions</div>
-            <div class="pillar-text">We pass local resolutions calling for AI accountability. Each resolution is a proof of concept, a coalition-builder, and a media moment that maps public will onto the record.</div>
+            <div class="pillar-title">Local Resolutions</div>
+            <div class="pillar-text">We pass resolutions in city councils calling for AI accountability. Each resolution builds our ability to organize and demonstrates public will for meaningful legislation.</div>
           </div>
         </div>
         <div id="toc-pillar-2" class="pillar reveal reveal-delay-1">
           <div class="pillar-num">02</div>
           <div>
             <div class="pillar-title">State Laws</div>
-            <div class="pillar-text">We scale from cities to statehouses — organizing constituent pressure around the country. .</div>
+            <div class="pillar-text">State campaigns turn our proposals into actual policy. We take the resolutions, coalitions, and momentum built by local campaigns to statehouses in red and blue states alike.</div>
           </div>
         </div>
         <div id="toc-pillar-3" class="pillar reveal reveal-delay-2">
           <div class="pillar-num">03</div>
           <div>
             <div class="pillar-title">Federal Policy</div>
-            <div class="pillar-text">With organized, vocal constituents in every district, we hold Congress accountable.</div>
+            <div class="pillar-text">With active chapters and campaigns in every major district, we make the issue of AI impossible to ignore, and give lawmakers the push they need to act.</div>
           </div>
         </div>
       </div>
@@ -844,29 +1000,26 @@
   <section class="section">
     <!-- [EFFECT: TOPO LINES] remove svg below to disable -->
     <svg class="topo-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-      <g stroke="#E86020" fill="none" stroke-width="0.75">
-        <ellipse cx="80" cy="300" rx="55"  ry="38"  opacity="0.14"/>
-        <ellipse cx="80" cy="300" rx="115" ry="78"  opacity="0.12"/>
-        <ellipse cx="80" cy="300" rx="180" ry="122" opacity="0.10"/>
-        <ellipse cx="80" cy="300" rx="250" ry="168" opacity="0.08"/>
-        <ellipse cx="80" cy="300" rx="325" ry="218" opacity="0.06"/>
-        <ellipse cx="80" cy="300" rx="405" ry="270" opacity="0.045"/>
-        <ellipse cx="80" cy="300" rx="490" ry="325" opacity="0.03"/>
-        <ellipse cx="80" cy="300" rx="580" ry="385" opacity="0.02"/>
-        <ellipse cx="80" cy="300" rx="680" ry="450" opacity="0.015"/>
+      <g stroke="#DF5C1F" fill="none" stroke-width="0.75">
+        <ellipse cx="80" cy="450" rx="55"  ry="38"  opacity="0.14"/>
+        <ellipse cx="80" cy="450" rx="115" ry="78"  opacity="0.12"/>
+        <ellipse cx="80" cy="450" rx="180" ry="122" opacity="0.10"/>
+        <ellipse cx="80" cy="450" rx="250" ry="168" opacity="0.08"/>
+        <ellipse cx="80" cy="450" rx="325" ry="218" opacity="0.06"/>
+        <ellipse cx="80" cy="450" rx="405" ry="270" opacity="0.045"/>
+        <ellipse cx="80" cy="450" rx="490" ry="325" opacity="0.03"/>
+        <ellipse cx="80" cy="450" rx="580" ry="385" opacity="0.02"/>
+        <ellipse cx="80" cy="450" rx="680" ry="450" opacity="0.015"/>
       </g>
     </svg>
     <div class="container">
 
       <div class="section-label reveal">
-        <span class="mark"></span>
-        <span class="num">03</span>
-        POLICY
+<span class="title">POLICY</span>
       </div>
 
       <p class="body-large reveal">
-        We know exactly what we're fighting for.
-        <strong>Three policies that would meaningfully constrain AI's worst risks.</strong>
+        <strong>Our reforms would change the balance of power in this era.</strong>
       </p>
 
       <div class="pillars">
@@ -874,21 +1027,21 @@
           <div class="pillar-num">01</div>
           <div>
             <div class="pillar-title">AI Dividend</div>
-            <div class="pillar-text">The benefits of AI shouldn't accrue only to its developers. We push for a public dividend — a share of AI-generated value returned to the people whose data, labor, and society made it possible.</div>
+            <div class="pillar-text">The boons of AI should be shared with all American people. We advocate for a public dividend that gives Americans a stake in the gains of technology, if AI meaningfully displaces workers.<sup class="fn-sup"><a href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">4</a></sup></div>
           </div>
         </div>
         <div class="pillar reveal reveal-delay-1">
           <div class="pillar-num">02</div>
           <div>
             <div class="pillar-title">Legal Liability</div>
-            <div class="pillar-text">When AI systems cause harm, developers should be accountable. We fight to close the liability gaps that let AI companies escape responsibility for algorithmic discrimination, job displacement, and safety failures.</div>
+            <div class="pillar-text">Bad actors and negligent developers should be held accountable for their actions. We demand strict liability on frontier systems, and compensated damages brought by systems to individuals and society.<sup class="fn-sup"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">5</a></sup></div>
           </div>
         </div>
         <div class="pillar reveal reveal-delay-2">
           <div class="pillar-num">03</div>
           <div>
-            <div class="pillar-title">Independent Oversight</div>
-            <div class="pillar-text">AI is too consequential to self-regulate. We advocate for a dedicated federal agency with real authority over the most powerful technology companies in the world — independent from both industry and short-term political pressure.</div>
+            <div class="pillar-title">Democratic Oversight</div>
+            <div class="pillar-text">We can't let the power of AI be concentrated in the hands of corporate interests or the government. We advocate for an independent agency that audits labs and makes treaties with foreign powers, with input from civil society.<sup class="fn-sup"><a href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">6</a></sup><sup class="fn-sup"><a href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">7</a></sup></div>
           </div>
         </div>
       </div>
@@ -904,12 +1057,12 @@
   <section class="cta-section" id="connect">
     <div class="container">
 
-      <div class="cta-eyebrow reveal">More coming soon</div>
+      <div class="cta-eyebrow reveal">We're building.</div>
       <div class="cta-headline reveal">
-        Stay<br>tuned.
+        Stay<br> tuned.
       </div>
       <p class="cta-sub reveal">
-        We're building something. Check back soon.
+        Coming to a city near you.
       </p>
 
     </div>
@@ -920,7 +1073,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">Guardrail Project</div>
-        <div class="footer-meta">BERKELEY, CA &nbsp;·&nbsp; 501(C)(3) &nbsp;·&nbsp; rohan@guardrailproject.org</div>
+        <div class="footer-meta">© 2026 GUARDRAIL PROJECT &nbsp;·&nbsp; 501(C)(3) &nbsp;·&nbsp; contact@guardrailproject.org</div>
       </div>
     </div>
   </footer>
