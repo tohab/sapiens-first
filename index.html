@@ -68,13 +68,7 @@
       top: -220px; right: -220px;
       animation: drift1 14s ease-in-out infinite;
     }
-    .orb-2 {
-      width: 550px; height: 550px;
-      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 65%);
-      bottom: 10vh; left: -200px;
-      animation: drift2 18s ease-in-out infinite;
-    }
-    .orb-3 {
+.orb-3 {
       width: 400px; height: 400px;
       background: radial-gradient(circle, var(--blue-dim) 0%, transparent 65%);
       top: 55vh; right: -120px;
@@ -270,7 +264,7 @@
       align-items: center;
       gap: 14px;
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 13.65px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dim);
@@ -614,9 +608,13 @@
       overflow: visible;
     }
     .city-dot {
-      fill: #2C56B3;
-      opacity: 0.12;
-      transition: opacity 0.7s ease, r 0.7s ease;
+      fill: var(--accent);
+      opacity: 0.08;
+      transition: opacity 0.7s ease, filter 0.7s ease;
+    }
+    .city-dot--lit {
+      opacity: 0.9;
+      filter: drop-shadow(0 0 3px var(--accent)) drop-shadow(0 0 8px var(--accent-glow));
     }
 
     /* [EFFECT: TOPO LINES] ───────────────────────────────────────
@@ -697,7 +695,6 @@
   <!-- ─── BACKGROUND + DEPTH ──────────────── -->
   <!-- [EFFECT: ORB PARALLAX] remove wrappers + revert .orb to position:fixed to disable -->
   <div class="orb-wrap" data-rate="0.10"><div class="orb orb-1"></div></div>
-  <div class="orb-wrap" data-rate="-0.06"><div class="orb orb-2"></div></div>
   <div class="orb-wrap" data-rate="0.16"><div class="orb orb-3"></div></div>
   <!-- [EFFECT: VIGNETTE] remove div below to disable -->
   <div class="vignette"></div>
@@ -710,13 +707,6 @@
   <!-- ═══════════════════════════════════════ -->
   <section class="hero">
     <div class="container">
-
-      <div class="hero-badge">
-        <div class="badge">
-          <span class="badge-dot"></span>
-          BERKELEY, CALIFORNIA · EST. 2026
-        </div>
-      </div>
 
       <h1 class="hero-headline">
         <span class="dim">Local</span><br>
@@ -731,16 +721,17 @@
       </p>
 
       <a href="#connect" class="hero-cta">
-        GET CONNECTED <span class="arr">→</span>
+        STAY TUNED <span class="arr">→</span>
       </a>
 
+      <!-- 
       <div class="scanbar-wrap">
         <div class="scanbar"></div>
         <div class="scanbar-label">
           <span>GUARDRAIL PROJECT · ACTIVE</span>
           <span>BERKELEY → CALIFORNIA → FEDERAL</span>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </section>
@@ -800,40 +791,7 @@
   <section class="section toc-section">
     <!-- [EFFECT: US MAP BACKGROUND] remove img + svg below to disable -->
     <img class="us-map-bg" src="us.svg" aria-hidden="true" alt="">
-    <svg class="us-map-dots" viewBox="0 0 1000 589" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-      <!-- Tier 1: major cities -->
-      <circle class="city-dot" data-tier="1" data-city="san-francisco" cx="133" cy="292" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="los-angeles"   cx="152" cy="368" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="seattle"       cx="148" cy="118" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="portland"      cx="148" cy="168" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="denver"        cx="438" cy="270" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="phoenix"       cx="222" cy="388" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="las-vegas"     cx="188" cy="328" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="chicago"       cx="614" cy="228" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="detroit"       cx="665" cy="212" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="minneapolis"   cx="530" cy="182" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="new-york"      cx="808" cy="225" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="boston"        cx="848" cy="190" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="washington-dc" cx="778" cy="262" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="atlanta"       cx="652" cy="360" r="3.5"/>
-      <circle class="city-dot" data-tier="1" data-city="miami"         cx="698" cy="455" r="3.5"/>
-      <!-- Tier 2: secondary cities -->
-      <circle class="city-dot" data-tier="2" data-city="houston"       cx="470" cy="428" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="dallas"        cx="452" cy="390" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="austin"        cx="444" cy="418" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="kansas-city"   cx="538" cy="292" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="st-louis"      cx="592" cy="286" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="nashville"     cx="635" cy="318" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="memphis"       cx="590" cy="348" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="new-orleans"   cx="578" cy="442" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="philadelphia"  cx="792" cy="242" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="pittsburgh"    cx="742" cy="238" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="charlotte"     cx="728" cy="328" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="indianapolis"  cx="638" cy="258" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="columbus"      cx="685" cy="245" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="salt-lake"     cx="262" cy="255" r="3"/>
-      <circle class="city-dot" data-tier="2" data-city="albuquerque"   cx="338" cy="368" r="3"/>
-    </svg>
+    <!-- city dots injected here by JS when CITY_DOTS_ENABLED = true (see city-dots.svg) -->
     <div class="container">
 
       <div class="section-label reveal">
@@ -851,21 +809,21 @@
       </p>
 
       <div class="pillars">
-        <div class="pillar reveal">
+        <div id="toc-pillar-1" class="pillar reveal">
           <div class="pillar-num">01</div>
           <div>
             <div class="pillar-title">City Council Resolutions</div>
             <div class="pillar-text">Starting in Berkeley, we pass local resolutions calling for AI accountability. Each resolution is a proof of concept, a coalition-builder, and a media moment that maps public will onto the record.</div>
           </div>
         </div>
-        <div class="pillar reveal reveal-delay-1">
+        <div id="toc-pillar-2" class="pillar reveal reveal-delay-1">
           <div class="pillar-num">02</div>
           <div>
             <div class="pillar-title">State Laws</div>
             <div class="pillar-text">We scale from cities to statehouses — organizing constituent pressure in Sacramento and beyond. A 2028 California ballot initiative brings the fight to millions of voters and creates national precedent.</div>
           </div>
         </div>
-        <div class="pillar reveal reveal-delay-2">
+        <div id="toc-pillar-3" class="pillar reveal reveal-delay-2">
           <div class="pillar-num">03</div>
           <div>
             <div class="pillar-title">Federal Policy</div>
@@ -886,15 +844,15 @@
     <!-- [EFFECT: TOPO LINES] remove svg below to disable -->
     <svg class="topo-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
       <g stroke="#E86020" fill="none" stroke-width="0.75">
-        <ellipse cx="820" cy="300" rx="55"  ry="38"  opacity="0.28"/>
-        <ellipse cx="820" cy="300" rx="115" ry="78"  opacity="0.24"/>
-        <ellipse cx="820" cy="300" rx="180" ry="122" opacity="0.20"/>
-        <ellipse cx="820" cy="300" rx="250" ry="168" opacity="0.16"/>
-        <ellipse cx="820" cy="300" rx="325" ry="218" opacity="0.12"/>
-        <ellipse cx="820" cy="300" rx="405" ry="270" opacity="0.09"/>
-        <ellipse cx="820" cy="300" rx="490" ry="325" opacity="0.06"/>
-        <ellipse cx="820" cy="300" rx="580" ry="385" opacity="0.04"/>
-        <ellipse cx="820" cy="300" rx="680" ry="450" opacity="0.03"/>
+        <ellipse cx="80" cy="300" rx="55"  ry="38"  opacity="0.14"/>
+        <ellipse cx="80" cy="300" rx="115" ry="78"  opacity="0.12"/>
+        <ellipse cx="80" cy="300" rx="180" ry="122" opacity="0.10"/>
+        <ellipse cx="80" cy="300" rx="250" ry="168" opacity="0.08"/>
+        <ellipse cx="80" cy="300" rx="325" ry="218" opacity="0.06"/>
+        <ellipse cx="80" cy="300" rx="405" ry="270" opacity="0.045"/>
+        <ellipse cx="80" cy="300" rx="490" ry="325" opacity="0.03"/>
+        <ellipse cx="80" cy="300" rx="580" ry="385" opacity="0.02"/>
+        <ellipse cx="80" cy="300" rx="680" ry="450" opacity="0.015"/>
       </g>
     </svg>
     <div class="container">
@@ -940,22 +898,18 @@
   <div class="divider"></div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- CTA                                     -->
+  <!-- STAY TUNED                              -->
   <!-- ═══════════════════════════════════════ -->
   <section class="cta-section" id="connect">
     <div class="container">
 
-      <div class="cta-eyebrow reveal">Nobody voted for this</div>
+      <div class="cta-eyebrow reveal">More coming soon</div>
       <div class="cta-headline reveal">
-        Get<br>connected.
+        Stay<br>tuned.
       </div>
       <p class="cta-sub reveal">
-        Join organizers fighting for democratic AI accountability.
+        We're building something. Check back soon.
       </p>
-      <form class="cta-form reveal" onsubmit="handleSubmit(event)">
-        <input type="email" class="cta-input" placeholder="your@email.com" required>
-        <button type="submit" class="cta-btn">JOIN →</button>
-      </form>
 
     </div>
   </section>
@@ -965,12 +919,31 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">Guardrail Project</div>
-        <div class="footer-meta">BERKELEY, CA &nbsp;·&nbsp; 501(C)(4) &nbsp;·&nbsp; rohan@guardrailproject.org</div>
+        <div class="footer-meta">BERKELEY, CA &nbsp;·&nbsp; 501(C)(3) &nbsp;·&nbsp; rohan@guardrailproject.org</div>
       </div>
     </div>
   </footer>
 
   <script>
+    // ─── CITY DOTS ───────────────────────────
+    // Toggle: set to true to load city-dots.svg and enable scroll animation.
+    const CITY_DOTS_ENABLED = false;
+
+    if (CITY_DOTS_ENABLED) {
+      fetch('city-dots.svg')
+        .then(r => r.text())
+        .then(html => {
+          const tocSection = document.querySelector('.toc-section');
+          const placeholder = tocSection.querySelector('[data-city-dots]') || (() => {
+            const div = document.createElement('div');
+            div.dataset.cityDots = '';
+            tocSection.insertBefore(div, tocSection.querySelector('.container'));
+            return div;
+          })();
+          placeholder.innerHTML = html;
+        });
+    }
+
     // ─── [EFFECT: ORB PARALLAX] ───────────────
     // Remove this block (and .orb-wrap HTML, revert .orb to position:fixed) to disable.
     const orbWraps = document.querySelectorAll('.orb-wrap[data-rate]');
@@ -1043,6 +1016,37 @@
       input.disabled = true;
       btn.disabled = true;
     }
+
+    // ─── [EFFECT: TOC PILLAR ZONES + CITY DOTS] ──────────────
+    // Step 3: zone detection. Step 4: light up zone 1 dots on pillar 01.
+    let tocZone = 0; // 0=none, 1=pillar01, 2=pillar02, 3=pillar03
+
+    const tocPillars = [
+      document.getElementById('toc-pillar-1'),
+      document.getElementById('toc-pillar-2'),
+      document.getElementById('toc-pillar-3'),
+    ];
+
+    function lightUpZone(zone) {
+      const dots = document.querySelectorAll(`.city-dot[data-zone="${zone}"]`);
+      dots.forEach((dot, i) => {
+        setTimeout(() => dot.classList.add('city-dot--lit'), i * 120);
+      });
+    }
+
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const zone = parseInt(entry.target.id.replace('toc-pillar-', ''), 10);
+        if (zone > tocZone) {
+          tocZone = zone;
+          console.log('[ToC] zone:', tocZone);
+          lightUpZone(zone);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    tocPillars.forEach(el => { if (el) tocObserver.observe(el); });
   </script>
 
 </body>

@@ -99,6 +99,69 @@ Each step is a self-contained, deployed improvement. Steps build on each other b
 ## Key Decisions to Revisit
 
 - **Inline SVG vs `<img>`:** Inline SVG gives more control (can style paths, animate fills) but is verbose. `<img>` is simpler. Decision: start with `<img>` in Step 1, switch to inline if needed in Step 4+.
-- **City coordinates:** Need to convert lat/lon to the SVG viewBox coordinate system. The US SVG likely uses Albers projection — will need to check and derive a mapping formula.
+- **City coordinates:** Resolved — see projection section below.
 - **Animation library:** Plan is to use vanilla CSS transitions + JS scroll events (no library). If timing complexity grows, consider GSAP ScrollTrigger.
 - **Reverse scroll:** Lighting up on scroll-down is straightforward; reverse (dimming on scroll-up) requires tracking direction. Defer to Step 7.
+
+---
+
+## Projection: lat/lng → SVG coordinates
+
+`us.svg` uses the **Albers Equal-Area Conic** projection. City dot positions in the `viewBox="0 0 1000 589"` SVG overlay are computed with this formula.
+
+### Projection formula
+
+```
+n  = (sin(φ₁) + sin(φ₂)) / 2
+C  = cos²(φ₁) + 2·n·sin(φ₁)
+ρ₀ = √(C − 2·n·sin(φ₀)) / n
+
+For a city at (lat, lng):
+  φ = radians(lat)
+  λ = radians(lng)
+  ρ = √(C − 2·n·sin(φ)) / n
+  θ = n · (λ − λ₀)
+  x_proj = ρ · sin(θ)
+  y_proj = ρ₀ − ρ · cos(θ)
+```
+
+### Parameters
+
+| Symbol | Value | Meaning |
+|--------|-------|---------|
+| φ₁ | 29.5° | Standard parallel 1 |
+| φ₂ | 45.5° | Standard parallel 2 |
+| φ₀ | 37.5° | Origin latitude |
+| λ₀ | −96.0° | Central meridian |
+
+### SVG transform (calibrated to us.svg 1000×589)
+
+```
+svg_x = 1107.4 · x_proj + 592.9
+svg_y = −1050.7 · y_proj + 309.4
+```
+
+Calibrated via least-squares fit against 10 control cities (Seattle, Boston, Miami, Houston, Chicago, Denver, LA, NYC, DC, Minneapolis) using lat/lng from `uscities.csv`.
+
+RMS residual vs. prior manual placements: ~29px — errors were in the manual placements, not the formula.
+
+### Re-computing coordinates
+
+To add a new city or check an existing one, run this Python snippet:
+
+```python
+import math
+
+phi1, phi2, phi0, lam0 = map(math.radians, [29.5, 45.5, 37.5, -96.0])
+n  = (math.sin(phi1) + math.sin(phi2)) / 2
+C  = math.cos(phi1)**2 + 2*n*math.sin(phi1)
+rho0 = math.sqrt(C - 2*n*math.sin(phi0)) / n
+
+def to_svg(lat, lng):
+    phi, lam = math.radians(lat), math.radians(lng)
+    rho  = math.sqrt(C - 2*n*math.sin(phi)) / n
+    theta = n * (lam - lam0)
+    xp = rho * math.sin(theta)
+    yp = rho0 - rho * math.cos(theta)
+    return round(1107.4*xp + 592.9), round(-1050.7*yp + 309.4)
+```
