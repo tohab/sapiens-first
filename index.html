@@ -169,7 +169,7 @@
       line-height: 1.72;
       color: var(--text-mid);
       max-width: 750px;
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 52px;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.65s;
@@ -262,7 +262,8 @@
       font-size: 17.06px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: var(--text);
+      font-weight: 500;
       margin-bottom: 52px;
     }
     .section-label .mark {
@@ -298,28 +299,11 @@
       margin-bottom: 10px;
     }
 
-    .stat-track {
-      height: 2px;
-      background: var(--track-bg);
-      border-radius: 100px;
-      margin-bottom: 14px;
-      overflow: hidden;
-    }
-    .stat-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 100px;
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .stat-fill.animated { transform: scaleX(1); }
-
     .stat-label {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.1em;
-      color: var(--text-dim);
+      color: var(--text);
       line-height: 1.6;
     }
 
@@ -327,8 +311,8 @@
     .body-large {
       font-size: 22px;
       line-height: 1.72;
-      font-weight: 300;
-      color: var(--text-mid);
+      font-weight: 400;
+      color: var(--text);
       margin-bottom: 22px;
     }
     .body-large strong {
@@ -338,7 +322,8 @@
     .body-text {
       font-size: 18px;
       line-height: 1.85;
-      color: var(--text-dim);
+      color: var(--text-mid);
+      font-weight: 500;
     }
 
     /* ─── PILLARS ───────────────────────── */
@@ -355,7 +340,7 @@
       padding: 26px 28px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      background: var(--surface);
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
       box-shadow: 0 1px 2px rgba(80, 50, 10, 0.06), 0 3px 10px rgba(80, 50, 10, 0.04);
       transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
       cursor: default;
@@ -377,15 +362,16 @@
     .pillar-title {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 17px;
+      font-size: 20px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 7px;
     }
     .pillar-text {
-      font-size: 15px;
+      font-size: 18px;
       line-height: 1.75;
       color: var(--text-dim);
+      font-weight: 500;
     }
     .fn-sup {
       font-family: var(--font-mono);
@@ -447,7 +433,7 @@
       max-width: 380px;
       margin: 0 auto 52px;
       line-height: 1.75;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .cta-form {
@@ -922,17 +908,14 @@
       <div class="stats-grid reveal">
         <div class="stat">
           <div class="stat-val" data-count="73" data-suffix="%">73%</div>
-          <div class="stat-track"><div class="stat-fill" data-width="73"></div></div>
           <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT<sup class="fn-sup"><a href="https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/" target="_blank" rel="noopener">1</a></sup></div>
         </div>
         <div class="stat">
           <div class="stat-val" data-count="3" data-suffix="X">3X</div>
-          <div class="stat-track"><div class="stat-fill" data-width="60"></div></div>
           <div class="stat-label">DATA CENTER CONSTRUCTION<br>SPENDING SINCE 2023<sup class="fn-sup"><a href="https://programs.com/resources/data-center-statistics/" target="_blank" rel="noopener">2</a></sup></div>
         </div>
         <div class="stat">
           <div class="stat-val" data-count="100" data-prefix=">$" data-suffix="M">&gt;$100M</div>
-          <div class="stat-track"><div class="stat-fill" data-width="92"></div></div>
           <div class="stat-label">RAISED BY INDUSTRY<br>LOBBYISTS IN 2026<sup class="fn-sup"><a href="https://qz.com/ai-2026-election-policy-regulation" target="_blank" rel="noopener">3</a></sup></div>
         </div>
       </div>
@@ -998,20 +981,6 @@
   <!-- POLICY                                  -->
   <!-- ═══════════════════════════════════════ -->
   <section class="section">
-    <!-- [EFFECT: TOPO LINES] remove svg below to disable -->
-    <svg class="topo-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-      <g stroke="#DF5C1F" fill="none" stroke-width="0.75">
-        <ellipse cx="80" cy="450" rx="55"  ry="38"  opacity="0.14"/>
-        <ellipse cx="80" cy="450" rx="115" ry="78"  opacity="0.12"/>
-        <ellipse cx="80" cy="450" rx="180" ry="122" opacity="0.10"/>
-        <ellipse cx="80" cy="450" rx="250" ry="168" opacity="0.08"/>
-        <ellipse cx="80" cy="450" rx="325" ry="218" opacity="0.06"/>
-        <ellipse cx="80" cy="450" rx="405" ry="270" opacity="0.045"/>
-        <ellipse cx="80" cy="450" rx="490" ry="325" opacity="0.03"/>
-        <ellipse cx="80" cy="450" rx="580" ry="385" opacity="0.02"/>
-        <ellipse cx="80" cy="450" rx="680" ry="450" opacity="0.015"/>
-      </g>
-    </svg>
     <div class="container">
 
       <div class="section-label reveal">
@@ -1027,21 +996,21 @@
           <div class="pillar-num">01</div>
           <div>
             <div class="pillar-title">AI Dividend</div>
-            <div class="pillar-text">The boons of AI should be shared with all American people. We advocate for a public dividend that gives Americans a stake in the gains of technology, if AI meaningfully displaces workers.<sup class="fn-sup"><a href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">4</a></sup></div>
+            <div class="pillar-text">The boons of AI should be shared with all American people. We advocate for a public dividend that gives Americans a stake in the gains of technology, if AI meaningfully displaces workers.<sup class="fn-sup"><a href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">4</a></sup><sup class="fn-sup"><a href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">5</a></sup></div>
           </div>
         </div>
         <div class="pillar reveal reveal-delay-1">
           <div class="pillar-num">02</div>
           <div>
             <div class="pillar-title">Legal Liability</div>
-            <div class="pillar-text">Bad actors and negligent developers should be held accountable for their actions. We demand strict liability on frontier systems, and compensated damages brought by systems to individuals and society.<sup class="fn-sup"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">5</a></sup></div>
+            <div class="pillar-text">Bad actors and negligent developers should be held accountable for their actions. We demand strict liability on frontier systems, and compensated damages brought by systems to individuals and society.<sup class="fn-sup"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">6</a></sup></div>
           </div>
         </div>
         <div class="pillar reveal reveal-delay-2">
           <div class="pillar-num">03</div>
           <div>
             <div class="pillar-title">Democratic Oversight</div>
-            <div class="pillar-text">We can't let the power of AI be concentrated in the hands of corporate interests or the government. We advocate for an independent agency that audits labs and makes treaties with foreign powers, with input from civil society.<sup class="fn-sup"><a href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">6</a></sup><sup class="fn-sup"><a href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">7</a></sup></div>
+            <div class="pillar-text">We can't let the power of AI be concentrated in the hands of corporate interests or the government. We advocate for an independent agency that audits labs and makes treaties with foreign powers, with input from civil society.<sup class="fn-sup"><a href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">7</a></sup><sup class="fn-sup"><a href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">8</a></sup></div>
           </div>
         </div>
       </div>
@@ -1122,15 +1091,6 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          // Trigger stat bar fills
-          const fills = entry.target.querySelectorAll('.stat-fill[data-width]');
-          fills.forEach(fill => {
-            setTimeout(() => {
-              const w = parseFloat(fill.getAttribute('data-width'));
-              fill.style.width = w + '%';
-              fill.classList.add('animated');
-            }, 300);
-          });
           observer.unobserve(entry.target);
         }
       });
@@ -1138,24 +1098,8 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Also observe the stats grid for bar animation
-    const statsGrid = document.querySelector('.stats-grid');
-    if (statsGrid) {
-      const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.stat-fill').forEach((fill, i) => {
-              const w = parseFloat(fill.getAttribute('data-width'));
-              setTimeout(() => { fill.classList.add('animated'); }, 400 + i * 150);
-            });
-            barObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      barObserver.observe(statsGrid);
-    }
 
-    // ─── CTA FORM ────────────────────────────
+// ─── CTA FORM ────────────────────────────
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('.cta-btn');
