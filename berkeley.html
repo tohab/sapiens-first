@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berkeley AI Accountability Resolution — Guardrail Project</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="palette.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      background-image:
+        repeating-linear-gradient(45deg, rgba(100,65,10,0.028) 0px, rgba(100,65,10,0.028) 1px, transparent 1px, transparent 9px),
+        repeating-linear-gradient(-45deg, rgba(100,65,10,0.02) 0px, rgba(100,65,10,0.02) 1px, transparent 1px, transparent 9px);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 1;
+      mix-blend-mode: overlay;
+    }
+
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── PROGRESS ──────────────────────── */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px; width: 100%;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--blue) 100%);
+      transform-origin: left center;
+      transform: scaleX(0);
+      z-index: 10001;
+      pointer-events: none;
+    }
+
+    /* ─── NAV ───────────────────────────── */
+    .site-nav {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background-color: rgba(253, 249, 239, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .site-nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-wordmark {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-wordmark:hover { color: var(--accent); }
+    .nav-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ─── DIVIDER ───────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── SECTION BASE ──────────────────── */
+    .section { padding: 96px 0; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 500;
+      margin-bottom: 48px;
+    }
+    .section-label .title { color: var(--accent); }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .body-large {
+      font-size: 21px;
+      line-height: 1.72;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .body-large strong { font-weight: 600; }
+
+    /* ─── HERO ──────────────────────────── */
+    .hero {
+      padding: 96px 0 84px;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(52px, 8.8vw, 104px);
+      line-height: 0.91;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      max-width: 880px;
+    }
+    .hero-headline .accent { color: var(--accent); }
+    .hero-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 36px;
+    }
+    .hero-body {
+      font-size: 20px;
+      line-height: 1.76;
+      color: var(--text-dim);
+      max-width: 580px;
+      font-weight: 400;
+    }
+
+    /* ─── WHY BERKELEY ──────────────────── */
+    .why-body {
+      max-width: 720px;
+      margin-top: 8px;
+    }
+    .why-para {
+      font-size: 18px;
+      line-height: 1.82;
+      color: var(--text);
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+    .why-para:last-child { margin-bottom: 0; }
+    .why-para strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ─── ASKS ──────────────────────────── */
+    .ask-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .ask-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      padding: 26px 28px 26px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      box-shadow: 0 1px 2px rgba(80,50,10,0.06), 0 3px 10px rgba(80,50,10,0.04);
+      transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+      cursor: default;
+    }
+    .ask-card:hover {
+      border-color: var(--pillar-hover-border);
+      background: var(--pillar-hover-bg);
+      transform: translateX(4px);
+    }
+    .ask-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      padding-top: 5px;
+    }
+    .ask-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 21px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ask-text {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    /* ─── RESOLUTION DOC ────────────────── */
+    .resolution-wrap {
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(80,50,10,0.07), 0 6px 20px rgba(80,50,10,0.05);
+    }
+    .resolution-header {
+      background: color-mix(in srgb, var(--surface) 55%, transparent);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .resolution-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .resolution-header-title {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .resolution-header-file {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      opacity: 0.6;
+    }
+    .resolution-status-badge {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(229, 106, 20, 0.38);
+      border-radius: 3px;
+      padding: 3px 8px;
+    }
+    .resolution-body {
+      padding: 44px 52px 40px;
+      background: #FDFAF4;
+    }
+    .resolution-doc-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13.5px;
+      line-height: 1.65;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-align: center;
+      padding: 0 24px 28px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .resolution-clause {
+      font-family: var(--font-body);
+      font-size: 15.5px;
+      line-height: 1.88;
+      color: var(--text);
+      margin-bottom: 18px;
+      padding-left: 22px;
+      border-left: 2px solid var(--border);
+    }
+    .resolution-clause .kw {
+      font-weight: 700;
+      font-style: italic;
+    }
+    .resolution-clause.resolved {
+      border-left-color: var(--accent);
+    }
+    .resolution-preview-fade {
+      height: 72px;
+      background: linear-gradient(to bottom, transparent, #FDFAF4);
+      margin-top: -72px;
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .resolution-hidden { display: none; }
+    .resolution-expand-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 32px;
+      background: color-mix(in srgb, var(--surface) 35%, transparent);
+      border: none;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .resolution-expand-btn:hover {
+      background: var(--blue-dim);
+      color: var(--blue);
+    }
+
+    /* ─── TIMELINE ──────────────────────── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      margin-top: 48px;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px; top: 10px; bottom: 10px;
+      width: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      padding-bottom: 36px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-dot.done {
+      background: var(--accent);
+      color: #fff;
+    }
+    .timeline-dot.active {
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-dim);
+    }
+    .timeline-dot.upcoming {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .timeline-content { padding-top: 4px; }
+    .timeline-step-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .timeline-step-title.done     { color: var(--text); }
+    .timeline-step-title.active   { color: var(--accent); }
+    .timeline-step-title.upcoming { color: var(--text-dim); }
+    .timeline-badge {
+      font-family: var(--font-mono);
+      font-size: 8.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(229,106,20,0.4);
+      border-radius: 3px;
+      padding: 2px 7px;
+    }
+    .timeline-desc {
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    /* ─── CTA ───────────────────────────── */
+    .cta-section {
+      padding: 110px 0 100px;
+      text-align: center;
+      position: relative;
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26,58,102,0.12) 1.5px, transparent 1.5px);
+      background-size: 18px 18px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, black 0%, transparent 72%);
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 100%, black 0%, transparent 72%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cta-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .cta-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(52px, 8vw, 90px);
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+    }
+    .cta-sub {
+      font-size: 17px;
+      color: var(--text-dim);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.78;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-email {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blue-dim);
+      transition: border-color 0.2s ease;
+    }
+    .cta-email:hover { border-color: var(--blue); }
+
+    /* ─── FOOTER ────────────────────────── */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 2;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .footer-back {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-back:hover { color: var(--text); }
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.07em;
+    }
+
+    /* ─── ANIMATIONS ────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    /* ─── RESPONSIVE ────────────────────── */
+    @media (max-width: 860px) {
+      .hero-headline { font-size: clamp(44px, 8.8vw, 104px); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .hero { padding: 72px 0 60px; }
+      .resolution-body { padding: 32px 28px; }
+      .cta-section { padding: 80px 0 72px; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .hero-headline { font-size: clamp(36px, 11vw, 52px); }
+      .hero-body { font-size: 18px; }
+      .body-large { font-size: 18px; }
+      .why-para { font-size: 17px; }
+      .ask-card { grid-template-columns: 1fr; gap: 6px; }
+      .ask-card:hover { transform: none; }
+      .ask-num { padding-top: 0; }
+      .resolution-body { padding: 24px 20px; }
+      .resolution-doc-title { font-size: 12px; }
+      .resolution-header { padding: 14px 20px; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- NAV                                     -->
+  <!-- ═══════════════════════════════════════ -->
+  <nav class="site-nav">
+    <div class="container">
+      <a class="nav-wordmark" href="index.html">Guardrail Project</a>
+      <span class="nav-label">Berkeley Resolution</span>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HERO                                    -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Berkeley, California &nbsp;·&nbsp; 2026</div>
+      <h1 class="hero-headline">
+        Berkeley<br>
+        AI <span class="accent">Accountability</span><br>
+        Resolution
+      </h1>
+      <div class="hero-rule"></div>
+      <p class="hero-body">
+        Berkeley has led on free speech, environmental protection, and civil rights. Now we can lead again — urging California to set the standard for how AI works for all of us.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- WHY BERKELEY                            -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="title">Why Berkeley</span>
+      </div>
+      <div class="why-body">
+        <p class="why-para reveal">
+          <strong>Berkeley has always been where California's future takes shape first.</strong> From the Free Speech Movement to landmark environmental protections to sanctuary city status, our city has a tradition of acting on principle before the rest of the state catches up. AI accountability is the next chapter in that tradition.
+        </p>
+        <p class="why-para reveal reveal-delay-1">
+          The University of California, Berkeley, is one of the world's foremost AI research institutions. Our community has seen this technology up close — its promise and its risks — which gives Berkeley both a special credibility and a special responsibility to lead.
+        </p>
+        <p class="why-para reveal reveal-delay-2">
+          A resolution passed here doesn't stay here. It becomes a model for every other city in California, and a signal to Sacramento that the public is ready for action. This is how statewide movements begin.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- THE ASKS                                -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="title">What We're Asking</span>
+      </div>
+      <p class="body-large reveal">This resolution urges the <strong>California State Legislature</strong> to act on three fronts.</p>
+      <div class="ask-cards">
+        <div class="ask-card reveal">
+          <div class="ask-num">01</div>
+          <div>
+            <div class="ask-title">AI Dividend</div>
+            <div class="ask-text">If AI displaces Californians at scale, the productivity gains should be shared broadly. The Legislature should establish a public dividend tied to AI-driven economic growth — giving working Californians a real stake in the technology reshaping their lives.</div>
+          </div>
+        </div>
+        <div class="ask-card reveal reveal-delay-1">
+          <div class="ask-num">02</div>
+          <div>
+            <div class="ask-title">Legal Liability</div>
+            <div class="ask-text">Right now, developers of frontier AI systems bear almost no legal accountability for harms their systems cause. The Legislature should enact strict liability standards — ensuring that Californians harmed by AI have real, enforceable recourse.</div>
+          </div>
+        </div>
+        <div class="ask-card reveal reveal-delay-2">
+          <div class="ask-num">03</div>
+          <div>
+            <div class="ask-title">Democratic Oversight</div>
+            <div class="ask-text">No corporation and no government should control AI alone. The Legislature should create an independent oversight body with authority to audit AI systems, set safety standards, and mandate civil society participation in governance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- THE RESOLUTION                          -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="title">The Resolution</span>
+      </div>
+      <p class="body-large reveal">The model text below may be adopted by the Berkeley City Council and transmitted to the California State Legislature.</p>
+
+      <div class="resolution-wrap reveal">
+        <div class="resolution-header">
+          <div class="resolution-header-left">
+            <span class="resolution-header-title">BCC Resolution</span>
+            <span class="resolution-header-file">legislation/bcc.md</span>
+          </div>
+          <span class="resolution-status-badge">Draft · 2026</span>
+        </div>
+
+        <div class="resolution-body">
+          <p class="resolution-doc-title">
+            A Resolution of the City Council of Berkeley, California,<br>
+            Urging the California State Legislature to Enact<br>
+            Comprehensive Artificial Intelligence Accountability Legislation
+          </p>
+
+          <p class="resolution-clause"><span class="kw">WHEREAS,</span> artificial intelligence systems are rapidly transforming the economy, labor markets, and public life in California and across the nation; and</p>
+          <p class="resolution-clause"><span class="kw">WHEREAS,</span> the City of Berkeley has a long tradition of civic leadership on issues of technology, civil rights, and social justice, and has consistently acted to protect the well-being of its residents and set precedent for the state; and</p>
+          <p class="resolution-clause"><span class="kw">WHEREAS,</span> AI systems developed and deployed without adequate accountability mechanisms pose risks of economic displacement, discriminatory outcomes, and dangerous concentrations of power; and</p>
+
+          <div id="resolution-fade" class="resolution-preview-fade"></div>
+
+          <div id="resolution-full" class="resolution-hidden">
+            <p class="resolution-clause"><span class="kw">WHEREAS,</span> leading economists estimate that AI automation may expose hundreds of millions of jobs globally to displacement, with disproportionate impacts on working-class and middle-income Californians; and</p>
+            <p class="resolution-clause"><span class="kw">WHEREAS,</span> the benefits of AI-driven productivity growth are currently accruing primarily to technology companies and their shareholders, rather than to the workers and communities whose labor and data have contributed to these systems; and</p>
+            <p class="resolution-clause"><span class="kw">WHEREAS,</span> California is home to many of the world's leading AI research institutions, including the University of California, Berkeley, giving our state a special responsibility and a unique opportunity to lead on AI governance; and</p>
+            <p class="resolution-clause"><span class="kw">WHEREAS,</span> the California State Legislature has the authority and the obligation to protect Californians from the harms of unaccountable AI systems while ensuring the gains of this technology are shared broadly; now, therefore, be it</p>
+            <p class="resolution-clause resolved"><span class="kw">RESOLVED,</span> That the City Council of the City of Berkeley urges the California State Legislature to enact legislation establishing a public AI dividend that distributes a meaningful share of AI-driven productivity gains to all Californians, with priority given to workers and communities experiencing labor market displacement as a result of AI adoption; and be it further</p>
+            <p class="resolution-clause resolved"><span class="kw">RESOLVED,</span> That the City Council urges the California State Legislature to enact strict liability standards for developers and deployers of frontier AI systems, ensuring that individuals and communities harmed by such systems have meaningful and enforceable legal recourse; and be it further</p>
+            <p class="resolution-clause resolved"><span class="kw">RESOLVED,</span> That the City Council urges the California State Legislature to establish an independent AI oversight body with authority to audit AI systems, set safety and transparency standards, and ensure meaningful civil society representation in AI governance decisions affecting Californians; and be it further</p>
+            <p class="resolution-clause resolved"><span class="kw">RESOLVED,</span> That the City Clerk is directed to transmit a certified copy of this resolution to the Governor of California, the President pro Tempore of the California State Senate, the Speaker of the California State Assembly, and the Mayor and City Council of each city in Alameda County.</p>
+          </div>
+        </div>
+
+        <button class="resolution-expand-btn" id="expand-btn" onclick="toggleResolution()">
+          <span id="expand-arrow">↓</span>
+          <span id="expand-label">Read Full Resolution</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CAMPAIGN STATUS                         -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="title">Campaign Status</span>
+      </div>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <div class="timeline-content">
+            <div class="timeline-step-title done">Resolution Drafted</div>
+            <div class="timeline-desc">Model resolution text completed and reviewed.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot active">→</div>
+          <div class="timeline-content">
+            <div class="timeline-step-title active">
+              Sponsor Outreach
+              <span class="timeline-badge">In Progress</span>
+            </div>
+            <div class="timeline-desc">Identifying and meeting with Berkeley City Council members to secure co-sponsorship.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot upcoming">○</div>
+          <div class="timeline-content">
+            <div class="timeline-step-title upcoming">Council Vote</div>
+            <div class="timeline-desc">Resolution introduced and voted on by the full Berkeley City Council.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CTA                                     -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-eyebrow reveal">Get Involved</div>
+      <div class="cta-headline reveal">More<br>Coming<br>Soon.</div>
+      <p class="cta-sub reveal">
+        Want to support the Berkeley campaign?<br>
+        Email us at <a class="cta-email" href="mailto:contact@guardrailproject.org">contact@guardrailproject.org</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FOOTER                                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Guardrail Project</div>
+        <a class="footer-back" href="index.html">← guardrailproject.org</a>
+        <div class="footer-meta">© 2026 Guardrail Project &nbsp;·&nbsp; contact@guardrailproject.org</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${maxScroll > 0 ? scrolled / maxScroll : 0})`;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function toggleResolution() {
+      const full = document.getElementById('resolution-full');
+      const fade = document.getElementById('resolution-fade');
+      const arrow = document.getElementById('expand-arrow');
+      const label = document.getElementById('expand-label');
+      const isOpen = !full.classList.contains('resolution-hidden');
+      if (isOpen) {
+        full.classList.add('resolution-hidden');
+        fade.style.display = '';
+        arrow.textContent = '↓';
+        label.textContent = 'Read Full Resolution';
+      } else {
+        full.classList.remove('resolution-hidden');
+        fade.style.display = 'none';
+        arrow.textContent = '↑';
+        label.textContent = 'Collapse Resolution';
+      }
+    }
+  </script>
+
+</body>
+</html>

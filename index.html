@@ -20,29 +20,15 @@
 
     body {
       background-color: var(--bg);
-      /* subtle linen weave — the scrapbook paper feel */
       background-image:
-        repeating-linear-gradient(
-          45deg,
-          rgba(100, 65, 10, 0.028) 0px,
-          rgba(100, 65, 10, 0.028) 1px,
-          transparent 1px,
-          transparent 9px
-        ),
-        repeating-linear-gradient(
-          -45deg,
-          rgba(100, 65, 10, 0.02) 0px,
-          rgba(100, 65, 10, 0.02) 1px,
-          transparent 1px,
-          transparent 9px
-        );
+        repeating-linear-gradient(45deg, rgba(100,65,10,0.028) 0px, rgba(100,65,10,0.028) 1px, transparent 1px, transparent 9px),
+        repeating-linear-gradient(-45deg, rgba(100,65,10,0.02) 0px, rgba(100,65,10,0.02) 1px, transparent 1px, transparent 9px);
       color: var(--text);
       font-family: var(--font-body);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── GRAIN ─────────────────────────── */
     body::after {
       content: '';
       position: fixed;
@@ -51,35 +37,9 @@
       pointer-events: none;
       z-index: 9999;
       opacity: 1;
-      mix-blend-mode: multiply;
+      mix-blend-mode: overlay;
     }
 
-    /* ─── ORBS ─────────────────────────── */
-    .orb {
-      position: absolute; /* absolute inside fixed .orb-wrap — change back to fixed (and remove .orb-wrap HTML) to disable parallax */
-      border-radius: 50%;
-      filter: blur(110px);
-      pointer-events: none;
-      z-index: 0;
-    }
-.orb-3 {
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, var(--blue-dim) 0%, transparent 65%);
-      top: 55vh; right: -120px;
-      animation: drift1 22s ease-in-out infinite reverse;
-    }
-    @keyframes drift1 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      40% { transform: translate(-35px, 25px) scale(1.06); }
-      70% { transform: translate(20px, -30px) scale(0.96); }
-    }
-    @keyframes drift2 {
-      0%,100% { transform: translate(0,0) scale(1); }
-      35% { transform: translate(40px, -20px) scale(1.09); }
-      70% { transform: translate(-20px, 35px) scale(0.94); }
-    }
-
-    /* ─── LAYOUT ─────────────────────────── */
     .container {
       max-width: 1020px;
       margin: 0 auto;
@@ -88,50 +48,18 @@
       z-index: 2;
     }
 
-    /* ─── WORDMARK ────────────────────────── */
     .wordmark {
       position: fixed;
-      top: 32px;
-      left: 40px;
+      top: 32px; left: 40px;
       z-index: 100;
       font-family: var(--font-mono);
       font-size: 14.85px;
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: var(--accent);
       opacity: 0;
       animation: fadeIn 1s ease forwards 1s;
-    }
-    .wordmark span {
-      color: var(--accent);
-    }
-
-    /* ─── BADGE ─────────────────────────── */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 16px;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.14em;
-      color: var(--text-dim);
-      background: var(--badge-bg);
-    }
-    .badge-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--blue);
-      box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue-glow);
-      animation: pulse 2.2s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-    @keyframes pulse {
-      0%,100% { opacity: 1; box-shadow: 0 0 10px var(--blue), 0 0 20px var(--blue-glow); }
-      50% { opacity: 0.35; box-shadow: 0 0 4px var(--blue); }
     }
 
     /* ─── HERO ──────────────────────────── */
@@ -142,102 +70,51 @@
       justify-content: center;
       padding: 130px 0 80px;
       position: relative;
+      overflow: hidden;
+      background-color: #0A0F1C;
     }
-
-    .hero-badge {
-      margin-bottom: 52px;
-      opacity: 0;
-      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.25s;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+      mask-image: linear-gradient(to right, transparent 30%, black 58%);
+      -webkit-mask-image: linear-gradient(to right, transparent 30%, black 58%);
+      pointer-events: none;
+      z-index: 0;
     }
-
+    .hero-glow {
+      position: absolute;
+      bottom: -100px; left: -80px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(249,115,22,0.14) 0%, transparent 65%);
+      filter: blur(55px);
+      pointer-events: none;
+      z-index: 0;
+    }
     .hero-headline {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(68px, 11vw, 118px);
+      font-size: clamp(82px, 13vw, 140px);
       line-height: 0.9;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.04em;
       text-transform: uppercase;
       margin-bottom: 44px;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.45s;
     }
-    .hero-headline .accent { color: var(--accent); }
-    .hero-headline .dim { color: var(--text); }
-
+    .hero .hero-headline { color: #ffffff; }
+    .hero .hero-headline .accent { color: var(--accent); }
     .hero-body {
       font-size: 27px;
       line-height: 1.72;
-      color: var(--text-mid);
+      color: rgba(255,255,255,0.62);
       max-width: 750px;
       font-weight: 400;
       margin-bottom: 52px;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.65s;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 17px 34px;
-      background: var(--navy);
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      border-radius: 6px;
-      box-shadow: 0 0 32px var(--navy-glow), 0 0 64px var(--navy-glow);
-      transition: box-shadow 0.3s ease, transform 0.2s ease;
-      opacity: 0;
-      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s;
-    }
-    .hero-cta:hover {
-      box-shadow: 0 0 50px var(--navy-glow), 0 0 100px var(--navy-glow);
-      transform: translateY(-2px);
-    }
-    .hero-cta .arr {
-      transition: transform 0.2s ease;
-      font-size: 15px;
-    }
-    .hero-cta:hover .arr { transform: translateX(4px); }
-
-    /* ─── SCAN BAR ──────────────────────── */
-    .scanbar-wrap {
-      margin-top: 88px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 1.4s;
-    }
-    .scanbar {
-      width: 100%;
-      height: 2px;
-      background: var(--track-bg);
-      border-radius: 100px;
-      position: relative;
-      overflow: hidden;
-    }
-    .scanbar::after {
-      content: '';
-      position: absolute;
-      left: 0; top: 0;
-      height: 100%;
-      width: 28%;
-      background: linear-gradient(90deg, transparent 0%, var(--accent) 45%, var(--accent) 55%, transparent 100%);
-      animation: sweep 4s ease-in-out infinite 2s;
-    }
-    @keyframes sweep {
-      0% { transform: translateX(-160%); }
-      100% { transform: translateX(450%); }
-    }
-    .scanbar-label {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      color: var(--text-dim);
     }
 
     /* ─── DIVIDER ───────────────────────── */
@@ -249,10 +126,20 @@
     }
 
     /* ─── SECTIONS ──────────────────────── */
-    .section {
-      padding: 110px 0;
-      position: relative;
+    .section { padding: 110px 0; position: relative; }
+
+    /* ─── EXP CURVE (remove both blocks to disable) ── */
+    /*
+    .challenge-section { overflow: hidden; }
+    .exp-curve-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
+    */
+    /* ────────────────────────────────────────────── */
 
     .section-label {
       display: flex;
@@ -266,10 +153,7 @@
       font-weight: 500;
       margin-bottom: 52px;
     }
-    .section-label .mark {
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-    }
+    .section-label .mark  { color: var(--text-dim); letter-spacing: 0.05em; }
     .section-label .title { color: var(--accent); }
 
     /* ─── STATS ─────────────────────────── */
@@ -279,16 +163,13 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 52px;
-      box-shadow: 0 1px 3px rgba(80, 50, 10, 0.07), 0 4px 14px rgba(80, 50, 10, 0.04);
+      box-shadow: 0 1px 3px rgba(80,50,10,0.07), 0 4px 14px rgba(80,50,10,0.04);
     }
     .stat {
       padding: 32px 26px 28px;
       border-right: 1px solid var(--border);
-      position: relative;
     }
     .stat:last-child { border-right: none; }
-
     .stat-val {
       font-family: var(--font-display);
       font-weight: 800;
@@ -298,7 +179,6 @@
       color: var(--accent);
       margin-bottom: 10px;
     }
-
     .stat-label {
       font-family: var(--font-mono);
       font-size: 12px;
@@ -315,16 +195,7 @@
       color: var(--text);
       margin-bottom: 22px;
     }
-    .body-large strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-    .body-text {
-      font-size: 18px;
-      line-height: 1.85;
-      color: var(--text-mid);
-      font-weight: 500;
-    }
+    .body-large strong { color: var(--text); font-weight: 600; }
 
     /* ─── PILLARS ───────────────────────── */
     .pillars {
@@ -341,15 +212,11 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       background: color-mix(in srgb, var(--surface) 42%, transparent);
-      box-shadow: 0 1px 2px rgba(80, 50, 10, 0.06), 0 3px 10px rgba(80, 50, 10, 0.04);
-      transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 1px 2px rgba(80,50,10,0.06), 0 3px 10px rgba(80,50,10,0.04);
+      transition: transform 0.25s ease;
       cursor: default;
     }
-    .pillar:hover {
-      border-color: var(--pillar-hover-border);
-      background: var(--pillar-hover-bg);
-      transform: translateX(4px);
-    }
+    .pillar:hover { transform: translateX(4px); }
     .pillar-num {
       font-family: var(--font-mono);
       font-size: 10.5px;
@@ -373,6 +240,49 @@
       color: var(--text-dim);
       font-weight: 500;
     }
+
+    /* ─── THEORY OF CHANGE: horizontal steps ─── */
+    .toc-steps {
+      display: grid;
+      grid-template-columns: 1fr 52px 1fr 52px 1fr;
+      align-items: stretch;
+      margin-top: 52px;
+    }
+    .toc-step {
+      padding: 28px 26px 32px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      box-shadow: 0 1px 2px rgba(80,50,10,0.06), 0 3px 10px rgba(80,50,10,0.04);
+      transition: transform 0.25s ease;
+      cursor: default;
+    }
+    .toc-step:hover { transform: translateY(-3px); }
+    .toc-step-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .toc-step-text {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+    .toc-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      color: var(--accent);
+      opacity: 0.32;
+    }
+
+    /* ─── FOOTNOTES ─────────────────────── */
     .fn-sup {
       font-family: var(--font-mono);
       font-size: 7.5px;
@@ -381,12 +291,7 @@
       line-height: 0;
       margin-left: 3px;
     }
-    .fn-sup a {
-      color: var(--accent);
-      text-decoration: none;
-      opacity: 0.75;
-      transition: opacity 0.2s ease;
-    }
+    .fn-sup a { color: var(--accent); text-decoration: none; opacity: 0.75; transition: opacity 0.2s ease; }
     .fn-sup a::before { content: '['; }
     .fn-sup a::after  { content: ']'; }
     .fn-sup a:hover { opacity: 1; }
@@ -400,14 +305,22 @@
     .cta-section::before {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
+      bottom: 0; left: 50%;
       transform: translateX(-50%);
-      width: 1px;
-      height: 80px;
+      width: 1px; height: 80px;
       background: linear-gradient(to bottom, var(--border), transparent);
     }
-
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(26,58,102,0.17) 1.5px, transparent 1.5px);
+      background-size: 18px 18px;
+      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
+      mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
+      pointer-events: none;
+      z-index: 0;
+    }
     .cta-eyebrow {
       font-family: var(--font-mono);
       font-size: 10.5px;
@@ -416,7 +329,6 @@
       text-transform: uppercase;
       margin-bottom: 28px;
     }
-
     .cta-headline {
       font-family: var(--font-display);
       font-weight: 800;
@@ -426,57 +338,13 @@
       letter-spacing: -0.025em;
       margin-bottom: 28px;
     }
-
     .cta-sub {
       font-size: 18px;
       color: var(--text-dim);
       max-width: 380px;
-      margin: 0 auto 52px;
+      margin: 0 auto;
       line-height: 1.75;
       font-weight: 400;
-    }
-
-    .cta-form {
-      display: flex;
-      gap: 10px;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-    .cta-input {
-      flex: 1;
-      padding: 16px 20px;
-      background: var(--input-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 14.5px;
-      outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-    .cta-input::placeholder { color: var(--text-dim); }
-    .cta-input:focus {
-      border-color: var(--input-focus-border);
-      background: var(--input-focus-bg);
-    }
-    .cta-btn {
-      padding: 16px 26px;
-      background: var(--navy);
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      white-space: nowrap;
-      box-shadow: 0 0 32px var(--navy-glow);
-      transition: box-shadow 0.3s ease, transform 0.2s ease;
-    }
-    .cta-btn:hover {
-      box-shadow: 0 0 48px var(--navy-glow), 0 0 90px var(--navy-glow);
-      transform: translateY(-1px);
     }
 
     /* ─── FOOTER ────────────────────────── */
@@ -486,11 +354,7 @@
       position: relative;
       z-index: 2;
     }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
     .footer-logo {
       font-family: var(--font-display);
       font-weight: 700;
@@ -508,13 +372,12 @@
     /* ─── ANIMATIONS ────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeIn {
       from { opacity: 0; }
-      to { opacity: 1; }
+      to   { opacity: 1; }
     }
-
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -524,14 +387,12 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
 
     /* ─── SCROLL PROGRESS ──────────────────── */
     .progress-bar {
       position: fixed;
       top: 0; left: 0;
-      height: 2px;
-      width: 100%;
+      height: 2px; width: 100%;
       background: linear-gradient(90deg, var(--accent) 0%, var(--blue) 100%);
       transform-origin: left center;
       transform: scaleX(0);
@@ -539,237 +400,49 @@
       pointer-events: none;
     }
 
-
-    /* ══════════════════════════════════════════════════════════════
-       REVERSIBLE EFFECTS — to remove any effect, delete its labeled
-       CSS block, its HTML comment block, and its JS block (if any).
-       ══════════════════════════════════════════════════════════════ */
-
-    /* [EFFECT: ORB PARALLAX] ─────────────────────────────────────
-       Fixed wrappers let JS move orbs at different scroll rates.
-       Remove: delete .orb-wrap CSS + HTML wrappers + JS block,
-               revert .orb above from position:absolute → fixed.     */
-    .orb-wrap {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform;
-    }
-
-    /* [EFFECT: VIGNETTE] ─────────────────────────────────────────
-       Darkens edges to give the page a curved, lit-from-center feel.
-       Remove: delete .vignette CSS + <div class="vignette"> in HTML. */
+    /* ─── VIGNETTE ─────────────────────── */
     .vignette {
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 42%, rgba(26, 58, 102, 0.07) 100%);
+      background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 42%, rgba(26,58,102,0.07) 100%);
       pointer-events: none;
       z-index: 3;
     }
 
-    /* [EFFECT: US MAP BACKGROUND] ───────────────────────────────
-       US map + city dot overlay behind the Theory of Change section.
-       Remove: delete .us-map-bg + .us-map-dots CSS and both HTML elements. */
+    /* ─── US MAP ────────────────────────── */
     .toc-section { overflow: hidden; }
-    .us-map-bg,
-    .us-map-dots {
+    .us-map-bg {
       position: absolute;
-      top: 50%;
-      left: 82%;
+      top: 50%; left: 82%;
       transform: translate(-50%, -50%);
       width: 57.2%;
-      max-width: none;
-      height: auto;
+      max-width: none; height: auto;
       pointer-events: none;
-    }
-    .us-map-bg {
       z-index: 0;
       opacity: 0.028;
       filter: invert(1) sepia(1) saturate(0.6) hue-rotate(190deg) brightness(1.4);
     }
-    .us-map-dots {
-      z-index: 1;
-      overflow: visible;
-    }
-    .city-dot {
-      fill: var(--accent);
-      opacity: 0.08;
-      transition: opacity 0.7s ease, filter 0.7s ease;
-    }
-    .city-dot--lit {
-      opacity: 0.9;
-      filter: drop-shadow(0 0 3px var(--accent)) drop-shadow(0 0 8px var(--accent-glow));
-    }
 
-    /* [EFFECT: TOPO LINES] ───────────────────────────────────────
-       Topographic survey contours behind section 02 content.
-       Remove: delete .topo-svg CSS + <svg class="topo-svg"> in HTML. */
-    .topo-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: visible;
-      opacity: 1;
-    }
-
-    /* [EFFECT: REGISTER MARKS] ───────────────────────────────────
-       Diagonal bracket corners around the stats grid.
-       Remove: delete .reg-frame CSS + wrapper div in HTML,
-               move margin-bottom: 52px back onto .stats-grid.        */
-    .reg-frame {
-      position: relative;
-      margin-bottom: 52px;
-    }
+    /* ─── REGISTER MARKS ────────────────── */
+    .reg-frame { position: relative; margin-bottom: 52px; }
     .stats-grid { margin-bottom: 0; }
-    .reg-frame::before,
-    .reg-frame::after {
+    .reg-frame::before, .reg-frame::after {
       content: '';
       position: absolute;
-      width: 10px;
-      height: 10px;
+      width: 10px; height: 10px;
       opacity: 0.42;
       pointer-events: none;
     }
-    .reg-frame::before {
-      top: -6px; left: -6px;
-      border-top: 1px solid var(--accent);
-      border-left: 1px solid var(--accent);
-    }
-    .reg-frame::after {
-      bottom: -6px; right: -6px;
-      border-bottom: 1px solid var(--accent);
-      border-right: 1px solid var(--accent);
-    }
-
-    /* [EFFECT: HALFTONE CTA] ─────────────────────────────────────
-       Dot pattern that wells up from the bottom of the CTA section.
-       Remove: delete this .cta-section::after block entirely.        */
-    .cta-section::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(26, 58, 102, 0.17) 1.5px, transparent 1.5px);
-      background-size: 18px 18px;
-      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
-      mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ─── NAVBAR (commented out — uncomment CSS here + HTML block below to restore)
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 0 40px;
-      z-index: 100;
-      pointer-events: none;
-    }
-    .navbar-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      pointer-events: all;
-    }
-    .nav-link {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 5px;
-      transition: color 0.2s ease, background 0.2s ease;
-      cursor: default;
-      position: relative;
-    }
-    .nav-link:hover {
-      color: var(--text);
-      background: rgba(13, 27, 62, 0.06);
-    }
-    .nav-item {
-      position: relative;
-    }
-    .nav-item:hover .nav-dropdown {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateY(0);
-    }
-    .nav-chevron {
-      display: inline-block;
-      margin-left: 4px;
-      font-size: 9px;
-      opacity: 0.55;
-      transition: transform 0.2s ease;
-    }
-    .nav-item:hover .nav-chevron {
-      transform: rotate(180deg);
-    }
-    .nav-dropdown {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      min-width: 140px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 6px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-6px);
-      transition: opacity 0.18s ease, transform 0.18s ease;
-      box-shadow: 0 4px 20px rgba(13, 27, 62, 0.1);
-    }
-    .nav-dropdown a {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      padding: 9px 12px;
-      border-radius: 4px;
-      cursor: default;
-      transition: color 0.15s ease, background 0.15s ease;
-    }
-    .nav-dropdown a:hover {
-      color: var(--text);
-      background: rgba(13, 27, 62, 0.06);
-    }
-    .nav-donate {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
-      padding: 9px 18px;
-      border-radius: 5px;
-      background: var(--accent);
-      cursor: default;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      margin-left: 6px;
-    }
-    .nav-donate:hover {
-      opacity: 0.88;
-      transform: translateY(-1px);
-    }
-    ─── */
+    .reg-frame::before { top: -6px; left: -6px; border-top: 1px solid var(--accent); border-left: 1px solid var(--accent); }
+    .reg-frame::after  { bottom: -6px; right: -6px; border-bottom: 1px solid var(--accent); border-right: 1px solid var(--accent); }
 
     /* ─── RESPONSIVE ────────────────────── */
+    @media (max-width: 860px) {
+      .toc-steps { grid-template-columns: 1fr; gap: 2px; }
+      .toc-connector { display: none; }
+      .toc-step:hover { transform: translateX(4px); }
+    }
 
-    /* ── Tablet (≤768px) ── */
     @media (max-width: 768px) {
       .hero { padding: 100px 0 60px; }
       .hero-body { font-size: 23px; }
@@ -778,154 +451,114 @@
       .body-large { font-size: 20px; }
     }
 
-    /* ── Mobile (≤600px) ── */
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
       .wordmark { display: none; }
-
-      /* Hero */
-      .hero { padding: 68px 0 52px; }
-      .hero-headline { font-size: clamp(52px, 14vw, 72px); }
+      .hero { padding: 96px 0 52px; }
+      .hero-headline { font-size: clamp(58px, 15vw, 80px); }
       .hero-body { font-size: 18px; line-height: 1.65; margin-bottom: 40px; }
-
-      /* Sections */
       .section { padding: 60px 0; }
       .section-label { font-size: 13px; letter-spacing: 0.14em; margin-bottom: 36px; }
-
-      /* Stats */
       .stats-grid { grid-template-columns: 1fr; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
       .stat:last-child { border-bottom: none; }
-
-      /* Body text */
       .body-large { font-size: 18px; }
-
-      /* Pillars — tighter layout, disable X-slide on touch */
       .pillar { padding: 18px 20px; gap: 18px; }
       .pillar:hover { transform: none; }
-
-      /* Hide US map — positioned for widescreen only */
       .us-map-bg { display: none; }
-
-      /* CTA */
       .cta-section { padding: 80px 0 64px; }
       .cta-headline { font-size: clamp(44px, 12vw, 56px); }
-      .cta-sub { font-size: 16px; margin-bottom: 36px; }
-      .cta-form { flex-direction: column; }
-
-      /* Footer */
+      .cta-sub { font-size: 16px; }
       .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
       .footer-meta { font-size: 9px; line-height: 1.7; overflow-wrap: anywhere; }
     }
 
-    /* ── Small phones (≤375px) ── */
     @media (max-width: 375px) {
       .container { padding: 0 16px; }
       .hero-body { font-size: 16px; }
       .body-large { font-size: 16px; }
       .pillar-text { font-size: 14px; }
     }
+
+    /* ─── PALETTE OVERRIDES ─────────────── */
+    :root {
+      --accent:              #E56A14;
+      --accent-glow:         rgba(229, 106, 20, 0.28);
+      --pillar-hover-border: rgba(229, 106, 20, 0.30);
+      --pillar-hover-bg:     rgba(229, 106, 20, 0.06);
+    }
   </style>
 </head>
 <body>
 
-  <!-- ─── PROGRESS BAR ────────────────────── -->
   <div class="progress-bar"></div>
-
-  <!-- ─── BACKGROUND + DEPTH ──────────────── -->
-  <!-- [EFFECT: ORB PARALLAX] remove wrappers + revert .orb to position:fixed to disable -->
-  <div class="orb-wrap" data-rate="0.16"><div class="orb orb-3"></div></div>
-  <!-- [EFFECT: VIGNETTE] remove div below to disable -->
   <div class="vignette"></div>
-
-  <!-- ─── WORDMARK ──────────────────────── -->
   <div class="wordmark">GUARDRAIL PROJECT</div>
-
-  <!-- ─── NAVBAR (commented out — uncomment CSS above + this block to restore) ───
-  <nav class="navbar">
-    <div class="navbar-links">
-      <div class="nav-item">
-        <a href="#" class="nav-link">About <span class="nav-chevron">▾</span></a>
-        <div class="nav-dropdown">
-          <a href="#">Policy</a>
-          <a href="#">Team</a>
-        </div>
-      </div>
-      <a href="#" class="nav-link">Get Involved</a>
-      <a href="#" class="nav-donate">Donate</a>
-    </div>
-  </nav>
-  ─── -->
 
   <!-- ═══════════════════════════════════════ -->
   <!-- HERO                                    -->
   <!-- ═══════════════════════════════════════ -->
   <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="container">
-
       <h1 class="hero-headline">
-        <span class="dim">Local</span><br>
+        <span>Local</span><br>
         <span class="accent">organizing</span><br>
-        <span>in the</span><br>
-        <span>age of AI.</span>
+        <span>for a</span><br>
+        <span>brighter </span><br>
+        <span>future.</span>
       </h1>
-
       <p class="hero-body">
-        AI is transforming the world. The law isn't keeping up. <br> We're turning public concern into legislative change.
+        AI is transforming the world, but the law isn't keeping up.
       </p>
-
-      <!-- <a href="#connect" class="hero-cta">
-        STAY TUNED <span class="arr">→</span>
-      </a> -->
-
-      <!-- 
-      <div class="scanbar-wrap">
-        <div class="scanbar"></div>
-        <div class="scanbar-label">
-          <span>GUARDRAIL PROJECT · ACTIVE</span>
-          <span>BERKELEY → CALIFORNIA → FEDERAL</span>
-        </div>
-      </div> -->
-
     </div>
   </section>
-
 
   <div class="divider"></div>
 
   <!-- ═══════════════════════════════════════ -->
   <!-- THE CHALLENGE                           -->
   <!-- ═══════════════════════════════════════ -->
-  <section class="section">
+  <section class="section challenge-section">
+    <!-- ─ EXP CURVE (remove both blocks to disable) ─ -->
+    <!--
+    <svg class="exp-curve-bg" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-hidden="true">
+      <polyline
+        points="250,355 300,354 350,352 400,347 450,338 500,326 550,309 600,287 650,260 700,227 750,189 800,144 850,93 900,35 920,10"
+        fill="none"
+        stroke="var(--accent)"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        opacity="0.07"
+      />
+    </svg>
+    -->
+    <!-- ──────────────────────────────────────────── -->
     <div class="container">
-
       <div class="section-label reveal">
-<span class="title">THE CHALLENGE</span>
+        <span class="title">THE CHALLENGE</span>
       </div>
-
-      <!-- [EFFECT: REGISTER MARKS] remove .reg-frame div (keep inner stats-grid), add margin-bottom:52px back to .stats-grid -->
       <div class="reg-frame">
-      <div class="stats-grid reveal">
-        <div class="stat">
-          <div class="stat-val" data-count="73" data-suffix="%">73%</div>
-          <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT<sup class="fn-sup"><a href="https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/" target="_blank" rel="noopener">1</a></sup></div>
-        </div>
-        <div class="stat">
-          <div class="stat-val" data-count="3" data-suffix="X">3X</div>
-          <div class="stat-label">DATA CENTER CONSTRUCTION<br>SPENDING SINCE 2023<sup class="fn-sup"><a href="https://programs.com/resources/data-center-statistics/" target="_blank" rel="noopener">2</a></sup></div>
-        </div>
-        <div class="stat">
-          <div class="stat-val" data-count="100" data-prefix=">$" data-suffix="M">&gt;$100M</div>
-          <div class="stat-label">RAISED BY INDUSTRY<br>LOBBYISTS IN 2026<sup class="fn-sup"><a href="https://qz.com/ai-2026-election-policy-regulation" target="_blank" rel="noopener">3</a></sup></div>
+        <div class="stats-grid reveal">
+          <div class="stat">
+            <div class="stat-val">73%</div>
+            <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT<sup class="fn-sup"><a href="https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/" target="_blank" rel="noopener">1</a></sup></div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">300M</div>
+            <div class="stat-label">JOBS EXPOSED TO<br>AI AUTOMATION<sup class="fn-sup"><a href="https://www.goldmansachs.com/insights/articles/how-will-ai-affect-the-us-labor-market" target="_blank" rel="noopener">2</a></sup></div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">$100M</div>
+            <div class="stat-label">RAISED BY INDUSTRY<br>LOBBYISTS IN 2026<sup class="fn-sup"><a href="https://qz.com/ai-2026-election-policy-regulation" target="_blank" rel="noopener">3</a></sup></div>
+          </div>
         </div>
       </div>
-      </div><!-- /.reg-frame -->
-
       <p class="body-large reveal">
         Public opinion strongly favors AI oversight.
         <strong>But it hasn't translated into political action.</strong>
       </p>
-
     </div>
   </section>
 
@@ -935,41 +568,38 @@
   <!-- THEORY OF CHANGE                        -->
   <!-- ═══════════════════════════════════════ -->
   <section class="section toc-section">
-    <!-- [EFFECT: US MAP BACKGROUND] remove img + svg below to disable -->
     <img class="us-map-bg" src="us.svg" aria-hidden="true" alt="">
-    <!-- city dots injected here by JS when CITY_DOTS_ENABLED = true (see city-dots.svg) -->
     <div class="container">
 
       <div class="section-label reveal">
-<span class="title">THEORY OF CHANGE</span>
+        <span class="title">THEORY OF CHANGE</span>
       </div>
 
       <p class="body-large reveal">
-        <strong>Real change starts local.</strong>
+        <strong>Change starts local.</strong>
       </p>
 
-      <div class="pillars">
-        <div id="toc-pillar-1" class="pillar reveal">
-          <div class="pillar-num">01</div>
-          <div>
-            <div class="pillar-title">Local Resolutions</div>
-            <div class="pillar-text">We pass resolutions in city councils calling for AI accountability. Each resolution builds our ability to organize and demonstrates public will for meaningful legislation.</div>
-          </div>
+      <div class="toc-steps reveal">
+
+        <div id="toc-pillar-1" class="toc-step">
+          <div class="toc-step-title">Local Resolutions</div>
+          <div class="toc-step-text">City council resolutions let us build coalitions, demonstrate public will, and create a replicable template for every city that follows.</div>
         </div>
-        <div id="toc-pillar-2" class="pillar reveal reveal-delay-1">
-          <div class="pillar-num">02</div>
-          <div>
-            <div class="pillar-title">State Laws</div>
-            <div class="pillar-text">State campaigns turn our proposals into actual policy. We take the resolutions, coalitions, and momentum built by local campaigns to statehouses in red and blue states alike.</div>
-          </div>
+
+        <div class="toc-connector" aria-hidden="true">→</div>
+
+        <div id="toc-pillar-2" class="toc-step">
+          <div class="toc-step-title">State Laws</div>
+          <div class="toc-step-text">State campaigns turn our proposals into policy. We take the resolutions, coalitions, and momentum built by local campaigns to statehouses in red and blue states alike.</div>
         </div>
-        <div id="toc-pillar-3" class="pillar reveal reveal-delay-2">
-          <div class="pillar-num">03</div>
-          <div>
-            <div class="pillar-title">Federal Policy</div>
-            <div class="pillar-text">With active chapters and campaigns in every major district, we make the issue of AI impossible to ignore, and give lawmakers the push they need to act.</div>
-          </div>
+
+        <div class="toc-connector" aria-hidden="true">→</div>
+
+        <div id="toc-pillar-3" class="toc-step">
+          <div class="toc-step-title">Federal Policy</div>
+          <div class="toc-step-text">A national network of active chapters makes AI accountability impossible to ignore. Lawmakers act when the issue is in every district.</div>
         </div>
+
       </div>
 
     </div>
@@ -984,11 +614,11 @@
     <div class="container">
 
       <div class="section-label reveal">
-<span class="title">POLICY</span>
+        <span class="title">POLICY</span>
       </div>
 
       <p class="body-large reveal">
-        <strong>Our reforms would change the balance of power in this era.</strong>
+        <strong>Reforms that would change the balance of power in this era.</strong>
       </p>
 
       <div class="pillars">
@@ -996,21 +626,21 @@
           <div class="pillar-num">01</div>
           <div>
             <div class="pillar-title">AI Dividend</div>
-            <div class="pillar-text">The boons of AI should be shared with all American people. We advocate for a public dividend that gives Americans a stake in the gains of technology, if AI meaningfully displaces workers.<sup class="fn-sup"><a href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">4</a></sup><sup class="fn-sup"><a href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">5</a></sup></div>
+            <div class="pillar-text">If AI displaces workers at scale, the gains belong to all Americans — not just shareholders. We advocate for a public dividend tied to AI-driven productivity growth.<sup class="fn-sup"><a href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">4</a></sup><sup class="fn-sup"><a href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">5</a></sup></div>
           </div>
         </div>
         <div class="pillar reveal reveal-delay-1">
           <div class="pillar-num">02</div>
           <div>
             <div class="pillar-title">Legal Liability</div>
-            <div class="pillar-text">Bad actors and negligent developers should be held accountable for their actions. We demand strict liability on frontier systems, and compensated damages brought by systems to individuals and society.<sup class="fn-sup"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">6</a></sup></div>
+            <div class="pillar-text">Right now, AI developers bear almost no legal responsibility for the harm their systems cause. We demand strict liability for frontier AI — the same standard we hold every other powerful industry to.<sup class="fn-sup"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">6</a></sup></div>
           </div>
         </div>
         <div class="pillar reveal reveal-delay-2">
           <div class="pillar-num">03</div>
           <div>
             <div class="pillar-title">Democratic Oversight</div>
-            <div class="pillar-text">We can't let the power of AI be concentrated in the hands of corporate interests or the government. We advocate for an independent agency that audits labs and makes treaties with foreign powers, with input from civil society.<sup class="fn-sup"><a href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">7</a></sup><sup class="fn-sup"><a href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">8</a></sup></div>
+            <div class="pillar-text">No corporation and no government should control AI alone. We advocate for an independent oversight agency with audit powers, treaty authority, and mandatory civil society input.<sup class="fn-sup"><a href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">7</a></sup><sup class="fn-sup"><a href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">8</a></sup></div>
           </div>
         </div>
       </div>
@@ -1025,19 +655,12 @@
   <!-- ═══════════════════════════════════════ -->
   <section class="cta-section" id="connect">
     <div class="container">
-
       <div class="cta-eyebrow reveal">We're building.</div>
-      <div class="cta-headline reveal">
-        Stay<br> tuned.
-      </div>
-      <p class="cta-sub reveal">
-        Coming to a city near you.
-      </p>
-
+      <div class="cta-headline reveal">Stay<br>tuned.</div>
+      <p class="cta-sub reveal">Coming to a city near you.</p>
     </div>
   </section>
 
-  <!-- ─── FOOTER ──────────────────────────── -->
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
@@ -1048,37 +671,6 @@
   </footer>
 
   <script>
-    // ─── CITY DOTS ───────────────────────────
-    // Toggle: set to true to load city-dots.svg and enable scroll animation.
-    const CITY_DOTS_ENABLED = false;
-
-    if (CITY_DOTS_ENABLED) {
-      fetch('city-dots.svg')
-        .then(r => r.text())
-        .then(html => {
-          const tocSection = document.querySelector('.toc-section');
-          const placeholder = tocSection.querySelector('[data-city-dots]') || (() => {
-            const div = document.createElement('div');
-            div.dataset.cityDots = '';
-            tocSection.insertBefore(div, tocSection.querySelector('.container'));
-            return div;
-          })();
-          placeholder.innerHTML = html;
-        });
-    }
-
-    // ─── [EFFECT: ORB PARALLAX] ───────────────
-    // Remove this block (and .orb-wrap HTML, revert .orb to position:fixed) to disable.
-    const orbWraps = document.querySelectorAll('.orb-wrap[data-rate]');
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      orbWraps.forEach(wrap => {
-        const rate = parseFloat(wrap.dataset.rate);
-        wrap.style.transform = `translateY(${y * rate}px)`;
-      });
-    }, { passive: true });
-
-    // ─── SCROLL PROGRESS ──────────────────────
     const progressBar = document.querySelector('.progress-bar');
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
@@ -1086,7 +678,6 @@
       progressBar.style.transform = `scaleX(${maxScroll > 0 ? scrolled / maxScroll : 0})`;
     }, { passive: true });
 
-    // ─── SCROLL REVEAL ────────────────────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1098,52 +689,19 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-
-// ─── CTA FORM ────────────────────────────
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.cta-btn');
-      const input = e.target.querySelector('.cta-input');
-      btn.textContent = 'JOINED ✓';
-      const blueGlow = getComputedStyle(document.documentElement).getPropertyValue('--blue-glow').trim();
-      btn.style.background = getComputedStyle(document.documentElement).getPropertyValue('--blue').trim();
-      btn.style.color = '#fff';
-      btn.style.boxShadow = `0 0 40px ${blueGlow}`;
-      input.value = '';
-      input.placeholder = 'See you on the other side.';
-      input.disabled = true;
-      btn.disabled = true;
-    }
-
-    // ─── [EFFECT: TOC PILLAR ZONES + CITY DOTS] ──────────────
-    // Step 3: zone detection. Step 4: light up zone 1 dots on pillar 01.
-    let tocZone = 0; // 0=none, 1=pillar01, 2=pillar02, 3=pillar03
-
+    let tocZone = 0;
     const tocPillars = [
       document.getElementById('toc-pillar-1'),
       document.getElementById('toc-pillar-2'),
       document.getElementById('toc-pillar-3'),
     ];
-
-    function lightUpZone(zone) {
-      const dots = document.querySelectorAll(`.city-dot[data-zone="${zone}"]`);
-      dots.forEach((dot, i) => {
-        setTimeout(() => dot.classList.add('city-dot--lit'), i * 120);
-      });
-    }
-
     const tocObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const zone = parseInt(entry.target.id.replace('toc-pillar-', ''), 10);
-        if (zone > tocZone) {
-          tocZone = zone;
-          console.log('[ToC] zone:', tocZone);
-          lightUpZone(zone);
-        }
+        if (zone > tocZone) tocZone = zone;
       });
     }, { threshold: 0.4 });
-
     tocPillars.forEach(el => { if (el) tocObserver.observe(el); });
   </script>
 
