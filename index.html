@@ -84,15 +84,39 @@
       pointer-events: none;
       z-index: 0;
     }
+    /*
     .hero-glow {
       position: absolute;
-      bottom: -100px; left: -80px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(249,115,22,0.14) 0%, transparent 65%);
+      bottom: 0; left: 10vw;
+      transform: translateX(-50%);
+      transform-origin: bottom center;
+      width: 200vw; height: 420px;
+      background: radial-gradient(ellipse at center bottom,
+        rgba(249,115,22,0.18) 0%,
+        rgba(230,90,10,0.08) 45%,
+        transparent 70%);
       filter: blur(55px);
       pointer-events: none;
       z-index: 0;
+      will-change: transform, opacity;
     }
+    .hero-glow-core {
+      position: absolute;
+      bottom: 0; left: 10vw;
+      transform: translateX(-50%);
+      transform-origin: bottom center;
+      width: 130vw; height: 240px;
+      background: radial-gradient(ellipse at center bottom,
+        rgba(255,155,50,0.28) 0%,
+        rgba(249,115,22,0.12) 50%,
+        transparent 70%);
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform, opacity;
+      opacity: 0;
+    }
+    */
     .hero-headline {
       font-family: var(--font-display);
       font-weight: 800;
@@ -499,7 +523,8 @@
   <!-- HERO                                    -->
   <!-- ═══════════════════════════════════════ -->
   <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
+    <!-- <div class="hero-glow" aria-hidden="true"></div> -->
+    <!-- <div class="hero-glow-core" aria-hidden="true"></div> -->
     <div class="container">
       <h1 class="hero-headline">
         <span>Local</span><br>
@@ -542,12 +567,12 @@
       <div class="reg-frame">
         <div class="stats-grid reveal">
           <div class="stat">
-            <div class="stat-val">73%</div>
-            <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT<sup class="fn-sup"><a href="https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/" target="_blank" rel="noopener">1</a></sup></div>
+            <div class="stat-val">300M</div>
+            <div class="stat-label">JOBS EXPOSED TO<br>AI AUTOMATION<sup class="fn-sup"><a href="https://www.goldmansachs.com/insights/articles/how-will-ai-affect-the-us-labor-market" target="_blank" rel="noopener">1</a></sup></div>
           </div>
           <div class="stat">
-            <div class="stat-val">300M</div>
-            <div class="stat-label">JOBS EXPOSED TO<br>AI AUTOMATION<sup class="fn-sup"><a href="https://www.goldmansachs.com/insights/articles/how-will-ai-affect-the-us-labor-market" target="_blank" rel="noopener">2</a></sup></div>
+            <div class="stat-val">73%</div>
+            <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT<sup class="fn-sup"><a href="https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/" target="_blank" rel="noopener">2</a></sup></div>
           </div>
           <div class="stat">
             <div class="stat-val">$100M</div>
@@ -557,7 +582,7 @@
       </div>
       <p class="body-large reveal">
         Public opinion strongly favors AI oversight.
-        <strong>But it hasn't translated into political action.</strong>
+        <strong>But the industry has lobbied relentlessly against political reform.</strong>
       </p>
     </div>
   </section>
@@ -577,6 +602,7 @@
 
       <p class="body-large reveal">
         <strong>Change starts local.</strong>
+        We believe that organizers on the ground are what convinces our elected officials.
       </p>
 
       <div class="toc-steps reveal">
@@ -618,7 +644,7 @@
       </div>
 
       <p class="body-large reveal">
-        <strong>Reforms that would change the balance of power in this era.</strong>
+        <strong>Reforms that would shift the balance of power.</strong>
       </p>
 
       <div class="pillars">
@@ -672,11 +698,45 @@
 
   <script>
     const progressBar = document.querySelector('.progress-bar');
+
+    /*
+    const heroEl   = document.querySelector('.hero');
+    const heroGlow = document.querySelector('.hero-glow');
+    const heroCore = document.querySelector('.hero-glow-core');
+
+    function updateParallax() {
+      const t = Math.max(0, Math.min(1, window.scrollY / heroEl.offsetHeight));
+
+      // Base stays pinned at hero bottom (transform-origin: bottom center).
+      // Top edge climbs via scaleY; whole shape drifts sideways with scroll.
+      // Sweep from bottom-left to top-right: center starts at left edge, drifts to ~55vw
+      const drift = t * window.innerWidth * 0.55;
+      heroGlow.style.transform = `translateX(calc(-50% + ${drift}px)) scaleY(${1 + t * 3.2})`;
+      heroGlow.style.opacity   = t * 0.80;
+
+      heroCore.style.transform = `translateX(calc(-50% + ${drift * 0.8}px)) scaleY(${1 + t * 3.8})`;
+      heroCore.style.opacity   = t * 1.0;
+
+      // Background: cool blue-black (#0A0F1C) → warm amber-dark (#200C02)
+      heroEl.style.backgroundColor =
+        `rgb(${Math.round(10 + t * 22)},${Math.round(15 - t * 11)},${Math.round(28 - t * 26)})`;
+    }
+    */
+
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       progressBar.style.transform = `scaleX(${maxScroll > 0 ? scrolled / maxScroll : 0})`;
+
+      /*
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(() => { updateParallax(); rafPending = false; });
+      }
+      */
     }, { passive: true });
+
+    // updateParallax();
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
