@@ -54,12 +54,21 @@
       z-index: 100;
       font-family: var(--font-mono);
       font-size: 14.85px;
-      font-weight: 500;
+      font-weight: 575;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
       opacity: 0;
       animation: fadeIn 1s ease forwards 1s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .wordmark-logo {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-bottom: 1px;
     }
 
     /* ─── HERO ──────────────────────────── */
@@ -140,7 +149,7 @@
     .hero-body {
       font-size: 27px;
       line-height: 1.72;
-      color: rgba(255,255,255,0.62);
+      color: #ffffff;
       max-width: 750px;
       font-weight: 400;
       margin-bottom: 52px;
@@ -177,11 +186,11 @@
       align-items: center;
       gap: 14px;
       font-family: var(--font-mono);
-      font-size: 17.06px;
+      font-size: 18.42px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text);
-      font-weight: 500;
+      font-weight: 575;
       margin-bottom: 52px;
     }
     .section-label .mark  { color: var(--text-dim); letter-spacing: 0.05em; }
@@ -226,13 +235,13 @@
       color: var(--text);
       margin-bottom: 22px;
     }
-    .body-large strong { color: var(--text); font-weight: 600; }
+    .body-large strong { color: var(--text); font-weight: 638; }
 
     /* ─── PILLARS ───────────────────────── */
     .pillars {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 8px;
       margin-top: 52px;
     }
     .pillar {
@@ -308,7 +317,8 @@
       align-items: center;
       justify-content: center;
       font-family: var(--font-mono);
-      font-size: 18px;
+      font-size: 21.6px;
+      font-weight: 700;
       color: var(--accent);
       opacity: 0.32;
     }
@@ -359,6 +369,7 @@
       color: var(--accent);
       text-transform: uppercase;
       margin-bottom: 28px;
+      font-weight: 460;
     }
     .cta-headline {
       font-family: var(--font-display);
@@ -469,7 +480,7 @@
 
     /* ─── RESPONSIVE ────────────────────── */
     @media (max-width: 860px) {
-      .toc-steps { grid-template-columns: 1fr; gap: 2px; }
+      .toc-steps { grid-template-columns: 1fr; gap: 8px; }
       .toc-connector { display: none; }
       .toc-step:hover { transform: translateX(4px); }
     }
@@ -489,7 +500,7 @@
       .hero-headline { font-size: clamp(67px, 17.25vw, 92px); }
       .hero-body { font-size: 21px; line-height: 1.65; margin-bottom: 40px; }
       .section { padding: 60px 0; }
-      .section-label { font-size: 13px; letter-spacing: 0.14em; margin-bottom: 36px; }
+      .section-label { font-size: 16.15px; letter-spacing: 0.14em; margin-bottom: 36px; }
       .stats-grid { grid-template-columns: 1fr; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
       .stat:last-child { border-bottom: none; }
@@ -516,12 +527,20 @@
       .pillar-text { font-size: 14px; }
     }
 
+    @media (min-width: 769px) {
+      .cta-eyebrow { font-size: 14.5px; }
+    }
+
+
     /* ─── PALETTE OVERRIDES ─────────────── */
     :root {
       --accent:              #E56A14;
       --accent-glow:         rgba(229, 106, 20, 0.28);
       --pillar-hover-border: rgba(229, 106, 20, 0.30);
       --pillar-hover-bg:     rgba(229, 106, 20, 0.06);
+      --text-dim:            #141210;
+      --text-mid:            #141210;
+      --bg:                  #faf5ee;
     }
   </style>
 </head>
@@ -529,7 +548,7 @@
 
   <div class="progress-bar"></div>
   <div class="vignette"></div>
-  <div class="wordmark">SAPIENS FIRST</div>
+  <div class="wordmark"><img class="wordmark-logo" src="favicons/favicon-32x32.png" alt="">SAPIENS FIRST</div>
 
   <!-- ═══════════════════════════════════════ -->
   <!-- HERO                                    -->
@@ -543,11 +562,11 @@
         <span>Local</span><br>
         <span class="accent">organizing</span><br>
         <span>for a</span><br>
-        <span>brighter </span><br>
-        <span>future.</span>
+        <span>brighter</span><br>
+        <span>future</span>
       </h1>
       <p class="hero-body">
-        AI is transforming the world, but the law isn't keeping up.
+        AI is transforming the world. Americans should have a say in how.
       </p>
     </div>
   </section>
@@ -595,7 +614,7 @@
       </div>
       <p class="body-large reveal">
         Public opinion strongly favors AI oversight.
-        <strong>But the industry has lobbied relentlessly against political reform.</strong>
+        <strong>But the industry has lobbied fiercely against real change.</strong>
       </p>
     </div>
   </section>
@@ -614,8 +633,8 @@
       </div>
 
       <p class="body-large reveal">
-        <strong>Change starts local.</strong>
-        We believe that organizers on the ground are what convinces our elected officials.
+        <strong>We give ordinary citizens the tools to fight back.</strong>
+        
       </p>
 
       <div class="toc-steps reveal">
@@ -657,7 +676,7 @@
       </div>
 
       <p class="body-large reveal">
-        <strong>Reforms that would shift the balance of power.</strong>
+        <strong>Our reforms would shift the balance of power.</strong>
       </p>
 
       <div class="pillars">
@@ -704,7 +723,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">Sapiens First</div>
-        <div class="footer-meta">© 2026 SAPIENS FIRST &nbsp;·&nbsp; 501(C)(3) &nbsp;·&nbsp; contact@sapiensfirst.org</div>
+        <div class="footer-meta">© 2026 SAPIENS FIRST &nbsp;·&nbsp; 501(c)(3) &nbsp;·&nbsp; <a href="mailto:contact@sapiensfirst.org">contact@sapiensfirst.org</a></div>
       </div>
     </div>
   </footer>
@@ -788,7 +807,7 @@
         el.className = 'ember';
         const size = 1.5 + Math.random() * 2;        // 1.5–3.5 px
         const col  = colors[Math.floor(Math.random() * colors.length)];
-        const dur  = (2.0 + Math.random() * 3.2).toFixed(2);  // 2.0–5.2s cycle (20% faster)
+        const dur  = (2.2 + Math.random() * 3.52).toFixed(2); // 2.2–5.72s cycle
         const del  = (-Math.random() * 7).toFixed(2);         // stagger start
         const peak = (0.35 + Math.random() * 0.55).toFixed(2); // 0.35–0.9
         const glow = (size * 1.8).toFixed(1);
