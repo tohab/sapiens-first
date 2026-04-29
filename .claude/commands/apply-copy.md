@@ -98,6 +98,6 @@ The two sources of truth are `copy.md` (all website text) and `llm-readme.md` (s
 2. **Bold text** in copy.md (`**...**`) maps to `<strong>...</strong>` in HTML where bold appears mid-sentence. Standalone bold labels (like principle titles) are plain text in their HTML element.
 3. **If copy.md has content with no matching HTML location** — flag it and ask whether to add a new section.
 4. **If the HTML has a section with no matching copy.md entry** — flag it; do not delete content silently.
-5. **Never touch Action Network embed IDs** — `can-form-area-join-the-guardrail-project` and `can-fundraising-area-support-the-guardrail-project` are external service identifiers.
+5. **Never touch Action Network embed IDs** — `can-form-area-join-the-guardrail-project` and `can-fundraising-area-support-the-guardrail-project` are external service identifiers (legacy Guardrail Project IDs still in use by Action Network).
 6. **Nav and footer are global** — apply any changes to all four HTML files.
 7. After applying all changes, list every section updated and flag anything skipped.

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guardrail Project</title>
+  <title>Sapiens First</title>
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
@@ -89,7 +89,7 @@
       padding: 130px 0 80px;
       position: relative;
       overflow: hidden;
-      background-color: #0A0F1C;
+      background-color: #000000;
     }
     /*
     .hero-glow {
@@ -238,7 +238,7 @@
     .pillar {
       display: flex;
       align-items: flex-start;
-      gap: 26px;
+      gap: 14px;
       padding: 26px 28px;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -494,7 +494,10 @@
       .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
       .stat:last-child { border-bottom: none; }
       .body-large { font-size: 18px; }
-      .pillar { padding: 18px 20px; gap: 18px; }
+      .pillar { padding: 18px 20px; gap: 8px; }
+      .toc-step { padding: 18px 20px; }
+      .toc-step-title { font-size: 18px; }
+      .toc-step-text { font-size: 16px; }
       .pillar:hover { transform: none; }
       .pillar-title { font-size: 18px; }
       .pillar-text { font-size: 16px; }
@@ -526,7 +529,7 @@
 
   <div class="progress-bar"></div>
   <div class="vignette"></div>
-  <div class="wordmark">GUARDRAIL PROJECT</div>
+  <div class="wordmark">SAPIENS FIRST</div>
 
   <!-- ═══════════════════════════════════════ -->
   <!-- HERO                                    -->
@@ -700,8 +703,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-logo">Guardrail Project</div>
-        <div class="footer-meta">© 2026 GUARDRAIL PROJECT &nbsp;·&nbsp; 501(C)(3) &nbsp;·&nbsp; contact@guardrailproject.org</div>
+        <div class="footer-logo">Sapiens First</div>
+        <div class="footer-meta">© 2026 SAPIENS FIRST &nbsp;·&nbsp; 501(C)(3) &nbsp;·&nbsp; contact@sapiensfirst.org</div>
       </div>
     </div>
   </footer>
@@ -779,7 +782,7 @@
       const field = document.querySelector('.ember-field');
       if (!field) return;
       const colors  = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
-      const count   = 210;
+      const count   = 158;
       for (let i = 0; i < count; i++) {
         const el   = document.createElement('div');
         el.className = 'ember';
