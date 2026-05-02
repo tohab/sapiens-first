@@ -48,29 +48,6 @@
       z-index: 2;
     }
 
-    .wordmark {
-      position: fixed;
-      top: 32px; left: 40px;
-      z-index: 100;
-      font-family: var(--font-mono);
-      font-size: 14.85px;
-      font-weight: 575;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 1s;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .wordmark-logo {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      margin-bottom: 1px;
-    }
-
     /* ─── HERO ──────────────────────────── */
     /* ─── EMBER FIELD ──────────────────── */
     .ember-field {
@@ -95,7 +72,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 130px 0 80px;
+      padding: 80px 0;
       position: relative;
       overflow: hidden;
       background-color: #000000;
@@ -429,6 +406,8 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-toc-2 { transition-delay: 0.5s; }
+    .reveal-delay-toc-3 { transition-delay: 1.0s; }
 
     /* ─── SCROLL PROGRESS ──────────────────── */
     .progress-bar {
@@ -548,7 +527,7 @@
 
   <div class="progress-bar"></div>
   <div class="vignette"></div>
-  <div class="wordmark"><img class="wordmark-logo" src="favicons/favicon-32x32.png" alt="">SAPIENS FIRST</div>
+  <nav id="site-nav"></nav>
 
   <!-- ═══════════════════════════════════════ -->
   <!-- HERO                                    -->
@@ -566,7 +545,8 @@
         <span>future</span>
       </h1>
       <p class="hero-body">
-        AI is transforming the world. Americans should have a say in how.
+        AI is transforming the world.<br>
+        Americans should have a say in how.
       </p>
     </div>
   </section>
@@ -633,27 +613,27 @@
       </div>
 
       <p class="body-large reveal">
-        <strong>We give ordinary citizens the tools to fight back.</strong>
+        <strong>We give citizens the tools to fight back.</strong>
         
       </p>
 
-      <div class="toc-steps reveal">
+      <div class="toc-steps">
 
-        <div id="toc-pillar-1" class="toc-step">
+        <div id="toc-pillar-1" class="toc-step reveal">
           <div class="toc-step-title">Local Resolutions</div>
           <div class="toc-step-text">City council resolutions let us build coalitions, demonstrate public will, and create a replicable template for every city that follows.</div>
         </div>
 
         <div class="toc-connector" aria-hidden="true">→</div>
 
-        <div id="toc-pillar-2" class="toc-step">
+        <div id="toc-pillar-2" class="toc-step reveal reveal-delay-toc-2">
           <div class="toc-step-title">State Laws</div>
           <div class="toc-step-text">State campaigns turn our proposals into policy. We take the resolutions, coalitions, and momentum built by local campaigns to statehouses in red and blue states alike.</div>
         </div>
 
         <div class="toc-connector" aria-hidden="true">→</div>
 
-        <div id="toc-pillar-3" class="toc-step">
+        <div id="toc-pillar-3" class="toc-step reveal reveal-delay-toc-3">
           <div class="toc-step-title">Federal Policy</div>
           <div class="toc-step-text">A national network of active chapters makes AI accountability impossible to ignore. Lawmakers act when the issue is in every district.</div>
         </div>
@@ -827,5 +807,6 @@
     })();
   </script>
 
+  <script src="nav.js"></script>
 </body>
 </html>

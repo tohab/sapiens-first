@@ -58,41 +58,6 @@
       pointer-events: none;
     }
 
-    /* ─── NAV ───────────────────────────── */
-    .site-nav {
-      padding: 22px 0;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background-color: rgba(253, 249, 239, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 100;
-    }
-    .site-nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-wordmark {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .nav-wordmark:hover { color: var(--accent); }
-    .nav-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
     /* ─── DIVIDER ───────────────────────── */
     .divider {
       height: 1px;
@@ -565,7 +530,7 @@
       .section { padding: 72px 0; }
       .hero { padding: 72px 0 60px; }
       .resolution-body { padding: 32px 28px; }
-      .cta-section { padding: 80px 0 72px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 44px; }
     }
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
@@ -580,7 +545,112 @@
       .resolution-doc-title { font-size: 12px; }
       .resolution-header { padding: 14px 20px; }
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .petition-form-row { flex-direction: column; gap: 10px; }
+      #petition-form button[type="submit"] { align-self: stretch; text-align: center; }
+      .petition-card-body { padding: 20px 18px 18px; }
     }
+
+    /* ─── PETITION CARD ────────────────── */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .hero-right { padding-top: 2px; }
+    .petition-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      box-shadow: 0 1px 3px rgba(80,50,10,0.07), 0 6px 20px rgba(80,50,10,0.04);
+      overflow: hidden;
+    }
+    .petition-card-header {
+      background: color-mix(in srgb, var(--surface) 55%, transparent);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .petition-card-body { padding: 26px 28px 22px; }
+    .petition-intro {
+      font-size: 15.5px;
+      line-height: 1.72;
+      color: var(--text-dim);
+      margin-bottom: 22px;
+      font-weight: 400;
+    }
+    #petition-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .petition-form-row { display: flex; gap: 10px; }
+    .petition-form-row input { flex: 1; }
+    #petition-form input {
+      padding: 0.68rem 0.95rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 15px;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: rgba(253,249,239,0.7);
+      width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    #petition-form input::placeholder {
+      color: var(--text-dim);
+      opacity: 0.5;
+    }
+    #petition-form input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    #petition-form button[type="submit"] {
+      margin-top: 6px;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.72rem 1.4rem;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      align-self: flex-start;
+    }
+    #petition-form button[type="submit"]:hover {
+      background-color: var(--text);
+      transform: translateY(-1px);
+    }
+    #petition-form button[type="submit"]:active { transform: translateY(0); }
+    #form-status {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      min-height: 1.4em;
+      margin-top: 4px;
+    }
+    #form-status.success { color: var(--accent); }
+    .petition-thank-you {
+      display: none;
+      font-size: 15.5px;
+      line-height: 1.72;
+      color: var(--text);
+      padding: 18px 0 2px;
+    }
+    .petition-thank-you strong { font-weight: 600; color: var(--accent); }
 
     /* ─── PALETTE OVERRIDES ─────────────── */
     :root {
@@ -601,28 +671,56 @@
   <!-- ═══════════════════════════════════════ -->
   <!-- NAV                                     -->
   <!-- ═══════════════════════════════════════ -->
-  <nav class="site-nav">
-    <div class="container">
-      <a class="nav-wordmark" href="index.html">Sapiens First</a>
-      <span class="nav-label">Berkeley AI Commons Resolution</span>
-    </div>
-  </nav>
+  <nav id="site-nav" class="site-nav"></nav>
 
   <!-- ═══════════════════════════════════════ -->
   <!-- HERO                                    -->
   <!-- ═══════════════════════════════════════ -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">Berkeley, California &nbsp;·&nbsp; 2026</div>
-      <h1 class="hero-headline">
-        Berkeley<br>
-        AI <span class="accent">Commons</span><br>
-        Resolution
-      </h1>
-      <div class="hero-rule"></div>
-      <p class="hero-body">
-        Berkeley has led on free speech, nuclear disarmament, environmental protection, and civil rights. It's time to lead again.
-      </p>
+      <div class="hero-layout">
+
+        <div class="hero-left">
+          <div class="hero-eyebrow">Berkeley, California &nbsp;·&nbsp; 2026</div>
+          <h1 class="hero-headline">
+            Berkeley<br>
+            AI <span class="accent">Commons</span><br>
+            Resolution
+          </h1>
+          <div class="hero-rule"></div>
+          <p class="hero-body">
+            Berkeley has led on free speech, nuclear disarmament, environmental protection, and civil rights. It's time to lead again.
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="petition-card">
+            <div class="petition-card-header">
+              <span>Sign the Petition</span>
+              <span class="resolution-status-badge">Open</span>
+            </div>
+            <div class="petition-card-body">
+              <p class="petition-intro">
+                Add your name to call on the Berkeley City Council to pass the AI Commons Resolution and transmit it to the California State Legislature.
+              </p>
+              <form id="petition-form" novalidate>
+                <div class="petition-form-row">
+                  <input type="text" id="given-name" placeholder="First name" required autocomplete="given-name" />
+                  <input type="text" id="family-name" placeholder="Last name" required autocomplete="family-name" />
+                </div>
+                <input type="email" id="email" placeholder="Email address" required autocomplete="email" />
+                <input type="text" id="zip" placeholder="ZIP code" maxlength="5" inputmode="numeric" autocomplete="postal-code" />
+                <button type="submit">Add My Name →</button>
+                <p id="form-status" aria-live="polite"></p>
+              </form>
+              <div class="petition-thank-you" id="petition-thank-you">
+                <strong>Thank you for signing.</strong> Your support has been recorded. We'll be in touch as the campaign moves forward.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -767,22 +865,6 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- CTA                                     -->
-  <!-- ═══════════════════════════════════════ -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-eyebrow reveal">Get Involved</div>
-      <div class="cta-headline reveal">More<br>Coming<br>Soon.</div>
-      <p class="cta-sub reveal">
-        Want to support the Berkeley campaign?<br>
-        Email us at <a class="cta-email" href="mailto:contact@sapiensfirst.org">contact@sapiensfirst.org</a>.
-      </p>
-    </div>
-  </section>
-
   <!-- ═══════════════════════════════════════ -->
   <!-- FOOTER                                  -->
   <!-- ═══════════════════════════════════════ -->
@@ -814,6 +896,56 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // Replace with your Action Network petition helper URL once created
+    const AN_HELPER_URL = "YOUR_HELPER_URL_HERE";
+
+    document.getElementById("petition-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const status = document.getElementById("form-status");
+      const btn = this.querySelector("button[type='submit']");
+
+      const given = document.getElementById("given-name").value.trim();
+      const family = document.getElementById("family-name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const zip = document.getElementById("zip").value.trim();
+
+      if (!given || !family || !email) {
+        status.textContent = "Please fill in your name and email.";
+        return;
+      }
+
+      btn.disabled = true;
+      status.textContent = "Submitting…";
+
+      const payload = {
+        person: {
+          given_name: given,
+          family_name: family,
+          email_addresses: [{ address: email }],
+          ...(zip && { postal_addresses: [{ postal_code: zip }] })
+        }
+      };
+
+      try {
+        const res = await fetch(AN_HELPER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          document.getElementById("petition-form").style.display = "none";
+          document.getElementById("petition-thank-you").style.display = "block";
+          status.textContent = "";
+        } else {
+          status.textContent = "Something went wrong. Please try again.";
+          btn.disabled = false;
+        }
+      } catch (err) {
+        status.textContent = "Network error — please check your connection and try again.";
+        btn.disabled = false;
+      }
+    });
+
     function toggleResolution() {
       const full = document.getElementById('resolution-full');
       const fade = document.getElementById('resolution-fade');
@@ -833,6 +965,7 @@
       }
     }
   </script>
+  <script src="nav.js"></script>
 
 </body>
 </html>
