@@ -5,8 +5,8 @@
 const POSTS = [
   {
     slug: 'exponential-growth',
-    title: 'Three Models of Growth',
+    title: 'Lorem ipsum dolor sit amet',
     date: '2026-05-01',
-    excerpt: 'From 1:1 to linear to exponential — what each model means for how we organize.',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
 ];
