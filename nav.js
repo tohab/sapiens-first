@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { id: 'home',     label: 'Sapiens First', href: 'index.html',    visible: true  },
   { id: 'blog',     label: 'Blog',          href: 'blog.html',     visible: false  },
   { id: 'donate',   label: 'Donate',        href: 'donate.html',   visible: false  },
-  { id: 'about',    label: 'About',         href: 'about.html',    visible: false },
+  { id: 'about',    label: 'About',         href: 'about.html',    visible: true  },
   { id: 'berkeley', label: 'Berkeley',      href: 'berkeley.html', visible: false },
 ];
 
@@ -42,7 +42,7 @@ const NAV_ITEMS = [
     '.nav-links{display:flex;align-items:center;gap:28px;pointer-events:none;}' +
     '.nav-link{' +
       'font-family:var(--font-mono,monospace);' +
-      'font-size:12px;font-weight:500;' +
+      'font-size:14.85px;font-weight:500;' +
       'letter-spacing:0.16em;text-transform:uppercase;' +
       'color:var(--accent,#CD551D);' +
       'text-decoration:none;' +
@@ -59,7 +59,7 @@ const NAV_ITEMS = [
       '.site-nav{left:24px;right:24px;top:24px;}' +
       '.nav-wordmark{font-size:12px;}' +
       '.nav-links{gap:18px;}' +
-      '.nav-link{font-size:10.5px;}' +
+      '.nav-link{font-size:12px;}' +
     '}';
   document.head.appendChild(s);
 })();

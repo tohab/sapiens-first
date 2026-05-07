@@ -12,7 +12,7 @@
    ────────────────────────────────────────────────────────────── */
 :root {
   /* base */
-  --bg:             #FEFCF7; /* warm parchment beige */
+  --bg:             #ffffff; /* warm parchment beige */
   --surface:        rgba(20, 18, 14, 0.05);
   --border:         rgba(20, 18, 14, 0.12);
   --text:           #141210;
