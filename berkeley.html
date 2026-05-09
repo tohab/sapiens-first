@@ -522,34 +522,6 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
 
-    /* ─── RESPONSIVE ────────────────────── */
-    @media (max-width: 860px) {
-      .hero-headline { font-size: clamp(44px, 8.8vw, 104px); }
-    }
-    @media (max-width: 768px) {
-      .section { padding: 72px 0; }
-      .hero { padding: 72px 0 60px; }
-      .resolution-body { padding: 32px 28px; }
-      .hero-layout { grid-template-columns: 1fr; gap: 44px; }
-    }
-    @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .hero-headline { font-size: clamp(36px, 11vw, 52px); }
-      .hero-body { font-size: 18px; }
-      .body-large { font-size: 18px; }
-      .why-para { font-size: 17px; }
-      .ask-card { grid-template-columns: 1fr; gap: 6px; }
-      .ask-card:hover { transform: none; }
-      .ask-num { padding-top: 0; }
-      .resolution-body { padding: 24px 20px; }
-      .resolution-doc-title { font-size: 12px; }
-      .resolution-header { padding: 14px 20px; }
-      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-      .petition-form-row { flex-direction: column; gap: 10px; }
-      #petition-form button[type="submit"] { align-self: stretch; text-align: center; }
-      .petition-card-body { padding: 20px 18px 18px; }
-    }
-
     /* ─── PETITION CARD ────────────────── */
     .hero-layout {
       display: grid;
@@ -597,7 +569,7 @@
       padding: 0.68rem 0.95rem;
       border: 1px solid var(--border);
       border-radius: 5px;
-      font-size: 15px;
+      font-size: 16px;
       font-family: var(--font-body);
       color: var(--text);
       background: rgba(253,249,239,0.7);
@@ -612,6 +584,28 @@
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .petition-consent {
+      display: grid;
+      grid-template-columns: 15px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin-top: 2px;
+      width: 100%;
+    }
+    .petition-consent input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .petition-consent label {
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      cursor: pointer;
+      overflow-wrap: break-word;
     }
     #petition-form button[type="submit"] {
       margin-top: 6px;
@@ -662,6 +656,36 @@
       --text-mid:            #141210;
       --bg:                  #fff7ea;
     }
+
+    /* ─── RESPONSIVE ────────────────────── */
+    @media (max-width: 860px) {
+      .hero-headline { font-size: clamp(44px, 8.8vw, 104px); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .hero { padding: 80px 0 60px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 36px; }
+      .resolution-body { padding: 32px 28px; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .hero { padding: 72px 0 52px; }
+      .hero-headline { font-size: clamp(36px, 11vw, 52px); }
+      .hero-body { font-size: 17px; }
+      .body-large { font-size: 18px; }
+      .why-para { font-size: 17px; }
+      .ask-card { grid-template-columns: 1fr; gap: 6px; }
+      .ask-card:hover { transform: none; }
+      .ask-num { padding-top: 0; }
+      .resolution-body { padding: 24px 20px; }
+      .resolution-doc-title { font-size: 12px; }
+      .resolution-header { padding: 14px 20px; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .petition-form-row { flex-direction: column; gap: 8px; }
+      #petition-form button[type="submit"] { align-self: stretch; text-align: center; }
+      .petition-card-body { padding: 20px 18px 18px; }
+      .petition-intro { font-size: 14.5px; }
+    }
   </style>
 </head>
 <body>
@@ -683,7 +707,7 @@
         <div class="hero-left">
           <div class="hero-eyebrow">Berkeley, California &nbsp;·&nbsp; 2026</div>
           <h1 class="hero-headline">
-            The People's<br>
+            People's
             <span class="accent">AI</span><br>
             Resolution
           </h1>
@@ -710,6 +734,10 @@
                 </div>
                 <input type="email" id="email" placeholder="Email address" required autocomplete="email" />
                 <input type="text" id="zip" placeholder="ZIP code" maxlength="5" inputmode="numeric" autocomplete="postal-code" />
+                <div class="petition-consent">
+                  <input type="checkbox" id="consent" required checked />
+                  <label for="consent">I agree to receive updates and communications from Sapiens First. You can unsubscribe at any time.</label>
+                </div>
                 <button type="submit">Add My Name →</button>
                 <p id="form-status" aria-live="polite"></p>
               </form>
@@ -757,8 +785,8 @@
       </div>
       <p class="body-large reveal">This resolution advances a platform built on three principles — and calls on the <strong>California State Legislature</strong> to put them into law.</p>
       <ol class="ask-list reveal">
-        <li><strong>Common Prosperity.</strong> The gains of AI should belong to everyone, not just shareholders. The workers, communities, and public institutions whose data, labor, and publicly funded research made this technology possible deserve a stake in what it produces. We call on the Legislature to ensure that AI-driven growth strengthens the economic security of working Californians — rather than concentrating wealth among the few who own these systems. This approach has been advanced by <a class="res-link" href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">policymakers</a> and endorsed by <a class="res-link" href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">OpenAI's own economic blueprint</a>.</li>
-        <li><strong>Safety & Accountability.</strong> AI companies currently deploy systems that cause real harm — to workers, consumers, and children — with almost no legal consequences. We call for accountability standards that match the scale of that harm: enforceable rules, meaningful recourse for those injured, and an end to the era of consequence-free deployment. <a class="res-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">Legal scholars have argued</a> that AI should be held to the same accountability standards as pharmaceuticals, aviation, and nuclear energy.</li>
+        <li><strong>Economic Dignity.</strong> The gains of AI should belong to everyone, not just shareholders. The workers, communities, and public institutions whose data, labor, and publicly funded research made this technology possible deserve a stake in what it produces. We call on the Legislature to ensure that AI-driven growth strengthens the economic security of working Californians — rather than concentrating wealth among the few who own these systems. This approach has been advanced by <a class="res-link" href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">policymakers</a> and endorsed by <a class="res-link" href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">OpenAI's own economic blueprint</a>.</li>
+        <li><strong>Corporate Accountability.</strong> AI companies currently deploy systems that cause real harm — to workers, consumers, and children — with almost no legal consequences. We call for accountability standards that match the scale of that harm: enforceable rules, meaningful recourse for those injured, and an end to the era of consequence-free deployment. <a class="res-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">Legal scholars have argued</a> that AI should be held to the same accountability standards as pharmaceuticals, aviation, and nuclear energy.</li>
         <li><strong>Democratic Oversight.</strong> Decisions about how AI reshapes our economy and our lives are being made by a handful of companies without public input. We call for independent oversight with real authority — the power to audit AI systems, set standards, and ensure that the public has a genuine voice in the technology shaping their lives. Researchers have proposed <a class="res-link" href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">concrete governance frameworks</a> for such a body, including <a class="res-link" href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">models for meaningful public participation</a>.</li>
       </ol>
     </div>
@@ -851,7 +879,7 @@
       <div class="footer-inner">
         <div class="footer-logo">Sapiens First</div>
         <a class="footer-back" href="index.html">← sapiensfirst.org</a>
-        <div class="footer-meta">© 2026 Sapiens First &nbsp;·&nbsp; contact@sapiensfirst.org</div>
+        <div class="footer-meta">© 2026 Sapiens First &nbsp;·&nbsp; 501(c)(3) &nbsp;·&nbsp; EIN 41-4917212</div>
       </div>
     </div>
   </footer>
@@ -886,9 +914,14 @@
       const family = document.getElementById("family-name").value.trim();
       const email = document.getElementById("email").value.trim();
       const zip = document.getElementById("zip").value.trim();
+      const consent = document.getElementById("consent").checked;
 
       if (!given || !family || !email) {
         status.textContent = "Please fill in your name and email.";
+        return;
+      }
+      if (!consent) {
+        status.textContent = "Please agree to receive communications to continue.";
         return;
       }
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI Commons Resolution — Sapiens First</title>
+  <title>Utah State Campaign — Sapiens First</title>
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
@@ -81,7 +81,7 @@
       font-weight: 575;
       margin-bottom: 52px;
     }
-    .section-label .title { color: var(--accent); }
+    .section-label .title { color: #E56A14; }
 
     .body-large {
       font-size: 22px;
@@ -522,34 +522,6 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
 
-    /* ─── RESPONSIVE ────────────────────── */
-    @media (max-width: 860px) {
-      .hero-headline { font-size: clamp(44px, 8.8vw, 104px); }
-    }
-    @media (max-width: 768px) {
-      .section { padding: 72px 0; }
-      .hero { padding: 72px 0 60px; }
-      .resolution-body { padding: 32px 28px; }
-      .hero-layout { grid-template-columns: 1fr; gap: 44px; }
-    }
-    @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .hero-headline { font-size: clamp(36px, 11vw, 52px); }
-      .hero-body { font-size: 18px; }
-      .body-large { font-size: 18px; }
-      .why-para { font-size: 17px; }
-      .ask-card { grid-template-columns: 1fr; gap: 6px; }
-      .ask-card:hover { transform: none; }
-      .ask-num { padding-top: 0; }
-      .resolution-body { padding: 24px 20px; }
-      .resolution-doc-title { font-size: 12px; }
-      .resolution-header { padding: 14px 20px; }
-      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-      .petition-form-row { flex-direction: column; gap: 10px; }
-      #petition-form button[type="submit"] { align-self: stretch; text-align: center; }
-      .petition-card-body { padding: 20px 18px 18px; }
-    }
-
     /* ─── PETITION CARD ────────────────── */
     .hero-layout {
       display: grid;
@@ -597,7 +569,7 @@
       padding: 0.68rem 0.95rem;
       border: 1px solid var(--border);
       border-radius: 5px;
-      font-size: 15px;
+      font-size: 16px;
       font-family: var(--font-body);
       color: var(--text);
       background: rgba(253,248,245,0.7);
@@ -612,6 +584,28 @@
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .petition-consent {
+      display: grid;
+      grid-template-columns: 15px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin-top: 2px;
+      width: 100%;
+    }
+    .petition-consent input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .petition-consent label {
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--text-dim);
+      cursor: pointer;
+      overflow-wrap: break-word;
     }
     #petition-form button[type="submit"] {
       margin-top: 6px;
@@ -663,6 +657,32 @@
       --text-mid:            #141210;
       --bg:                  #faf3ef;
     }
+
+    /* ─── RESPONSIVE ────────────────────── */
+    @media (max-width: 860px) {
+      .hero-headline { font-size: clamp(44px, 8.8vw, 104px); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .hero { padding: 80px 0 60px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .hero { padding: 72px 0 52px; }
+      .hero-headline { font-size: clamp(36px, 11vw, 52px); }
+      .hero-body { font-size: 17px; }
+      .body-large { font-size: 18px; }
+      .why-para { font-size: 17px; }
+      .ask-card { grid-template-columns: 1fr; gap: 6px; }
+      .ask-card:hover { transform: none; }
+      .ask-num { padding-top: 0; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .petition-form-row { flex-direction: column; gap: 8px; }
+      #petition-form button[type="submit"] { align-self: stretch; text-align: center; }
+      .petition-card-body { padding: 20px 18px 18px; }
+      .petition-intro { font-size: 14.5px; }
+    }
   </style>
 </head>
 <body>
@@ -682,27 +702,27 @@
       <div class="hero-layout">
 
         <div class="hero-left">
-          <div class="hero-eyebrow">Salt Lake City, Utah &nbsp;·&nbsp; 2026</div>
+          <div class="hero-eyebrow">Utah &nbsp;·&nbsp; 2026</div>
           <h1 class="hero-headline">
-            The <span class="accent">AI</span><br>
-            Commons<br>
-            Resolution
+            Utah<br>
+            <span class="accent">State</span><br>
+            Campaign
           </h1>
           <div class="hero-rule"></div>
           <p class="hero-body">
-            Utah was first to regulate AI. The question now is whether the rules we write are equal to the moment.
+            We're working directly with Utah state legislators to create democratic oversight over AI systems.
           </p>
         </div>
 
         <div class="hero-right">
           <div class="petition-card">
             <div class="petition-card-header">
-              <span>Sign the Petition</span>
+              <span>Get Involved</span>
               <span class="resolution-status-badge">Open</span>
             </div>
             <div class="petition-card-body">
               <p class="petition-intro">
-                Add your name to call on the Salt Lake City Council to pass the AI Commons Resolution and transmit it to the Utah State Legislature.
+                To express interest in getting involved with our activities in Utah, fill out this form.
               </p>
               <form id="petition-form" novalidate>
                 <div class="petition-form-row">
@@ -711,11 +731,15 @@
                 </div>
                 <input type="email" id="email" placeholder="Email address" required autocomplete="email" />
                 <input type="text" id="zip" placeholder="ZIP code" maxlength="5" inputmode="numeric" autocomplete="postal-code" />
-                <button type="submit">Add My Name →</button>
+                <div class="petition-consent">
+                  <input type="checkbox" id="consent" required checked />
+                  <label for="consent">I agree to receive updates and communications from Sapiens First. You can unsubscribe at any time.</label>
+                </div>
+                <button type="submit">Express Interest →</button>
                 <p id="form-status" aria-live="polite"></p>
               </form>
               <div class="petition-thank-you" id="petition-thank-you">
-                <strong>Thank you for signing.</strong> Your support has been recorded. We'll be in touch as the campaign moves forward.
+                <strong>Thank you.</strong> We'll be in touch as the campaign moves forward.
               </div>
             </div>
           </div>
@@ -725,22 +749,21 @@
     </div>
   </section>
 
+  <!--
   <div class="divider"></div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- WHY SLC                                 -->
-  <!-- ═══════════════════════════════════════ -->
+  WHY SLC
   <section class="section">
     <div class="container">
       <div class="section-label reveal">
-        <span class="title">Why Salt Lake City</span>
+        <span class="title">Why Utah</span>
       </div>
       <div class="why-body">
         <p class="why-para reveal">
           <strong>Utah has spent three years leading the country on AI and tech accountability.</strong> The 2023 Social Media Regulation Act — first in the nation — required age verification and parental consent before minors could join social media platforms. The 2024 Utah Artificial Intelligence Policy Act was the first state law specifically regulating generative AI. In 2026, the Legislature passed the AI Transparency Act, which would require frontier AI companies to publish child safety plans and undergo third-party assessments. When the Trump administration called it "an unfixable bill" and pressed for a veto, Utah held its ground.
         </p>
         <p class="why-para reveal reveal-delay-1">
-          Salt Lake City also sits at the center of Silicon Slopes — over a thousand tech companies, sixty-seven thousand professionals, more than thirty billion dollars in annual economic output. Utah has as much at stake in how AI develops as anywhere in the country. The platform this resolution advances — common prosperity, Safety & accountability, democratic oversight — builds on what Utah has already shown it's willing to do.
+          Utah also sits at the center of Silicon Slopes — over a thousand tech companies, sixty-seven thousand professionals, more than thirty billion dollars in annual economic output. Utah has as much at stake in how AI develops as anywhere in the country. The platform we're advancing — economic dignity, corporate accountability, democratic oversight — builds on what Utah has already shown it's willing to do.
         </p>
       </div>
     </div>
@@ -748,62 +771,21 @@
 
   <div class="divider"></div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- THE ASKS                                -->
-  <!-- ═══════════════════════════════════════ -->
+  THE ASKS
   <section class="section">
     <div class="container">
       <div class="section-label reveal">
         <span class="title">Our Ask</span>
       </div>
-      <p class="body-large reveal">This resolution advances a platform built on three principles — and calls on the <strong>Utah State Legislature</strong> to put them into law.</p>
+      <p class="body-large reveal">Our campaign advances a platform built on three principles — and calls on the <strong>Utah State Legislature</strong> to put them into law.</p>
       <ol class="ask-list reveal">
-        <li><strong>Common Prosperity.</strong> The gains of AI should belong to everyone, not just shareholders. The workers, communities, and public institutions whose data, labor, and publicly funded research made this technology possible deserve a stake in what it produces. We call on the Legislature to ensure that AI-driven growth strengthens the economic security of working Utahns — rather than concentrating wealth among the few who own these systems. This approach has been advanced by <a class="res-link" href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">policymakers</a> and endorsed by <a class="res-link" href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">OpenAI's own economic blueprint</a>.</li>
-        <li><strong>Safety & Accountability.</strong> AI companies currently deploy systems that cause real harm — to workers, consumers, and children — with almost no legal consequences. We call for accountability standards that match the scale of that harm: enforceable rules, meaningful recourse for those injured, and an end to the era of consequence-free deployment. <a class="res-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">Legal scholars have argued</a> that AI should be held to the same accountability standards as pharmaceuticals, aviation, and nuclear energy.</li>
+        <li><strong>Economic Dignity.</strong> The gains of AI should belong to everyone, not just shareholders. The workers, communities, and public institutions whose data, labor, and publicly funded research made this technology possible deserve a stake in what it produces. We call on the Legislature to ensure that AI-driven growth strengthens the economic security of working Utahns — rather than concentrating wealth among the few who own these systems. This approach has been advanced by <a class="res-link" href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">policymakers</a> and endorsed by <a class="res-link" href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">OpenAI's own economic blueprint</a>.</li>
+        <li><strong>Corporate Accountability.</strong> AI companies currently deploy systems that cause real harm — to workers, consumers, and children — with almost no legal consequences. We call for accountability standards that match the scale of that harm: enforceable rules, meaningful recourse for those injured, and an end to the era of consequence-free deployment. <a class="res-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">Legal scholars have argued</a> that AI should be held to the same accountability standards as pharmaceuticals, aviation, and nuclear energy.</li>
         <li><strong>Democratic Oversight.</strong> Decisions about how AI reshapes our economy and our children's lives are being made by a handful of companies without public input. We call for independent oversight with real authority — the power to audit AI systems, set standards, and ensure that the public has a genuine voice in the technology shaping their lives. Researchers have proposed <a class="res-link" href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">concrete governance frameworks</a> for such a body, including <a class="res-link" href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">models for meaningful public participation</a>.</li>
       </ol>
     </div>
   </section>
-
-  <div class="divider"></div>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- THE RESOLUTION                          -->
-  <!-- ═══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-label reveal">
-        <span class="title">The Resolution</span>
-      </div>
-      <p class="body-large reveal">The model text below may be adopted by the Salt Lake City Council and transmitted to the Utah State Legislature.</p>
-
-      <div class="resolution-wrap reveal">
-        <div class="resolution-header">
-          <div class="resolution-header-left">
-            <span class="resolution-header-title">SLC Resolution</span>
-            <span class="resolution-header-file">legislation/slc.md</span>
-          </div>
-          <span class="resolution-status-badge">Draft · 2026</span>
-        </div>
-
-        <div class="resolution-body">
-          <p class="resolution-doc-title">
-            A Resolution of the City Council of Salt Lake City, Utah,<br>
-            Establishing the AI Commons Resolution and Urging<br>
-            the Utah State Legislature to Enact Comprehensive<br>
-            Artificial Intelligence Accountability Legislation
-          </p>
-
-          <div id="resolution-clauses"></div>
-        </div>
-
-        <button class="resolution-expand-btn" id="expand-btn" onclick="toggleResolution()">
-          <span id="expand-arrow">↓</span>
-          <span id="expand-label">Read Full Resolution</span>
-        </button>
-      </div>
-    </div>
-  </section>
+  -->
 
   <div class="divider"></div>
 
@@ -817,27 +799,27 @@
       </div>
       <div class="timeline reveal">
         <div class="timeline-item">
-          <div class="timeline-dot done">✓</div>
-          <div class="timeline-content">
-            <div class="timeline-step-title done">Resolution Drafted</div>
-            <div class="timeline-desc">Model resolution text completed and reviewed.</div>
-          </div>
-        </div>
-        <div class="timeline-item">
           <div class="timeline-dot active">→</div>
           <div class="timeline-content">
             <div class="timeline-step-title active">
-              Sponsor Outreach
+              Platform Development
               <span class="timeline-badge">In Progress</span>
             </div>
-            <div class="timeline-desc">Identifying and meeting with Salt Lake City Council members to secure co-sponsorship.</div>
+            <div class="timeline-desc">Developing policy platform grounded in existing Utah legislation and AI accountability research.</div>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot upcoming">○</div>
           <div class="timeline-content">
-            <div class="timeline-step-title upcoming">Council Vote</div>
-            <div class="timeline-desc">Resolution introduced and voted on by the full Salt Lake City Council.</div>
+            <div class="timeline-step-title upcoming">Legislator Outreach</div>
+            <div class="timeline-desc">Meeting with Utah state legislators to build support for AI accountability legislation.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot upcoming">○</div>
+          <div class="timeline-content">
+            <div class="timeline-step-title upcoming">Legislation Introduced</div>
+            <div class="timeline-desc">Sponsoring legislation in the Utah State Legislature advancing our three-part platform.</div>
           </div>
         </div>
       </div>
@@ -852,7 +834,7 @@
       <div class="footer-inner">
         <div class="footer-logo">Sapiens First</div>
         <a class="footer-back" href="index.html">← sapiensfirst.org</a>
-        <div class="footer-meta">© 2026 Sapiens First &nbsp;·&nbsp; contact@sapiensfirst.org</div>
+        <div class="footer-meta">© 2026 Sapiens First &nbsp;·&nbsp; 501(c)(3) &nbsp;·&nbsp; EIN 41-4917212</div>
       </div>
     </div>
   </footer>
@@ -875,114 +857,24 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Replace with your Action Network petition helper URL once created
-    const AN_HELPER_URL = "YOUR_HELPER_URL_HERE";
-
-    document.getElementById("petition-form").addEventListener("submit", async function (e) {
+    document.getElementById("petition-form").addEventListener("submit", function (e) {
       e.preventDefault();
       const status = document.getElementById("form-status");
-      const btn = this.querySelector("button[type='submit']");
-
       const given = document.getElementById("given-name").value.trim();
       const family = document.getElementById("family-name").value.trim();
       const email = document.getElementById("email").value.trim();
-      const zip = document.getElementById("zip").value.trim();
-
+      const consent = document.getElementById("consent").checked;
       if (!given || !family || !email) {
         status.textContent = "Please fill in your name and email.";
         return;
       }
-
-      btn.disabled = true;
-      status.textContent = "Submitting…";
-
-      const payload = {
-        person: {
-          given_name: given,
-          family_name: family,
-          email_addresses: [{ address: email }],
-          ...(zip && { postal_addresses: [{ postal_code: zip }] })
-        }
-      };
-
-      try {
-        const res = await fetch(AN_HELPER_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        if (res.ok) {
-          document.getElementById("petition-form").style.display = "none";
-          document.getElementById("petition-thank-you").style.display = "block";
-          status.textContent = "";
-        } else {
-          status.textContent = "Something went wrong. Please try again.";
-          btn.disabled = false;
-        }
-      } catch (err) {
-        status.textContent = "Network error — please check your connection and try again.";
-        btn.disabled = false;
+      if (!consent) {
+        status.textContent = "Please agree to receive communications to continue.";
+        return;
       }
+      document.getElementById("petition-form").style.display = "none";
+      document.getElementById("petition-thank-you").style.display = "block";
     });
-
-    function mdToHtml(s) {
-      return s
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g,
-          '<a class="res-link" href="$2" target="_blank" rel="noopener">$1</a>');
-    }
-
-    async function loadResolution(mdPath, previewCount) {
-      try {
-        const text = await (await fetch(mdPath)).text();
-        const clauses = text
-          .split(/\n\n+/)
-          .map(p => p.replace(/\n/g, ' ').trim())
-          .filter(p => /^(WHEREAS|RESOLVED),/.test(p));
-        const preview = clauses.slice(0, previewCount)
-          .map(p => {
-            const kw = p.startsWith('RESOLVED,') ? 'RESOLVED,' : 'WHEREAS,';
-            const cls = kw === 'RESOLVED,' ? ' resolved' : '';
-            return `<p class="resolution-clause${cls}"><span class="kw">${kw}</span>${mdToHtml(p.slice(kw.length))}</p>`;
-          }).join('');
-        const rest = clauses.slice(previewCount)
-          .map(p => {
-            const kw = p.startsWith('RESOLVED,') ? 'RESOLVED,' : 'WHEREAS,';
-            const cls = kw === 'RESOLVED,' ? ' resolved' : '';
-            return `<p class="resolution-clause${cls}"><span class="kw">${kw}</span>${mdToHtml(p.slice(kw.length))}</p>`;
-          }).join('');
-        document.getElementById('resolution-clauses').innerHTML =
-          preview +
-          '<div id="resolution-fade" class="resolution-preview-fade"></div>' +
-          '<div id="resolution-full" class="resolution-hidden">' + rest + '</div>';
-      } catch (e) {
-        document.getElementById('resolution-clauses').innerHTML =
-          '<p style="color:var(--text-dim);padding:16px 0">Unable to load resolution text.</p>';
-      }
-    }
-
-    loadResolution('legislation/slc.md', 3);
-
-    function toggleResolution() {
-      const full = document.getElementById('resolution-full');
-      if (!full) return;
-      const fade = document.getElementById('resolution-fade');
-      const arrow = document.getElementById('expand-arrow');
-      const label = document.getElementById('expand-label');
-      const isOpen = !full.classList.contains('resolution-hidden');
-      if (isOpen) {
-        full.classList.add('resolution-hidden');
-        fade.style.display = '';
-        arrow.textContent = '↓';
-        label.textContent = 'Read Full Resolution';
-      } else {
-        full.classList.remove('resolution-hidden');
-        fade.style.display = 'none';
-        arrow.textContent = '↑';
-        label.textContent = 'Collapse Resolution';
-      }
-    }
   </script>
   <script src="nav.js"></script>
 

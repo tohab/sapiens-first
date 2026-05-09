@@ -4,11 +4,13 @@
 // to the original fixed wordmark that was there before the nav existed.
 
 const NAV_ITEMS = [
-  { id: 'home',     label: 'Sapiens First', href: 'index.html',    visible: true  },
-  { id: 'blog',     label: 'Blog',          href: 'blog.html',     visible: false  },
-  { id: 'donate',   label: 'Donate',        href: 'donate.html',   visible: false  },
-  { id: 'about',    label: 'About',         href: 'about.html',    visible: true  },
-  { id: 'berkeley', label: 'Berkeley',      href: 'berkeley.html', visible: false },
+  { id: 'home',              label: 'Sapiens First', href: 'index.html',            visible: true  },
+  { id: 'blog',              label: 'Blog',          href: 'blog.html',             visible: false },
+  { id: 'donate',            label: 'Donate',        href: 'donate.html',           visible: false },
+  { id: 'about',             label: 'About',         href: 'about.html',            visible: true  },
+  { id: 'berkeley',          label: 'Berkeley',      href: 'berkeley.html',         visible: false },
+  { id: 'join',              label: 'Join',          href: 'join.html',             visible: false },
+  { id: 'start-a-campaign',  label: 'Start',         href: 'start-a-campaign.html', visible: false },
 ];
 
 // ─── STYLES (single source of truth) ─────────────────────────────────────���───
