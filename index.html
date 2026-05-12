@@ -4,25 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sapiens First</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-  <link rel="shortcut icon" href="favicons/favicon.ico">
-  <link rel="manifest" href="favicons/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="palette.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #faf5ee;
+      --surface: rgba(20,18,14,0.05);
+      --border: rgba(20,18,14,0.12);
+      --text: #141210;
+      --text-dim: rgba(20,18,14,0.68);
+      --accent: #CD551D;
+      --blue: #2C56B3;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg);
-      background-image:
-        repeating-linear-gradient(45deg, rgba(100,65,10,0.028) 0px, rgba(100,65,10,0.028) 1px, transparent 1px, transparent 9px),
-        repeating-linear-gradient(-45deg, rgba(100,65,10,0.02) 0px, rgba(100,65,10,0.02) 1px, transparent 1px, transparent 9px);
       color: var(--text);
       font-family: var(--font-body);
       overflow-x: hidden;
@@ -48,68 +52,56 @@
       z-index: 2;
     }
 
-    /* ─── HERO ──────────────────────────── */
-    /* ─── EMBER FIELD ──────────────────── */
-    .ember-field {
-      position: absolute;
-      inset: 0;
+    /* ─── NAV ───────────────────────────────── */
+    .site-nav {
+      position: fixed;
+      top: 32px; left: 40px; right: 40px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       pointer-events: none;
-      z-index: 1;
     }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex; align-items: center;
+      pointer-events: auto;
+      opacity: 0; animation: nav-fade 1s ease forwards 1s;
+    }
+    .nav-wordmark:hover { opacity: 0.72; }
+    .nav-logo { width: 24px; height: 24px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 14.85px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      pointer-events: auto;
+      opacity: 0; animation: nav-fade 1s ease forwards 1s;
+      transition: opacity .2s;
+    }
+    .nav-link:hover { opacity: 0.72; }
+    @keyframes nav-fade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ─── HERO ──────────────────────────────── */
+    .ember-field { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
     .ember {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0;
+      position: absolute; border-radius: 50%; opacity: 0;
       animation: ember-flicker var(--ed, 3s) ease-in-out var(--ey, 0s) infinite;
       box-shadow: 0 0 var(--eg, 3px) var(--ec, #f97316);
     }
     @keyframes ember-flicker {
-      0%, 100% { opacity: 0;               transform: scale(0.5); }
+      0%, 100% { opacity: 0; transform: scale(0.5); }
       45%, 55% { opacity: var(--ep, 0.75); transform: scale(1.3); }
     }
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: flex; flex-direction: column; justify-content: center;
       padding: 80px 0;
-      position: relative;
-      overflow: hidden;
-      background-color: #000000;
+      position: relative; overflow: hidden;
+      background-color: #000;
     }
-    /*
-    .hero-glow {
-      position: absolute;
-      bottom: 0; left: 10vw;
-      transform: translateX(-50%);
-      transform-origin: bottom center;
-      width: 200vw; height: 420px;
-      background: radial-gradient(ellipse at center bottom,
-        rgba(249,115,22,0.18) 0%,
-        rgba(230,90,10,0.08) 45%,
-        transparent 70%);
-      filter: blur(55px);
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform, opacity;
-    }
-    .hero-glow-core {
-      position: absolute;
-      bottom: 0; left: 10vw;
-      transform: translateX(-50%);
-      transform-origin: bottom center;
-      width: 130vw; height: 240px;
-      background: radial-gradient(ellipse at center bottom,
-        rgba(255,155,50,0.28) 0%,
-        rgba(249,115,22,0.12) 50%,
-        transparent 70%);
-      filter: blur(28px);
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform, opacity;
-      opacity: 0;
-    }
-    */
     .hero-headline {
       font-family: var(--font-display);
       font-weight: 800;
@@ -118,584 +110,359 @@
       letter-spacing: -0.04em;
       text-transform: uppercase;
       margin-bottom: 44px;
+      color: #fff;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.45s;
     }
-    .hero .hero-headline { color: #ffffff; }
-    .hero .hero-headline .accent { color: var(--accent); }
+    .hero-headline .accent { color: var(--accent); }
     .hero-body {
-      font-size: 27px;
-      line-height: 1.72;
-      color: #ffffff;
-      max-width: 750px;
-      font-weight: 400;
+      font-size: 33px; line-height: 1.72;
+      color: rgba(255,255,255,0.82);
+      max-width: 700px; font-weight: 400;
       margin-bottom: 52px;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.65s;
     }
-
-    /* ─── DIVIDER ───────────────────────── */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      position: relative;
-      z-index: 2;
+    #hero-signup {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s;
     }
 
-    /* ─── SECTIONS ──────────────────────── */
+    /* ─── DIVIDER ───────────────────────────── */
+    .divider { height: 1px; background: var(--border); position: relative; z-index: 2; }
+
+    /* ─── SECTIONS ──────────────────────────── */
     .section { padding: 110px 0; position: relative; }
 
-    /* ─── EXP CURVE (remove both blocks to disable) ── */
-    /*
-    .challenge-section { overflow: hidden; }
-    .exp-curve-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    */
-    /* ────────────────────────────────────────────── */
-
     .section-label {
-      display: flex;
-      align-items: center;
-      gap: 14px;
       font-family: var(--font-mono);
-      font-size: 18.42px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text);
-      font-weight: 575;
+      font-size: 18.42px; letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 575;
       margin-bottom: 52px;
     }
-    .section-label .mark  { color: var(--text-dim); letter-spacing: 0.05em; }
     .section-label .title { color: var(--accent); }
 
-    /* ─── STATS ─────────────────────────── */
+    /* ─── STATS ─────────────────────────────── */
     .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(80,50,10,0.07), 0 4px 14px rgba(80,50,10,0.04);
+      border-radius: 10px; overflow: hidden;
+      margin-bottom: 40px;
     }
-    .stat {
-      padding: 32px 26px 28px;
-      border-right: 1px solid var(--border);
-    }
+    .stat { padding: 32px 26px 28px; border-right: 1px solid var(--border); }
     .stat:last-child { border-right: none; }
     .stat-val {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(44px, 5vw, 58px);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--accent);
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(44px, 5vw, 58px); line-height: 1;
+      letter-spacing: -0.02em; color: var(--accent);
       margin-bottom: 10px;
     }
     .stat-label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      color: var(--text);
-      line-height: 1.6;
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.1em; line-height: 1.6;
+      text-transform: uppercase;
     }
 
-    /* ─── BODY TEXT ─────────────────────── */
+    /* ─── BODY TEXT ─────────────────────────── */
     .body-large {
-      font-size: 22px;
-      line-height: 1.72;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 22px;
+      font-size: 28px; line-height: 1.72;
+      font-weight: 400; color: var(--text); margin-bottom: 22px;
     }
-    .body-large strong { color: var(--text); font-weight: 638; }
+    .body-large strong { font-weight: 638; }
 
-    /* ─── PILLARS ───────────────────────── */
+    /* ─── DEMAND ROWS ───────────────────────────── */
+    .demands { display: flex; flex-direction: column; gap: 0; margin-top: 52px; }
+    .demand {
+      padding: 24px 0 24px 28px;
+      border-left: 2px solid var(--accent);
+      margin-bottom: 20px;
+    }
+    .demand-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 42px; letter-spacing: -0.01em;
+      text-transform: uppercase; line-height: 1;
+      margin-bottom: 8px; color: var(--text);
+    }
+    .demand-text {
+      font-size: 21px; line-height: 1.65;
+      color: var(--text); font-weight: 400;
+    }
+
+    /* ─── STRATEGY CARDS (vertical grid) ───────── */
     .pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 52px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 8px; margin-top: 52px;
     }
     .pillar {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
+      display: flex; flex-direction: column;
       padding: 26px 28px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      border: 1px solid var(--border); border-radius: 8px;
       background: color-mix(in srgb, var(--surface) 42%, transparent);
-      box-shadow: 0 1px 2px rgba(80,50,10,0.06), 0 3px 10px rgba(80,50,10,0.04);
-      transition: transform 0.25s ease;
-      cursor: default;
+      transition: transform 0.25s ease; cursor: default;
     }
-    .pillar:hover { transform: translateX(4px); }
-    .pillar-num {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      padding-top: 4px;
-      flex-shrink: 0;
-      width: 24px;
-    }
+    .pillar:hover { transform: translateY(-3px); }
     .pillar-title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 20px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 7px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 20px; letter-spacing: 0.04em;
+      text-transform: uppercase; margin-bottom: 10px;
     }
-    .pillar-text {
-      font-size: 18px;
-      line-height: 1.75;
-      color: var(--text-dim);
-      font-weight: 500;
+    .pillar-text { font-size: 21px; line-height: 1.75; color: var(--text); font-weight: 500; }
+    .strategy-section { overflow: hidden; }
+    .us-map-bg {
+      position: absolute;
+      top: 50%; left: 80%;
+      transform: translate(-50%, -50%);
+      width: 60%; max-width: none; height: auto;
+      pointer-events: none; z-index: 0;
+      opacity: 0.028;
+      filter: invert(1) sepia(1) saturate(0.6) hue-rotate(190deg) brightness(1.4);
     }
+    .learn-more {
+      display: inline-block;
+      margin-top: 28px;
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+      opacity: 0.75;
+      transition: opacity .2s;
+    }
+    .learn-more:hover { opacity: 1; }
 
-    /* ─── THEORY OF CHANGE: horizontal steps ─── */
-    .toc-steps {
+    /* ─── FOUR-STEP CYCLE ───────────────────── */
+    .cycle-steps {
       display: grid;
-      grid-template-columns: 1fr 52px 1fr 52px 1fr;
+      grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr;
       align-items: stretch;
-      margin-top: 52px;
+      margin-top: 52px; gap: 0;
     }
-    .toc-step {
-      padding: 28px 26px 32px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+    .cycle-step {
+      padding: 28px 22px 32px;
+      border: 1px solid var(--border); border-radius: 8px;
       background: color-mix(in srgb, var(--surface) 42%, transparent);
-      box-shadow: 0 1px 2px rgba(80,50,10,0.06), 0 3px 10px rgba(80,50,10,0.04);
-      transition: transform 0.25s ease;
-      cursor: default;
+      transition: transform 0.25s ease; cursor: default;
     }
-    .toc-step:hover { transform: translateY(-3px); }
-    .toc-step-title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 22px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    .cycle-step:hover { transform: translateY(-3px); }
+    .cycle-step-num {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.12em; color: var(--accent);
+      text-transform: uppercase; margin-bottom: 8px;
     }
-    .toc-step-text {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--text-dim);
-      font-weight: 500;
+    .cycle-step-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 22px; letter-spacing: 0.04em;
+      text-transform: uppercase; margin-bottom: 10px;
     }
-    .toc-connector {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 21.6px;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.32;
+    .cycle-step-text { font-size: 15px; line-height: 1.75; color: var(--text-dim); font-weight: 500; }
+    .cycle-connector {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 20px; font-weight: 700;
+      color: var(--accent); opacity: 0.32;
     }
 
-    /* ─── FOOTNOTES ─────────────────────── */
-    .fn-sup {
-      font-family: var(--font-mono);
-      font-size: 7.5px;
-      letter-spacing: 0;
-      vertical-align: super;
-      line-height: 0;
-      margin-left: 3px;
-    }
-    .fn-sup a { color: var(--accent); text-decoration: none; opacity: 0.75; transition: opacity 0.2s ease; }
-    .fn-sup a::before { content: '['; }
-    .fn-sup a::after  { content: ']'; }
-    .fn-sup a:hover { opacity: 1; }
-
-    /* ─── CTA SECTION ───────────────────── */
-    .cta-section {
-      padding: 140px 0 120px;
-      text-align: center;
-      position: relative;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 1px; height: 80px;
-      background: linear-gradient(to bottom, var(--border), transparent);
-    }
-    .cta-section::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(26,58,102,0.17) 1.5px, transparent 1.5px);
-      background-size: 18px 18px;
-      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
-      mask-image: radial-gradient(ellipse 65% 55% at 50% 100%, black 0%, transparent 72%);
-      pointer-events: none;
-      z-index: 0;
-    }
+    /* ─── CTA SECTION ───────────────────────── */
+    .cta-section { padding: 140px 0 120px; text-align: center; }
     .cta-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 12.6px;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      font-weight: 460;
+      font-family: var(--font-mono); font-size: 12.6px;
+      letter-spacing: 0.18em; color: var(--accent);
+      text-transform: uppercase; margin-bottom: 28px; font-weight: 460;
     }
     .cta-headline {
-      font-family: var(--font-display);
-      font-weight: 800;
+      font-family: var(--font-display); font-weight: 800;
       font-size: clamp(56px, 9vw, 100px);
-      line-height: 0.9;
-      text-transform: uppercase;
-      letter-spacing: -0.025em;
-      margin-bottom: 28px;
+      line-height: 0.9; text-transform: uppercase;
+      letter-spacing: -0.025em; margin-bottom: 32px;
     }
     .cta-sub {
-      font-size: 18px;
-      color: var(--text-dim);
-      max-width: 380px;
-      margin: 0 auto;
+      font-size: 18px; color: var(--text-dim);
+      max-width: 380px; margin: 0 auto 40px;
       line-height: 1.75;
-      font-weight: 400;
     }
+    #cta-signup { display: inline-block; }
 
-    /* ─── FOOTER ────────────────────────── */
-    .footer {
-      padding: 36px 0;
-      border-top: 1px solid var(--border);
-      position: relative;
-      z-index: 2;
-    }
+    /* ─── FOOTER ────────────────────────────── */
+    .footer { padding: 36px 0; border-top: 1px solid var(--border); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; }
     .footer-logo {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
     }
-    .footer-meta {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      color: var(--text-dim);
-      letter-spacing: 0.08em;
-    }
+    .footer-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.08em; }
 
-    /* ─── ANIMATIONS ────────────────────── */
+    /* ─── PROGRESS + ANIMATIONS ─────────────── */
+    .progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 100%;
+      background: var(--accent);
+      transform-origin: left center; transform: scaleX(0);
+      z-index: 10001; pointer-events: none;
+    }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 0; transform: translateY(20px);
       transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
                   transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-toc-2 { transition-delay: 0.25s; }
-    .reveal-delay-toc-3 { transition-delay: 0.5s; }
+    .reveal-d1 { transition-delay: 0.15s; }
+    .reveal-d2 { transition-delay: 0.30s; }
+    .reveal-d3 { transition-delay: 0.45s; }
 
-    /* ─── SCROLL PROGRESS ──────────────────── */
-    .progress-bar {
-      position: fixed;
-      top: 0; left: 0;
-      height: 2px; width: 100%;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--blue) 100%);
-      transform-origin: left center;
-      transform: scaleX(0);
-      z-index: 10001;
-      pointer-events: none;
+    /* ─── RESPONSIVE ────────────────────────── */
+    @media (max-width: 900px) {
+      .cycle-steps { grid-template-columns: 1fr; gap: 8px; }
+      .cycle-connector { display: none; }
+      .pillars { grid-template-columns: 1fr; }
+      .pillar:hover { transform: translateY(0); }
     }
-
-    /* ─── VIGNETTE ─────────────────────── */
-    .vignette {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 42%, rgba(26,58,102,0.07) 100%);
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    /* ─── US MAP ────────────────────────── */
-    .toc-section { overflow: hidden; }
-    .us-map-bg {
-      position: absolute;
-      top: 50%; left: 82%;
-      transform: translate(-50%, -50%);
-      width: 57.2%;
-      max-width: none; height: auto;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.028;
-      filter: invert(1) sepia(1) saturate(0.6) hue-rotate(190deg) brightness(1.4);
-    }
-
-    /* ─── REGISTER MARKS ────────────────── */
-    .reg-frame { position: relative; margin-bottom: 52px; }
-    .stats-grid { margin-bottom: 0; }
-    .reg-frame::before, .reg-frame::after {
-      content: '';
-      position: absolute;
-      width: 10px; height: 10px;
-      opacity: 0.42;
-      pointer-events: none;
-    }
-    .reg-frame::before { top: -6px; left: -6px; border-top: 1px solid var(--accent); border-left: 1px solid var(--accent); }
-    .reg-frame::after  { bottom: -6px; right: -6px; border-bottom: 1px solid var(--accent); border-right: 1px solid var(--accent); }
-
-    /* ─── RESPONSIVE ────────────────────── */
-    @media (max-width: 860px) {
-      .toc-steps { grid-template-columns: 1fr; gap: 8px; }
-      .toc-connector { display: none; }
-      .toc-step:hover { transform: translateX(4px); }
-    }
-
     @media (max-width: 768px) {
       .hero { padding: 100px 0 60px; }
-      .hero-body { font-size: 23px; }
+      .hero-body { font-size: 22px; }
       .section { padding: 80px 0; }
-      .cta-section { padding: 100px 0 80px; }
-      .body-large { font-size: 20px; }
     }
-
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
-      .wordmark { display: none; }
-      .hero { padding: 96px 0 52px; }
+      .site-nav { left: 24px; right: 24px; top: 24px; }
+      .nav-wordmark, .nav-link { font-size: 12px; }
+      .nav-links { gap: 18px; }
       .hero-headline { font-size: clamp(67px, 17.25vw, 92px); }
-      .hero-body { font-size: 21px; line-height: 1.65; margin-bottom: 40px; }
-      .section { padding: 60px 0; }
-      .section-label { font-size: 16.15px; letter-spacing: 0.14em; margin-bottom: 36px; }
+      .hero-body { font-size: 20px; }
       .stats-grid { grid-template-columns: 1fr; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
       .stat:last-child { border-bottom: none; }
-      .body-large { font-size: 18px; }
-      .pillar { padding: 18px 20px; gap: 8px; }
-      .toc-step { padding: 18px 20px; }
-      .toc-step-title { font-size: 18px; }
-      .toc-step-text { font-size: 16px; }
-      .pillar:hover { transform: none; }
-      .pillar-title { font-size: 18px; }
-      .pillar-text { font-size: 16px; }
-      .us-map-bg { display: none; }
-      .cta-section { padding: 80px 0 64px; }
-      .cta-headline { font-size: clamp(44px, 12vw, 56px); }
-      .cta-sub { font-size: 16px; }
+      .body-large { font-size: 19px; }
       .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
-      .footer-meta { font-size: 9px; line-height: 1.7; overflow-wrap: anywhere; }
-    }
-
-    @media (max-width: 375px) {
-      .container { padding: 0 16px; }
-      .hero-body { font-size: 18px; }
-      .body-large { font-size: 16px; }
-      .pillar-text { font-size: 14px; }
-    }
-
-    @media (min-width: 769px) {
-      .cta-eyebrow { font-size: 14.5px; }
-    }
-
-
-    /* ─── PALETTE OVERRIDES ─────────────── */
-    :root {
-      --accent:              #E56A14;
-      --accent-glow:         rgba(229, 106, 20, 0.28);
-      --pillar-hover-border: rgba(229, 106, 20, 0.30);
-      --pillar-hover-bg:     rgba(229, 106, 20, 0.06);
-      --text-dim:            #141210;
-      --text-mid:            #141210;
-      --bg:                  #faf5ee;
     }
   </style>
 </head>
 <body>
 
   <div class="progress-bar"></div>
-  <div class="vignette"></div>
-  <nav id="site-nav"></nav>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- HERO                                    -->
-  <!-- ═══════════════════════════════════════ -->
+  <nav class="site-nav">
+    <a class="nav-wordmark" href="/">
+      <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/act">Act</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
-    <!-- <div class="hero-glow" aria-hidden="true"></div> -->
-    <!-- <div class="hero-glow-core" aria-hidden="true"></div> -->
     <div class="ember-field" aria-hidden="true"></div>
     <div class="container">
       <h1 class="hero-headline">
-        <span>Local</span><br>
-        <span class="accent">organizing</span><br>
-        <span>for a</span><br>
-        <span>brighter</span><br>
-        <span>future</span>
+        <span>We are amdist</span><br>
+        <span>an <span class="accent"> ai crisis</span></span><br>
       </h1>
       <p class="hero-body">
-        AI is remaking our country. <br>
+        AI is threatening our lives and our livelihoods. <br>
         It's time the people had a say.
       </p>
+      <div id="hero-signup"></div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- THE CHALLENGE                           -->
-  <!-- ═══════════════════════════════════════ -->
-  <section class="section challenge-section">
-    <!-- ─ EXP CURVE (remove both blocks to disable) ─ -->
-    <!--
-    <svg class="exp-curve-bg" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-hidden="true">
-      <polyline
-        points="250,355 300,354 350,352 400,347 450,338 500,326 550,309 600,287 650,260 700,227 750,189 800,144 850,93 900,35 920,10"
-        fill="none"
-        stroke="var(--accent)"
-        stroke-width="1.5"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        opacity="0.07"
-      />
-    </svg>
-    -->
-    <!-- ──────────────────────────────────────────── -->
+  <!-- ═══════════ THE CRISIS ═══════════ -->
+  <section class="section">
     <div class="container">
-      <div class="section-label reveal">
-        <span class="title">THE CHALLENGE</span>
-      </div>
-      <div class="reg-frame">
-        <div class="stats-grid reveal">
-          <div class="stat">
-            <div class="stat-val">300M</div>
-            <div class="stat-label">JOBS EXPOSED TO<br>AI AUTOMATION<sup class="fn-sup"><a href="https://www.goldmansachs.com/insights/articles/how-will-ai-affect-the-us-labor-market" target="_blank" rel="noopener">1</a></sup></div>
-          </div>
-          <div class="stat">
-            <div class="stat-val">73%</div>
-            <div class="stat-label">OF AMERICANS FAVOR<br>STRONGER AI OVERSIGHT<sup class="fn-sup"><a href="https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/" target="_blank" rel="noopener">2</a></sup></div>
-          </div>
-          <div class="stat">
-            <div class="stat-val">$100M</div>
-            <div class="stat-label">RAISED BY INDUSTRY<br>LOBBYISTS IN 2026<sup class="fn-sup"><a href="https://qz.com/ai-2026-election-policy-regulation" target="_blank" rel="noopener">3</a></sup></div>
-          </div>
+      <div class="section-label reveal"><span class="title">The Crisis</span></div>
+      <div class="stats-grid reveal">
+        <div class="stat">
+          <div class="stat-val">300M</div>
+          <div class="stat-label">Jobs exposed to<br>AI automation</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">73%</div>
+          <div class="stat-label">Of Americans favor<br>stronger AI oversight</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$100M</div>
+          <div class="stat-label">Raised by industry<br>lobbyists in 2026</div>
         </div>
       </div>
       <p class="body-large reveal">
-        Public opinion strongly favors AI oversight.
-        <strong>But the industry has lobbied fiercely against real change.</strong>
+        Superhuman intelligence may take our jobs, destroy our democracy, or kill us all. 
+      </p>
+      <p class="body-large reveal">
+        All the while, our politicians have done <strong>nothing.</strong>        
+      </p>
+      <p class="body-large reveal">
+        <strong>It is time for action.</strong>
       </p>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- THEORY OF CHANGE                        -->
-  <!-- ═══════════════════════════════════════ -->
-  <section class="section toc-section">
+  <!-- ═══════════ OUR DEMANDS ═══════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label reveal"><span class="title"> Demands</span></div>
+      <p class="body-large reveal">
+        Sapiens First demands that all world governments:
+      </p>
+      <div class="demands">
+        <div class="demand reveal">
+          <div class="demand-title">Declare</div>
+          <div class="demand-text">The AI crisis as a threat to our lives and livelihood.</div>
+        </div>
+        <div class="demand reveal reveal-d1">
+          <div class="demand-title">Democratize</div>
+          <div class="demand-text">Power over intelligence through citizen assemblies.</div>
+        </div>
+        <div class="demand reveal reveal-d2">
+          <div class="demand-title">Govern</div>
+          <div class="demand-text">Superintelligence like other existential threats.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════ MOVEMENT PRINCIPLES ═══════════ -->
+  <section class="section strategy-section">
     <img class="us-map-bg" src="assets/us.svg" aria-hidden="true" alt="">
     <div class="container">
-
-      <div class="section-label reveal">
-        <span class="title">THEORY OF CHANGE</span>
-      </div>
-
+      <div class="section-label reveal"><span class="title"> Strategy</span></div>
       <p class="body-large reveal">
-        <strong>We give citizens the tools to fight back.</strong>
-        
+        <strong>We are building a movement of leaders.</strong> Our strategy aims to create exponential growth before the arrival of superintelligence.
       </p>
-
-      <div class="toc-steps">
-
-        <div id="toc-pillar-1" class="toc-step reveal">
-          <div class="toc-step-title">Local Resolutions</div>
-          <div class="toc-step-text">City council resolutions let us build coalitions, demonstrate public will, and create a replicable template for every city that follows.</div>
-        </div>
-
-        <div class="toc-connector" aria-hidden="true">→</div>
-
-        <div id="toc-pillar-2" class="toc-step reveal reveal-delay-toc-2">
-          <div class="toc-step-title">State Laws</div>
-          <div class="toc-step-text">State campaigns turn our proposals into policy. We take the resolutions, coalitions, and momentum built by local campaigns to statehouses in red and blue states alike.</div>
-        </div>
-
-        <div class="toc-connector" aria-hidden="true">→</div>
-
-        <div id="toc-pillar-3" class="toc-step reveal reveal-delay-toc-3">
-          <div class="toc-step-title">Federal Policy</div>
-          <div class="toc-step-text">A national network of active chapters makes AI accountability impossible to ignore. Lawmakers act when the issue is in every district.</div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- PLATFORM                                -->
-  <!-- ═══════════════════════════════════════ -->
-  <section class="section" id="platform">
-    <div class="container">
-
-      <div class="section-label reveal">
-        <span class="title">PLATFORM</span>
-      </div>
-
-      <p class="body-large reveal">
-        <strong>Our reforms would shift the balance of power.</strong>
-      </p>
-
       <div class="pillars">
         <div class="pillar reveal">
-          <div class="pillar-num">01</div>
-          <div>
-            <div class="pillar-title">Economic Dignity</div>
-            <div class="pillar-text">If AI displaces workers at scale, the gains belong to all Americans — not just shareholders. We advocate for a public dividend tied to AI-driven productivity growth.<sup class="fn-sup"><a href="https://www.alexbores.nyc/files/Bores-Dividend_Policy.pdf" target="_blank" rel="noopener">4</a></sup><sup class="fn-sup"><a href="https://openai.com/index/industrial-policy-for-the-intelligence-age/" target="_blank" rel="noopener">5</a></sup></div>
-          </div>
+          <div class="pillar-title">Empowerment</div>
+          <div class="pillar-text">Every conversation builds leaders who recruit others and grow the fight.</div>
         </div>
-        <div class="pillar reveal reveal-delay-1">
-          <div class="pillar-num">02</div>
-          <div>
-            <div class="pillar-title">Democratic Oversight</div>
-            <div class="pillar-text">No corporation and no government should control AI alone. We advocate for an independent oversight agency with audit powers, treaty authority, and mandatory civil society input.<sup class="fn-sup"><a href="https://arxiv.org/html/2503.18956v1" target="_blank" rel="noopener">7</a></sup><sup class="fn-sup"><a href="https://arxiv.org/abs/2310.09217" target="_blank" rel="noopener">8</a></sup></div>
-          </div>
+        <div class="pillar reveal reveal-d1">
+          <div class="pillar-title">Distribution</div>
+          <div class="pillar-text">Our model is reusable — our brand, our tactics, our values can be used anywhere.</div>
         </div>
-        <div class="pillar reveal reveal-delay-2">
-          <div class="pillar-num">03</div>
-          <div>
-            <div class="pillar-title">Corporate Accountability</div>
-            <div class="pillar-text">Right now, AI developers bear almost no legal responsibility for the harm their systems cause. We demand strict liability for frontier AI — the same standard we hold every other powerful industry to.<sup class="fn-sup"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4694006" target="_blank" rel="noopener">6</a></sup></div>
-          </div>
+        <div class="pillar reveal reveal-d2">
+          <div class="pillar-title">Direct Action</div>
+          <div class="pillar-text">We confront the people in power and force them to take a stand.</div>
         </div>
       </div>
-
+      <a href="https://sapiensfirst.org/toc" target="_blank" rel="noopener" class="learn-more reveal">Learn more →</a>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ═══════════════════════════════════════ -->
-  <!-- STAY TUNED                              -->
-  <!-- ═══════════════════════════════════════ -->
-  <section class="cta-section" id="connect">
+  <!-- ═══════════ CTA ═══════════ -->
+  <section class="cta-section">
     <div class="container">
-      <div class="cta-eyebrow reveal" style="color: var(--blue);">We're building.</div>
-      <div class="cta-headline reveal">Stay<br>tuned.</div>
-      <p class="cta-sub reveal">Coming to a city near you.</p>
+      <div class="cta-eyebrow reveal">The movement starts with you.</div>
+      <div class="cta-headline reveal">Get<br>Involved.</div>
+      <p class="cta-sub reveal">Join Sapiens First and take action in your community.</p>
+      <div id="cta-signup" class="reveal"></div>
     </div>
   </section>
 
@@ -703,110 +470,47 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">Sapiens First</div>
-        <div class="footer-meta">© 2026 SAPIENS FIRST &nbsp;·&nbsp; 501(c)(3) &nbsp;·&nbsp; EIN 41-4917212</div>
+        <div class="footer-meta">© 2026 SAPIENS FIRST</div>
       </div>
     </div>
   </footer>
 
+  <script src="signup.js"></script>
   <script>
     const progressBar = document.querySelector('.progress-bar');
-
-    /*
-    const heroEl   = document.querySelector('.hero');
-    const heroGlow = document.querySelector('.hero-glow');
-    const heroCore = document.querySelector('.hero-glow-core');
-
-    function updateParallax() {
-      const t = Math.max(0, Math.min(1, window.scrollY / heroEl.offsetHeight));
-
-      // Base stays pinned at hero bottom (transform-origin: bottom center).
-      // Top edge climbs via scaleY; whole shape drifts sideways with scroll.
-      // Sweep from bottom-left to top-right: center starts at left edge, drifts to ~55vw
-      const drift = t * window.innerWidth * 0.55;
-      heroGlow.style.transform = `translateX(calc(-50% + ${drift}px)) scaleY(${1 + t * 3.2})`;
-      heroGlow.style.opacity   = t * 0.80;
-
-      heroCore.style.transform = `translateX(calc(-50% + ${drift * 0.8}px)) scaleY(${1 + t * 3.8})`;
-      heroCore.style.opacity   = t * 1.0;
-
-      // Background: cool blue-black (#0A0F1C) → warm amber-dark (#200C02)
-      heroEl.style.backgroundColor =
-        `rgb(${Math.round(10 + t * 22)},${Math.round(15 - t * 11)},${Math.round(28 - t * 26)})`;
-    }
-    */
-
     window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      progressBar.style.transform = `scaleX(${maxScroll > 0 ? scrolled / maxScroll : 0})`;
-
-      /*
-      if (!rafPending) {
-        rafPending = true;
-        requestAnimationFrame(() => { updateParallax(); rafPending = false; });
-      }
-      */
+      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
     }, { passive: true });
 
-    // updateParallax();
-
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    let tocZone = 0;
-    const tocPillars = [
-      document.getElementById('toc-pillar-1'),
-      document.getElementById('toc-pillar-2'),
-      document.getElementById('toc-pillar-3'),
-    ];
-    const tocObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const zone = parseInt(entry.target.id.replace('toc-pillar-', ''), 10);
-        if (zone > tocZone) tocZone = zone;
-      });
-    }, { threshold: 0.4 });
-    tocPillars.forEach(el => { if (el) tocObserver.observe(el); });
+    document.getElementById('hero-signup').appendChild(createSignupForm({ theme: 'dark' }));
+    document.getElementById('cta-signup').appendChild(createSignupForm({ theme: 'light' }));
 
-    // Ember field — seed warm flickering dots across the hero
     (function () {
       const field = document.querySelector('.ember-field');
       if (!field) return;
-      const colors  = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
-      const count   = 158;
-      for (let i = 0; i < count; i++) {
-        const el   = document.createElement('div');
+      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
+      for (let i = 0; i < 174; i++) {
+        const el = document.createElement('div');
         el.className = 'ember';
-        const size = 1.5 + Math.random() * 2;        // 1.5–3.5 px
-        const col  = colors[Math.floor(Math.random() * colors.length)];
-        const dur  = (2.2 + Math.random() * 3.52).toFixed(2); // 2.2–5.72s cycle
-        const del  = (-Math.random() * 7).toFixed(2);         // stagger start
-        const peak = (0.35 + Math.random() * 0.55).toFixed(2); // 0.35–0.9
+        const size = 1.5 + Math.random() * 2;
+        const col = colors[Math.floor(Math.random() * colors.length)];
+        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
+        const del = (-Math.random() * 7).toFixed(2);
+        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
         const glow = (size * 1.8).toFixed(1);
-        // Weight distribution toward right half (mirrors the dot grid mask)
         const x = Math.random() * 100;
-        // Linear density: 0.8× at top → 1.2× at bottom (±20%).
-        // Inverse CDF of f(t)=0.8+0.4t → t=(-0.8+√(0.64+0.8u))/0.4
         const u = Math.random();
         const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
-        el.style.cssText =
-          `left:${x}%;top:${y}%;` +
-          `width:${size}px;height:${size}px;` +
-          `background:${col};` +
-          `--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
+        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
         field.appendChild(el);
       }
     })();
   </script>
-
-  <script src="nav.js"></script>
 </body>
 </html>

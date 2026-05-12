@@ -511,13 +511,17 @@
       }
     })();
 
+    const SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwX7TYzwhhbXSAavxvhEi3butP8Fyay5btdm5Zz6sAoedXjR65WCFc-CO7IYTaSDwB1/exec";
+
     document.getElementById("interest-form").addEventListener("submit", function (e) {
       e.preventDefault();
       const status = document.getElementById("interest-status");
       const given = document.getElementById("int-given-name").value.trim();
       const family = document.getElementById("int-family-name").value.trim();
       const email = document.getElementById("int-email").value.trim();
+      const zip = document.getElementById("int-zip").value.trim();
       const consent = document.getElementById("int-consent").checked;
+
       if (!given || !family || !email) {
         status.textContent = "Please fill in your name and email.";
         return;
@@ -526,6 +530,29 @@
         status.textContent = "Please agree to receive communications to continue.";
         return;
       }
+
+      // Build a hidden form and submit it into a hidden iframe to avoid CORS issues
+      const iframe = document.createElement("iframe");
+      iframe.name = "sheet-target";
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+
+      const hiddenForm = document.createElement("form");
+      hiddenForm.method = "POST";
+      hiddenForm.action = SHEET_SCRIPT_URL;
+      hiddenForm.target = "sheet-target";
+
+      [["firstName", given], ["lastName", family], ["email", email], ["zip", zip]].forEach(([name, val]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = val;
+        hiddenForm.appendChild(input);
+      });
+
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+
       document.getElementById("interest-form").style.display = "none";
       document.getElementById("interest-thank-you").style.display = "block";
     });

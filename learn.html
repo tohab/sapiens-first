@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Handbook — Sapiens First</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf5ee;
+      --surface: rgba(20,18,14,0.05);
+      --border: rgba(20,18,14,0.12);
+      --text: #141210;
+      --text-dim: rgba(20,18,14,0.68);
+      --accent: #CD551D;
+      --blue: #2C56B3;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
+    }
+
+    .container {
+      max-width: 1020px;
+      margin: 0 auto; padding: 0 64px;
+      position: relative; z-index: 2;
+    }
+    .content-col {
+      max-width: 720px;
+    }
+
+    /* ─── NAV ───────────────────────────────── */
+    .site-nav {
+      position: fixed; top: 32px; left: 40px; right: 40px;
+      z-index: 100; display: flex; align-items: center; justify-content: space-between;
+      pointer-events: none;
+    }
+    .nav-wordmark {
+      text-decoration: none;
+      display: flex; align-items: center;
+      pointer-events: auto; opacity: 0; animation: nav-fade 1s ease forwards 1s;
+    }
+    .nav-wordmark:hover { opacity: 0.72; }
+    .nav-logo { width: 24px; height: 24px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-link {
+      font-family: var(--font-mono); font-size: 14.85px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      pointer-events: auto; opacity: 0; animation: nav-fade 1s ease forwards 1s;
+      transition: opacity .2s;
+    }
+    .nav-link:hover { opacity: 0.72; }
+    .nav-link.active { border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+    @keyframes nav-fade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ─── PAGE HERO ─────────────────────────── */
+    .ember-field { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .ember {
+      position: absolute; border-radius: 50%; opacity: 0;
+      animation: ember-flicker var(--ed, 3s) ease-in-out var(--ey, 0s) infinite;
+      box-shadow: 0 0 var(--eg, 3px) var(--ec, #f97316);
+    }
+    @keyframes ember-flicker {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      45%, 55% { opacity: var(--ep, 0.75); transform: scale(1.3); }
+    }
+    .page-hero {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 130px 0 52px;
+      position: relative; overflow: hidden;
+      background-color: #000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .page-eyebrow {
+      font-family: var(--font-mono); font-size: 13px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px; font-weight: 500;
+    }
+    .page-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(72px, 11vw, 120px);
+      line-height: 0.9; letter-spacing: -0.04em;
+      text-transform: uppercase; margin-bottom: 36px;
+      color: #fff;
+    }
+    .page-intro {
+      font-size: 20px; line-height: 1.75;
+      color: rgba(255,255,255,0.72); max-width: 620px; font-weight: 400;
+    }
+
+    /* ─── HANDBOOK BODY ─────────────────────── */
+    .handbook { padding: 80px 0; }
+
+    .hb-section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .hb-section:last-child { border-bottom: none; }
+
+    .hb-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px; font-weight: 500;
+    }
+    .hb-heading {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(36px, 5vw, 52px);
+      line-height: 0.95; letter-spacing: -0.02em;
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hb-body {
+      font-size: 19px; line-height: 1.78;
+      color: var(--text); font-weight: 400; margin-bottom: 20px;
+    }
+    .hb-body:last-child { margin-bottom: 0; }
+    .hb-body strong { font-weight: 638; color: var(--text); }
+
+    /* Summary bullets */
+    .summary-list {
+      list-style: none; display: flex; flex-direction: column; gap: 10px;
+      margin-top: 4px;
+    }
+    .summary-list li {
+      font-size: 18px; line-height: 1.72; padding-left: 20px; position: relative;
+      color: var(--text);
+    }
+    .summary-list li::before {
+      content: '—';
+      position: absolute; left: 0;
+      font-family: var(--font-mono); font-size: 13px;
+      color: var(--accent); top: 4px;
+    }
+    .summary-list li strong { font-weight: 638; }
+
+    /* Demand cards */
+    .demand-cards { display: flex; flex-direction: column; gap: 8px; margin-top: 28px; }
+    .demand-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 22px 24px;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+    }
+    .demand-num {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.1em; color: var(--accent);
+      padding-top: 5px; flex-shrink: 0; width: 22px;
+    }
+    .demand-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 19px; letter-spacing: 0.04em;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .demand-text { font-size: 17px; line-height: 1.75; color: var(--text-dim); font-weight: 500; }
+
+    /* Principle / value tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .tag {
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text); border: 1px solid var(--border);
+      padding: 7px 14px; border-radius: 4px;
+      background: color-mix(in srgb, var(--surface) 60%, transparent);
+    }
+    .tag .tag-name { font-weight: 600; color: var(--accent); }
+
+    /* Where/When/How table */
+    .action-table {
+      width: 100%; border-collapse: collapse;
+      border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; margin-top: 28px;
+      font-size: 17px;
+    }
+    .action-table tr { border-bottom: 1px solid var(--border); }
+    .action-table tr:last-child { border-bottom: none; }
+    .action-table td { padding: 20px 24px; vertical-align: top; }
+    .action-table td:first-child {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 20px; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--accent); white-space: nowrap;
+      width: 120px; border-right: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 50%, transparent);
+    }
+    .action-table ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .action-table li { padding-left: 18px; position: relative; line-height: 1.6; color: var(--text-dim); }
+    .action-table li::before {
+      content: '→';
+      position: absolute; left: 0;
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--accent); top: 3px;
+    }
+
+    /* How-to-win steps */
+    .win-steps { display: flex; flex-direction: column; gap: 24px; margin-top: 28px; }
+    .win-step {
+      padding: 24px 26px;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+    }
+    .win-step-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+    }
+    .win-step-num {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .win-step-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 24px; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .win-step-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .win-step-list li { font-size: 17px; line-height: 1.7; padding-left: 22px; position: relative; color: var(--text-dim); }
+    .win-step-list li::before {
+      content: '—';
+      position: absolute; left: 0;
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--accent); top: 4px;
+    }
+    .win-step-list li strong { font-weight: 638; color: var(--text); }
+
+    /* Onion model tiers */
+    .onion { display: flex; flex-direction: column; gap: 8px; margin-top: 28px; }
+    .onion-tier {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 20px 24px;
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    .onion-tier:nth-child(1) { background: color-mix(in srgb, var(--surface) 20%, transparent); }
+    .onion-tier:nth-child(2) { background: color-mix(in srgb, var(--surface) 50%, transparent); }
+    .onion-tier:nth-child(3) { background: color-mix(in srgb, var(--surface) 80%, transparent); }
+    .onion-tier-label {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--accent); flex-shrink: 0; width: 130px; padding-top: 2px;
+    }
+    .onion-tier-text { font-size: 17px; line-height: 1.7; color: var(--text-dim); font-weight: 500; }
+
+    /* Quote */
+    .pull-quote {
+      margin-top: 56px; padding: 32px 36px;
+      border-left: 3px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 40%, transparent);
+      border-radius: 0 8px 8px 0;
+    }
+    .pull-quote p {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 26px; line-height: 1.35;
+      letter-spacing: 0.01em; font-style: italic;
+      color: var(--text); margin-bottom: 14px;
+    }
+    .pull-quote cite {
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); font-style: normal;
+    }
+
+    /* ─── SUBSTACK CTA ──────────────────────── */
+    .substack-cta {
+      padding: 100px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .substack-cta .eyebrow {
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px; font-weight: 500;
+    }
+    .substack-cta .headline {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(48px, 7vw, 80px);
+      line-height: 0.92; text-transform: uppercase;
+      letter-spacing: -0.025em; margin-bottom: 24px;
+    }
+    .substack-cta .sub {
+      font-size: 18px; color: var(--text-dim);
+      max-width: 400px; margin: 0 auto 36px; line-height: 1.75;
+    }
+    .substack-btn {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #fff; background: var(--accent);
+      padding: 16px 36px; text-decoration: none; border-radius: 3px;
+      transition: opacity .2s;
+    }
+    .substack-btn:hover { opacity: 0.84; }
+
+    /* ─── FOOTER ────────────────────────────── */
+    .footer { padding: 36px 0; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .footer-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.08em; }
+
+    /* ─── PROGRESS ──────────────────────────── */
+    .progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 100%;
+      background: var(--accent);
+      transform-origin: left center; transform: scaleX(0);
+      z-index: 10001; pointer-events: none;
+    }
+
+    /* ─── REVEAL ────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ────────────────────────── */
+    @media (max-width: 768px) {
+      .page-header { padding: 130px 0 60px; }
+      .hb-section { padding: 40px 0; }
+      .action-table td:first-child { width: 90px; font-size: 17px; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .site-nav { left: 24px; right: 24px; top: 24px; }
+      .nav-wordmark, .nav-link { font-size: 12px; }
+      .nav-links { gap: 18px; }
+      .action-table { font-size: 15px; }
+      .action-table td { padding: 14px 16px; }
+      .onion-tier { flex-direction: column; gap: 6px; }
+      .onion-tier-label { width: auto; }
+      .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav">
+    <a class="nav-wordmark" href="/">
+      <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/act">Act</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <div class="page-hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="container">
+      <div class="content-col">
+        <div class="page-eyebrow">Sapiens First · Handbook</div>
+        <h1 class="page-title">The<br>Handbook</h1>
+        <p class="page-intro">Our strategy, demands, and principles for building a movement that puts transformative artificial intelligence in the hands of the people.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ HANDBOOK CONTENT ═══════════ -->
+  <div class="handbook">
+    <div class="container">
+      <div class="content-col">
+
+        <!-- EXECUTIVE SUMMARY -->
+        <div class="hb-section reveal">
+          <div class="hb-label">Overview</div>
+          <h2 class="hb-heading">Executive Summary</h2>
+          <ul class="summary-list">
+            <li>We are amidst an <strong>AI crisis</strong> that threatens our way of life.</li>
+            <li>We demand all world governments <strong>Declare</strong> the AI crisis, <strong>Democratize</strong> power over AI through assemblies, and <strong>Govern</strong> frontier systems like other existential threats.</li>
+            <li>We pursue exponential growth using peer-to-peer recruitment and distributed leadership — anyone following our values can organize under the brand.</li>
+            <li>Our tactical cycle: <strong>Connect</strong> (door-knocking, deep listening) → <strong>Learn</strong> (conference calls, small-group discussion) → <strong>Act</strong> (confronting politicians, disruptions, canvassing) → <strong>Party</strong> (celebration and community-building).</li>
+            <li>We call on politicians, corporations, and civil society to take a public stand on the crisis.</li>
+          </ul>
+        </div>
+
+        <!-- MISSION -->
+        <div class="hb-section reveal">
+          <div class="hb-label">Why We Exist</div>
+          <h2 class="hb-heading">Mission</h2>
+          <p class="hb-body">
+            To put transformative artificial intelligence in the hands of the people.
+          </p>
+        </div>
+
+        <!-- CRISIS -->
+        <div class="hb-section reveal">
+          <div class="hb-label">What We're Up Against</div>
+          <h2 class="hb-heading">Crisis</h2>
+          <p class="hb-body">
+            Powerful AI could be here this decade. Such a force could destroy our economic system, or democracy, or even kill us all. Our politicians are sleeping at the wheel.
+          </p>
+        </div>
+
+        <!-- DEMANDS -->
+        <div class="hb-section reveal">
+          <div class="hb-label">What We're Asking For</div>
+          <h2 class="hb-heading">Demands</h2>
+          <p class="hb-body">Sapiens First demands that all world governments:</p>
+          <div class="demand-cards">
+            <div class="demand-card">
+              <div class="demand-num">01</div>
+              <div>
+                <div class="demand-title">Declare</div>
+                <div class="demand-text">Declare the AI crisis as a threat to our lives and livelihood. Experts have said for years that superhuman intelligence will take our jobs, destroy our democracy, or kill us all. We are at the point where this threat cannot be ignored.</div>
+              </div>
+            </div>
+            <div class="demand-card">
+              <div class="demand-num">02</div>
+              <div>
+                <div class="demand-title">Democratize</div>
+                <div class="demand-text">Democratize power over intelligence through citizen assemblies. Intelligence can be used to uplift humanity — but only if it is in the hands of the people. The power of AI should be directed by the public, not large companies or corrupt politicians. Citizens should decide how we navigate the ongoing economic transition.</div>
+              </div>
+            </div>
+            <div class="demand-card">
+              <div class="demand-num">03</div>
+              <div>
+                <div class="demand-title">Govern</div>
+                <div class="demand-text">Govern superintelligence like we govern other existential threats. Similar to nuclear weapons, we must have peace treaties and arms control agreements with all other countries, independent safety reviews, and strict liability on frontier systems.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOVEMENT PRINCIPLES -->
+        <div class="hb-section reveal">
+          <div class="hb-label">Our Strategy</div>
+          <h2 class="hb-heading">Movement Principles</h2>
+          <p class="hb-body">
+            To win, Sapiens First must mobilize millions to transform our political system before the creation of superintelligence. Exponential growth is the path to victory — and this is done with distributed leadership, scale, and confrontation.
+          </p>
+          <p class="hb-body">Our strategy is drawn from a lineage of highly successful, viral social movements including the Tea Party, Extinction Rebellion, and Otpor.</p>
+          <div class="demand-cards" style="margin-top: 24px;">
+            <div class="demand-card">
+              <div>
+                <div class="demand-title">Empowerment</div>
+                <div class="demand-text">Speaking truth to power is empowering. It also builds leaders who organize and recruit others to join the fight.</div>
+              </div>
+            </div>
+            <div class="demand-card">
+              <div>
+                <div class="demand-title">Distribution</div>
+                <div class="demand-text">It is easy to start a group in one's own city. Our brand is reusable, and our tactics work anywhere.</div>
+              </div>
+            </div>
+            <div class="demand-card">
+              <div>
+                <div class="demand-title">Direct Action</div>
+                <div class="demand-text">By confronting the holders of power — our politicians — we disrupt "business as usual" and challenge them to take a stand.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- POLITICIANS HAVE THE POWER -->
+        <div class="hb-section reveal">
+          <div class="hb-label">Taking Action</div>
+          <h2 class="hb-heading">Politicians Have the Power</h2>
+          <p class="hb-body">
+            Our politicians can stop the AI crisis if they choose to act. We confront politicians in public and demand they take a stand on the issue. If they don't, we continue to confront, disrupt, and recruit to raise the political cost of inaction.
+          </p>
+          <p class="hb-body">
+            Our actions can be done in any city around the US and other countries. To create an action, you just have to choose where, when, and how.
+          </p>
+          <table class="action-table">
+            <tbody>
+              <tr>
+                <td>Where</td>
+                <td>
+                  <ul>
+                    <li>Civic centers — city halls, state capitols, congressional offices</li>
+                    <li>Public spaces — town squares, university campuses, farmer's markets</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>When</td>
+                <td>
+                  <ul>
+                    <li>Recurring government meetings (city councils, county boards, state legislature hearings)</li>
+                    <li>Public events (town halls, office hours, candidate forums)</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>How</td>
+                <td>
+                  <ul>
+                    <li>An action is a story. Make it funny, engaging, and sympathetic.</li>
+                    <li>A clear ask — Declare, Democratize, and/or Govern.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- VALUES -->
+        <div class="hb-section reveal">
+          <div class="hb-label">Who We Are</div>
+          <h2 class="hb-heading">Values</h2>
+          <p class="hb-body">Broad-base recruitment is vital to building a pluralistic movement. To recruit broadly, we hold ourselves to these values:</p>
+          <div class="tags">
+            <span class="tag"><span class="tag-name">Peaceful</span> — we do not harm people or property</span>
+            <span class="tag"><span class="tag-name">Democratic</span> — all participants vote on major decisions</span>
+            <span class="tag"><span class="tag-name">Fun-loving</span> — we take breaks, we support each other</span>
+            <span class="tag"><span class="tag-name">Intentional</span> — we work smart, not hard</span>
+            <span class="tag"><span class="tag-name">Righteous</span> — we do the right thing even when it's hard</span>
+            <span class="tag"><span class="tag-name">Respectful</span> — we use non-violent communication</span>
+          </div>
+        </div>
+
+        <!-- HOW TO WIN -->
+        <div class="hb-section reveal">
+          <div class="hb-label">The Playbook</div>
+          <h2 class="hb-heading">How to Win</h2>
+          <div class="win-steps">
+            <div class="win-step">
+              <div class="win-step-header">
+                <div class="win-step-num">Step 01</div>
+                <div class="win-step-title">Connect</div>
+              </div>
+              <ul class="win-step-list">
+                <li><strong>Knock</strong> on the door of a stranger in your neighborhood. By connecting with a stranger, you are expanding your network and tapping into theirs.</li>
+                <li><strong>Listen</strong> most of the time (80%). When people are listened to, they feel heard and cared for. This is empowering.</li>
+                <li><strong>Invite</strong> the person to share more at an upcoming online meeting.</li>
+              </ul>
+            </div>
+            <div class="win-step">
+              <div class="win-step-header">
+                <div class="win-step-num">Step 02</div>
+                <div class="win-step-title">Learn</div>
+              </div>
+              <ul class="win-step-list">
+                <li><strong>Present</strong> the broad goals of Sapiens First and what we're up against.</li>
+                <li><strong>Share</strong> your concerns about AI in groups of 3–6 people. Social science tells us that small groups best distribute speaking time and thus empower participants.</li>
+                <li><strong>Choose</strong> a pathway of action to explore in a subsequent call.</li>
+              </ul>
+            </div>
+            <div class="win-step">
+              <div class="win-step-header">
+                <div class="win-step-num">Step 03</div>
+                <div class="win-step-title">Act</div>
+              </div>
+              <p class="hb-body" style="margin-bottom: 14px; font-size: 17px;">Activists join a Circle — based on their location and chosen Pathway — and choose exactly what to do. There are many possible options!</p>
+              <ul class="win-step-list">
+                <li><strong>Confront</strong> politicians with speak-outs, mock funerals, public theater, group lobbying</li>
+                <li><strong>Disrupt</strong> business-as-usual with die-ins, picket lines, sit-ins, walk-outs, seeking arrest</li>
+                <li><strong>Recruit</strong> people via door-knocking, canvassing, tabling, public gatherings</li>
+              </ul>
+            </div>
+            <div class="win-step">
+              <div class="win-step-header">
+                <div class="win-step-num">Step 04</div>
+                <div class="win-step-title">Party</div>
+              </div>
+              <ul class="win-step-list">
+                <li><strong>Celebrate</strong> recent activities</li>
+                <li><strong>Build trust</strong> by connecting with comrades in the fight in a less formal context</li>
+                <li><strong>Ideate</strong> next steps</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ONION MODEL -->
+        <div class="hb-section reveal">
+          <div class="hb-label">The Movement Structure</div>
+          <h2 class="hb-heading">Onion Model</h2>
+          <p class="hb-body">To be pluralistic, there should be something for everyone in the movement — like layers of an onion.</p>
+          <div class="onion">
+            <div class="onion-tier">
+              <div class="onion-tier-label">Supporters</div>
+              <div class="onion-tier-text">Follow along. You follow our movement, share our content, and show up when you can.</div>
+            </div>
+            <div class="onion-tier">
+              <div class="onion-tier-label">Participants</div>
+              <div class="onion-tier-text">Take action. You've been on an Intro call and done an action.</div>
+            </div>
+            <div class="onion-tier">
+              <div class="onion-tier-label">Organizers</div>
+              <div class="onion-tier-text">Empower others. You've taken action and completed a Leadership Training.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="pull-quote reveal">
+          <p>"It always seems impossible until it is done."</p>
+          <cite>— Nelson Mandela</cite>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SUBSTACK CTA ═══════════ -->
+  <div class="substack-cta">
+    <div class="container">
+      <div class="eyebrow">Want to go deeper?</div>
+      <div class="headline">Read<br>more.</div>
+      <p class="sub">Follow our Substack for updates on the movement, the crisis, and how you can help.</p>
+      <a class="substack-btn" href="https://sapiensfirst.substack.com" target="_blank" rel="noopener">
+        Read on Substack →
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Sapiens First</div>
+        <div class="footer-meta">© 2026 SAPIENS FIRST</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const progressBar = document.querySelector('.progress-bar');
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.10, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    (function () {
+      const field = document.querySelector('.ember-field');
+      if (!field) return;
+      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
+      for (let i = 0; i < 174; i++) {
+        const el = document.createElement('div');
+        el.className = 'ember';
+        const size = 1.5 + Math.random() * 2;
+        const col = colors[Math.floor(Math.random() * colors.length)];
+        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
+        const del = (-Math.random() * 7).toFixed(2);
+        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
+        const glow = (size * 1.8).toFixed(1);
+        const x = Math.random() * 100;
+        const u = Math.random();
+        const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
+        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
+        field.appendChild(el);
+      }
+    })();
+  </script>
+</body>
+</html>
