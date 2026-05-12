@@ -289,6 +289,8 @@
       font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
     }
     .footer-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.08em; }
+    .footer-link { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; color: var(--text-dim); text-decoration: none; transition: color .2s; }
+    .footer-link:hover { color: var(--accent); }
 
     /* ─── PROGRESS + ANIMATIONS ─────────────── */
     .progress-bar {
@@ -323,18 +325,28 @@
       .hero { padding: 100px 0 60px; }
       .hero-body { font-size: 22px; }
       .section { padding: 80px 0; }
+      .demand-title { font-size: 28px; }
+      .demand-text { font-size: 17px; }
+      .pillar-title { font-size: 18px; }
+      .pillar-text { font-size: 17px; }
+      .body-large { font-size: 22px; }
     }
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
       .site-nav { left: 24px; right: 24px; top: 24px; }
       .nav-wordmark, .nav-link { font-size: 12px; }
       .nav-links { gap: 18px; }
-      .hero-headline { font-size: clamp(67px, 17.25vw, 92px); }
-      .hero-body { font-size: 20px; }
+      .hero-headline { font-size: clamp(52px, 14vw, 82px); }
+      .hero-body { font-size: 19px; }
       .stats-grid { grid-template-columns: 1fr; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); }
       .stat:last-child { border-bottom: none; }
-      .body-large { font-size: 19px; }
+      .body-large { font-size: 18px; }
+      .demand { padding: 18px 0 18px 18px; }
+      .demand-title { font-size: 24px; }
+      .demand-text { font-size: 16px; }
+      .cta-headline { font-size: clamp(44px, 12vw, 64px); }
+      #cta-signup { display: block; width: 100%; }
       .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
     }
   </style>
@@ -392,7 +404,7 @@
         Superhuman intelligence may take our jobs, destroy our democracy, or kill us all. 
       </p>
       <p class="body-large reveal">
-        All the while, our politicians have done <strong>nothing.</strong>        
+        Meanwhile, our politicians are doing <strong>nothing.</strong>        
       </p>
       <p class="body-large reveal">
         <strong>It is time for action.</strong>
@@ -470,7 +482,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">Sapiens First</div>
-        <div class="footer-meta">© 2026 SAPIENS FIRST</div>
+        <div style="display:flex;align-items:center;gap:20px;"><a class="footer-link" href="/privacy">Privacy Policy</a><span class="footer-meta">© 2026 SAPIENS FIRST</span></div>
       </div>
     </div>
   </footer>

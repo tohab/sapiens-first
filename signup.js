@@ -11,7 +11,7 @@
 //     return out;
 //   }
 
-const SIGNUP_SCRIPT_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SIGNUP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq5O0dKmyb7g2phwi0eyM0WXTyFKJfSfG8WpDRnfl426C-LcSIcfQeMYx9N-8Vp3gC/exec';
 
 // ─── STYLES ───────────────────────────────────────────────────────────────────
 (function () {
@@ -80,7 +80,7 @@ function createSignupForm(opts) {
 
   function submit() {
     var email = input.value.trim();
-    if (!email || !email.includes('@')) {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       input.classList.add('sf-err');
       input.focus();
       return;
@@ -100,6 +100,7 @@ function createSignupForm(opts) {
       done.textContent = '✓ You\'re in — we\'ll be in touch.';
       wrap.innerHTML = '';
       wrap.appendChild(done);
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }).catch(function () {
       btn.disabled = false;
       btn.textContent = btnText;

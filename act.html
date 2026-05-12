@@ -171,13 +171,22 @@
       font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
     }
     .footer-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.08em; }
+    .footer-link { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; color: var(--text-dim); text-decoration: none; transition: color .2s; }
+    .footer-link:hover { color: var(--accent); }
 
     /* ─── RESPONSIVE ────────────────────────── */
+    @media (max-width: 768px) {
+      .page-hero { padding: 120px 0 80px; }
+      .act-subhead { font-size: 38px; }
+      .act-body-lead, .act-body-list { font-size: 18px; }
+    }
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
       .site-nav { left: 24px; right: 24px; top: 24px; }
       .nav-wordmark, .nav-link { font-size: 12px; }
       .nav-links { gap: 18px; }
+      .act-wrap { padding: 52px 0 80px; }
+      .act-subhead { font-size: 30px; }
       .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
     }
   </style>
@@ -231,7 +240,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">Sapiens First</div>
-        <div class="footer-meta">© 2026 SAPIENS FIRST</div>
+        <div style="display:flex;align-items:center;gap:20px;"><a class="footer-link" href="/privacy">Privacy Policy</a><span class="footer-meta">© 2026 SAPIENS FIRST</span></div>
       </div>
     </div>
   </footer>

@@ -311,6 +311,8 @@
       font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
     }
     .footer-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.08em; }
+    .footer-link { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; color: var(--text-dim); text-decoration: none; transition: color .2s; }
+    .footer-link:hover { color: var(--accent); }
 
     /* ─── PROGRESS ──────────────────────────── */
     .progress-bar {
@@ -331,19 +333,28 @@
 
     /* ─── RESPONSIVE ────────────────────────── */
     @media (max-width: 768px) {
-      .page-header { padding: 130px 0 60px; }
+      .page-hero { padding: 120px 0 44px; }
+      .page-title { font-size: clamp(52px, 10vw, 80px); }
+      .page-intro { font-size: 17px; }
       .hb-section { padding: 40px 0; }
-      .action-table td:first-child { width: 90px; font-size: 17px; }
+      .hb-heading { font-size: clamp(28px, 6vw, 40px); }
+      .hb-body { font-size: 17px; }
+      .action-table td:first-child { width: 80px; font-size: 16px; }
+      .demand-card { flex-direction: column; gap: 6px; }
+      .win-step-list li { font-size: 16px; }
     }
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
       .site-nav { left: 24px; right: 24px; top: 24px; }
       .nav-wordmark, .nav-link { font-size: 12px; }
       .nav-links { gap: 18px; }
-      .action-table { font-size: 15px; }
-      .action-table td { padding: 14px 16px; }
+      .action-table { font-size: 14px; }
+      .action-table td { padding: 12px 14px; }
+      .action-table td:first-child { width: 70px; }
       .onion-tier { flex-direction: column; gap: 6px; }
       .onion-tier-label { width: auto; }
+      .pull-quote { padding: 24px 20px; }
+      .pull-quote p { font-size: 20px; }
       .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
     }
   </style>
@@ -627,7 +638,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">Sapiens First</div>
-        <div class="footer-meta">© 2026 SAPIENS FIRST</div>
+        <div style="display:flex;align-items:center;gap:20px;"><a class="footer-link" href="/privacy">Privacy Policy</a><span class="footer-meta">© 2026 SAPIENS FIRST</span></div>
       </div>
     </div>
   </footer>
