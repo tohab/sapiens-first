@@ -7,19 +7,19 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #faf5ee;
       --surface: rgba(20,18,14,0.05);
-      --border: rgba(20,18,14,0.12);
+      --border: rgba(20,18,14,0.22);
       --text: #141210;
       --text-dim: rgba(20,18,14,0.68);
       --accent: #CD551D;
       --blue: #2C56B3;
       --font-display: 'Barlow Condensed', sans-serif;
       --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'IBM Plex Mono', monospace;
+      --font-mono: 'Special Elite', serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,8 +73,9 @@
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-link {
       font-family: var(--font-mono);
-      font-size: 14.85px; font-weight: 500;
+      font-size: 20px; font-weight: 500;
       letter-spacing: 0.16em; text-transform: uppercase;
+      -webkit-text-stroke: 0.6px var(--accent);
       color: var(--accent);
       text-decoration: none;
       pointer-events: auto;
@@ -109,7 +110,7 @@
       line-height: 0.9;
       letter-spacing: -0.04em;
       text-transform: uppercase;
-      margin-bottom: 44px;
+      margin-bottom: 22px;
       color: #fff;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.45s;
@@ -119,7 +120,7 @@
       font-size: 33px; line-height: 1.72;
       color: rgba(255,255,255,0.82);
       max-width: 700px; font-weight: 400;
-      margin-bottom: 52px;
+      margin-bottom: 24px;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.65s;
     }
@@ -136,9 +137,9 @@
 
     .section-label {
       font-family: var(--font-mono);
-      font-size: 18.42px; letter-spacing: 0.18em;
+      font-size: 19.89px; letter-spacing: 0.18em;
       text-transform: uppercase; font-weight: 575;
-      margin-bottom: 52px;
+      margin-bottom: 26px;
     }
     .section-label .title { color: var(--accent); }
 
@@ -146,19 +147,19 @@
     .stats-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden;
+      border-radius: 0; overflow: hidden;
       margin-bottom: 40px;
     }
     .stat { padding: 32px 26px 28px; border-right: 1px solid var(--border); }
     .stat:last-child { border-right: none; }
     .stat-val {
       font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(44px, 5vw, 58px); line-height: 1;
+      font-size: clamp(58px, 7vw, 82px); line-height: 1;
       letter-spacing: -0.02em; color: var(--accent);
       margin-bottom: 10px;
     }
     .stat-label {
-      font-family: var(--font-mono); font-size: 12px;
+      font-family: var(--font-body); font-size: 12.96px;
       letter-spacing: 0.1em; line-height: 1.6;
       text-transform: uppercase;
     }
@@ -178,9 +179,11 @@
       margin-bottom: 20px;
     }
     .demand-title {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 42px; letter-spacing: -0.01em;
+      font-family: var(--font-mono); font-weight: 800;
+      font-size: 36.5px; letter-spacing: 0.02em;
       text-transform: uppercase; line-height: 1;
+      -webkit-text-stroke: 0.7px var(--text);
+      paint-order: stroke fill;
       margin-bottom: 8px; color: var(--text);
     }
     .demand-text {
@@ -196,7 +199,7 @@
     .pillar {
       display: flex; flex-direction: column;
       padding: 26px 28px;
-      border: 1px solid var(--border); border-radius: 8px;
+      border: 1px solid var(--border); border-radius: 0;
       background: color-mix(in srgb, var(--surface) 42%, transparent);
       transition: transform 0.25s ease; cursor: default;
     }
@@ -220,7 +223,7 @@
     .learn-more {
       display: inline-block;
       margin-top: 28px;
-      font-family: var(--font-mono); font-size: 12px;
+      font-family: var(--font-mono); font-size: 12.96px;
       letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--accent); text-decoration: none;
       border-bottom: 1px solid var(--accent);
@@ -239,13 +242,13 @@
     }
     .cycle-step {
       padding: 28px 22px 32px;
-      border: 1px solid var(--border); border-radius: 8px;
+      border: 1px solid var(--border); border-radius: 0;
       background: color-mix(in srgb, var(--surface) 42%, transparent);
       transition: transform 0.25s ease; cursor: default;
     }
     .cycle-step:hover { transform: translateY(-3px); }
     .cycle-step-num {
-      font-family: var(--font-mono); font-size: 10px;
+      font-family: var(--font-mono); font-size: 10.8px;
       letter-spacing: 0.12em; color: var(--accent);
       text-transform: uppercase; margin-bottom: 8px;
     }
@@ -257,14 +260,14 @@
     .cycle-step-text { font-size: 15px; line-height: 1.75; color: var(--text-dim); font-weight: 500; }
     .cycle-connector {
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 20px; font-weight: 700;
+      font-family: var(--font-mono); font-size: 21.6px; font-weight: 700;
       color: var(--accent); opacity: 0.32;
     }
 
     /* ─── CTA SECTION ───────────────────────── */
     .cta-section { padding: 140px 0 120px; text-align: center; }
     .cta-eyebrow {
-      font-family: var(--font-mono); font-size: 12.6px;
+      font-family: var(--font-mono); font-size: 13.61px;
       letter-spacing: 0.18em; color: var(--accent);
       text-transform: uppercase; margin-bottom: 28px; font-weight: 460;
     }
@@ -275,7 +278,7 @@
       letter-spacing: -0.025em; margin-bottom: 32px;
     }
     .cta-sub {
-      font-size: 18px; color: var(--text-dim);
+      font-size: 18px; color: var(--text); font-style: italic;
       max-width: 380px; margin: 0 auto 40px;
       line-height: 1.75;
     }
@@ -288,8 +291,8 @@
       font-family: var(--font-display); font-weight: 700;
       font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
     }
-    .footer-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.08em; }
-    .footer-link { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; color: var(--text-dim); text-decoration: none; transition: color .2s; }
+    .footer-meta { font-family: var(--font-mono); font-size: 11.34px; color: var(--text-dim); letter-spacing: 0.08em; }
+    .footer-link { font-family: var(--font-mono); font-size: 11.34px; letter-spacing: 0.08em; color: var(--text-dim); text-decoration: none; transition: color .2s; }
     .footer-link:hover { color: var(--accent); }
 
     /* ─── PROGRESS + ANIMATIONS ─────────────── */
@@ -325,7 +328,7 @@
       .hero { padding: 100px 0 60px; }
       .hero-body { font-size: 22px; }
       .section { padding: 80px 0; }
-      .demand-title { font-size: 28px; }
+      .demand-title { font-size: 30px; }
       .demand-text { font-size: 17px; }
       .pillar-title { font-size: 18px; }
       .pillar-text { font-size: 17px; }
@@ -333,22 +336,40 @@
     }
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
-      .site-nav { left: 24px; right: 24px; top: 24px; }
-      .nav-wordmark, .nav-link { font-size: 12px; }
-      .nav-links { gap: 18px; }
-      .hero-headline { font-size: clamp(52px, 14vw, 82px); }
-      .hero-body { font-size: 19px; }
+      .site-nav { left: 20px; right: 20px; top: 20px; }
+      /* keep wordmark small; nav-link stays readable at Special Elite size */
+      .nav-wordmark { font-size: 12px; }
+      .nav-link { font-size: 16px; -webkit-text-stroke: 0; }
+      .nav-links { gap: 16px; }
+      /* lower floor so headline never clips on 320px screens */
+      .hero-headline { font-size: clamp(56px, 16vw, 82px); }
+      .hero-body { font-size: 20px; }
       .stats-grid { grid-template-columns: 1fr; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); }
       .stat:last-child { border-bottom: none; }
       .body-large { font-size: 18px; }
-      .demand { padding: 18px 0 18px 18px; }
-      .demand-title { font-size: 24px; }
+      .demand { padding: 16px 0 16px 16px; }
+      /* keep confrontational size; thin the stroke so it doesn't clog at 26px */
+      .demand-title { font-size: 26px; -webkit-text-stroke: 0.45px var(--text); }
       .demand-text { font-size: 16px; }
       .cta-headline { font-size: clamp(44px, 12vw, 64px); }
+      .cta-sub { font-size: 14px; }
       #cta-signup { display: block; width: 100%; }
+      /* reset enlarged form padding on mobile — stacking handled by signup.js */
+      #hero-signup .sf input { font-size: 16px; padding: 13px 16px; }
+      #hero-signup .sf button { font-size: 12.5px; padding: 13px 20px; }
       .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
     }
+
+    /* ─── HERO SIGNUP — larger form ────────────── */
+    #hero-signup .sf { max-width: 552px; }
+    #hero-signup .sf input {
+      font-size: 19.2px; padding: 15.6px 19.2px;
+    }
+    #hero-signup .sf button {
+      font-size: 14.4px; padding: 15.6px 26.4px;
+    }
+
   </style>
 </head>
 <body>
@@ -360,7 +381,7 @@
       <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
     </a>
     <div class="nav-links">
-      <a class="nav-link" href="/act">Act</a>
+      <a class="nav-link" href="/join">Join</a>
     </div>
   </nav>
 
@@ -369,12 +390,12 @@
     <div class="ember-field" aria-hidden="true"></div>
     <div class="container">
       <h1 class="hero-headline">
-        <span>We are amidst</span><br>
-        <span>an <span class="accent"> ai crisis</span></span><br>
+        <span>We are in </span><br>
+        <span>a <span class="accent"> crisis. </span></span><br>
       </h1>
       <p class="hero-body">
-        Resist the AI takeover and join the fight.<br>
-        
+        AI is upending our society. <br>
+        Find your voice and <span class="accent"> fight back.</span>
       </p>
       <div id="hero-signup"></div>
     </div>
@@ -385,23 +406,23 @@
   <!-- ═══════════ THE CRISIS ═══════════ -->
   <section class="section">
     <div class="container">
-      <div class="section-label reveal"><span class="title">The Crisis</span></div>
+      <div class="section-label reveal"><span class="title"> Crisis</span></div>
       <div class="stats-grid reveal">
         <div class="stat">
-          <div class="stat-val">300M</div>
+          <div class="stat-val" data-val="300M">300M</div>
           <div class="stat-label">Jobs exposed to<br>AI automation</div>
         </div>
         <div class="stat">
-          <div class="stat-val">73%</div>
+          <div class="stat-val" data-val="73%">73%</div>
           <div class="stat-label">Of Americans favor<br>stronger AI oversight</div>
         </div>
         <div class="stat">
-          <div class="stat-val">$100M</div>
+          <div class="stat-val" data-val="$100M">$100M</div>
           <div class="stat-label">Raised by industry<br>lobbyists in 2026</div>
         </div>
       </div>
       <p class="body-large reveal">
-        Superhuman intelligence is threatening the <strong> future of humanity </strong>. 
+        Artificial intelligence is threatening the <strong> future of humanity.</strong>
       </p>
       </p>
     </div>
@@ -414,7 +435,7 @@
     <div class="container">
       <div class="section-label reveal"><span class="title"> Demands</span></div>
       <p class="body-large reveal">
-        <strong>Sapiens First demands that all world governments:</strong>
+        We demand that <strong>  all world governments:</strong>
       </p>
       <div class="demands">
         <div class="demand reveal">
@@ -441,23 +462,23 @@
     <div class="container">
       <div class="section-label reveal"><span class="title"> Strategy</span></div>
       <p class="body-large reveal">
-        <strong>We are building a movement of leaders.</strong> 
+        <strong>History doesn't make itself.</strong> 
       </p>
       <div class="pillars">
         <div class="pillar reveal">
           <div class="pillar-title">Empowerment</div>
-          <div class="pillar-text">Every conversation builds leaders who recruit others and grow the fight.</div>
+          <div class="pillar-text">Each conversation builds leaders who recruit others and grow the fight.</div>
         </div>
         <div class="pillar reveal reveal-d1">
           <div class="pillar-title">Distribution</div>
-          <div class="pillar-text">Our model is reusable — our brand, our tactics, our values can be used anywhere.</div>
+          <div class="pillar-text">Our model is open-source and can be used by anyone, anywhere.</div>
         </div>
         <div class="pillar reveal reveal-d2">
           <div class="pillar-title">Direct Action</div>
           <div class="pillar-text">We confront the people in power and force them to take a stand.</div>
         </div>
       </div>
-      <a href="/learn" class="learn-more reveal">Learn more →</a>
+      <a href="/learn" class="learn-more reveal">Read the handbook →</a>
     </div>
   </section>
 
@@ -466,9 +487,8 @@
   <!-- ═══════════ CTA ═══════════ -->
   <section class="cta-section">
     <div class="container">
-      <div class="cta-eyebrow reveal">The movement starts with you.</div>
       <div class="cta-headline reveal">Get <br> Involved.</div>
-      <p class="cta-sub reveal">Find your voice, find some friends, and fight like hell.</p>
+      <p class="cta-sub reveal">Find your voice, find some friends, <br> and fight like hell.</p>
       <div id="cta-signup" class="reveal"></div>
     </div>
   </section>
