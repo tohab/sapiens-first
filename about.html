@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
   <style>
+    .founder-icon { color: var(--text-dim); transition: color .2s; }
+    .founder-icon:hover { color: var(--accent); }
     .section { padding: 48px 0; }
     @media (max-width: 768px) { .section { padding: 32px 0; } }
 
@@ -29,10 +31,10 @@
     .method:hover { transform: translateY(-3px); }
     .method-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: 23px; letter-spacing: 0.04em;
+      font-size: var(--sz-body); letter-spacing: 0.04em;
       text-transform: uppercase; min-width: 180px; text-align: center;
     }
-    .method-text { font-size: 21px; line-height: 1.75; color: var(--text); font-weight: 500; }
+    .method-text { font-size: var(--sz-body); line-height: 1.75; color: var(--text); font-weight: 500; }
 
     /* ─── VALUES LIST ───────────────────────── */
     .values-list {
@@ -42,7 +44,7 @@
       list-style: disc;
     }
     .values-list li {
-      font-size: 28px; line-height: 1.72; color: var(--text); font-weight: 400;
+      font-size: var(--sz-lead); line-height: 1.72; color: var(--text); font-weight: 400;
     }
     .values-list li strong { font-weight: 638; }
 
@@ -54,6 +56,9 @@
     @media (max-width: 768px) {
       .pillar-text, .method-text { font-size: 17px; }
       .values-list li { font-size: 22px; }
+    }
+    @media (max-width: 600px) {
+      .values-list li { font-size: 18px; }
     }
   </style>
 </head>
@@ -105,7 +110,7 @@
           </div>
           <div class="pillar reveal reveal-d1">
             <div class="pillar-title">Gather</div>
-            <div class="pillar-text">Potlucks, parties and workshops get people together to learn how to make change.</div>
+            <div class="pillar-text">Potlucks, parties and workshops where we gather and learn how to make change.</div>
           </div>
           <div class="pillar reveal reveal-d2">
             <div class="pillar-title">Disrupt</div>
@@ -134,7 +139,7 @@
           </div>
           <div class="method reveal reveal-d2">
             <div class="method-title">Distribution</div>
-            <div class="method-text">Our guide can be used in any city, state, or country. </div>
+            <div class="method-text">Our <a href="/guide" style="color:var(--accent);">guide</a> can be used in any city, state, or country.</div>
           </div>
         </div>
         <a href="/guide" class="learn-more reveal">Read the guide →</a>
@@ -163,22 +168,17 @@
     <!-- ═══════════ FOUNDER ═══════════ -->
     <section class="section">
       <div class="container">
-        <p class="body-large reveal">
-          Sapiens First was founded in 2026 by Rohan Prasad — an activist, educator, and concerned citizen.
+        <p class="body-large reveal" style="text-align:left;margin-left:0;">
+          Rohan Prasad founded Sapiens First in 2026. <a href="https://www.rohanprasad.org" target="_blank" rel="noopener" style="color:var(--accent);">Rohan</a> is an activist, writer, and concerned citizen.
+          <a href="https://x.com/rohantohab" target="_blank" rel="noopener" class="founder-icon" aria-label="X / Twitter" style="position:relative;top:-3px;margin-left:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/in/therohanprasad/" target="_blank" rel="noopener" class="founder-icon" aria-label="LinkedIn" style="position:relative;top:-3px;margin-left:4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
         </p>
       </div>
     </section>
 
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Sapiens First</div>
-        <div style="display:flex;align-items:center;gap:20px;"><a class="footer-link" href="/privacy">Privacy Policy</a><span class="footer-meta">© 2026 SAPIENS FIRST</span></div>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer"></footer>
 
   <script>
     const burger = document.querySelector('.nav-burger');
@@ -236,5 +236,7 @@
       }
     })();
   </script>
+  <script src="footer.js"></script>
+  <script src="nav-circle.js"></script>
 </body>
 </html>

@@ -3,149 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Sapiens First</title>
+  <title>Privacy — Sapiens First</title>
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    :root {
-      --bg: #faf5ee;
-      --surface: rgba(20,18,14,0.05);
-      --border: rgba(20,18,14,0.12);
-      --text: #141210;
-      --text-dim: rgba(20,18,14,0.68);
-      --accent: #CD551D;
-      --font-display: 'Barlow Condensed', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'IBM Plex Mono', monospace;
+    .privacy-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 100px 0 120px;
+      display: flex; flex-direction: column; gap: 40px;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
-    }
-
-    .container {
-      max-width: 720px;
-      margin: 0 auto; padding: 0 64px;
-      position: relative; z-index: 2;
-    }
-
-    /* ─── NAV ───────────────────────────────── */
-    .site-nav {
-      position: fixed; top: 32px; left: 40px; right: 40px;
-      z-index: 100; display: flex; align-items: center; justify-content: space-between;
-      pointer-events: none;
-    }
-    .nav-wordmark {
-      text-decoration: none; display: flex; align-items: center;
-      pointer-events: auto; opacity: 0; animation: nav-fade 1s ease forwards 1s;
-    }
-    .nav-wordmark:hover { opacity: 0.72; }
-    .nav-logo { width: 24px; height: 24px; flex-shrink: 0; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-link {
-      font-family: var(--font-mono); font-size: 14.85px; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent); text-decoration: none;
-      pointer-events: auto; opacity: 0; animation: nav-fade 1s ease forwards 1s;
-      transition: opacity .2s;
-    }
-    .nav-link:hover { opacity: 0.72; }
-    @keyframes nav-fade { from { opacity: 0; } to { opacity: 1; } }
-
-    /* ─── PAGE HEADER ───────────────────────── */
-    .page-header {
-      padding: 140px 0 60px;
-      border-bottom: 1px solid var(--border);
-    }
-    .page-label {
-      font-family: var(--font-mono); font-size: 11px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 20px; font-weight: 500;
-    }
-    .page-title {
+    .privacy-heading {
       font-family: var(--font-display); font-weight: 800;
       font-size: clamp(52px, 8vw, 88px);
       line-height: 0.9; letter-spacing: -0.03em;
-      text-transform: uppercase; margin-bottom: 24px;
-    }
-    .page-date {
-      font-family: var(--font-mono); font-size: 11px;
-      letter-spacing: 0.12em; color: var(--text-dim);
       text-transform: uppercase;
     }
-
-    /* ─── CONTENT ───────────────────────────── */
-    .policy-body {
-      padding: 64px 0 100px;
-      display: flex; flex-direction: column; gap: 48px;
+    .privacy-text {
+      font-size: var(--sz-body); line-height: 1.78; color: var(--text);
     }
-    .policy-section {}
-    .policy-heading {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 28px; letter-spacing: 0.02em;
-      text-transform: uppercase; margin-bottom: 16px;
-      margin-top: 52px; color: var(--text);
+    .privacy-text a { color: var(--accent); }
+    .privacy-cookies {
+      font-size: var(--sz-label); line-height: 1.7;
+      color: var(--text-dim);
+      padding-top: 16px; border-top: 1px solid var(--border);
     }
-    .policy-section:first-child .policy-heading { margin-top: 0; }
-    .policy-text {
-      font-size: 18px; line-height: 1.78;
-      color: var(--text); font-weight: 400;
-      margin-bottom: 14px;
-    }
-    .policy-text:last-child { margin-bottom: 0; }
-    .policy-text a {
-      color: var(--accent); text-decoration: underline;
-      text-decoration-thickness: 1px; text-underline-offset: 3px;
-    }
-    .policy-list {
-      font-size: 18px; line-height: 1.78;
-      color: var(--text); padding-left: 24px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-
-    /* ─── FOOTER ────────────────────────────── */
-    .footer { padding: 36px 0; border-top: 1px solid var(--border); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-logo {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
-    }
-    .footer-right {
-      display: flex; align-items: center; gap: 24px;
-    }
-    .footer-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.08em; }
-    .footer-link {
-      font-family: var(--font-mono); font-size: 10.5px;
-      letter-spacing: 0.08em; color: var(--text-dim);
-      text-decoration: none; transition: color .2s;
-    }
-    .footer-link:hover { color: var(--accent); }
-
     @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .site-nav { left: 24px; right: 24px; top: 24px; }
-      .nav-wordmark, .nav-link { font-size: 12px; }
-      .nav-links { gap: 18px; }
-      .page-header { padding: 110px 0 44px; }
-      .policy-text, .policy-list { font-size: 16px; }
-      .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
-      .footer-right { flex-direction: column; gap: 8px; }
+      .privacy-wrap { padding: 80px 0 80px; }
     }
   </style>
 </head>
@@ -156,65 +43,58 @@
       <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
     </a>
     <div class="nav-links">
+      <a class="nav-link" href="/about">About</a>
       <a class="nav-link" href="/join">Join</a>
+      <a class="nav-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
     </div>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
-  <div class="page-header">
+  <main>
     <div class="container">
-      <div class="page-label">Legal</div>
-      <h1 class="page-title">Privacy<br>Policy</h1>
-      <div class="page-date" id="policy-date"></div>
-      <script>
-        var d = new Date();
-        document.getElementById('policy-date').textContent = 'Last updated: ' +
-          d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-      </script>
-    </div>
-  </div>
+      <div class="privacy-wrap">
 
-  <div class="policy-body">
-    <div class="container">
+        <h1 class="privacy-heading">Privacy</h1>
 
-      <div class="policy-section">
-        <p class="policy-text">We collect your email address when you sign up. We use it to keep you informed about Sapiens First — actions, calls, and updates. We don't sell it, share it with third parties for marketing, or do anything sketchy with it. You can opt out any time.</p>
+        <p class="privacy-text">
+          We collect your email address when you sign up. We use it to send you updates about Sapiens First — actions, calls, and news. We don't sell it, share it, or do anything sketchy with it. To opt out or request deletion, email <a href="mailto:rohan@sapiensfirst.org">rohan@sapiensfirst.org</a>.
+        </p>
 
-        <h2 class="policy-heading">What we collect</h2>
-        <p class="policy-text">When you submit the signup form on our website, we collect your email address and the date and time of your submission. We do not collect your name, location, phone number, or any other personal information.</p>
+        <p class="privacy-cookies">
+          We do not use cookies or tracking software on this website.
+        </p>
 
-        <h2 class="policy-heading">How we use it</h2>
-        <p class="policy-text">We use your email address solely to send you updates about Sapiens First actions and events, invite you to movement calls and organizing opportunities, and connect you with others in your area. We process your data on the basis of legitimate interest in communicating with people who have chosen to join our movement.</p>
-
-        <h2 class="policy-heading">Who we share it with</h2>
-        <p class="policy-text">We do not sell, rent, or share your email address with any third party for marketing or commercial purposes. Your data is stored securely.</p>
-
-        <h2 class="policy-heading">Data retention</h2>
-        <p class="policy-text">We retain your email address for as long as you remain an active subscriber. If you unsubscribe or request deletion, we remove your data within 7 days.</p>
-
-        <h2 class="policy-heading">Your rights</h2>
-        <p class="policy-text">You have the right to access, correct, or delete your data at any time by emailing <a href="mailto:rohan@sapiensfirst.org">rohan@sapiensfirst.org</a>. Every email we send includes an unsubscribe link, or you can opt out by replying "unsubscribe" to any message. EU residents may also lodge a complaint with their national data protection authority.</p>
-
-        <h2 class="policy-heading">Cookies &amp; tracking</h2>
-        <p class="policy-text">We do not use cookies, tracking pixels, or analytics software on this website.</p>
-
-        <h2 class="policy-heading">Contact</h2>
-        <p class="policy-text">Questions? Email us at <a href="mailto:rohan@sapiensfirst.org">rohan@sapiensfirst.org</a>.</p>
-      </div>
-
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="container" style="max-width: 1020px;">
-      <div class="footer-inner">
-        <div class="footer-logo">Sapiens First</div>
-        <div class="footer-right">
-          <a class="footer-link" href="/privacy">Privacy Policy</a>
-          <span class="footer-meta">© 2026 SAPIENS FIRST</span>
-        </div>
       </div>
     </div>
-  </footer>
+  </main>
 
+  <footer class="footer"></footer>
+
+  <script>
+    const burger = document.querySelector('.nav-burger');
+    const navLinks = document.querySelector('.nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        const open = burger.classList.toggle('open');
+        navLinks.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open);
+        document.body.style.overflowY = open ? 'hidden' : '';
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+    }
+  </script>
+  <script src="footer.js"></script>
+  <script src="nav-circle.js"></script>
 </body>
 </html>

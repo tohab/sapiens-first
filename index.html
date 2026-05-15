@@ -27,23 +27,23 @@
       line-height: 0.9;
       letter-spacing: -0.04em;
       text-transform: uppercase;
-      margin-bottom: 22px;
+      margin-bottom: 22px; text-align: center;
       color: #fff;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.45s;
     }
     .hero-headline .accent { color: var(--accent); }
     .hero-body {
-      font-size: 33px; line-height: 1.72;
+      font-size: var(--sz-lead); line-height: 1.72;
       color: rgba(255,255,255,0.82);
-      max-width: 700px; font-weight: 400;
+      max-width: 700px; font-weight: 400; text-align: center; margin-left: auto; margin-right: auto;
       margin-bottom: 24px;
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.65s;
     }
     #hero-signup {
       opacity: 0;
-      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s; display: flex; justify-content: center;
     }
 
     /* ─── STATS ─────────────────────────────── */
@@ -62,22 +62,22 @@
       margin-bottom: 10px;
     }
     .stat-label {
-      font-family: var(--font-body); font-size: 12.96px;
+      font-family: var(--font-body); font-size: var(--sz-label);
       letter-spacing: 0.1em; line-height: 1.6;
       text-transform: uppercase;
     }
 
     /* ─── DEMAND ROWS ───────────────────────────── */
-    .demands { display: flex; flex-direction: column; gap: 0; margin-top: 52px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .demands { display: flex; flex-direction: column; gap: 0; margin-top: 52px; max-width: 728px; margin-left: auto; margin-right: auto; }
     .demand {
       padding: 24px 0;
       margin-bottom: 20px;
     }
     .demand-title {
-      font-family: var(--font-mono); font-weight: 800;
-      font-size: 31px; letter-spacing: 0.02em;
+      font-family: var(--font-display); font-weight: 680;
+      font-size: 56px; letter-spacing: 0.02em;
       text-transform: uppercase; line-height: 1;
-      -webkit-text-stroke: 0.7px var(--text);
+      -webkit-text-stroke: 0.3px var(--text);
       paint-order: stroke fill;
       margin-bottom: 8px; color: var(--text);
       display: inline-block; padding-bottom: 5px;
@@ -85,7 +85,7 @@
       background-repeat: repeat-x; background-position: 0 100%; background-size: 60px 4px;
     }
     .demand-text {
-      font-size: 21px; line-height: 1.65;
+      font-size: var(--sz-body); line-height: 1.65;
       color: var(--text); font-weight: 400;
     }
 
@@ -114,26 +114,26 @@
     }
     .cycle-step:hover { transform: translateY(-3px); }
     .cycle-step-num {
-      font-family: var(--font-mono); font-size: 10.8px;
+      font-family: var(--font-mono); font-size: var(--sz-label);
       letter-spacing: 0.12em; color: var(--accent);
       text-transform: uppercase; margin-bottom: 8px;
     }
     .cycle-step-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: 22px; letter-spacing: 0.04em;
+      font-size: var(--sz-body); letter-spacing: 0.04em;
       text-transform: uppercase; margin-bottom: 10px;
     }
-    .cycle-step-text { font-size: 15px; line-height: 1.75; color: var(--text-dim); font-weight: 500; }
+    .cycle-step-text { font-size: var(--sz-label); line-height: 1.75; color: var(--text-dim); font-weight: 500; }
     .cycle-connector {
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 21.6px; font-weight: 700;
+      font-family: var(--font-mono); font-size: var(--sz-body); font-weight: 700;
       color: var(--accent); opacity: 0.32;
     }
 
     /* ─── CTA SECTION ───────────────────────── */
     .cta-section { padding: 140px 0 120px; text-align: center; }
     .cta-eyebrow {
-      font-family: var(--font-mono); font-size: 13.61px;
+      font-family: var(--font-mono); font-size: var(--sz-label);
       letter-spacing: 0.18em; color: var(--accent);
       text-transform: uppercase; margin-bottom: 28px; font-weight: 460;
     }
@@ -157,7 +157,7 @@
     }
     @media (max-width: 768px) {
       .hero { padding: 100px 0 60px; }
-      .hero-body { font-size: 22px; }
+      .hero-body { font-size: var(--sz-body); }
       .demand-title { font-size: 25.5px; }
       .demand-text { font-size: 17px; }
     }
@@ -169,7 +169,7 @@
       .stat { border-right: none; border-bottom: 1px solid var(--border); text-align: center; }
       .stat:last-child { border-bottom: none; }
       .demand { padding: 16px 0; text-align: center; }
-      .demand-title { font-size: 22px; -webkit-text-stroke: 0.45px var(--text); }
+      .demand-title { font-size: var(--sz-body); -webkit-text-stroke: 0.45px var(--text); }
       .demand-text { font-size: 16px; }
       .cta-headline { font-size: clamp(44px, 12vw, 64px); }
       .cta-sub { font-size: 14px; }
@@ -214,7 +214,7 @@
         <span> make itself </span><br>
       </h1>
       <p class="hero-body">
-        AI is transforming society. <br>
+        AI is upending society. <br>
         Find your voice and <span class="accent"> fight back.</span>
       </p>
       <div id="hero-signup"></div>
@@ -253,7 +253,7 @@
   <!-- ═══════════ OUR DEMANDS ═══════════ -->
   <section class="section">
     <div class="container">
-      <div class="section-label reveal"><span class="title"> Demands</span></div>
+      <div class="section-label reveal"><span class="title"> The ask </span></div>
       <p class="body-large reveal">
         <strong>We demand that all world governments:</strong>
       </p>
@@ -295,7 +295,7 @@
         </div>
         <div class="pillar reveal reveal-d2">
           <div class="pillar-title">Congress</div>
-          <div class="pillar-text">We take the fight to the Capitol, demanding they democratize AI and lead a global arms control treaty.</div>
+          <div class="pillar-text">We take the fight to the Capitol, demanding they democratize AI and lead a global peace treaty.</div>
         </div>
       </div>
       <a href="/about" class="learn-more reveal">Learn more →</a>
@@ -308,19 +308,12 @@
   <section class="cta-section">
     <div class="container">
       <div class="cta-headline reveal">Get <br> Involved</div>
-      <p class="cta-sub reveal">Find your voice, <br> find some friends, <br> and fight like hell.</p>
       <div id="cta-signup" class="reveal"></div>
+      <p class="cta-sub reveal"><br> "It always seems impossible until it is done." <br> - Nelson Mandela</p>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Sapiens First</div>
-        <div style="display:flex;align-items:center;gap:20px;"><a class="footer-link" href="/privacy">Privacy Policy</a><span class="footer-meta">© 2026 SAPIENS FIRST</span></div>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer"></footer>
 
   <script src="signup.js"></script>
   <script>
@@ -382,5 +375,7 @@
       }
     })();
   </script>
+  <script src="footer.js"></script>
+  <script src="nav-circle.js"></script>
 </body>
 </html>
