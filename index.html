@@ -8,94 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    :root {
-      --bg: #faf5ee;
-      --surface: rgba(20,18,14,0.05);
-      --border: rgba(20,18,14,0.22);
-      --text: #141210;
-      --text-dim: rgba(20,18,14,0.68);
-      --accent: #CD551D;
-      --blue: #2C56B3;
-      --font-display: 'Barlow Condensed', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'Special Elite', serif;
-    }
+    /* index.html — page-specific only; shared rules in shared.css */
+    body { min-height: unset; display: block; }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 1;
-      mix-blend-mode: overlay;
-    }
-
-    .container {
-      max-width: 1020px;
-      margin: 0 auto;
-      padding: 0 64px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* ─── NAV ───────────────────────────────── */
-    .site-nav {
-      position: fixed;
-      top: 32px; left: 40px; right: 40px;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-    .nav-wordmark {
-      text-decoration: none;
-      display: flex; align-items: center;
-      pointer-events: auto;
-      opacity: 0; animation: nav-fade 1s ease forwards 1s;
-    }
-    .nav-wordmark:hover { opacity: 0.72; }
-    .nav-logo { width: 24px; height: 24px; flex-shrink: 0; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-link {
-      font-family: var(--font-mono);
-      font-size: 20px; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      -webkit-text-stroke: 0.6px var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-      pointer-events: auto;
-      opacity: 0; animation: nav-fade 1s ease forwards 1s;
-      transition: opacity .2s;
-    }
-    .nav-link:hover { opacity: 0.72; }
-    @keyframes nav-fade { from { opacity: 0; } to { opacity: 1; } }
-
-    /* ─── HERO ──────────────────────────────── */
-    .ember-field { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-    .ember {
-      position: absolute; border-radius: 50%; opacity: 0;
-      animation: ember-flicker var(--ed, 3s) ease-in-out var(--ey, 0s) infinite;
-      box-shadow: 0 0 var(--eg, 3px) var(--ec, #f97316);
-    }
-    @keyframes ember-flicker {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      45%, 55% { opacity: var(--ep, 0.75); transform: scale(1.3); }
-    }
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
@@ -129,20 +46,6 @@
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s;
     }
 
-    /* ─── DIVIDER ───────────────────────────── */
-    .divider { height: 1px; background: var(--border); position: relative; z-index: 2; }
-
-    /* ─── SECTIONS ──────────────────────────── */
-    .section { padding: 110px 0; position: relative; }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 19.89px; letter-spacing: 0.18em;
-      text-transform: uppercase; font-weight: 575;
-      margin-bottom: 26px;
-    }
-    .section-label .title { color: var(--accent); }
-
     /* ─── STATS ─────────────────────────────── */
     .stats-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -164,52 +67,28 @@
       text-transform: uppercase;
     }
 
-    /* ─── BODY TEXT ─────────────────────────── */
-    .body-large {
-      font-size: 28px; line-height: 1.72;
-      font-weight: 400; color: var(--text); margin-bottom: 22px;
-    }
-    .body-large strong { font-weight: 638; }
-
     /* ─── DEMAND ROWS ───────────────────────────── */
-    .demands { display: flex; flex-direction: column; gap: 0; margin-top: 52px; }
+    .demands { display: flex; flex-direction: column; gap: 0; margin-top: 52px; max-width: 560px; margin-left: auto; margin-right: auto; }
     .demand {
-      padding: 24px 0 24px 28px;
-      border-left: 2px solid var(--accent);
+      padding: 24px 0;
       margin-bottom: 20px;
     }
     .demand-title {
       font-family: var(--font-mono); font-weight: 800;
-      font-size: 36.5px; letter-spacing: 0.02em;
+      font-size: 31px; letter-spacing: 0.02em;
       text-transform: uppercase; line-height: 1;
       -webkit-text-stroke: 0.7px var(--text);
       paint-order: stroke fill;
       margin-bottom: 8px; color: var(--text);
+      display: inline-block; padding-bottom: 5px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='4'%3E%3Cpath d='M0 3 Q15 1 30 3 Q45 5 60 3' stroke='%23CD551D' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: repeat-x; background-position: 0 100%; background-size: 60px 4px;
     }
     .demand-text {
       font-size: 21px; line-height: 1.65;
       color: var(--text); font-weight: 400;
     }
 
-    /* ─── STRATEGY CARDS (vertical grid) ───────── */
-    .pillars {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 8px; margin-top: 52px;
-    }
-    .pillar {
-      display: flex; flex-direction: column;
-      padding: 26px 28px;
-      border: 1px solid var(--border); border-radius: 0;
-      background: color-mix(in srgb, var(--surface) 42%, transparent);
-      transition: transform 0.25s ease; cursor: default;
-    }
-    .pillar:hover { transform: translateY(-3px); }
-    .pillar-title {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 20px; letter-spacing: 0.04em;
-      text-transform: uppercase; margin-bottom: 10px;
-    }
-    .pillar-text { font-size: 21px; line-height: 1.75; color: var(--text); font-weight: 500; }
     .strategy-section { overflow: hidden; }
     .us-map-bg {
       position: absolute;
@@ -220,19 +99,6 @@
       opacity: 0.028;
       filter: invert(1) sepia(1) saturate(0.6) hue-rotate(190deg) brightness(1.4);
     }
-    .learn-more {
-      display: inline-block;
-      margin-top: 28px;
-      font-family: var(--font-mono); font-size: 12.96px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent); text-decoration: none;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 2px;
-      opacity: 0.75;
-      transition: opacity .2s;
-    }
-    .learn-more:hover { opacity: 1; }
-
     /* ─── FOUR-STEP CYCLE ───────────────────── */
     .cycle-steps {
       display: grid;
@@ -284,81 +150,32 @@
     }
     #cta-signup { display: inline-block; }
 
-    /* ─── FOOTER ────────────────────────────── */
-    .footer { padding: 36px 0; border-top: 1px solid var(--border); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-logo {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
-    }
-    .footer-meta { font-family: var(--font-mono); font-size: 11.34px; color: var(--text-dim); letter-spacing: 0.08em; }
-    .footer-link { font-family: var(--font-mono); font-size: 11.34px; letter-spacing: 0.08em; color: var(--text-dim); text-decoration: none; transition: color .2s; }
-    .footer-link:hover { color: var(--accent); }
-
-    /* ─── PROGRESS + ANIMATIONS ─────────────── */
-    .progress-bar {
-      position: fixed; top: 0; left: 0;
-      height: 2px; width: 100%;
-      background: var(--accent);
-      transform-origin: left center; transform: scaleX(0);
-      z-index: 10001; pointer-events: none;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.15s; }
-    .reveal-d2 { transition-delay: 0.30s; }
-    .reveal-d3 { transition-delay: 0.45s; }
-
     /* ─── RESPONSIVE ────────────────────────── */
     @media (max-width: 900px) {
       .cycle-steps { grid-template-columns: 1fr; gap: 8px; }
       .cycle-connector { display: none; }
-      .pillars { grid-template-columns: 1fr; }
-      .pillar:hover { transform: translateY(0); }
     }
     @media (max-width: 768px) {
       .hero { padding: 100px 0 60px; }
       .hero-body { font-size: 22px; }
-      .section { padding: 80px 0; }
-      .demand-title { font-size: 30px; }
+      .demand-title { font-size: 25.5px; }
       .demand-text { font-size: 17px; }
-      .pillar-title { font-size: 18px; }
-      .pillar-text { font-size: 17px; }
-      .body-large { font-size: 22px; }
     }
     @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .site-nav { left: 20px; right: 20px; top: 20px; }
-      /* keep wordmark small; nav-link stays readable at Special Elite size */
-      .nav-wordmark { font-size: 12px; }
-      .nav-link { font-size: 16px; -webkit-text-stroke: 0; }
-      .nav-links { gap: 16px; }
-      /* lower floor so headline never clips on 320px screens */
-      .hero-headline { font-size: clamp(56px, 16vw, 82px); }
+      .hero-headline br { display: none; }
+      .hero-headline { font-size: clamp(72px, 18vw, 100px); }
       .hero-body { font-size: 20px; }
       .stats-grid { grid-template-columns: 1fr; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); text-align: center; }
       .stat:last-child { border-bottom: none; }
-      .body-large { font-size: 18px; }
-      .demand { padding: 16px 0 16px 16px; }
-      /* keep confrontational size; thin the stroke so it doesn't clog at 26px */
-      .demand-title { font-size: 26px; -webkit-text-stroke: 0.45px var(--text); }
+      .demand { padding: 16px 0; text-align: center; }
+      .demand-title { font-size: 22px; -webkit-text-stroke: 0.45px var(--text); }
       .demand-text { font-size: 16px; }
       .cta-headline { font-size: clamp(44px, 12vw, 64px); }
       .cta-sub { font-size: 14px; }
       #cta-signup { display: block; width: 100%; }
-      /* reset enlarged form padding on mobile — stacking handled by signup.js */
       #hero-signup .sf input { font-size: 16px; padding: 13px 16px; }
       #hero-signup .sf button { font-size: 12.5px; padding: 13px 20px; }
-      .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
     }
 
     /* ─── HERO SIGNUP — larger form ────────────── */
@@ -381,8 +198,11 @@
       <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
     </a>
     <div class="nav-links">
+      <a class="nav-link" href="/about">About</a>
       <a class="nav-link" href="/join">Join</a>
+      <a class="nav-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
     </div>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <!-- ═══════════ HERO ═══════════ -->
@@ -390,11 +210,11 @@
     <div class="ember-field" aria-hidden="true"></div>
     <div class="container">
       <h1 class="hero-headline">
-        <span>We are in </span><br>
-        <span>a <span class="accent"> crisis. </span></span><br>
+        <span><span class="accent"> History </span></span> doesn't <br>
+        <span> make itself </span><br>
       </h1>
       <p class="hero-body">
-        AI is upending our society. <br>
+        AI is transforming society. <br>
         Find your voice and <span class="accent"> fight back.</span>
       </p>
       <div id="hero-signup"></div>
@@ -406,7 +226,7 @@
   <!-- ═══════════ THE CRISIS ═══════════ -->
   <section class="section">
     <div class="container">
-      <div class="section-label reveal"><span class="title"> Crisis</span></div>
+      <div class="section-label reveal"><span class="title">The Crisis</span></div>
       <div class="stats-grid reveal">
         <div class="stat">
           <div class="stat-val" data-val="300M">300M</div>
@@ -435,12 +255,12 @@
     <div class="container">
       <div class="section-label reveal"><span class="title"> Demands</span></div>
       <p class="body-large reveal">
-        We demand that <strong>  all world governments:</strong>
+        <strong>We demand that all world governments:</strong>
       </p>
       <div class="demands">
         <div class="demand reveal">
           <div class="demand-title">Declare</div>
-          <div class="demand-text">The AI crisis as a threat to our lives and livelihood.</div>
+          <div class="demand-text">The AI crisis a threat to our lives and livelihood.</div>
         </div>
         <div class="demand reveal reveal-d1">
           <div class="demand-title">Democratize</div>
@@ -460,25 +280,25 @@
   <section class="section strategy-section">
     <img class="us-map-bg" src="assets/us.svg" aria-hidden="true" alt="">
     <div class="container">
-      <div class="section-label reveal"><span class="title"> Strategy</span></div>
+      <div class="section-label reveal"><span class="title"> Our Plan</span></div>
       <p class="body-large reveal">
-        <strong>History doesn't make itself.</strong> 
+        <strong>We build power from the bottom up.</strong>
       </p>
       <div class="pillars">
         <div class="pillar reveal">
-          <div class="pillar-title">Empowerment</div>
-          <div class="pillar-text">Each conversation builds leaders who recruit others and grow the fight.</div>
+          <div class="pillar-title">Cities</div>
+          <div class="pillar-text">We urge our city councils to declare a Crisis, and in doing so activate local communities.</div>
         </div>
         <div class="pillar reveal reveal-d1">
-          <div class="pillar-title">Distribution</div>
-          <div class="pillar-text">Our model is open-source and can be used by anyone, anywhere.</div>
+          <div class="pillar-title">States</div>
+          <div class="pillar-text">We call on our legislatures to convene a Citizens' Assembly and create an AI oversight agency.</div>
         </div>
         <div class="pillar reveal reveal-d2">
-          <div class="pillar-title">Direct Action</div>
-          <div class="pillar-text">We confront the people in power and force them to take a stand.</div>
+          <div class="pillar-title">Congress</div>
+          <div class="pillar-text">We take the fight to the Capitol, demanding they democratize AI and lead a global arms control treaty.</div>
         </div>
       </div>
-      <a href="/learn" class="learn-more reveal">Read the handbook →</a>
+      <a href="/about" class="learn-more reveal">Learn more →</a>
     </div>
   </section>
 
@@ -487,8 +307,8 @@
   <!-- ═══════════ CTA ═══════════ -->
   <section class="cta-section">
     <div class="container">
-      <div class="cta-headline reveal">Get <br> Involved.</div>
-      <p class="cta-sub reveal">Find your voice, find some friends, <br> and fight like hell.</p>
+      <div class="cta-headline reveal">Get <br> Involved</div>
+      <p class="cta-sub reveal">Find your voice, <br> find some friends, <br> and fight like hell.</p>
       <div id="cta-signup" class="reveal"></div>
     </div>
   </section>
@@ -504,6 +324,29 @@
 
   <script src="signup.js"></script>
   <script>
+    const burger = document.querySelector('.nav-burger');
+    const navLinks = document.querySelector('.nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        const open = burger.classList.toggle('open');
+        navLinks.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open);
+        document.body.style.overflowY = open ? 'hidden' : '';
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+    }
+
     const progressBar = document.querySelector('.progress-bar');
     window.addEventListener('scroll', () => {
       const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;

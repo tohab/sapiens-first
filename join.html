@@ -36,114 +36,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    :root {
-      --bg: #faf5ee;
-      --surface: rgba(20,18,14,0.05);
-      --border: rgba(20,18,14,0.22);
-      --text: #141210;
-      --text-dim: rgba(20,18,14,0.68);
-      --accent: #CD551D;
-      --blue: #2C56B3;
-      --font-display: 'Barlow Condensed', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'Special Elite', serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-    }
-
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
-    }
-
-    .container {
-      max-width: 1020px;
-      margin: 0 auto; padding: 0 64px;
-      position: relative; z-index: 2;
-    }
-
-    /* ─── NAV ───────────────────────────────── */
-    .site-nav {
-      position: fixed; top: 32px; left: 40px; right: 40px;
-      z-index: 100; display: flex; align-items: center; justify-content: space-between;
-      pointer-events: none;
-    }
-    .nav-wordmark {
-      text-decoration: none;
-      display: flex; align-items: center;
-      pointer-events: auto; opacity: 0; animation: nav-fade 1s ease forwards 1s;
-    }
-    .nav-wordmark:hover { opacity: 0.72; }
-    .nav-logo { width: 24px; height: 24px; flex-shrink: 0; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-link {
-      font-family: var(--font-mono); font-size: 20px; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      -webkit-text-stroke: 0.6px var(--accent);
-      color: var(--accent); text-decoration: none;
-      pointer-events: auto; opacity: 0; animation: nav-fade 1s ease forwards 1s;
-      transition: opacity .2s;
-    }
-    .nav-link:hover { opacity: 0.72; }
-    .nav-link.active { border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
-    @keyframes nav-fade { from { opacity: 0; } to { opacity: 1; } }
-
-    /* ─── PAGE HERO ─────────────────────────── */
-    .ember-field { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-    .ember {
-      position: absolute; border-radius: 50%; opacity: 0;
-      animation: ember-flicker var(--ed, 3s) ease-in-out var(--ey, 0s) infinite;
-      box-shadow: 0 0 var(--eg, 3px) var(--ec, #f97316);
-    }
-    @keyframes ember-flicker {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      45%, 55% { opacity: var(--ep, 0.75); transform: scale(1.3); }
-    }
-    .page-hero {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 160px 0;
-      position: relative; overflow: hidden;
-      background-color: #000;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .title-accent { color: var(--accent); }
-    .page-title {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(64px, 9vw, 110px);
-      line-height: 0.9; letter-spacing: -0.04em;
-      text-transform: uppercase; color: #fff;
-    }
-    .act-subhead {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 52px; letter-spacing: -0.02em;
-      color: var(--text); margin-bottom: 24px; line-height: 0.95;
-      text-transform: uppercase; text-align: center;
-    }
-
-    /* ─── MAIN LAYOUT ───────────────────────── */
-    main { flex: 1; }
-
-    .act-wrap {
-      max-width: 580px;
-      margin: 0 auto;
-      padding: 80px 0 120px;
-      display: flex; flex-direction: column; gap: 56px;
-    }
-
     /* ─── FORM ──────────────────────────────── */
     .signup-box {
       border: 1px solid var(--border); border-radius: 0;
@@ -158,71 +52,12 @@
       margin-top: 12px; line-height: 1.6;
     }
 
-    /* ─── STEPS ─────────────────────────────── */
-    .act-body-lead {
-      font-size: 22px; line-height: 1.65;
-      color: var(--text); margin-bottom: 16px;
-    }
-    .act-body-list {
-      font-size: 22px; line-height: 1.65;
-      color: var(--text);
-      padding-left: 24px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .act-body-list em { font-style: italic; }
-
-    /* ─── SECTION DIVIDER ───────────────────── */
-    .section-rule {
-      height: 1px; background: var(--border);
-    }
-
-    /* ─── SHARE SECTION ─────────────────────── */
+    /* ─── SHARE LABEL ───────────────────────── */
     .share-label {
       font-family: var(--font-mono); font-size: 11.88px;
       letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 20px; font-weight: 500;
       text-align: center;
-    }
-    .share-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 38px; letter-spacing: -0.02em;
-      text-transform: uppercase; margin-bottom: 8px; line-height: 1;
-      text-align: center;
-    }
-    .share-sub {
-      font-size: 17px; color: var(--text-dim);
-      margin-bottom: 28px; line-height: 1.6;
-    }
-    .share-buttons {
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-    }
-    .share-btn {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-family: var(--font-mono); font-size: 12.96px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 13px 20px; border-radius: 0;
-      text-decoration: none; border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--surface) 60%, transparent);
-      color: var(--text); cursor: pointer;
-      transition: border-color .2s, background .2s, color .2s;
-    }
-    .share-btn:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--surface) 100%, transparent); }
-    .share-btn svg { flex-shrink: 0; }
-    .share-btn.copy-btn.copied { border-color: #22c55e; color: #22c55e; }
-
-    .share-url-row {
-      display: flex; justify-content: center; align-items: center; gap: 10px;
-      margin-top: 16px;
-    }
-    .share-url {
-      display: inline-block;
-      font-family: var(--font-mono); font-size: 14.04px;
-      letter-spacing: 0.04em; color: var(--text-dim);
-      padding: 12px 16px;
-      border: 1px solid var(--border); border-radius: 0;
-      background: color-mix(in srgb, var(--surface) 60%, transparent);
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-      user-select: all;
     }
 
     /* ─── QR CODE SECTION ───────────────────── */
@@ -268,41 +103,6 @@
     }
     .qr-download-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ─── FOOTER ────────────────────────────── */
-    .footer { padding: 36px 0; border-top: 1px solid var(--border); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-logo {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
-    }
-    .footer-meta { font-family: var(--font-mono); font-size: 11.34px; color: var(--text-dim); letter-spacing: 0.08em; }
-    .footer-link { font-family: var(--font-mono); font-size: 11.34px; letter-spacing: 0.08em; color: var(--text-dim); text-decoration: none; transition: color .2s; }
-    .footer-link:hover { color: var(--accent); }
-
-    /* ─── RESPONSIVE ────────────────────────── */
-    @media (max-width: 768px) {
-      .page-hero { padding: 120px 0 80px; }
-      .act-subhead { font-size: 38px; }
-      .act-body-lead, .act-body-list { font-size: 18px; }
-      .share-heading, .qr-heading { font-size: 30px; }
-    }
-    @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .site-nav { left: 20px; right: 20px; top: 20px; }
-      .nav-wordmark { font-size: 12px; }
-      .nav-link { font-size: 16px; -webkit-text-stroke: 0; }
-      .nav-links { gap: 16px; }
-      .act-wrap { padding: 52px 0 80px; }
-      /* keep act-subhead confrontational on mobile */
-      .act-subhead { font-size: 32px; }
-      .share-heading, .qr-heading { font-size: 26px; }
-      .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
-      .share-buttons { flex-direction: column; }
-      .share-btn { justify-content: center; }
-      /* reset enlarged form padding on mobile */
-      #act-signup .sf input { font-size: 16px; padding: 13px 16px; }
-      #act-signup .sf button { font-size: 12.5px; padding: 13px 20px; }
-    }
     /* ─── ACT SIGNUP — larger form ─────────── */
     #act-signup .sf { max-width: 100%; }
     #act-signup .sf input {
@@ -310,6 +110,17 @@
     }
     #act-signup .sf button {
       font-size: 14.4px; padding: 15.6px 26.4px;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────── */
+    @media (max-width: 768px) {
+      .qr-heading { font-size: 30px; }
+    }
+    @media (max-width: 600px) {
+      .qr-heading { font-size: 26px; }
+      /* reset enlarged form padding on mobile */
+      #act-signup .sf input { font-size: 16px; padding: 13px 16px; }
+      #act-signup .sf button { font-size: 12.5px; padding: 13px 20px; }
     }
 
   </style>
@@ -321,8 +132,11 @@
       <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
     </a>
     <div class="nav-links">
+      <a class="nav-link" href="/about">About</a>
       <a class="nav-link active" href="/join">Join</a>
+      <a class="nav-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
     </div>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <!-- ═══════════ PAGE HERO ═══════════ -->
@@ -341,7 +155,7 @@
         <div class="signup-box">
           <div class="act-subhead">Sign up</div>
           <div id="act-signup"></div>
-          <p class="form-note">No spam, and we'll never sell your data.</p>
+          <p class="form-note">No spam. We'll never sell your data.</p>
         </div>
 
         <!-- STEPS -->
@@ -402,6 +216,29 @@
 
   <script src="signup.js"></script>
   <script>
+    const burger = document.querySelector('.nav-burger');
+    const navLinks = document.querySelector('.nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        const open = burger.classList.toggle('open');
+        navLinks.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open);
+        document.body.style.overflowY = open ? 'hidden' : '';
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+    }
+
     const JOIN_URL = 'https://sapiensfirst.org/join';
     const SHARE_TEXT = 'AI could reshape civilization — and the people in power aren\'t ready. Join Sapiens First to demand change: ';
 

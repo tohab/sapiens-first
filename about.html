@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Sapiens First</title>
+  <meta name="description" content="Learn about Sapiens First — who we are, what we do, and the values that guide our fight for humanity's future.">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .section { padding: 48px 0; }
+    @media (max-width: 768px) { .section { padding: 32px 0; } }
+
+    /* ─── HOW WE WORK CARDS (full-width) ────── */
+    .methods {
+      display: flex; flex-direction: column;
+      gap: 8px; margin-top: 52px;
+    }
+    .method {
+      display: flex; flex-direction: row; align-items: center;
+      padding: 26px 28px; gap: 28px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      transition: transform 0.25s ease; cursor: default;
+    }
+    .method:hover { transform: translateY(-3px); }
+    .method-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 23px; letter-spacing: 0.04em;
+      text-transform: uppercase; min-width: 180px; text-align: center;
+    }
+    .method-text { font-size: 21px; line-height: 1.75; color: var(--text); font-weight: 500; }
+
+    /* ─── VALUES LIST ───────────────────────── */
+    .values-list {
+      margin-top: 36px;
+      padding-left: 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      list-style: disc;
+    }
+    .values-list li {
+      font-size: 28px; line-height: 1.72; color: var(--text); font-weight: 400;
+    }
+    .values-list li strong { font-weight: 638; }
+
+    /* ─── RESPONSIVE ────────────────────────── */
+    @media (max-width: 900px) {
+      .method { flex-direction: column; gap: 8px; }
+      .method-title { min-width: unset; }
+    }
+    @media (max-width: 768px) {
+      .pillar-text, .method-text { font-size: 17px; }
+      .values-list li { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav">
+    <a class="nav-wordmark" href="/">
+      <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
+    </a>
+    <div class="nav-links">
+      <a class="nav-link active" href="/about">About</a>
+      <a class="nav-link" href="/join">Join</a>
+      <a class="nav-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
+    </div>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <div class="page-hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="container">
+      <h1 class="page-title">About <span class="title-accent">us</span></h1>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════ MISSION ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <p class="body-large reveal">Our mission is to put powerful artificial intelligence in the hands of the people.</p>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ WHAT WE DO ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title"> Theory of Change</span></div>
+        <p class="body-large reveal">
+          History is made when people get together and challenge the status quo.
+        </p>
+        <div class="pillars">
+          <div class="pillar reveal">
+            <div class="pillar-title">Connect</div>
+            <div class="pillar-text">We invite people to connect through one-on-one conversations.</div>
+          </div>
+          <div class="pillar reveal reveal-d1">
+            <div class="pillar-title">Gather</div>
+            <div class="pillar-text">Potlucks, parties and workshops get people together to learn how to make change.</div>
+          </div>
+          <div class="pillar reveal reveal-d2">
+            <div class="pillar-title">Disrupt</div>
+            <div class="pillar-text">Our disruptions are good-natured but direct, challenging politicians to act.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ HOW WE WORK ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title"> How We Work</span></div>
+        <p class="body-large reveal">
+          Our strategy is simple: <strong> unleash people power.</strong>
+        </p>
+        <div class="methods">
+          <div class="method reveal">
+            <div class="method-title">Empowerment</div>
+            <div class="method-text">We empower others to use their creativity and spirit to power the movement.</div>
+          </div>
+          <div class="method reveal reveal-d1">
+            <div class="method-title">Guidance</div>
+            <div class="method-text">We've learned what works in social change so that organizers can hit the ground running.</div>
+          </div>
+          <div class="method reveal reveal-d2">
+            <div class="method-title">Distribution</div>
+            <div class="method-text">Our guide can be used in any city, state, or country. </div>
+          </div>
+        </div>
+        <a href="/guide" class="learn-more reveal">Read the guide →</a>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ VALUES ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title"> Core Values</span></div>
+        <!-- <p class="body-large reveal">
+          Anyone can act in the name of Sapiens First if they follow our values.
+        </p> -->
+        <ul class="values-list reveal">
+          <li><strong>Peace.</strong> We don't threaten or harm people or property.</li>
+          <li><strong>Sustainability.</strong> We support each other and take breaks.</li>
+          <li><strong>Intentionality.</strong> We work smart, not hard, to make change.</li>
+          <li><strong>Agency.</strong> When we feel strongly, we take action!</li>
+          <li><strong>Respect.</strong> We are kind, listen, and use non-violent communication.</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ═══════════ FOUNDER ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <p class="body-large reveal">
+          Sapiens First was founded in 2026 by Rohan Prasad — an activist, educator, and concerned citizen.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Sapiens First</div>
+        <div style="display:flex;align-items:center;gap:20px;"><a class="footer-link" href="/privacy">Privacy Policy</a><span class="footer-meta">© 2026 SAPIENS FIRST</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.querySelector('.nav-burger');
+    const navLinks = document.querySelector('.nav-links');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        const open = burger.classList.toggle('open');
+        navLinks.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open);
+        document.body.style.overflowY = open ? 'hidden' : '';
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && burger.classList.contains('open')) {
+          burger.classList.remove('open'); navLinks.classList.remove('open');
+          document.body.style.overflowY = '';
+        }
+      });
+    }
+
+    const progressBar = document.querySelector('.progress-bar');
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    (function () {
+      const field = document.querySelector('.ember-field');
+      if (!field) return;
+      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
+      for (let i = 0; i < 174; i++) {
+        const el = document.createElement('div');
+        el.className = 'ember';
+        const size = 1.5 + Math.random() * 2;
+        const col = colors[Math.floor(Math.random() * colors.length)];
+        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
+        const del = (-Math.random() * 7).toFixed(2);
+        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
+        const glow = (size * 1.8).toFixed(1);
+        const x = Math.random() * 100;
+        const u = Math.random();
+        const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
+        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
+        field.appendChild(el);
+      }
+    })();
+  </script>
+</body>
+</html>
