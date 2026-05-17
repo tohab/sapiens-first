@@ -1,35 +1,12 @@
 <!DOCTYPE html>
-<!--
-  ═══════════════════════════════════════════════════════════════
-  GOOGLE SHEETS SETUP — do this once before the form goes live:
-
-  1. Go to https://script.google.com and create a new project.
-  2. Paste this Apps Script code:
-
-      function doPost(e) {
-        var sheet = SpreadsheetApp.openById('1tFA7hIPKjgxoKBRgRaP5L360DzKW5u2IJGo4yNQRqmE').getSheets()[0];
-        var data = JSON.parse(e.postData.contents);
-        sheet.appendRow([new Date(), data.email]);
-        var out = ContentService.createTextOutput(JSON.stringify({ result: 'success' }));
-        out.setMimeType(ContentService.MimeType.JSON);
-        return out;
-      }
-
-  3. Click Deploy → New deployment → Web app
-     - Execute as: Me
-     - Who has access: Anyone
-  4. Copy the deployment URL.
-  5. Replace the SCRIPT_URL value below with that URL.
-  ═══════════════════════════════════════════════════════════════
--->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Join the Movement — Sapiens First</title>
-  <meta name="description" content="Join Sapiens First — a movement to put transformative AI in the hands of the people before it's too late.">
+  <title>Join — Sapiens First</title>
+  <meta name="description" content="Become a Sapiens First organizer — attend an intro workshop, join our community, and host events in your city.">
   <meta property="og:title" content="Join Sapiens First">
-  <meta property="og:description" content="The AI crisis is here. Join us to put transformative AI in the hands of the people.">
+  <meta property="og:description" content="Attend an intro workshop, join our community, and host events in your city.">
   <meta property="og:url" content="https://sapiensfirst.org/join">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
@@ -38,12 +15,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
   <style>
-    /* ─── FORM ──────────────────────────────── */
+    .section { padding: 48px 0; }
+    @media (max-width: 768px) { .section { padding: 32px 0; } }
+
+    /* ─── STEPS ─────────────────────────────── */
+    .steps {
+      display: flex; flex-direction: row;
+      align-items: stretch; gap: 0;
+      margin-top: 52px;
+    }
+    .step-card {
+      flex: 1;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      padding: 32px 28px 28px; gap: 12px;
+      background: color-mix(in srgb, var(--surface) 40%, transparent);
+    }
+    .step-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 22px; line-height: 1.1;
+      letter-spacing: 0.01em; text-transform: uppercase; color: var(--text);
+    }
+    .step-desc {
+      font-family: var(--font-body); font-size: 15px;
+      color: var(--text-dim); line-height: 1.65; flex: 1;
+    }
+    .step-desc a { color: var(--accent); text-decoration: none; }
+    .step-desc a:hover { text-decoration: underline; }
+    .step-arrow {
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; width: 36px; position: relative;
+    }
+    .step-arrow::after {
+      content: '→'; font-family: var(--font-body);
+      font-size: 24px; color: var(--accent); opacity: 0.7;
+    }
+
+    /* ─── SIGNUP BOX ────────────────────────── */
     .signup-box {
-      border: 1px solid var(--border); border-radius: 0;
-      padding: 32px 36px;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center;
+      border: 1px solid var(--border);
+      padding: 32px 36px; margin-top: 52px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
     }
     .signup-box .sf { width: 100%; max-width: 100%; }
     .form-note {
@@ -51,232 +63,148 @@
       letter-spacing: 0.08em; color: var(--text-dim);
       margin-top: 12px; line-height: 1.6;
     }
-
-    /* ─── SHARE LABEL ───────────────────────── */
-    .share-label {
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 20px; font-weight: 500;
-      text-align: center;
-    }
-
-    /* ─── QR CODE SECTION ───────────────────── */
-    .qr-label {
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 20px; font-weight: 500;
-      text-align: center;
-    }
-    .qr-heading {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: var(--sz-subhead); letter-spacing: -0.02em;
-      text-transform: uppercase; margin-bottom: 8px; line-height: 1;
-      text-align: center;
-    }
-    .qr-sub {
-      font-size: 17px; color: var(--text-dim);
-      margin-bottom: 28px; line-height: 1.6;
-    }
-    .qr-card {
-      display: flex; flex-direction: column; align-items: center;
-      width: fit-content; margin: 0 auto;
-      padding: 28px 28px 20px;
-      border: 1px solid var(--border); border-radius: 0;
-      background: #fff;
-      gap: 16px;
-    }
-    .qr-card img { display: block; image-rendering: pixelated; }
-    .qr-url-label {
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      letter-spacing: 0.1em; color: var(--text-dim);
-      text-transform: uppercase;
-    }
-    .qr-download-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-mono); font-size: var(--sz-label); font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 10px 18px; border-radius: 0;
-      border: 1px solid var(--border);
-      background: transparent; color: var(--text);
-      cursor: pointer; text-decoration: none;
-      transition: border-color .2s, color .2s;
-    }
-    .qr-download-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ─── ACT SIGNUP — larger form ─────────── */
     #act-signup .sf { max-width: 100%; }
-    #act-signup .sf input {
-      font-size: 19.2px; padding: 15.6px 19.2px;
-    }
-    #act-signup .sf button {
-      font-size: 14.4px; padding: 15.6px 26.4px;
-    }
+    #act-signup .sf input  { font-size: 19.2px; padding: 15.6px 19.2px; }
+    #act-signup .sf button { font-size: 14.4px;  padding: 15.6px 26.4px; }
 
     /* ─── RESPONSIVE ────────────────────────── */
-    @media (max-width: 768px) {
-      .qr-heading { font-size: 30px; }
+    @media (max-width: 700px) {
+      .steps { flex-direction: column; }
+      .step-arrow { width: auto; height: 28px; }
+      .step-arrow::after { content: '↓'; }
     }
     @media (max-width: 600px) {
-      .qr-heading { font-size: 26px; }
-      /* reset enlarged form padding on mobile */
-      #act-signup .sf input { font-size: 16px; padding: 13px 16px; }
+      .container { padding: 0 20px; }
+      .step-card { padding: 22px 18px 20px; }
+      .signup-box { padding: 24px 20px; }
+      #act-signup .sf input  { font-size: 16px;   padding: 13px 16px; }
       #act-signup .sf button { font-size: 12.5px; padding: 13px 20px; }
     }
-
   </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <a class="nav-wordmark" href="/">
-      <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
-    </a>
-    <div class="nav-links">
-      <a class="nav-link" href="/about">About</a>
-      <a class="nav-link active" href="/join">Join</a>
-      <a class="nav-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
-    </div>
-    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </nav>
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav"></nav>
 
   <!-- ═══════════ PAGE HERO ═══════════ -->
   <div class="page-hero">
     <div class="ember-field" aria-hidden="true"></div>
     <div class="container">
-      <h1 class="page-title">Join the <br><span class="title-accent">movement.</span></h1>
+      <h1 class="page-title">Join the<br><span class="title-accent">Revolution.</span></h1>
     </div>
   </div>
 
   <main>
-    <div class="container">
-      <div class="act-wrap">
 
-        <!-- SIGN UP FORM -->
-        <div class="signup-box">
-          <div class="act-subhead">Sign up</div>
-          <div id="act-signup"></div>
-          <p class="form-note">No spam. We'll never sell your data.</p>
-        </div>
+    <!-- ═══════════ INTRO ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <p class="body-large reveal">Organizers are the beating heart of our movement. Becoming an Organizer takes three steps.</p>
 
-        <!-- STEPS -->
-        <div class="act-body">
-          <p class="act-body-lead">After signing up, we'll share four easy next steps:</p>
-          <ul class="act-body-list">
-            <li><strong>Connect</strong> and join an online call.</li>
-            <li><strong>Learn</strong> what you can do about the AI crisis.</li>
-            <li><strong>Act</strong> with members of your community.</li>
-            <li><strong>Celebrate</strong> with fellow activists.</li>
-          </ul>
-        </div>
-
-        <div class="section-rule"></div>
-
-        <!-- SHARE -->
-        <div>
-          <div class="share-heading">Share this page</div>
-          <p class="share-sub">Help us grow the movement — share the link with friends and family.</p>
-          <div class="share-buttons">
-            <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              X / Twitter
-            </a>
-            <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              Facebook
-            </a>
-            <a class="share-btn" id="share-wa" href="#" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              WhatsApp
-            </a>
+        <div class="steps">
+          <div class="step-card reveal">
+            <div class="step-title">Learn the ropes</div>
+            <p class="step-desc">Join our online workshop to learn about the AI Crisis and what you can do about it.</p>
           </div>
-          <div class="share-url-row">
-            <div class="share-url" id="share-url-display">sapiensfirst.org/join</div>
-            <button class="share-btn copy-btn" id="copy-link" title="Copy link" style="padding:13px 16px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-            </button>
+          <div class="step-arrow"></div>
+          <div class="step-card reveal reveal-d1">
+            <div class="step-title">Get connected</div>
+            <p class="step-desc">Join our Discord to get connect with activists in your area.</p>
           </div>
-          <div class="qr-card" style="margin-top:24px;">
-            <img src="favicons/qr-join.png" alt="QR code for sapiensfirst.org/join" width="220" height="220">
-            <div class="qr-url-label">sapiensfirst.org/join</div>
+          <div class="step-arrow"></div>
+          <div class="step-card reveal reveal-d2">
+            <div class="step-title">Host an Event</div>
+            <p class="step-desc">Connect, gather, or disrupt in your city. You host solo or with fellow activists.</p>
           </div>
         </div>
-
       </div>
-    </div>
+    </section>
+
+    <!-- ═══════════ GET STARTED ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <p class="body-large reveal">Hear about our next workshop by signing up for our newsletter.</p>
+
+        <div class="signup-box reveal">
+          <div id="act-signup"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════════ SPREAD THE WORD ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Spread the Word</span></div>
+        <div class="share-buttons reveal">
+          <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X / Twitter
+          </a>
+          <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a class="share-btn" id="share-wa" href="#" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div class="share-url-row reveal">
+          <div class="share-url" id="share-url-display">sapiensfirst.org/join</div>
+          <button class="share-btn copy-btn" id="copy-link" title="Copy link" style="padding:13px 16px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer"></footer>
 
   <script src="signup.js"></script>
   <script>
-    const burger = document.querySelector('.nav-burger');
-    const navLinks = document.querySelector('.nav-links');
-    if (burger && navLinks) {
-      burger.addEventListener('click', () => {
-        const open = burger.classList.toggle('open');
-        navLinks.classList.toggle('open', open);
-        burger.setAttribute('aria-expanded', open);
-        document.body.style.overflowY = open ? 'hidden' : '';
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && burger.classList.contains('open')) {
-          burger.classList.remove('open'); navLinks.classList.remove('open');
-          document.body.style.overflowY = '';
-        }
-      });
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && burger.classList.contains('open')) {
-          burger.classList.remove('open'); navLinks.classList.remove('open');
-          document.body.style.overflowY = '';
-        }
-      });
-    }
+    document.getElementById('act-signup').appendChild(createSignupForm({ theme: 'light', buttonText: 'Sign me up →' }));
 
-    const JOIN_URL = 'https://sapiensfirst.org/join';
-    const SHARE_TEXT = 'AI could reshape civilization — and the people in power aren\'t ready. Join Sapiens First to demand change: ';
+    const progressBar = document.querySelector('.progress-bar');
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
+    }, { passive: true });
 
-    // Sign-up form
-    document.getElementById('act-signup').appendChild(createSignupForm({ theme: 'light', buttonText: 'Join →' }));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Share links
-    document.getElementById('share-x').href =
-      'https://x.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT) + '&url=' + encodeURIComponent(JOIN_URL);
-    document.getElementById('share-fb').href =
-      'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(JOIN_URL);
-    document.getElementById('share-wa').href =
-      'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + ' ' + JOIN_URL);
-
-    // Copy link
+    const ORG_URL = 'https://sapiensfirst.org/join';
+    const SHARE_TEXT = 'Want to fight for AI accountability? Become a Sapiens First organizer: ';
+    document.getElementById('share-x').href  = 'https://x.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT) + '&url=' + encodeURIComponent(ORG_URL);
+    document.getElementById('share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(ORG_URL);
+    document.getElementById('share-wa').href = 'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + ' ' + ORG_URL);
     document.getElementById('copy-link').addEventListener('click', function () {
-      navigator.clipboard.writeText(JOIN_URL).then(() => {
-        const btn = this;
-        btn.classList.add('copied');
-        setTimeout(() => btn.classList.remove('copied'), 2000);
-      });
+      navigator.clipboard.writeText(ORG_URL).then(() => { this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 2000); });
     });
 
-    // Ember particles
-    (function () {
-      const field = document.querySelector('.ember-field');
-      if (!field) return;
-      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
-      for (let i = 0; i < 174; i++) {
-        const el = document.createElement('div');
-        el.className = 'ember';
-        const size = 1.5 + Math.random() * 2;
-        const col = colors[Math.floor(Math.random() * colors.length)];
-        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
-        const del = (-Math.random() * 7).toFixed(2);
-        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
-        const glow = (size * 1.8).toFixed(1);
-        const x = Math.random() * 100;
-        const u = Math.random();
-        const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
-        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
+    (function(){
+      const field=document.querySelector('.ember-field'); if(!field)return;
+      const colors=['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
+      for(let i=0;i<174;i++){
+        const el=document.createElement('div'); el.className='ember';
+        const size=1.5+Math.random()*2, col=colors[Math.floor(Math.random()*colors.length)];
+        const dur=(2.2+Math.random()*3.52).toFixed(2), del=(-Math.random()*7).toFixed(2);
+        const peak=(0.35+Math.random()*0.55).toFixed(2), glow=(size*1.8).toFixed(1);
+        const x=Math.random()*100, u=Math.random(), y=(-0.8+Math.sqrt(0.64+0.8*u))/0.4*100;
+        el.style.cssText=`left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
         field.appendChild(el);
       }
     })();
   </script>
+  <script src="nav.js"></script>
   <script src="footer.js"></script>
   <script src="nav-circle.js"></script>
 </body>

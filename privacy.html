@@ -38,17 +38,7 @@
 </head>
 <body>
 
-  <nav class="site-nav">
-    <a class="nav-wordmark" href="/">
-      <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
-    </a>
-    <div class="nav-links">
-      <a class="nav-link" href="/about">About</a>
-      <a class="nav-link" href="/join">Join</a>
-      <a class="nav-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
-    </div>
-    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </nav>
+  <nav class="site-nav"></nav>
 
   <main>
     <div class="container">
@@ -70,30 +60,7 @@
 
   <footer class="footer"></footer>
 
-  <script>
-    const burger = document.querySelector('.nav-burger');
-    const navLinks = document.querySelector('.nav-links');
-    if (burger && navLinks) {
-      burger.addEventListener('click', () => {
-        const open = burger.classList.toggle('open');
-        navLinks.classList.toggle('open', open);
-        burger.setAttribute('aria-expanded', open);
-        document.body.style.overflowY = open ? 'hidden' : '';
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && burger.classList.contains('open')) {
-          burger.classList.remove('open'); navLinks.classList.remove('open');
-          document.body.style.overflowY = '';
-        }
-      });
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && burger.classList.contains('open')) {
-          burger.classList.remove('open'); navLinks.classList.remove('open');
-          document.body.style.overflowY = '';
-        }
-      });
-    }
-  </script>
+  <script src="nav.js"></script>
   <script src="footer.js"></script>
   <script src="nav-circle.js"></script>
 </body>

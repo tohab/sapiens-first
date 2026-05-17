@@ -2,11 +2,275 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/guide">
-  <title>Redirecting — Sapiens First</title>
-  <script>window.location.replace("/guide");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn — Sapiens First</title>
+  <meta name="description" content="Understand the AI crisis, what we're demanding, and how social change actually happens.">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .section { padding: 80px 0; }
+    @media (max-width: 768px) { .section { padding: 52px 0; } }
+
+    /* ─── RESOURCE CARDS ────────────────────── */
+    .resource-grid {
+      display: flex; flex-direction: column;
+      gap: 8px; margin-top: 40px;
+    }
+    .resource-card {
+      display: flex; flex-direction: row; align-items: flex-start;
+      padding: 22px 26px; gap: 20px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      text-decoration: none;
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+    .resource-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .resource-card-body { flex: 1; }
+    .resource-tag {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px; display: block;
+    }
+    .resource-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: var(--sz-body); letter-spacing: 0.02em;
+      text-transform: uppercase; color: var(--text);
+      line-height: 1.2;
+    }
+    .resource-desc {
+      font-size: 16px; line-height: 1.65;
+      color: var(--text-dim); margin-top: 6px; font-weight: 400;
+    }
+    .resource-arrow {
+      font-size: 18px; color: var(--accent);
+      align-self: center; flex-shrink: 0;
+      opacity: 0.6; transition: opacity 0.2s, transform 0.2s;
+    }
+    .resource-card:hover .resource-arrow { opacity: 1; transform: translateX(4px); }
+
+    /* ─── VIDEO EMBED ───────────────────────── */
+    .video-wrap {
+      margin-top: 48px;
+      position: relative; padding-bottom: 56.25%;
+      height: 0; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .video-wrap iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+    .video-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-dim); margin-top: 10px; text-align: right;
+    }
+
+    /* ─── SECTION DIVIDER ───────────────────── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting… <a href="/guide">Click here if you are not redirected.</a></p>
+
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav"></nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <div class="page-hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="container">
+      <h1 class="page-title">Learn</h1>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════ THE CRISIS ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">The Crisis</span></div>
+        <p class="body-large reveal">
+          Artificial intelligence is advancing faster than our ability to govern it. These resources help explain why — and why it matters now.
+        </p>
+
+        <div class="resource-grid">
+          <a class="resource-card reveal" href="https://www.cold-takes.com/" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">Holden Karnofsky &middot; Blog</span>
+              <div class="resource-title">Cold Takes</div>
+              <div class="resource-desc">Long-form essays on AI risk, the stakes of this moment, and what humanity should do about transformative technology.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+
+          <a class="resource-card reveal reveal-d1" href="https://ai-2027.com/" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">ai-2027.com &middot; Scenario</span>
+              <div class="resource-title">AI 2027</div>
+              <div class="resource-desc">A detailed, research-grounded scenario for how AI development could unfold over the next few years — and what the turning points look like.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+
+          <a class="resource-card reveal reveal-d2" href="https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">Tim Urban &middot; Wait But Why</span>
+              <div class="resource-title">The AI Revolution</div>
+              <div class="resource-desc">The definitive long-read introduction to artificial intelligence, superintelligence, and why they might be the most important things humanity has ever faced.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+
+          <a class="resource-card reveal" href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">Dario Amodei &middot; Essay</span>
+              <div class="resource-title">The Adolescence of Technology</div>
+              <div class="resource-desc">Anthropic's CEO on the nature of this technological moment — and why the decisions made now will echo for generations.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="video-wrap reveal">
+          <iframe
+            src="https://www.youtube.com/embed/5KVDDfAkRgc"
+            title="AI risk explainer video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="video-label reveal">Watch · 30M+ views</p>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════ RE: DEMANDS ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Re: Demands</span></div>
+        <p class="body-large reveal">
+          What should we actually be asking for? Democratic oversight, public deliberation, and governance that matches the scale of the technology.
+        </p>
+
+        <div class="video-wrap reveal">
+          <iframe
+            src="https://www.youtube.com/embed/hHYe3O7_TUA"
+            title="TED Talk: Citizens Assemblies"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="video-label reveal">TED Talk · Citizens Assemblies</p>
+
+        <div class="resource-grid">
+          <a class="resource-card reveal" href="https://www.peoplepowered.org/news-content/impacts-of-citizens-assemblies-a-summary-of-the-latest-research" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">People Powered &middot; Research</span>
+              <div class="resource-title">Impacts of Citizens Assemblies</div>
+              <div class="resource-desc">A summary of the latest research on how citizens assemblies have produced real policy outcomes — and what makes them work.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+
+          <a class="resource-card reveal reveal-d1" href="https://www.miri.org/" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">MIRI &middot; Research Institute</span>
+              <div class="resource-title">Govern AI Like Nuclear Weapons</div>
+              <div class="resource-desc">The Machine Intelligence Research Institute and affiliated researchers on why AI development requires the same international governance frameworks as weapons of mass destruction.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════ SOCIAL CHANGE ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Social Change</span></div>
+        <p class="body-large reveal">
+          How does change actually happen? The history of movements shows us what works — and what doesn't.
+        </p>
+
+        <div class="resource-grid">
+          <a class="resource-card reveal" href="https://blueprintforrevolution.com/" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">Srđa Popović &middot; Book</span>
+              <div class="resource-title">Blueprint for Revolution</div>
+              <div class="resource-desc">How to use rice pudding, Lego men, and other nonviolent techniques to galvanize communities, topple tyrants, and transform the world.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+
+          <a class="resource-card reveal reveal-d1" href="https://rogerhallam.com/book/common-sense-for-the-21st-century/" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">Roger Hallam &middot; Book</span>
+              <div class="resource-title">Common Sense for the 21st Century</div>
+              <div class="resource-desc">The XR co-founder's argument for why mass civil disobedience is the only realistic path to systemic change — and how to do it.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+
+          <a class="resource-card reveal reveal-d2" href="https://dash.harvard.edu/entities/publication/73120378-e077-6bd4-e053-0100007fdf3b" target="_blank" rel="noopener">
+            <div class="resource-card-body">
+              <span class="resource-tag">Harvard &middot; Academic</span>
+              <div class="resource-title">Do Protests Matter?</div>
+              <div class="resource-desc">Harvard research on the measurable political and electoral effects of protest movements — evidence that showing up works.</div>
+            </div>
+            <span class="resource-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script>
+    const progressBar = document.querySelector('.progress-bar');
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.10, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    (function () {
+      const field = document.querySelector('.ember-field');
+      if (!field) return;
+      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
+      for (let i = 0; i < 174; i++) {
+        const el = document.createElement('div');
+        el.className = 'ember';
+        const size = 1.5 + Math.random() * 2;
+        const col = colors[Math.floor(Math.random() * colors.length)];
+        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
+        const del = (-Math.random() * 7).toFixed(2);
+        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
+        const glow = (size * 1.8).toFixed(1);
+        const x = Math.random() * 100;
+        const u = Math.random();
+        const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
+        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
+        field.appendChild(el);
+      }
+    })();
+  </script>
+  <script src="nav.js"></script>
+  <script src="footer.js"></script>
+  <script src="nav-circle.js"></script>
 </body>
 </html>

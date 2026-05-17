@@ -45,6 +45,15 @@
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.85s; display: flex; justify-content: center;
     }
+    .hero-events-link {
+      display: block; text-align: center; margin-top: 18px;
+      font-family: var(--font-mono); font-size: var(--sz-label);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.05s;
+      transition: color .2s;
+    }
+    .hero-events-link:hover { color: rgba(255,255,255,0.85); }
 
     /* ─── STATS ─────────────────────────────── */
     .stats-grid {
@@ -53,7 +62,7 @@
       border-radius: 0; overflow: hidden;
       margin-bottom: 40px;
     }
-    .stat { padding: 32px 26px 28px; border-right: 1px solid var(--border); }
+    .stat { padding: 32px 26px 28px; border-right: 1px solid var(--border); text-align: center; }
     .stat:last-child { border-right: none; }
     .stat-val {
       font-family: var(--font-display); font-weight: 800;
@@ -131,7 +140,7 @@
     }
 
     /* ─── CTA SECTION ───────────────────────── */
-    .cta-section { padding: 140px 0 120px; text-align: center; }
+    .cta-section { padding: 70px 0 60px; text-align: center; }
     .cta-eyebrow {
       font-family: var(--font-mono); font-size: var(--sz-label);
       letter-spacing: 0.18em; color: var(--accent);
@@ -145,7 +154,7 @@
     }
     .cta-sub {
       font-size: 18px; color: var(--text); font-style: italic;
-      max-width: 380px; margin: 0 auto 40px;
+      max-width: 380px; margin: 64px auto 0;
       line-height: 1.75;
     }
     #cta-signup { display: inline-block; }
@@ -193,25 +202,15 @@
 
   <div class="progress-bar"></div>
 
-  <nav class="site-nav">
-    <a class="nav-wordmark" href="/">
-      <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
-    </a>
-    <div class="nav-links">
-      <a class="nav-link" href="/about">About</a>
-      <a class="nav-link" href="/join">Join</a>
-      <a class="nav-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
-    </div>
-    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </nav>
+  <nav class="site-nav"></nav>
 
   <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
     <div class="ember-field" aria-hidden="true"></div>
     <div class="container">
       <h1 class="hero-headline">
-        <span><span class="accent"> History </span></span> doesn't <br>
-        <span> make itself </span><br>
+        <span> We are in </span><br>
+        <span>a <span class="accent"> crisis </span></span><br>
       </h1>
       <p class="hero-body">
         AI is upending society. <br>
@@ -276,7 +275,7 @@
 
   <div class="divider"></div>
 
-  <!-- ═══════════ MOVEMENT PRINCIPLES ═══════════ -->
+  <!-- ═══════════ REVOLUTION PRINCIPLES ═══════════ -->
   <section class="section strategy-section">
     <img class="us-map-bg" src="assets/us.svg" aria-hidden="true" alt="">
     <div class="container">
@@ -309,7 +308,7 @@
     <div class="container">
       <div class="cta-headline reveal">Get <br> Involved</div>
       <div id="cta-signup" class="reveal"></div>
-      <p class="cta-sub reveal"><br> "It always seems impossible until it is done." <br> - Nelson Mandela</p>
+      <p class="cta-sub reveal">"It always seems impossible until it is done." <br> - Nelson Mandela</p>
     </div>
   </section>
 
@@ -317,29 +316,6 @@
 
   <script src="signup.js"></script>
   <script>
-    const burger = document.querySelector('.nav-burger');
-    const navLinks = document.querySelector('.nav-links');
-    if (burger && navLinks) {
-      burger.addEventListener('click', () => {
-        const open = burger.classList.toggle('open');
-        navLinks.classList.toggle('open', open);
-        burger.setAttribute('aria-expanded', open);
-        document.body.style.overflowY = open ? 'hidden' : '';
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && burger.classList.contains('open')) {
-          burger.classList.remove('open'); navLinks.classList.remove('open');
-          document.body.style.overflowY = '';
-        }
-      });
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && burger.classList.contains('open')) {
-          burger.classList.remove('open'); navLinks.classList.remove('open');
-          document.body.style.overflowY = '';
-        }
-      });
-    }
-
     const progressBar = document.querySelector('.progress-bar');
     window.addEventListener('scroll', () => {
       const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
@@ -375,6 +351,7 @@
       }
     })();
   </script>
+  <script src="nav.js"></script>
   <script src="footer.js"></script>
   <script src="nav-circle.js"></script>
 </body>
