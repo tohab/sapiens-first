@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
+  <script src="config.js"></script>
   <style>
     /* index.html — page-specific only; shared rules in shared.css */
     body { min-height: unset; display: block; }
@@ -210,7 +211,7 @@
     <div class="container">
       <h1 class="hero-headline">
         <span> We are in </span><br>
-        <span>a <span class="accent"> crisis </span></span><br>
+        <span>a <span class="accent"> crisis. </span></span><br>
       </h1>
       <p class="hero-body">
         AI is upending society. <br>
@@ -259,7 +260,7 @@
       <div class="demands">
         <div class="demand reveal">
           <div class="demand-title">Declare</div>
-          <div class="demand-text">The AI crisis a threat to our lives and livelihood.</div>
+          <div class="demand-text">The AI Crisis a threat to our lives and livelihood.</div>
         </div>
         <div class="demand reveal reveal-d1">
           <div class="demand-title">Democratize</div>
@@ -330,26 +331,7 @@
     document.getElementById('hero-signup').appendChild(createSignupForm({ theme: 'dark' }));
     document.getElementById('cta-signup').appendChild(createSignupForm({ theme: 'light' }));
 
-    (function () {
-      const field = document.querySelector('.ember-field');
-      if (!field) return;
-      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
-      for (let i = 0; i < 174; i++) {
-        const el = document.createElement('div');
-        el.className = 'ember';
-        const size = 1.5 + Math.random() * 2;
-        const col = colors[Math.floor(Math.random() * colors.length)];
-        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
-        const del = (-Math.random() * 7).toFixed(2);
-        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
-        const glow = (size * 1.8).toFixed(1);
-        const x = Math.random() * 100;
-        const u = Math.random();
-        const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
-        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
-        field.appendChild(el);
-      }
-    })();
+    initEmberField();
   </script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>

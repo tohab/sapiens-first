@@ -3,271 +3,528 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn — Sapiens First</title>
-  <meta name="description" content="Understand the AI crisis, what we're demanding, and how social change actually happens.">
+  <title> Guide &mdash; Sapiens First</title>
+  <meta name="description" content="The Sapiens First guide to AI, people power, and how to make change.">
+  <meta property="og:url" content="https://sapiensfirst.org/learn">
+  <meta property="og:type" content="website">
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
+  <script src="config.js"></script>
   <style>
-    .section { padding: 80px 0; }
-    @media (max-width: 768px) { .section { padding: 52px 0; } }
 
-    /* ─── RESOURCE CARDS ────────────────────── */
-    .resource-grid {
-      display: flex; flex-direction: column;
-      gap: 8px; margin-top: 40px;
+    /* GUIDE LAYOUT */
+    .guide-section { padding: 72px 0 120px; }
+
+    .guide-layout {
+      display: flex;
+      gap: 56px;
+      align-items: start;
     }
-    .resource-card {
-      display: flex; flex-direction: row; align-items: flex-start;
-      padding: 22px 26px; gap: 20px;
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--surface) 42%, transparent);
-      text-decoration: none;
-      transition: transform 0.22s ease, border-color 0.22s ease;
+    .guide-sidebar {
+      width: 232px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 96px;
+      max-height: calc(100vh - 116px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
     }
-    .resource-card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .resource-card-body { flex: 1; }
-    .resource-tag {
-      font-family: var(--font-mono); font-size: 11px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 6px; display: block;
+    .guide-main { flex: 1; min-width: 0; }
+
+    @media (max-width: 900px) {
+      .guide-layout { flex-direction: column; gap: 36px; }
+      .guide-sidebar { width: 100%; position: static; max-height: none; overflow-y: visible; }
     }
-    .resource-title {
+
+    .loading-state {
+      padding: 40px 0;
+      font-family: var(--font-mono); font-size: var(--sz-label);
+      color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .error-state {
+      padding: 40px 0;
+      font-family: var(--font-body); font-size: var(--sz-body);
+      color: var(--text-dim); line-height: 1.6;
+    }
+    .error-state a { color: var(--accent); }
+
+    /* DOCUMENT TYPOGRAPHY */
+    .doc-body { line-height: 1.75; }
+
+    .doc-body h1 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(32px, 5vw, 52px); line-height: 1.05;
+      letter-spacing: -0.02em; text-transform: uppercase;
+      color: var(--text); margin: 0 0 24px;
+    }
+    .doc-body h2 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(26px, 4vw, 38px); line-height: 1.1;
+      letter-spacing: -0.01em; text-transform: uppercase;
+      color: var(--text); margin: 56px 0 16px;
+      padding-bottom: 10px; border-bottom: 2px solid var(--accent);
+    }
+    .doc-body h3 {
       font-family: var(--font-display); font-weight: 700;
-      font-size: var(--sz-body); letter-spacing: 0.02em;
-      text-transform: uppercase; color: var(--text);
-      line-height: 1.2;
+      font-size: clamp(20px, 3vw, 26px); line-height: 1.15;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      color: var(--text); margin: 40px 0 12px;
     }
-    .resource-desc {
-      font-size: 16px; line-height: 1.65;
-      color: var(--text-dim); margin-top: 6px; font-weight: 400;
+    .doc-body h4 {
+      font-family: var(--font-body); font-weight: 600;
+      font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--text); margin: 28px 0 8px;
     }
-    .resource-arrow {
-      font-size: 18px; color: var(--accent);
-      align-self: center; flex-shrink: 0;
-      opacity: 0.6; transition: opacity 0.2s, transform 0.2s;
-    }
-    .resource-card:hover .resource-arrow { opacity: 1; transform: translateX(4px); }
 
-    /* ─── VIDEO EMBED ───────────────────────── */
-    .video-wrap {
-      margin-top: 48px;
-      position: relative; padding-bottom: 56.25%;
-      height: 0; overflow: hidden;
+    .doc-body p {
+      font-family: var(--font-body); font-size: var(--sz-body);
+      color: var(--text); margin: 0 0 18px; line-height: 1.75;
+    }
+    .doc-body p:empty { display: none; }
+
+    .doc-body ul, .doc-body ol {
+      font-family: var(--font-body); font-size: var(--sz-body);
+      color: var(--text); line-height: 1.75;
+      padding-left: 28px; margin: 0 0 20px;
+    }
+    .doc-body ul { list-style: disc; }
+    .doc-body ol { list-style: decimal; }
+    .doc-body li { margin-bottom: 8px; }
+    .doc-body li:last-child { margin-bottom: 0; }
+    .doc-body ul ul, .doc-body ol ol,
+    .doc-body ul ol, .doc-body ol ul { margin: 8px 0 0; padding-left: 24px; }
+
+    .doc-body a {
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid rgba(205,85,29,0.35);
+      transition: border-color .2s;
+    }
+    .doc-body a:hover { border-color: var(--accent); }
+    .doc-body strong { font-weight: 700; }
+    .doc-body em { font-style: italic; }
+
+    /* TABLE */
+    .doc-body table { width: 100%; border-collapse: collapse; margin: 0 0 24px; overflow-x: auto; display: block; }
+    .doc-body td, .doc-body th {
       border: 1px solid var(--border);
+      padding: 10px 14px; vertical-align: top;
+      font-family: var(--font-body); font-size: 16px; line-height: 1.6;
     }
-    .video-wrap iframe {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%; border: 0;
-    }
-    .video-label {
+    .doc-body tr:first-child td { background: var(--surface); font-weight: 600; }
+
+    /* TABLE OF CONTENTS — sidebar */
+    .toc-label {
+      display: block;
       font-family: var(--font-mono); font-size: 11px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-dim); margin-top: 10px; text-align: right;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-dim); padding-bottom: 10px;
+      border-bottom: 1px solid var(--border); margin-bottom: 4px;
     }
 
-    /* ─── SECTION DIVIDER ───────────────────── */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    /* H1 group headers in the TOC */
+    .toc-group-header {
+      margin: 14px 0 2px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
     }
+    .toc-group-header:first-of-type { margin-top: 6px; padding-top: 0; border-top: none; }
+    .toc-group-header a {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none; border-bottom: none;
+      display: block; padding: 2px 8px; transition: color .15s;
+    }
+    .toc-group-header a:hover { color: var(--accent); border-bottom: none; }
+
+    /* h2 rows */
+    .toc-h2-row { display: flex; align-items: center; }
+    .toc-h2-link {
+      flex: 1; padding: 5px 2px 5px 21px;
+      font-family: var(--font-body); font-size: 15px; font-weight: 500;
+      color: var(--text); text-decoration: none; border-bottom: none;
+      transition: color .15s; line-height: 1.3;
+    }
+    /* chevron is 18px wide + 3px gap = 21px, matching the no-chevron indent */
+    .toc-chevron + .toc-h2-link { padding-left: 3px; }
+    .toc-h2-link:hover, .toc-h2-link.toc-active { color: var(--accent); border-bottom: none; }
+    .toc-h2-link.toc-active { font-weight: 600; }
+
+    .toc-chevron {
+      flex-shrink: 0; width: 18px; height: 26px;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      color: var(--text-dim); font-size: 11px;
+      transition: transform .2s ease, color .15s;
+    }
+    .toc-chevron.open { transform: rotate(90deg); }
+    .toc-chevron:hover { color: var(--accent); }
+
+    /* h3 sub-list */
+    .toc-h3-list { list-style: none; padding: 0 0 4px 36px; margin: 0; display: none; }
+    .toc-h3-list.open { display: block; }
+    .toc-h3-list a {
+      display: block; padding: 3px 2px;
+      font-family: var(--font-body); font-size: 13px;
+      color: var(--text-dim); text-decoration: none; border-bottom: none;
+      transition: color .15s;
+    }
+    .toc-h3-list a:hover, .toc-h3-list a.toc-active { color: var(--accent); border-bottom: none; }
+    .toc-h3-list a.toc-active { font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .toc { border: 1px solid var(--border); padding: 16px 20px 12px; margin-bottom: 40px; }
+      .toc-label { margin-bottom: 8px; }
+      .toc-h2-link { font-size: 16px; padding: 7px 4px 7px 21px; }
+      .toc-h3-list a { font-size: 14px; }
+      .toc-h3-list { padding-left: 36px; }
+    }
+
+    @media (max-width: 768px) { .doc-body p, .doc-body li { font-size: 18px; } }
+    @media (max-width: 600px) { .container { padding: 0 20px; } }
+
   </style>
 </head>
 <body>
 
-  <div class="progress-bar"></div>
-
   <nav class="site-nav"></nav>
 
-  <!-- ═══════════ PAGE HERO ═══════════ -->
   <div class="page-hero">
     <div class="ember-field" aria-hidden="true"></div>
     <div class="container">
-      <h1 class="page-title">Learn</h1>
+      <h1 class="page-title">Sapiens' Guide to<br><span class="title-accent">Revolution</span></h1>
     </div>
   </div>
 
   <main>
-
-    <!-- ═══════════ THE CRISIS ═══════════ -->
-    <section class="section">
+    <section class="guide-section">
       <div class="container">
-        <div class="section-label reveal"><span class="title">The Crisis</span></div>
-        <p class="body-large reveal">
-          Artificial intelligence is advancing faster than our ability to govern it. These resources help explain why — and why it matters now.
-        </p>
-
-        <div class="resource-grid">
-          <a class="resource-card reveal" href="https://www.cold-takes.com/" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">Holden Karnofsky &middot; Blog</span>
-              <div class="resource-title">Cold Takes</div>
-              <div class="resource-desc">Long-form essays on AI risk, the stakes of this moment, and what humanity should do about transformative technology.</div>
+        <div class="guide-layout">
+          <aside class="guide-sidebar">
+            <div id="toc-container"></div>
+          </aside>
+          <div class="guide-main">
+            <div id="doc-content">
+              <div class="loading-state">Loading guide...</div>
             </div>
-            <span class="resource-arrow">→</span>
-          </a>
-
-          <a class="resource-card reveal reveal-d1" href="https://ai-2027.com/" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">ai-2027.com &middot; Scenario</span>
-              <div class="resource-title">AI 2027</div>
-              <div class="resource-desc">A detailed, research-grounded scenario for how AI development could unfold over the next few years — and what the turning points look like.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
-
-          <a class="resource-card reveal reveal-d2" href="https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">Tim Urban &middot; Wait But Why</span>
-              <div class="resource-title">The AI Revolution</div>
-              <div class="resource-desc">The definitive long-read introduction to artificial intelligence, superintelligence, and why they might be the most important things humanity has ever faced.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
-
-          <a class="resource-card reveal" href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">Dario Amodei &middot; Essay</span>
-              <div class="resource-title">The Adolescence of Technology</div>
-              <div class="resource-desc">Anthropic's CEO on the nature of this technological moment — and why the decisions made now will echo for generations.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
-        </div>
-
-        <div class="video-wrap reveal">
-          <iframe
-            src="https://www.youtube.com/embed/5KVDDfAkRgc"
-            title="AI risk explainer video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="video-label reveal">Watch · 30M+ views</p>
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══════════ RE: DEMANDS ═══════════ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-label reveal"><span class="title">Re: Demands</span></div>
-        <p class="body-large reveal">
-          What should we actually be asking for? Democratic oversight, public deliberation, and governance that matches the scale of the technology.
-        </p>
-
-        <div class="video-wrap reveal">
-          <iframe
-            src="https://www.youtube.com/embed/hHYe3O7_TUA"
-            title="TED Talk: Citizens Assemblies"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="video-label reveal">TED Talk · Citizens Assemblies</p>
-
-        <div class="resource-grid">
-          <a class="resource-card reveal" href="https://www.peoplepowered.org/news-content/impacts-of-citizens-assemblies-a-summary-of-the-latest-research" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">People Powered &middot; Research</span>
-              <div class="resource-title">Impacts of Citizens Assemblies</div>
-              <div class="resource-desc">A summary of the latest research on how citizens assemblies have produced real policy outcomes — and what makes them work.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
-
-          <a class="resource-card reveal reveal-d1" href="https://www.miri.org/" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">MIRI &middot; Research Institute</span>
-              <div class="resource-title">Govern AI Like Nuclear Weapons</div>
-              <div class="resource-desc">The Machine Intelligence Research Institute and affiliated researchers on why AI development requires the same international governance frameworks as weapons of mass destruction.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
+          </div>
         </div>
       </div>
     </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ═══════════ SOCIAL CHANGE ═══════════ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-label reveal"><span class="title">Social Change</span></div>
-        <p class="body-large reveal">
-          How does change actually happen? The history of movements shows us what works — and what doesn't.
-        </p>
-
-        <div class="resource-grid">
-          <a class="resource-card reveal" href="https://blueprintforrevolution.com/" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">Srđa Popović &middot; Book</span>
-              <div class="resource-title">Blueprint for Revolution</div>
-              <div class="resource-desc">How to use rice pudding, Lego men, and other nonviolent techniques to galvanize communities, topple tyrants, and transform the world.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
-
-          <a class="resource-card reveal reveal-d1" href="https://rogerhallam.com/book/common-sense-for-the-21st-century/" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">Roger Hallam &middot; Book</span>
-              <div class="resource-title">Common Sense for the 21st Century</div>
-              <div class="resource-desc">The XR co-founder's argument for why mass civil disobedience is the only realistic path to systemic change — and how to do it.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
-
-          <a class="resource-card reveal reveal-d2" href="https://dash.harvard.edu/entities/publication/73120378-e077-6bd4-e053-0100007fdf3b" target="_blank" rel="noopener">
-            <div class="resource-card-body">
-              <span class="resource-tag">Harvard &middot; Academic</span>
-              <div class="resource-title">Do Protests Matter?</div>
-              <div class="resource-desc">Harvard research on the measurable political and electoral effects of protest movements — evidence that showing up works.</div>
-            </div>
-            <span class="resource-arrow">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <footer class="footer"></footer>
 
   <script>
-    const progressBar = document.querySelector('.progress-bar');
-    window.addEventListener('scroll', () => {
-      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
-      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
-    }, { passive: true });
+    const DOC_ID = SITE_CONFIG.GUIDE_DOC_ID;
+    const EXPORT_URL = 'https://docs.google.com/document/d/' + DOC_ID + '/export?format=html';
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.10, rootMargin: '0px 0px -20px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    (function () {
-      const field = document.querySelector('.ember-field');
-      if (!field) return;
-      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
-      for (let i = 0; i < 174; i++) {
-        const el = document.createElement('div');
-        el.className = 'ember';
-        const size = 1.5 + Math.random() * 2;
-        const col = colors[Math.floor(Math.random() * colors.length)];
-        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
-        const del = (-Math.random() * 7).toFixed(2);
-        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
-        const glow = (size * 1.8).toFixed(1);
-        const x = Math.random() * 100;
-        const u = Math.random();
-        const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
-        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
-        field.appendChild(el);
+    // Parse Google's exported CSS to map class names -> font properties
+    function parseStyleBlock(css) {
+      var map = {};
+      var re = /\.([\w-]+)\s*\{([^}]*)\}/g;
+      var m;
+      while ((m = re.exec(css)) !== null) {
+        var cls = m[1], body = m[2], props = {};
+        var fs = body.match(/font-size:\s*([\d.]+)pt/);
+        if (fs) props.size = parseFloat(fs[1]);
+        var fw = body.match(/font-weight:\s*(\d+|bold)/);
+        if (fw) props.weight = fw[1] === 'bold' ? 700 : parseInt(fw[1]);
+        var fi = body.match(/font-style:\s*italic/);
+        if (fi) props.italic = true;
+        if (Object.keys(props).length) map[cls] = props;
       }
-    })();
+      return map;
+    }
+
+    function mergeStyles(classList, map) {
+      var result = {};
+      for (var i = 0; i < classList.length; i++) {
+        var s = map[classList[i]];
+        if (s) Object.assign(result, s);
+      }
+      return result;
+    }
+
+    // Strip Google's classes/styles; keep semantic elements (strong, em, a)
+    function cleanNode(node) {
+      if (node.nodeType !== Node.ELEMENT_NODE) return;
+      var tag = node.tagName;
+      // Keep formatting attributes on <a>; strip class/style/id everywhere
+      node.removeAttribute('style');
+      node.removeAttribute('class');
+      node.removeAttribute('id');
+      if (tag === 'A') {
+        var href = node.getAttribute('href') || '';
+        if (href && !href.startsWith('#')) {
+          node.setAttribute('target', '_blank');
+          node.setAttribute('rel', 'noopener');
+        }
+      }
+      Array.from(node.childNodes).forEach(cleanNode);
+    }
+
+    function processDoc(html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var body = doc.body;
+
+      // Build class-to-font-properties map from the embedded <style>
+      var styleEl = doc.querySelector('style');
+      var classMap = parseStyleBlock(styleEl ? styleEl.textContent : '');
+
+      // PASS 0 — fix Google's flat-sibling nested list structure BEFORE stripping classes.
+      // Google exports nested bullets as sibling <ul> elements tagged lst-kix_ID-0, -1, -2…
+      // We move each level-N list into the last <li> of the closest preceding level-(N-1) list.
+      (function fixNestedLists() {
+        var allLists = Array.from(body.querySelectorAll('ul, ol'));
+        // Process in reverse so deeper levels are handled before their parents.
+        for (var i = allLists.length - 1; i >= 0; i--) {
+          var list = allLists[i];
+          var m = (list.className || '').match(/lst-kix_(\w+)-(\d+)/);
+          if (!m) continue;
+          var listId = m[1], level = parseInt(m[2]);
+          if (level === 0) continue;
+          // Walk backwards through the captured array to find the parent list.
+          for (var j = i - 1; j >= 0; j--) {
+            var candidate = allLists[j];
+            var cm = (candidate.className || '').match(/lst-kix_(\w+)-(\d+)/);
+            if (cm && cm[1] === listId && parseInt(cm[2]) === level - 1) {
+              var lastLi = candidate.lastElementChild;
+              if (lastLi && lastLi.tagName === 'LI') lastLi.appendChild(list);
+              break;
+            }
+          }
+        }
+      })();
+
+      // PASS 1 — convert <p> to heading elements based on inner span font sizes/weights
+      Array.from(body.querySelectorAll('p')).forEach(function(p) {
+        var classes = Array.from(p.classList);
+
+        // p.title = Google Docs "Title" paragraph style
+        if (classes.indexOf('title') !== -1) {
+          var h1 = doc.createElement('h1');
+          h1.innerHTML = p.innerHTML;
+          p.replaceWith(h1);
+          return;
+        }
+
+        // Measure the dominant font properties across non-empty spans
+        var maxSize = 0, allBold = true, hasSpans = false;
+        Array.from(p.querySelectorAll('span')).forEach(function(span) {
+          if (!span.textContent.trim()) return;
+          hasSpans = true;
+          var s = mergeStyles(Array.from(span.classList), classMap);
+          if (s.size && s.size > maxSize) maxSize = s.size;
+          if (!s.weight || s.weight < 600) allBold = false;
+        });
+
+        var tag = null;
+        if (maxSize >= 20) tag = 'h2';
+        else if (maxSize >= 13 && hasSpans && allBold) tag = 'h3';
+
+        if (tag) {
+          var heading = doc.createElement(tag);
+          heading.innerHTML = p.innerHTML;
+          p.replaceWith(heading);
+        }
+      });
+
+      // PASS 2 — convert bold/italic spans inside body paragraphs and list items
+      // (heading spans are left alone — the heading style already implies bold)
+      Array.from(body.querySelectorAll('p span, li span')).forEach(function(span) {
+        if (!span.textContent.trim()) return;
+        var s = mergeStyles(Array.from(span.classList), classMap);
+        var bold = s.weight >= 600;
+        var italic = s.italic;
+        if (!bold && !italic) return;
+
+        var inner = span.innerHTML;
+        if (italic) inner = '<em>' + inner + '</em>';
+        if (bold)   inner = '<strong>' + inner + '</strong>';
+
+        var tmp = doc.createElement('span');
+        tmp.innerHTML = inner;
+        span.replaceWith(...tmp.childNodes);
+      });
+
+      // Remove Google's style/script blocks
+      body.querySelectorAll('style, script').forEach(function(el) { el.remove(); });
+
+      // Strip all remaining class/style/id attributes
+      cleanNode(body);
+
+      // Collapse consecutive blank paragraphs into one
+      var prevBlank = false;
+      Array.from(body.querySelectorAll('p')).forEach(function(p) {
+        var blank = !p.textContent.trim();
+        if (blank && prevBlank) p.remove();
+        prevBlank = blank;
+      });
+
+      return body.innerHTML;
+    }
+
+    function slugify(text) {
+      return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+
+    function buildTOC() {
+      var docBody = document.querySelector('.doc-body');
+      var tocContainer = document.getElementById('toc-container');
+      if (!docBody || !tocContainer) return;
+
+      // Assign IDs to all headings
+      var seen = {};
+      Array.from(docBody.querySelectorAll('h1, h2, h3')).forEach(function(h, i) {
+        var base = slugify(h.textContent.trim()) || ('s' + i);
+        var id = seen[base] ? base + '-' + i : base;
+        seen[base] = true;
+        h.id = id;
+      });
+
+      // Build tree: h1 = section header, h2 = collapsible row, h3 = child
+      var groups = [];
+      var curGroup = null, curSection = null;
+      Array.from(docBody.querySelectorAll('h1, h2, h3')).forEach(function(h) {
+        var item = { text: h.textContent.trim(), id: h.id };
+        if (h.tagName === 'H1') {
+          curGroup = { header: item, sections: [] };
+          curSection = null;
+          groups.push(curGroup);
+        } else if (h.tagName === 'H2') {
+          if (!curGroup) { curGroup = { header: null, sections: [] }; groups.push(curGroup); }
+          curSection = { heading: item, children: [] };
+          curGroup.sections.push(curSection);
+        } else if (h.tagName === 'H3' && curSection) {
+          curSection.children.push(item);
+        }
+      });
+
+      if (groups.length === 0) return;
+
+      // Render as a single flat list — h1s are headers, h2s are collapsible rows (open by default)
+      var html = '';
+      groups.forEach(function(group, gi) {
+        if (group.header) {
+          html += '<div class="toc-group-header"><a href="#' + group.header.id + '">' + group.header.text + '</a></div>';
+        }
+        group.sections.forEach(function(sec, si) {
+          var uid = 'toc-' + gi + '-' + si;
+          var hasKids = sec.children.length > 0;
+          html += '<div class="toc-h2-item"><div class="toc-h2-row">';
+          if (hasKids) {
+            html += '<button class="toc-chevron" aria-expanded="false" data-target="' + uid + '">›</button>';
+          }
+          html += '<a class="toc-h2-link" href="#' + sec.heading.id + '">' + sec.heading.text + '</a>';
+          html += '</div>';
+          if (hasKids) {
+            html += '<ul class="toc-h3-list" id="' + uid + '">';
+            sec.children.forEach(function(child) {
+              html += '<li><a href="#' + child.id + '">' + child.text + '</a></li>';
+            });
+            html += '</ul>';
+          }
+          html += '</div>';
+        });
+      });
+
+      tocContainer.innerHTML = '<nav class="toc"><span class="toc-label">Contents</span>' + html + '</nav>';
+
+      // Chevron expand/collapse
+      tocContainer.querySelectorAll('.toc-chevron').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var list = document.getElementById(btn.getAttribute('data-target'));
+          if (!list) return;
+          var open = list.classList.toggle('open');
+          btn.classList.toggle('open', open);
+          btn.setAttribute('aria-expanded', open);
+        });
+      });
+
+      // Smooth scroll (offset for fixed nav)
+      tocContainer.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          var el = document.getElementById(a.getAttribute('href').slice(1));
+          if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+        });
+      });
+    }
+
+    function setupScrollSpy() {
+      var tocContainer = document.getElementById('toc-container');
+      if (!tocContainer) return;
+      var headings = Array.from(document.querySelectorAll('.doc-body h1, .doc-body h2, .doc-body h3'));
+      if (!headings.length) return;
+
+      var lastId = null;
+      var rafPending = false;
+
+      function activate(id) {
+        if (id === lastId) return;
+        lastId = id;
+
+        // Clear all active states
+        tocContainer.querySelectorAll('.toc-active').forEach(function(el) { el.classList.remove('toc-active'); });
+
+        // Find matching link
+        var link = tocContainer.querySelector('a[href="#' + CSS.escape(id) + '"]');
+        if (!link) return;
+        link.classList.add('toc-active');
+
+        // Auto-expand parent h3 list if needed
+        var h3List = link.closest('.toc-h3-list');
+        if (h3List && !h3List.classList.contains('open')) {
+          h3List.classList.add('open');
+          var chevron = tocContainer.querySelector('[data-target="' + h3List.id + '"]');
+          if (chevron) { chevron.classList.add('open'); chevron.setAttribute('aria-expanded', 'true'); }
+        }
+      }
+
+      function update() {
+        var threshold = 110; // px below top of viewport to consider "current"
+        var activeId = headings[0].id;
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].getBoundingClientRect().top <= threshold) {
+            activeId = headings[i].id;
+          } else {
+            break;
+          }
+        }
+        activate(activeId);
+        rafPending = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!rafPending) { rafPending = true; requestAnimationFrame(update); }
+      }, { passive: true });
+
+      update(); // run once on load
+    }
+
+    async function loadGuide() {
+      var container = document.getElementById('doc-content');
+      try {
+        var res = await fetch(EXPORT_URL);
+        if (!res.ok) throw new Error(res.status);
+        var html = await res.text();
+        container.innerHTML = '<div class="doc-body">' + processDoc(html) + '</div>';
+        buildTOC();
+        setupScrollSpy();
+      } catch (err) {
+        console.error('Guide load error:', err);
+        container.innerHTML = '<p class="error-state">Could not load the guide right now. <a href="https://docs.google.com/document/d/' + DOC_ID + '/edit" target="_blank" rel="noopener">Open in Google Docs</a></p>';
+      }
+    }
+
+    loadGuide();
+
+    initEmberField();
   </script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>

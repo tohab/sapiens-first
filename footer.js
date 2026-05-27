@@ -7,12 +7,11 @@ document.querySelector('footer.footer').innerHTML = `
       <nav class="footer-nav">
         <a class="footer-link" href="${lnk('about')}">About</a>
         <a class="footer-link" href="${lnk('join')}">Join</a>
-        <a class="footer-link" href="https://www.zeffy.com/en-US/donation-form/support-sapiens-first" target="_blank" rel="noopener">Donate</a>
+        <a class="footer-link" href="${SITE_CONFIG.DONATION_URL}" target="_blank" rel="noopener">Donate</a>
         <a class="footer-link" href="${lnk('learn')}">Learn</a>
-        <a class="footer-link" href="${lnk('guide')}">Guide</a>
-        <a class="footer-link" href="${lnk('privacy')}">Privacy</a>
+<a class="footer-link" href="${lnk('privacy')}">Privacy</a>
       </nav>
-      <span class="footer-meta">© 2026 SAPIENS FIRST</span>
+      <span class="footer-meta">© ${new Date().getFullYear()} SAPIENS FIRST</span>
     </div>
   </div>
 `;

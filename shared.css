@@ -154,7 +154,7 @@ main { flex: 1; }
   font-size: 24px; letter-spacing: 0.18em;
   text-transform: uppercase; font-weight: 800;
   -webkit-text-stroke: 0.35px currentColor;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
   text-align: center;
 }
 .section-label .title { color: var(--accent); }
@@ -168,12 +168,13 @@ main { flex: 1; }
 /* ─── PILLAR CARDS (3-col left-to-right) ── */
 .pillars {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 8px; margin-top: 52px;
+  gap: 8px; margin-top: 30px;
 }
 .pillar {
   display: flex; flex-direction: column;
   padding: 26px 28px;
   border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
   background: color-mix(in srgb, var(--surface) 42%, transparent);
   transition: transform 0.25s ease; cursor: default;
 }
@@ -182,7 +183,7 @@ main { flex: 1; }
   font-family: var(--font-display); font-weight: 700;
   font-size: var(--sz-body); letter-spacing: 0.04em;
   text-transform: uppercase; margin-bottom: 10px;
-  text-align: center;
+  text-align: left;
 }
 .pillar-text { font-size: var(--sz-body); line-height: 1.75; color: var(--text); font-weight: 500; }
 
@@ -387,8 +388,7 @@ main { flex: 1; }
 @media (max-width: 600px) {
   .container { padding: 0 20px; }
   .site-nav { left: 20px; right: 20px; top: 20px; }
-  .page-title { font-size: clamp(72px, 18vw, 110px); }
-  .page-title br { display: none; }
+  .page-title { font-size: clamp(56px, 15vw, 110px); line-height: 1.0; }
   .body-large { font-size: 18px; }
   .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
   .footer-nav { gap: 14px; }

@@ -10,21 +10,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
+  <script src="config.js"></script>
   <style>
     .founder-icon { color: var(--text-dim); transition: color .2s; }
     .founder-icon:hover { color: var(--accent); }
-    .section { padding: 48px 0; }
-    @media (max-width: 768px) { .section { padding: 32px 0; } }
+    .section { padding: 36px 0; }
+    @media (max-width: 768px) { .section { padding: 24px 0; } }
 
     /* ─── HOW WE WORK CARDS (full-width) ────── */
     .methods {
       display: flex; flex-direction: column;
-      gap: 8px; margin-top: 52px;
+      gap: 8px; margin-top: 30px;
     }
     .method {
       display: flex; flex-direction: row; align-items: center;
-      padding: 26px 28px; gap: 28px;
+      padding: 22px 28px; gap: 28px;
       border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
       background: color-mix(in srgb, var(--surface) 42%, transparent);
       transition: transform 0.25s ease; cursor: default;
     }
@@ -32,13 +34,15 @@
     .method-title {
       font-family: var(--font-display); font-weight: 700;
       font-size: var(--sz-body); letter-spacing: 0.04em;
-      text-transform: uppercase; min-width: 180px; text-align: center;
+      text-transform: uppercase; min-width: 150px; text-align: left;
+      color: var(--accent);
     }
     .method-text { font-size: var(--sz-body); line-height: 1.75; color: var(--text); font-weight: 500; }
 
     /* ─── VALUES LIST ───────────────────────── */
     .values-list {
-      margin-top: 36px;
+      margin-top: 24px;
+      max-width: 80%; margin-left: auto; margin-right: auto;
       padding-left: 24px;
       display: flex; flex-direction: column; gap: 10px;
       list-style: disc;
@@ -86,21 +90,50 @@
     </section>
 
 
+    <!-- ═══════════ HOW WE WORK ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title"> Approach </span></div>
+        <p class="body-large reveal">
+          Our strategy: <strong> unleash people power.</strong>
+        </p>
+        <div class="methods">
+       
+          <div class="method reveal reveal-d2">
+            <div class="method-title">Agency</div>
+            <div class="method-text">We empower anyone to participate in the movement in whatever way feels right.</div>
+          </div>
+
+          <div class="method reveal">
+            <div class="method-title">Rigor</div>
+            <div class="method-text">Our methods are created from careful studying of social movement history. </div>
+          </div>
+
+
+          <div class="method reveal reveal-d1">
+            <div class="method-title">Openness</div>
+            <div class="method-text">Anyone can join the movement, or use our techniques to create change.</div>
+          </div>
+        </div>
+        <a href="/learn" class="learn-more reveal">Read our guide →</a>
+      </div>
+    </section>
+
     <!-- ═══════════ WHAT WE DO ═══════════ -->
     <section class="section">
       <div class="container">
         <div class="section-label reveal"><span class="title"> What we do</span></div>
         <p class="body-large reveal">
-          History is made when people get together and challenge the status quo.
+          We make change by building community and peacefully disrupting the status quo.
         </p>
         <div class="pillars">
           <div class="pillar reveal">
-            <div class="pillar-title">Connect</div>
-            <div class="pillar-text">We invite people to connect through one-on-one conversations.</div>
-          </div>
-          <div class="pillar reveal reveal-d1">
             <div class="pillar-title">Gather</div>
             <div class="pillar-text">Potlucks, parties and workshops where we gather and learn how to make change.</div>
+          </div>
+          <div class="pillar reveal reveal-d1">
+            <div class="pillar-title">Connect</div>
+            <div class="pillar-text">We invite people to connect through one-on-one conversations.</div>
           </div>
           <div class="pillar reveal reveal-d2">
             <div class="pillar-title">Disrupt</div>
@@ -111,45 +144,18 @@
     </section>
 
 
-    <!-- ═══════════ HOW WE WORK ═══════════ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-label reveal"><span class="title"> How We Work</span></div>
-        <p class="body-large reveal">
-          Our strategy is simple: <strong> unleash people power.</strong>
-        </p>
-        <div class="methods">
-          <div class="method reveal">
-            <div class="method-title">Empowerment</div>
-            <div class="method-text">We empower others to use their creativity and spirit to power the revolution.</div>
-          </div>
-          <div class="method reveal reveal-d1">
-            <div class="method-title">Guidance</div>
-            <div class="method-text">We've learned what works in social change so that organizers can hit the ground running.</div>
-          </div>
-          <div class="method reveal reveal-d2">
-            <div class="method-title">Distribution</div>
-            <div class="method-text">Our Guide can be used in any city, state, or country.</div>
-          </div>
-        </div>
-        <a href="/guide" class="learn-more reveal">Read the guide →</a>
-      </div>
-    </section>
-
-
     <!-- ═══════════ VALUES ═══════════ -->
     <section class="section">
       <div class="container">
         <div class="section-label reveal"><span class="title"> Core Values</span></div>
-        <!-- <p class="body-large reveal">
-          Anyone can act in the name of Sapiens First if they follow our values.
-        </p> -->
+        <p class="body-large reveal">
+          Activists with Sapiens First must follow our Core Values.
+        </p>
         <ul class="values-list reveal">
           <li><strong>Peace.</strong> We don't threaten or harm people or property.</li>
+          <li><strong>Respect.</strong> We are kind, listen, and use non-violent communication.</li>
           <li><strong>Sustainability.</strong> We support each other and take breaks.</li>
           <li><strong>Intentionality.</strong> We work smart, not hard, to make change.</li>
-          <li><strong>Agency.</strong> When we feel strongly, we take action!</li>
-          <li><strong>Respect.</strong> We are kind, listen, and use non-violent communication.</li>
         </ul>
       </div>
     </section>
@@ -182,26 +188,7 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    (function () {
-      const field = document.querySelector('.ember-field');
-      if (!field) return;
-      const colors = ['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
-      for (let i = 0; i < 174; i++) {
-        const el = document.createElement('div');
-        el.className = 'ember';
-        const size = 1.5 + Math.random() * 2;
-        const col = colors[Math.floor(Math.random() * colors.length)];
-        const dur = (2.2 + Math.random() * 3.52).toFixed(2);
-        const del = (-Math.random() * 7).toFixed(2);
-        const peak = (0.35 + Math.random() * 0.55).toFixed(2);
-        const glow = (size * 1.8).toFixed(1);
-        const x = Math.random() * 100;
-        const u = Math.random();
-        const y = (-0.8 + Math.sqrt(0.64 + 0.8 * u)) / 0.4 * 100;
-        el.style.cssText = `left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
-        field.appendChild(el);
-      }
-    })();
+    initEmberField();
   </script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>

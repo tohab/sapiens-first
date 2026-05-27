@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
+  <script src="config.js"></script>
   <style>
 
     /* ─── EVENTS SECTION ─────────────────────── */
@@ -224,7 +225,7 @@
   </div>
 
   <script>
-    const SHEET_ID  = '1mkPKC7MmmKhW8PS2K-7lqmjreQOln6zz9t5C-lSDqOU';
+    const SHEET_ID  = SITE_CONFIG.EVENTS_SHEET_ID;
     const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
     const REFRESH_MS = 60 * 1000;
     const COL = { TITLE:1, DESC:2, BRING:3, ADDRESS:4, CITY:5, ORG_NAME:6, ORG_PHONE:7, DATE:8, TIME:9 };
@@ -392,19 +393,7 @@
     loadEvents();
     setInterval(loadEvents, REFRESH_MS);
 
-    (function(){
-      const field=document.querySelector('.ember-field'); if(!field)return;
-      const colors=['#f97316','#fb923c','#fbbf24','#ef4444','#f59e0b','#fdba74'];
-      for(let i=0;i<174;i++){
-        const el=document.createElement('div'); el.className='ember';
-        const size=1.5+Math.random()*2, col=colors[Math.floor(Math.random()*colors.length)];
-        const dur=(2.2+Math.random()*3.52).toFixed(2), del=(-Math.random()*7).toFixed(2);
-        const peak=(0.35+Math.random()*0.55).toFixed(2), glow=(size*1.8).toFixed(1);
-        const x=Math.random()*100, u=Math.random(), y=(-0.8+Math.sqrt(0.64+0.8*u))/0.4*100;
-        el.style.cssText=`left:${x}%;top:${y}%;width:${size}px;height:${size}px;background:${col};--ec:${col};--ed:${dur}s;--ey:${del}s;--ep:${peak};--eg:${glow}px`;
-        field.appendChild(el);
-      }
-    })();
+    initEmberField();
   </script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>
