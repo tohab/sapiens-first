@@ -187,6 +187,28 @@ main { flex: 1; }
 }
 .pillar-text { font-size: var(--sz-body); line-height: 1.75; color: var(--text); font-weight: 500; }
 
+/* ─── METHOD ROWS (full-width) ──────────── */
+.methods {
+  display: flex; flex-direction: column;
+  gap: 8px; margin-top: 30px;
+}
+.method {
+  display: flex; flex-direction: row; align-items: center;
+  padding: 22px 28px; gap: 28px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--surface) 42%, transparent);
+  transition: transform 0.25s ease; cursor: default;
+}
+.method:hover { transform: translateY(-3px); }
+.method-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--sz-body); letter-spacing: 0.04em;
+  text-transform: uppercase; min-width: 150px; text-align: left;
+  color: var(--accent);
+}
+.method-text { font-size: var(--sz-body); line-height: 1.75; color: var(--text); font-weight: 500; }
+
 /* ─── NAV DROPDOWN ──────────────────────── */
 .nav-dropdown { position: relative; pointer-events: auto; }
 .nav-dropdown-menu {
@@ -341,12 +363,15 @@ main { flex: 1; }
 @media (max-width: 900px) {
   .pillars { grid-template-columns: 1fr; }
   .pillar:hover { transform: translateY(0); }
+  .method { flex-direction: column; gap: 8px; }
+  .method-title { min-width: unset; }
 }
 @media (max-width: 768px) {
   .page-hero { padding: 120px 0 80px; }
   .section { padding: 80px 0; }
   .body-large { font-size: var(--sz-body); }
   .pillar-title, .pillar-text { font-size: 18px; }
+  .method-text { font-size: 17px; }
   .act-subhead { font-size: 32px; }
   .act-body-lead, .act-body-list { font-size: 18px; }
   .share-heading { font-size: 28px; }

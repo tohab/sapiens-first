@@ -17,28 +17,6 @@
     .section { padding: 36px 0; }
     @media (max-width: 768px) { .section { padding: 24px 0; } }
 
-    /* ─── HOW WE WORK CARDS (full-width) ────── */
-    .methods {
-      display: flex; flex-direction: column;
-      gap: 8px; margin-top: 30px;
-    }
-    .method {
-      display: flex; flex-direction: row; align-items: center;
-      padding: 22px 28px; gap: 28px;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      background: color-mix(in srgb, var(--surface) 42%, transparent);
-      transition: transform 0.25s ease; cursor: default;
-    }
-    .method:hover { transform: translateY(-3px); }
-    .method-title {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: var(--sz-body); letter-spacing: 0.04em;
-      text-transform: uppercase; min-width: 150px; text-align: left;
-      color: var(--accent);
-    }
-    .method-text { font-size: var(--sz-body); line-height: 1.75; color: var(--text); font-weight: 500; }
-
     /* ─── VALUES LIST ───────────────────────── */
     .values-list {
       margin-top: 24px;
@@ -53,12 +31,8 @@
     .values-list li strong { font-weight: 638; }
 
     /* ─── RESPONSIVE ────────────────────────── */
-    @media (max-width: 900px) {
-      .method { flex-direction: column; gap: 8px; }
-      .method-title { min-width: unset; }
-    }
     @media (max-width: 768px) {
-      .pillar-text, .method-text { font-size: 17px; }
+      .pillar-text { font-size: 17px; }
       .values-list li { font-size: 22px; }
     }
     @media (max-width: 600px) {
