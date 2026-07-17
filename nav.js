@@ -6,6 +6,7 @@
   const file = path.split('/').pop().replace(/\.html$/, '');
   const active = (page) => (path === `/${page}` || file === page) ? ' active' : '';
   const activeAbout = (path === '/about' || path.startsWith('/about/') || file === 'about') ? ' active' : '';
+  const activeJoin = (path === '/join' || file === 'join' || file === 'membership') ? ' active' : '';
 
   nav.innerHTML = `
     <a class="nav-wordmark" href="/">
@@ -21,7 +22,12 @@
         </div>
       </div>
       <a class="nav-link${active('learn')}" href="/learn">Learn</a>
-      <a class="nav-link${active('join')}" href="/join">Join</a>
+      <div class="nav-dropdown">
+        <a class="nav-link${activeJoin}" href="/join">Join<span class="nav-chevron">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a class="nav-dropdown-item${active('membership')}" href="/membership">Membership</a>
+        </div>
+      </div>
       <a class="nav-link nav-donate" href="${SITE_CONFIG.DONATION_URL}" target="_blank" rel="noopener">Donate</a>
     </div>
     <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>

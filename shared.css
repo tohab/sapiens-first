@@ -404,6 +404,9 @@ main { flex: 1; }
   .nav-mobile-only { display: block; }
   .nav-links .nav-dropdown { cursor: default; }
   .nav-links .nav-dropdown:hover { color: var(--text); opacity: 1; }
+  .nav-links.open .nav-dropdown:nth-child(2) .nav-link { transition-delay: 0.06s; }
+  .nav-links.open .nav-dropdown:nth-child(3) .nav-link { transition-delay: 0.12s; }
+  .nav-links.open .nav-dropdown:nth-child(4) .nav-link { transition-delay: 0.18s; }
   .nav-links .nav-donate {
     border: 2px solid #fff; color: #fff; -webkit-text-stroke: 0;
     padding: 16px 40px 8px calc(40px + 0.16em); background: transparent;
