@@ -14,30 +14,20 @@
   <style>
     .founder-icon { color: var(--text-dim); transition: color .2s; }
     .founder-icon:hover { color: var(--accent); }
+    .about-links {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 12px 32px; margin-top: 8px;
+    }
+    .about-link {
+      font-family: var(--font-mono); font-size: var(--sz-label);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid var(--accent); padding-bottom: 2px;
+      opacity: 0.75; transition: opacity .2s;
+    }
+    .about-link:hover { opacity: 1; }
     .section { padding: 36px 0; }
     @media (max-width: 768px) { .section { padding: 24px 0; } }
-
-    /* ─── HOW WE WORK CARDS (full-width) ────── */
-    .methods {
-      display: flex; flex-direction: column;
-      gap: 8px; margin-top: 30px;
-    }
-    .method {
-      display: flex; flex-direction: row; align-items: center;
-      padding: 22px 28px; gap: 28px;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      background: color-mix(in srgb, var(--surface) 42%, transparent);
-      transition: transform 0.25s ease; cursor: default;
-    }
-    .method:hover { transform: translateY(-3px); }
-    .method-title {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: var(--sz-body); letter-spacing: 0.04em;
-      text-transform: uppercase; min-width: 150px; text-align: left;
-      color: var(--accent);
-    }
-    .method-text { font-size: var(--sz-body); line-height: 1.75; color: var(--text); font-weight: 500; }
 
     /* ─── VALUES LIST ───────────────────────── */
     .values-list {
@@ -53,12 +43,8 @@
     .values-list li strong { font-weight: 638; }
 
     /* ─── RESPONSIVE ────────────────────────── */
-    @media (max-width: 900px) {
-      .method { flex-direction: column; gap: 8px; }
-      .method-title { min-width: unset; }
-    }
     @media (max-width: 768px) {
-      .pillar-text, .method-text { font-size: 17px; }
+      .pillar-text { font-size: 17px; }
       .values-list li { font-size: 22px; }
     }
     @media (max-width: 600px) {
@@ -85,7 +71,7 @@
     <!-- ═══════════ MISSION ═══════════ -->
     <section class="section">
       <div class="container">
-        <p class="body-large reveal">Our mission is to put powerful artificial intelligence in the hands of the people.</p>
+        <p class="body-large reveal">Our mission is to protect liberal democracy from the dangers of artificial intelligence.</p>
       </div>
     </section>
 
@@ -160,6 +146,18 @@
       </div>
     </section>
 
+
+    <!-- ═══════════ GO DEEPER ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Go deeper</span></div>
+        <div class="about-links reveal">
+          <a href="/about/vision" class="about-link">Our Vision →</a>
+          <a href="/about/strategy" class="about-link">Our Strategy →</a>
+          <a href="/about/careers" class="about-link">Careers →</a>
+        </div>
+      </div>
+    </section>
 
     <!-- ═══════════ FOUNDER ═══════════ -->
     <section class="section">

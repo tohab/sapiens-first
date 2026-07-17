@@ -5,13 +5,21 @@
   const path = window.location.pathname.replace(/\/$/, '') || '/';
   const file = path.split('/').pop().replace(/\.html$/, '');
   const active = (page) => (path === `/${page}` || file === page) ? ' active' : '';
+  const activeAbout = (path === '/about' || path.startsWith('/about/') || file === 'about') ? ' active' : '';
 
   nav.innerHTML = `
     <a class="nav-wordmark" href="/">
-      <img class="nav-logo" src="favicons/favicon-32x32.png" alt="Sapiens First">
+      <img class="nav-logo" src="/favicons/favicon-32x32.png" alt="Sapiens First">
     </a>
     <div class="nav-links">
-      <a class="nav-link${active('about')}" href="/about">About</a>
+      <div class="nav-dropdown">
+        <a class="nav-link${activeAbout}" href="/about">About<span class="nav-chevron">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a class="nav-dropdown-item${active('vision')}" href="/about/vision">Vision</a>
+          <a class="nav-dropdown-item${active('strategy')}" href="/about/strategy">Strategy</a>
+          <a class="nav-dropdown-item${active('careers')}" href="/about/careers">Careers</a>
+        </div>
+      </div>
       <a class="nav-link${active('learn')}" href="/learn">Learn</a>
       <a class="nav-link${active('join')}" href="/join">Join</a>
       <a class="nav-link nav-donate" href="${SITE_CONFIG.DONATION_URL}" target="_blank" rel="noopener">Donate</a>

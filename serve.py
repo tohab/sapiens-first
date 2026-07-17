@@ -12,7 +12,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         url_path = urllib.parse.urlparse(self.path).path
         fs_path = os.path.join(ROOT, url_path.lstrip('/'))
-        if not os.path.exists(fs_path) and '.' not in os.path.basename(url_path):
+        if not os.path.isfile(fs_path) and '.' not in os.path.basename(url_path):
             if os.path.exists(fs_path + '.html'):
                 self.path = url_path.rstrip('/') + '.html'
         super().do_GET()

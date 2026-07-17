@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy — Sapiens First</title>
+  <meta name="description" content="Our theory of change and roadmap — how Sapiens First builds the movement to govern artificial intelligence.">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <script src="../config.js"></script>
+  <style>
+    .method-title { min-width: 200px; }
+    @media (max-width: 900px) {
+      .method-title { min-width: unset; }
+    }
+
+    /* ─── FLYWHEEL ───────────────────────────── */
+    .flywheel {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin: 36px 0; flex-wrap: wrap;
+    }
+    .flywheel-node {
+      width: 132px; height: 132px; border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .flywheel-label {
+      font-family: var(--font-mono); font-size: 15px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500; text-align: center;
+    }
+    .flywheel-arrow { font-size: 28px; color: var(--text-dim); flex-shrink: 0; }
+    .flywheel-arrow-loop { font-size: 24px; }
+    .flywheel-note {
+      display: none; text-align: center; margin-top: 4px;
+      font-family: var(--font-mono); font-size: var(--sz-label);
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim);
+    }
+    @media (max-width: 700px) {
+      .flywheel { flex-direction: column; gap: 10px; }
+      .flywheel-arrow { transform: rotate(90deg); }
+      .flywheel-arrow-loop { display: none; }
+      .flywheel-note { display: block; }
+    }
+
+    /* ─── ROADMAP ────────────────────────────── */
+    .roadmap { display: flex; align-items: flex-start; margin: 36px 0; }
+    .roadmap-step {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px; flex: 1; text-align: center;
+    }
+    .roadmap-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 700; font-size: 18px;
+      border: 2px solid var(--border); color: var(--text-dim);
+      background: var(--bg);
+    }
+    .roadmap-current .roadmap-num { border-color: var(--accent); color: #fff; background: var(--accent); }
+    .roadmap-connector { flex: 0 0 auto; width: 60px; height: 2px; background: var(--border); margin-top: 22px; }
+    .roadmap-body { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+    .roadmap-tag {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    }
+    .roadmap-title {
+      font-family: var(--font-display); font-weight: 700; font-size: 17px;
+      letter-spacing: 0.02em; text-transform: uppercase; color: var(--text);
+    }
+    .roadmap-current .roadmap-title { color: var(--accent); }
+    @media (max-width: 700px) {
+      .roadmap { flex-direction: column; align-items: flex-start; gap: 0; }
+      .roadmap-step { flex-direction: row; align-items: center; text-align: left; gap: 16px; width: 100%; }
+      .roadmap-body { align-items: flex-start; }
+      .roadmap-connector { width: 2px; height: 28px; margin: 0 0 0 21px; }
+    }
+
+    /* ─── HANDBOOK CALLOUT ───────────────────── */
+    .handbook-callout {
+      margin-top: 48px; padding: 32px 36px;
+      border: 1px solid var(--border); border-left: 3px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .handbook-callout-text {
+      font-family: var(--font-display); font-weight: 700; font-size: 22px;
+      text-transform: uppercase; letter-spacing: 0.02em; color: var(--text);
+    }
+    .handbook-callout-link {
+      font-family: var(--font-mono); font-size: var(--sz-label);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid var(--accent); padding-bottom: 2px;
+      white-space: nowrap; opacity: 0.85; transition: opacity .2s;
+    }
+    .handbook-callout-link:hover { opacity: 1; }
+    @media (max-width: 600px) {
+      .handbook-callout { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav"></nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <div class="page-hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="container">
+      <h1 class="page-title">Our <span class="title-accent">Strategy</span></h1>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════ THEORY OF CHANGE ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Theory of Change</span></div>
+        <p class="body-large reveal">
+          While artificial intelligence is being developed at a break-neck pace, our political system is not keeping up. We believe that a mass movement is necessary to create the changes necessary to save humanity in time for superintelligence. We do this by:
+        </p>
+        <div class="methods">
+          <div class="method reveal">
+            <div class="method-title">Building a Network</div>
+            <div class="method-text">We organize community gatherings, trainings, and workshops to build a base of committed, pro-democracy advocates.</div>
+          </div>
+          <div class="method reveal reveal-d1">
+            <div class="method-title">Challenging Politicians</div>
+            <div class="method-text">We run campaigns against politicians across the political spectrum to force them to take a stand on AI governance. We use strategic, sacrificial, and humorous non-violent direct action to build momentum and win public support.</div>
+          </div>
+          <div class="method reveal reveal-d2">
+            <div class="method-title">Local to Nation</div>
+            <div class="method-text">We start local, building communities in our city councils, churches, and universities, working up to state and national policy.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FLYWHEEL ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">The Flywheel</span></div>
+        <p class="body-large reveal">
+          Our specific approach relies on a fly-wheel effect of civic engagement, drawn from past social movements.
+        </p>
+        <div class="flywheel reveal">
+          <div class="flywheel-node"><span class="flywheel-label">Act</span></div>
+          <span class="flywheel-arrow" aria-hidden="true">→</span>
+          <div class="flywheel-node"><span class="flywheel-label">Recruit</span></div>
+          <span class="flywheel-arrow" aria-hidden="true">→</span>
+          <div class="flywheel-node"><span class="flywheel-label">Train</span></div>
+          <span class="flywheel-arrow flywheel-arrow-loop" aria-hidden="true">↺</span>
+        </div>
+        <p class="flywheel-note reveal">This cycle repeats.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════ ROADMAP ═══════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Roadmap</span></div>
+        <p class="body-large reveal">
+          We aim to achieve landmark policy by the US Congress by 2030.
+        </p>
+        <div class="roadmap reveal">
+          <div class="roadmap-step roadmap-current">
+            <span class="roadmap-num">1</span>
+            <div class="roadmap-body">
+              <span class="roadmap-tag">Current</span>
+              <span class="roadmap-title">Test &amp; Learn</span>
+            </div>
+          </div>
+          <div class="roadmap-connector"></div>
+          <div class="roadmap-step">
+            <span class="roadmap-num">2</span>
+            <div class="roadmap-body">
+              <span class="roadmap-title">Multi-State Campaigns</span>
+            </div>
+          </div>
+          <div class="roadmap-connector"></div>
+          <div class="roadmap-step">
+            <span class="roadmap-num">3</span>
+            <div class="roadmap-body">
+              <span class="roadmap-title">National Moment</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="handbook-callout reveal">
+          <div class="handbook-callout-text">Want the full playbook?</div>
+          <a href="/learn" class="handbook-callout-link">Read the Organizer Handbook →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script>
+    const progressBar = document.querySelector('.progress-bar');
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    initEmberField();
+  </script>
+  <script src="../nav.js"></script>
+  <script src="../footer.js"></script>
+  <script src="../nav-circle.js"></script>
+</body>
+</html>
