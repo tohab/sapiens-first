@@ -150,6 +150,8 @@ Every action brings in new supporters through conversations, events, and local r
 
 New advocates learn organizing, nonviolent discipline, and campaign skills so they can lead.
 
+[Read the Organizer Handbook →](/learn)
+
 ## Roadmap
 
 We aim to achieve landmark policy by the US Congress by 2030.
@@ -173,10 +175,6 @@ Rohan Prasad founded Sapiens First in 2026. [Rohan](https://www.rohanprasad.org)
 
 - X / Twitter
 - LinkedIn
-
-Want the full playbook?
-
-[Read the Organizer Handbook →](/learn)
 
 ## Vision
 

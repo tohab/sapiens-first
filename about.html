@@ -27,33 +27,167 @@
     }
     .values-list li::marker { color: var(--accent); }
     .values-list li {
-      font-size: 21px; line-height: 1.62; color: var(--text); font-weight: 400;
+      font-size: var(--sz-copy); line-height: 1.62; color: var(--text); font-weight: 400;
     }
     .values-list li strong { font-weight: 638; }
 
-    .focus-list li { line-height: 1.66; }
-    .focus-list li + li { margin-top: 6px; }
-
-    .flywheel {
-      position: relative; width: 100%; max-width: 380px;
-      aspect-ratio: 380 / 320; margin: 36px auto 0;
+    .focus-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 34px auto 0;
+      max-width: 920px;
+      align-items: start;
     }
-    .flywheel-lines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible; }
-    .flywheel-lines line { stroke: var(--text-dim); stroke-width: 2; opacity: 0.55; }
+    .focus-tile {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      overflow: hidden;
+      transition: background .22s ease, box-shadow .22s ease, transform .22s ease;
+    }
+    .focus-tile.is-open {
+      grid-column: 1 / -1;
+      background: color-mix(in srgb, var(--surface) 62%, transparent);
+      box-shadow: 0 18px 38px rgba(20,18,14,0.1);
+      transform: translateY(-2px);
+    }
+    .focus-summary {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: inherit;
+      text-align: left;
+    }
+    .focus-summary:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      outline-offset: -3px;
+    }
+    .focus-title {
+      font-family: var(--font-display);
+      font-size: var(--sz-title);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .focus-chevron {
+      width: 11px;
+      height: 11px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: rotate(45deg);
+      transform-origin: 60% 60%;
+      flex: 0 0 auto;
+      opacity: 0.84;
+      transition: transform .28s cubic-bezier(0.22, 1, 0.36, 1), opacity .2s ease;
+    }
+    .focus-tile.is-open .focus-chevron { transform: rotate(225deg); opacity: 1; }
+    .focus-panel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .42s cubic-bezier(0.22, 1, 0.36, 1), opacity .24s ease;
+    }
+    .focus-tile.is-open .focus-panel {
+      max-height: 620px;
+      opacity: 1;
+    }
+    .focus-long {
+      padding: 2px 30px 28px;
+      font-size: var(--sz-copy);
+      line-height: 1.66;
+      color: var(--text);
+    }
+
+    .strategy-cycle {
+      margin: 42px auto 0;
+      max-width: 720px;
+    }
+    .flywheel {
+      position: relative; width: 100%; max-width: 540px;
+      aspect-ratio: 380 / 330; margin: 0 auto;
+    }
+    .flywheel-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .flywheel-lines path { stroke: var(--accent); stroke-width: 2.5; fill: none; opacity: 0.55; }
+    .flywheel-core ellipse {
+      fill: color-mix(in srgb, var(--bg) 82%, transparent);
+      stroke: color-mix(in srgb, var(--accent) 36%, transparent);
+      stroke-width: 1;
+    }
+    .flywheel-core text {
+      font-family: var(--font-mono);
+      font-size: var(--sz-label);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      fill: var(--text);
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
     .flywheel-node {
       position: absolute; width: 34%; aspect-ratio: 1; border-radius: 50%;
-      border: 2px solid var(--accent); background: var(--bg);
+      border: 2.5px solid var(--accent); background: color-mix(in srgb, var(--surface) 60%, transparent);
       display: flex; align-items: center; justify-content: center;
       padding: 6%; box-sizing: border-box;
+      color: var(--accent); cursor: pointer;
+      transition: background .2s, box-shadow .2s, transform .2s;
     }
+    .flywheel-node:hover,
+    .flywheel-node:focus-visible,
+    .flywheel-node.is-active {
+      background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+      box-shadow: 0 16px 34px rgba(20,18,14,0.12);
+      transform: translateY(-3px);
+    }
+    .flywheel-node:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset: 4px; }
     .flywheel-node-top { top: 0; left: 50%; margin-left: -17%; }
     .flywheel-node-right { bottom: 0; right: 0; }
     .flywheel-node-left { bottom: 0; left: 0; }
     .flywheel-label {
-      font-family: var(--font-mono); font-size: 18px; line-height: 1.25;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--accent); font-weight: 500; text-align: center;
+      font-family: var(--font-display); font-size: var(--sz-title); line-height: 1.2;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      color: currentColor; font-weight: 700; text-align: center;
     }
+    .flywheel-tip {
+      position: absolute; z-index: 4;
+      left: 50%; bottom: calc(100% + 12px);
+      width: min(240px, 64vw); transform: translate(-50%, 8px);
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      background: rgba(250,245,238,0.96);
+      color: var(--text);
+      font-size: 15px; line-height: 1.45; font-weight: 500;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .18s, visibility .18s, transform .18s;
+    }
+    .flywheel-tip::after {
+      content: ''; position: absolute; left: 50%; bottom: -6px;
+      width: 10px; height: 10px;
+      background: rgba(250,245,238,0.96);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    .flywheel-node:hover .flywheel-tip,
+    .flywheel-node:focus-visible .flywheel-tip {
+      opacity: 1; visibility: visible; transform: translate(-50%, 0);
+    }
+    .flywheel-node-right .flywheel-tip { left: auto; right: 0; transform: translate(0, 8px); }
+    .flywheel-node-right .flywheel-tip::after { left: auto; right: 34px; transform: rotate(45deg); }
+    .flywheel-node-right:hover .flywheel-tip,
+    .flywheel-node-right:focus-visible .flywheel-tip { transform: translate(0, 0); }
+    .flywheel-node-left .flywheel-tip { left: 0; transform: translate(0, 8px); }
+    .flywheel-node-left .flywheel-tip::after { left: 34px; transform: rotate(45deg); }
+    .flywheel-node-left:hover .flywheel-tip,
+    .flywheel-node-left:focus-visible .flywheel-tip { transform: translate(0, 0); }
 
     .roadmap { display: flex; align-items: flex-start; margin: 36px 0 0; }
     .roadmap-step {
@@ -71,28 +205,24 @@
     .roadmap-connector { flex: 0 0 auto; width: 60px; height: 2px; background: var(--border); margin-top: 22px; }
     .roadmap-body { display: flex; flex-direction: column; gap: 4px; align-items: center; }
     .roadmap-tag {
-      font-family: var(--font-mono); font-size: 11px;
+      font-family: var(--font-mono); font-size: var(--sz-label);
       letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
     }
     .roadmap-title {
-      font-family: var(--font-display); font-weight: 700; font-size: 17px;
+      font-family: var(--font-display); font-weight: 700; font-size: var(--sz-title);
       letter-spacing: 0.02em; text-transform: uppercase; color: var(--text);
     }
     .roadmap-current .roadmap-title { color: var(--accent); }
 
     .handbook-callout {
-      margin-top: 12px; padding: 32px 36px;
-      border: 1px solid var(--border); border-left: 3px solid var(--accent);
-      background: color-mix(in srgb, var(--surface) 42%, transparent);
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .handbook-callout-text {
-      font-family: var(--font-display); font-weight: 700; font-size: 22px;
-      text-transform: uppercase; letter-spacing: 0.02em; color: var(--text);
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+      text-align: right;
     }
     .handbook-callout-link {
       font-family: var(--font-mono); font-size: var(--sz-label);
-      letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--accent); text-decoration: none;
       border-bottom: 1px solid var(--accent); padding-bottom: 2px;
       white-space: nowrap; opacity: 0.85; transition: opacity .2s;
@@ -101,12 +231,21 @@
 
     .founder-copy a { color: var(--accent); }
 
+    /* Mission styling */
+    #mission .container {
+      border-left: 4px solid var(--accent);
+      padding-left: 32px;
+    }
+
     @media (max-width: 768px) {
       .section { padding: 56px 0; }
       .section-compact { padding: 44px 0; }
-      .pillar-text { font-size: 17px; }
       .values-list { max-width: 100%; gap: 10px; }
-      .values-list li { font-size: 18px; }
+      .focus-grid { max-width: 100%; }
+      .focus-summary { padding: 22px 20px; }
+      .focus-long { padding: 0 20px 24px; }
+      .focus-tile.is-open .focus-panel { max-height: 760px; }
+      .strategy-cycle { margin-top: 34px; }
     }
     @media (max-width: 700px) {
       .roadmap { flex-direction: column; align-items: flex-start; gap: 0; }
@@ -116,9 +255,11 @@
     }
     @media (max-width: 600px) {
       .values-list { padding-left: 1.15em; }
-      .values-list li { font-size: 17px; line-height: 1.6; }
+      .flywheel { max-width: 390px; }
+      .flywheel-core text { font-size: 11px; }
       .flywheel-label { font-size: 15px; }
-      .handbook-callout { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+      .flywheel-tip { display: none; }
+      .handbook-callout { justify-content: flex-end; }
     }
   </style>
 </head>
@@ -138,120 +279,125 @@
 
   <main>
 
-    <!-- ═══════════ MISSION ═══════════ -->
-    <section class="section" id="mission">
-      <div class="container">
-        <p class="body-large reveal">Our mission is to protect liberal democracy from the dangers of artificial intelligence.</p>
-      </div>
-    </section>
-
-    <!-- ═══════════ WHAT WE DO ═══════════ -->
-    <section class="section section-compact" id="what-we-do">
-      <div class="container">
-        <div class="section-label reveal"><span class="title"> What we do</span></div>
-        <p class="body-large reveal">
-          We make change by building community and peacefully disrupting the status quo.
-        </p>
-        <div class="pillars">
-          <div class="pillar reveal">
-            <div class="pillar-title">Gather</div>
-            <div class="pillar-text">Potlucks, parties and workshops where we gather and learn how to make change.</div>
-          </div>
-          <div class="pillar reveal reveal-d1">
-            <div class="pillar-title">Connect</div>
-            <div class="pillar-text">We invite people to connect through one-on-one conversations.</div>
-          </div>
-          <div class="pillar reveal reveal-d2">
-            <div class="pillar-title">Disrupt</div>
-            <div class="pillar-text">Our disruptions are good-natured but direct, challenging politicians to act.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ═══════════ VISION ═══════════ -->
     <section class="section" id="vision">
       <div class="container">
-        <div class="section-label reveal"><span class="title">What We're Fighting For</span></div>
+        <div class="section-label reveal"><span class="title">Our Vision</span></div>
         <p class="body-large reveal">
-          We believe AI should strengthen democracy, broaden prosperity, and protect humanity from catastrophic risk.
+          We imagine a world where AI serves the common good. Our campaigns focus on:
         </p>
-        <ul class="values-list focus-list">
-          <li class="reveal"><strong>Democratic Renewal.</strong> End AI-enabled mass surveillance, technology money corrupting politics, and unchecked algorithmic influence over public life.</li>
-          <li class="reveal"><strong>Common Prosperity.</strong> Share the gains of AI broadly and direct intelligence toward medicine, science, public institutions, and human need.</li>
-          <li class="reveal"><strong>Protecting Humanity.</strong> Govern powerful AI transparently, test it rigorously, and build global safeguards for superintelligence.</li>
-        </ul>
+        <div class="focus-grid" data-focus-accordion>
+          <article class="focus-tile reveal">
+            <button class="focus-summary" type="button" aria-expanded="false" aria-controls="focus-panel-democracy" data-focus-trigger>
+              <span class="focus-title">Democratic Renewal</span>
+              <span class="focus-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="focus-panel" id="focus-panel-democracy">
+              <p class="focus-long">
+                We believe that AI poses a dire threat to the foundations of American democracy, but also has the potential to greatly enhance it. AI strengthens the surveillance apparatus; wealth gains from AI have corrupted our electoral process; and unchecked, algorithmic social media has created a severely polarized society. Democratic renewal means putting an end to these evils, and instead directing technology to enhance our democratic process.
+              </p>
+            </div>
+          </article>
+          <article class="focus-tile reveal reveal-d1">
+            <button class="focus-summary" type="button" aria-expanded="false" aria-controls="focus-panel-prosperity" data-focus-trigger>
+              <span class="focus-title">Common Prosperity</span>
+              <span class="focus-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="focus-panel" id="focus-panel-prosperity">
+              <p class="focus-long">
+                The gains of AI should be shared broadly, and intelligence should be directed to address societal problems. As with the Industrial Revolution, the gains from AI will increase the size of the pie and create vast abundant resources in the economy. However, currently, this wealth is likely to concentrate in the hands of the rich few, leading to the economic disenfranchisement of the majority of human beings. We believe that AI is a public good, and windfall profits from AI should be distributed through taxes, subsidies, and re-investing in public institutions. We also believe that publicly-directed AI should be used to optimize existing government institutions, and dramatically accelerate advances in medicine, science, and technology.
+              </p>
+            </div>
+          </article>
+          <article class="focus-tile reveal reveal-d2">
+            <button class="focus-summary" type="button" aria-expanded="false" aria-controls="focus-panel-humanity" data-focus-trigger>
+              <span class="focus-title">Protecting Humanity</span>
+              <span class="focus-chevron" aria-hidden="true"></span>
+            </button>
+            <div class="focus-panel" id="focus-panel-humanity">
+              <p class="focus-long">
+                Much like nuclear weapons, powerful AI has the potential to cause mass devastation. We believe that major powers should lead a global treaty on the development of safe superintelligence. Frontier AI should be developed transparently, with extensive safety testing. Additionally, the creation of superintelligence should be a global project, with appropriate checks and balances so its power does not fall into one person's hands.
+              </p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- ═══════════ STRATEGY ═══════════ -->
-    <section class="section section-compact" id="strategy">
-      <div class="container">
-        <div class="section-label reveal"><span class="title">How We Win</span></div>
-        <p class="body-large reveal">
-          Our strategy is a flywheel of civic engagement: people act, recruit others into the movement, and train new leaders who can act again.
-        </p>
-        <div class="pillars">
-          <div class="pillar reveal">
-            <div class="pillar-title">Act</div>
-            <div class="pillar-text">People take visible, peaceful action that forces AI governance into public life.</div>
-          </div>
-          <div class="pillar reveal reveal-d1">
-            <div class="pillar-title">Recruit</div>
-            <div class="pillar-text">Every action brings in new supporters through conversations, events, and local relationships.</div>
-          </div>
-          <div class="pillar reveal reveal-d2">
-            <div class="pillar-title">Train</div>
-            <div class="pillar-text">New advocates learn organizing, nonviolent discipline, and campaign skills so they can lead.</div>
-          </div>
-        </div>
-        <div class="flywheel reveal">
-          <svg class="flywheel-lines" viewBox="0 0 380 320" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <marker id="flywheel-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L7,3 L0,6 Z" fill="var(--text-dim)"></path>
-              </marker>
-            </defs>
-            <line x1="228.9" y1="124.3" x2="271.6" y2="189.0" marker-end="url(#flywheel-arrowhead)"></line>
-            <line x1="244" y1="255" x2="144" y2="255" marker-end="url(#flywheel-arrowhead)"></line>
-            <line x1="103.9" y1="195.7" x2="146.6" y2="131.0" marker-end="url(#flywheel-arrowhead)"></line>
-          </svg>
-          <div class="flywheel-node flywheel-node-top"><span class="flywheel-label">Act</span></div>
-          <div class="flywheel-node flywheel-node-right"><span class="flywheel-label">Recruit</span></div>
-          <div class="flywheel-node flywheel-node-left"><span class="flywheel-label">Train</span></div>
-        </div>
-      </div>
-    </section>
 
     <!-- ═══════════ ROADMAP ═══════════ -->
     <section class="section section-compact" id="roadmap">
       <div class="container">
         <div class="section-label reveal"><span class="title">Roadmap</span></div>
         <p class="body-large reveal">
-          We aim to achieve landmark policy by the US Congress by 2030.
+          We aim to achieve dramatic political change for AI governance by 2030.
         </p>
         <div class="roadmap reveal">
           <div class="roadmap-step roadmap-current">
             <span class="roadmap-num">1</span>
             <div class="roadmap-body">
-              <span class="roadmap-tag">Current</span>
-              <span class="roadmap-title">Test &amp; Learn</span>
+              <span class="roadmap-title">Seed Cities</span>
             </div>
           </div>
           <div class="roadmap-connector"></div>
           <div class="roadmap-step">
             <span class="roadmap-num">2</span>
             <div class="roadmap-body">
-              <span class="roadmap-title">Multi-State Campaigns</span>
+              <span class="roadmap-title">State-wide Campaigns</span>
             </div>
           </div>
           <div class="roadmap-connector"></div>
           <div class="roadmap-step">
             <span class="roadmap-num">3</span>
             <div class="roadmap-body">
-              <span class="roadmap-title">National Moment</span>
+              <span class="roadmap-title">National Push</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  
+
+    <!-- ═══════════ STRATEGY ═══════════ -->
+    <section class="section section-compact" id="strategy">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Our Strategy</span></div>
+        <p class="body-large reveal">
+          We build power through a virtuous cycle of civic engagement.
+        </p>
+        <div class="strategy-cycle reveal">
+          <div class="flywheel" data-flywheel>
+            <svg class="flywheel-lines" viewBox="0 0 380 330" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <marker id="flywheel-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"></path>
+                </marker>
+              </defs>
+              <path d="M230 118 C258 142 282 174 294 210" marker-end="url(#flywheel-arrowhead)"></path>
+              <path d="M246 262 C210 282 168 282 132 262" marker-end="url(#flywheel-arrowhead)"></path>
+              <path d="M88 210 C100 174 124 142 152 118" marker-end="url(#flywheel-arrowhead)"></path>
+              <g class="flywheel-core" transform="translate(190 205)">
+                <ellipse rx="66" ry="33"></ellipse>
+                <text y="-7">Movement</text>
+                <text y="11">power</text>
+              </g>
+            </svg>
+            <button class="flywheel-node flywheel-node-top" type="button" data-step="act" aria-pressed="false">
+              <span class="flywheel-label">Act</span>
+              <span class="flywheel-tip">Visible, peaceful pressure makes AI governance impossible to ignore.</span>
+            </button>
+            <button class="flywheel-node flywheel-node-right" type="button" data-step="recruit" aria-pressed="false">
+              <span class="flywheel-label">Recruit</span>
+              <span class="flywheel-tip">Every public action creates conversations, gatherings, and local relationships.</span>
+            </button>
+            <button class="flywheel-node flywheel-node-left" type="button" data-step="train" aria-pressed="false">
+              <span class="flywheel-label">Train</span>
+              <span class="flywheel-tip">New advocates learn organizing skills and become leaders for the next action.</span>
+            </button>
+          </div>
+        </div>
+        <div class="handbook-callout reveal">
+          <a href="/learn" class="handbook-callout-link">Read the Organizer Handbook →</a>
         </div>
       </div>
     </section>
@@ -275,21 +421,12 @@
     <!-- ═══════════ FOUNDER ═══════════ -->
     <section class="section section-compact">
       <div class="container">
-        <p class="body-large founder-copy reveal">
-          Rohan Prasad founded Sapiens First in 2026. <a href="https://www.rohanprasad.org" target="_blank" rel="noopener">Rohan</a> is an activist, writer, and concerned citizen.
+        <!-- <p class="body-large founder-copy reveal">
           <a href="https://x.com/rohantohab" target="_blank" rel="noopener" class="founder-icon" aria-label="X / Twitter" style="position:relative;top:-3px;margin-left:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
           <a href="https://www.linkedin.com/in/therohanprasad/" target="_blank" rel="noopener" class="founder-icon" aria-label="LinkedIn" style="position:relative;top:-3px;margin-left:4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        </p>
-      </div>
-    </section>
-
-    <!-- ═══════════ GUIDE CTA ═══════════ -->
-    <section class="section section-compact">
-      <div class="container">
-        <div class="handbook-callout reveal">
-          <div class="handbook-callout-text">Want the full playbook?</div>
-          <a href="/learn" class="handbook-callout-link">Read the Organizer Handbook →</a>
-        </div>
+        </p> -->
+        <p class="body-large">
+        Sapiens First is a non-profit organization founded by <a href="https://www.rohanprasad.org" target="_blank" rel="noopener">Rohan Prasad</a>. We are supported by private donors, foundations, and our community members.</p>
       </div>
     </section>
 
@@ -308,6 +445,42 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const focusAccordion = document.querySelector('[data-focus-accordion]');
+    if (focusAccordion) {
+      const focusTiles = Array.from(focusAccordion.querySelectorAll('.focus-tile'));
+      const openTile = (targetTile) => {
+        const shouldOpenTarget = !targetTile.classList.contains('is-open');
+        focusTiles.forEach(tile => {
+          const isOpen = tile === targetTile && shouldOpenTarget;
+          tile.classList.toggle('is-open', isOpen);
+          const trigger = tile.querySelector('[data-focus-trigger]');
+          trigger.setAttribute('aria-expanded', String(isOpen));
+        });
+      };
+
+      focusTiles.forEach(tile => {
+        tile.querySelector('[data-focus-trigger]').addEventListener('click', () => openTile(tile));
+      });
+    }
+
+    const flywheel = document.querySelector('[data-flywheel]');
+    if (flywheel) {
+      const nodes = Array.from(document.querySelectorAll('.flywheel-node[data-step]'));
+      const activateStep = (step) => {
+        nodes.forEach(node => {
+          const isActive = node.dataset.step === step;
+          node.classList.toggle('is-active', isActive);
+          node.setAttribute('aria-pressed', String(isActive));
+        });
+      };
+
+      nodes.forEach(node => {
+        node.addEventListener('mouseenter', () => activateStep(node.dataset.step));
+        node.addEventListener('focus', () => activateStep(node.dataset.step));
+        node.addEventListener('click', () => activateStep(node.dataset.step));
+      });
+    }
 
     initEmberField();
   </script>

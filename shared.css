@@ -14,12 +14,15 @@
   --blue: #2C56B3;
   --font-display: 'Barlow Condensed', sans-serif;
   --font-body: 'DM Sans', sans-serif;
-  --font-mono: 'Special Elite', serif;
+  --font-mono: 'DM Sans', sans-serif;
 
   /* ─── TYPE SCALE ────────────────────────── */
-  --sz-label:   13px;   /* meta, buttons, nav labels, small UI  */
-  --sz-body:    21px;   /* card text, demand text, body copy     */
-  --sz-lead:    28px;   /* body-large, hero body, demand titles  */
+  --sz-label:   13px;   /* meta, buttons, nav labels, small UI   */
+  --sz-copy:    18px;   /* paragraph/body copy inside cards      */
+  --sz-title:   20px;   /* card & component titles               */
+  --sz-body:    21px;   /* legacy — join/donate body copy, share */
+  --sz-lead:    28px;   /* body-large, hero body                 */
+  --sz-h2:      32px;   /* section headers (.section-label)      */
   --sz-subhead: 40px;   /* form headings, share headings         */
   /* display sizes use clamp() inline — see .hero-headline, .page-title */
 }
@@ -152,7 +155,7 @@ main { flex: 1; }
 .section-compact { padding: 64px 0; }
 .section-label {
   font-family: var(--font-mono);
-  font-size: 24px; letter-spacing: 0.18em;
+  font-size: var(--sz-h2); letter-spacing: 0.18em;
   text-transform: uppercase; font-weight: 800;
   -webkit-text-stroke: 0.35px currentColor;
   margin-bottom: 18px;
@@ -182,11 +185,11 @@ main { flex: 1; }
 .pillar:hover { transform: translateY(-3px); }
 .pillar-title {
   font-family: var(--font-display); font-weight: 700;
-  font-size: var(--sz-body); letter-spacing: 0.04em;
+  font-size: var(--sz-title); letter-spacing: 0.04em;
   text-transform: uppercase; margin-bottom: 10px;
   text-align: left;
 }
-.pillar-text { font-size: 18px; line-height: 1.65; color: var(--text); font-weight: 500; }
+.pillar-text { font-size: var(--sz-copy); line-height: 1.65; color: var(--text); font-weight: 500; }
 
 /* ─── METHOD ROWS (full-width) ──────────── */
 .methods {
@@ -204,11 +207,11 @@ main { flex: 1; }
 .method:hover { transform: translateY(-3px); }
 .method-title {
   font-family: var(--font-display); font-weight: 700;
-  font-size: var(--sz-body); letter-spacing: 0.04em;
+  font-size: var(--sz-title); letter-spacing: 0.04em;
   text-transform: uppercase; min-width: 150px; text-align: left;
   color: var(--accent);
 }
-.method-text { font-size: 18px; line-height: 1.65; color: var(--text); font-weight: 500; }
+.method-text { font-size: var(--sz-copy); line-height: 1.65; color: var(--text); font-weight: 500; }
 
 /* ─── NAV DROPDOWN ──────────────────────── */
 .nav-dropdown { position: relative; pointer-events: auto; }
@@ -392,8 +395,8 @@ main { flex: 1; }
   .section { padding: 64px 0; }
   .section-compact { padding: 48px 0; }
   .body-large { font-size: var(--sz-body); line-height: 1.6; max-width: 100%; }
-  .pillar-title, .pillar-text { font-size: 18px; }
-  .method-text { font-size: 17px; }
+  .pillar-title, .pillar-text { font-size: var(--sz-copy); }
+  .method-text { font-size: var(--sz-copy); }
   .act-subhead { font-size: 32px; }
   .act-body-lead, .act-body-list { font-size: 18px; }
   .share-heading { font-size: 28px; }

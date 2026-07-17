@@ -78,25 +78,28 @@
       text-transform: uppercase;
     }
 
-    /* ─── DEMAND ROWS ───────────────────────────── */
-    .demands { display: flex; flex-direction: column; gap: 0; margin-top: 36px; max-width: 728px; margin-left: auto; margin-right: auto; }
+    /* ─── VISION SLABS ───────────────────────────── */
+    .demands { display: flex; flex-direction: column; gap: 12px; margin-top: 36px; max-width: 728px; margin-left: auto; margin-right: auto; }
     .demand {
-      padding: 24px 0;
-      margin-bottom: 10px;
+      padding: 24px 28px;
+      background: color-mix(in srgb, var(--surface) 42%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      transition: transform 0.25s ease; cursor: default;
     }
+    .demand:hover { transform: translateY(-2px); }
     .demand-title {
-      font-family: var(--font-display); font-weight: 680;
-      font-size: 56px; letter-spacing: 0.02em;
-      text-transform: uppercase; line-height: 1;
-      -webkit-text-stroke: 0.3px var(--text);
-      paint-order: stroke fill;
-      margin-bottom: 8px; color: var(--text);
-      display: inline-block; padding-bottom: 5px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='4'%3E%3Cpath d='M0 3 Q15 1 30 3 Q45 5 60 3' stroke='%23CD551D' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
-      background-repeat: repeat-x; background-position: 0 100%; background-size: 60px 4px;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: var(--sz-title); letter-spacing: 0.02em;
+      text-transform: uppercase; line-height: 1.3;
+      margin-bottom: 10px; color: var(--accent);
+      -webkit-text-stroke: none;
+      paint-order: normal;
+      background-image: none;
+      display: block;
     }
     .demand-text {
-      font-size: var(--sz-body); line-height: 1.65;
+      font-size: var(--sz-copy); line-height: 1.65;
       color: var(--text); font-weight: 400;
     }
 
@@ -131,7 +134,7 @@
     }
     .cycle-step-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: var(--sz-body); letter-spacing: 0.04em;
+      font-size: var(--sz-title); letter-spacing: 0.04em;
       text-transform: uppercase; margin-bottom: 10px;
     }
     .cycle-step-text { font-size: var(--sz-label); line-height: 1.75; color: var(--text-dim); font-weight: 500; }
@@ -155,7 +158,7 @@
       letter-spacing: -0.025em; margin-bottom: 32px;
     }
     .cta-sub {
-      font-size: 18px; color: var(--text); font-style: italic;
+      font-size: var(--sz-copy); color: var(--text); font-style: italic;
       max-width: 380px; margin: 36px auto 0;
       line-height: 1.75;
     }
@@ -169,8 +172,6 @@
     @media (max-width: 768px) {
       .hero { padding: 100px 0 60px; }
       .hero-body { font-size: var(--sz-body); }
-      .demand-title { font-size: 25.5px; }
-      .demand-text { font-size: 17px; }
     }
     @media (max-width: 600px) {
       .hero-headline br { display: none; }
@@ -180,8 +181,7 @@
       .stat { border-right: none; border-bottom: 1px solid var(--border); text-align: center; }
       .stat:last-child { border-bottom: none; }
       .demand { padding: 16px 0; text-align: center; }
-      .demand-title { font-size: var(--sz-body); -webkit-text-stroke: 0.45px var(--text); }
-      .demand-text { font-size: 16px; }
+      .demand-title { -webkit-text-stroke: 0.45px var(--text); }
       .cta-headline { font-size: clamp(44px, 12vw, 64px); }
       .cta-sub { font-size: 14px; }
       #cta-signup { display: block; width: 100%; }
@@ -211,11 +211,12 @@
     <div class="ember-field" aria-hidden="true"></div>
     <div class="container">
       <h1 class="hero-headline">
-        <span> Revolt for </span><br>
-        <span><span class="accent"> Democracy. </span></span><br>
+        <span> Revolt for </span class="accent"><br>
+        <span><span>  our </span></span>
+        <span><span class="accent">  future. </span></span><br>
       </h1>
       <p class="hero-body">
-        AI is threatening our futures. <br>
+        AI is threatening humanity. <br>
         Find your voice and <span class="accent"> fight back.</span>
       </p>
       <div id="hero-signup"></div>
@@ -250,27 +251,14 @@
 
   <div class="divider"></div>
 
-  <!-- ═══════════ OUR DEMANDS ═══════════ -->
+  <!-- ═══════════ VISION ═══════════ -->
   <section class="section">
     <div class="container">
-      <div class="section-label reveal"><span class="title">Our Demands</span></div>
+      <div class="section-label reveal"><span class="title">Vision</span></div>
       <p class="body-large reveal">
-        <strong>We demand technology that serves the common good.</strong>
+        In the age of powerful AI, <strong> technology should serve the common good.</strong> We believe AI should be governed democratically, and used to serve the public interest. Our focus areas are <strong>democratic renewal, common prosperity, and protecting humanity.</strong>
       </p>
-      <div class="demands">
-        <div class="demand reveal">
-          <div class="demand-title">Democratic Renewal</div>
-          <div class="demand-text">End AI-enabled surveillance, technology money in politics, and unchecked algorithmic influence over public life.</div>
-        </div>
-        <div class="demand reveal reveal-d1">
-          <div class="demand-title">Common Prosperity</div>
-          <div class="demand-text">Share the gains of AI broadly and direct intelligence toward medicine, science, public institutions, and human need.</div>
-        </div>
-        <div class="demand reveal reveal-d2">
-          <div class="demand-title">Protecting Humanity</div>
-          <div class="demand-text">Govern powerful AI transparently, test it rigorously, and pursue global safeguards for superintelligence.</div>
-        </div>
-      </div>
+      <a href="/about#vision" class="learn-more reveal">Our focus areas →</a>
     </div>
   </section>
 
@@ -282,7 +270,7 @@
     <div class="container">
       <div class="section-label reveal"><span class="title"> Our Strategy</span></div>
       <p class="body-large reveal">
-        <strong>We build a flywheel of people power.</strong>
+        We build power through a virtuous cycle of <strong>civic engagement.</strong>
       </p>
       <div class="pillars">
         <div class="pillar reveal">
