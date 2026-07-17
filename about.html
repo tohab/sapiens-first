@@ -15,7 +15,7 @@
   <script src="config.js"></script>
   <!-- BUILD:HEAD-COMMON:END -->
   <style>
-    .founder-icon { color: var(--text-dim); transition: color .2s; }
+    .founder-icon { color: var(--text); transition: color .2s; }
     .founder-icon:hover { color: var(--accent); }
     .section { padding: 72px 0; }
     .section-compact { padding: 56px 0; }
@@ -124,19 +124,15 @@
       width: 44px; height: 44px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-display); font-weight: 700; font-size: var(--sz-copy);
-      border: 2px solid var(--border); color: var(--text-dim);
+      border: 2px solid var(--border); color: var(--text);
       background: var(--bg);
       flex: 0 0 auto;
     }
     .roadmap-current .roadmap-num { border-color: var(--accent); color: #fff; background: var(--accent); }
     .roadmap-connector { width: 2px; height: 28px; background: var(--border); margin: 0 0 0 21px; }
     .roadmap-body { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
-    .roadmap-tag {
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
-    }
     .roadmap-title {
-      font-family: var(--font-display); font-weight: 700; font-size: calc(var(--sz-title) * 1.2);
+      font-family: var(--font-display); font-weight: 700; font-size: var(--sz-title);
       letter-spacing: 0.02em; text-transform: uppercase; color: var(--text);
     }
     .roadmap-current .roadmap-title { color: var(--accent); }
@@ -147,14 +143,6 @@
       justify-content: flex-end;
       text-align: right;
     }
-    .handbook-callout-link {
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent); text-decoration: none;
-      border-bottom: 1px solid var(--accent); padding-bottom: 2px;
-      white-space: nowrap; opacity: 0.85; transition: opacity .2s;
-    }
-    .handbook-callout-link:hover { opacity: 1; }
     #strategy { padding-bottom: 28px; }
     #strategy + .section { padding-top: 28px; }
 
@@ -229,7 +217,7 @@
           <div class="focus-panel" id="focus-shared-panel">
             <div class="focus-panel-inner">
               <p class="focus-long" id="focus-content-democracy" hidden>
-                AI will have profound impacts on our democratic institutions. Done wrong, AI could mean: empower authoritarians to violate our civil liberties; corrupt politicians through unchecked wealth; sully public discourse with deepfakes, addictive technology, and sensationalist media. We believe that instead, AI should enhance democratic institutions, and empower ordinary citizens to have greater participation in public life.
+                AI will have profound impacts on our democratic institutions. Done wrong, AI could empower authoritarians to violate our civil liberties; corrupt politicians through rampant wealth inequality; sully public discourse with deepfakes, addictive technology, and sensationalist media. We believe that instead, AI should enhance democratic institutions, and empower ordinary citizens to have greater participation in public life.
               </p>
               <p class="focus-long" id="focus-content-prosperity" hidden>
                 The gains from AI will be vast, and must be shared broadly across society. Currently, wealth gains from AI have concentrated in the hands of the rich few. We believe that it should be instead used to uplift all people in society through redistribution and a reinvestment in public institutions. We also believe that AI should reduce dysfunction in government, and should be used to accelerate advances in science and technology.
@@ -288,7 +276,7 @@
           <div data-flywheel-mount></div>
         </div>
         <div class="handbook-callout reveal">
-          <a href="/learn" class="handbook-callout-link">Read the Guide →</a>
+          <a href="/learn" class="text-link">Read the Guide →</a>
         </div>
       </div>
     </section>

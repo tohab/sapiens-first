@@ -32,39 +32,20 @@
       font-size: clamp(40px, 6vw, 64px); line-height: 1;
       letter-spacing: -0.02em; text-transform: uppercase;
     }
-    .host-link {
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent); text-decoration: none;
-      border-bottom: 1px solid var(--accent); padding-bottom: 1px;
-      white-space: nowrap; transition: opacity .2s;
-    }
-    .host-link:hover { opacity: 0.72; }
-
     /* ─── CITY FILTER ───────────────────────── */
     .city-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
     .city-btn {
-      font-family: var(--font-mono); font-size: var(--sz-label);
+      font-family: var(--font-body); font-size: var(--sz-label);
       letter-spacing: 0.12em; text-transform: uppercase;
       padding: 8px 18px; border: 1px solid var(--border);
-      background: transparent; color: var(--text-dim);
+      background: transparent; color: var(--text);
       cursor: pointer; transition: background .15s, color .15s, border-color .15s;
     }
-    .city-btn:hover { border-color: var(--text-dim); color: var(--text); }
+    .city-btn:hover { border-color: var(--text); color: var(--text); }
     .city-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
     /* ─── EVENT LIST ────────────────────────── */
     .events-list { display: flex; flex-direction: column; border: 1px solid var(--border); }
-    .empty-state {
-      padding: 52px 0;
-      font-family: var(--font-body); font-size: var(--sz-body);
-      color: var(--text-dim); line-height: 1.6;
-    }
-    .loading-state {
-      padding: 40px 0;
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase;
-    }
 
     /* ─── EVENT CARD ────────────────────────── */
     .event-card {
@@ -76,64 +57,60 @@
     .event-card:hover { background: rgba(20,18,14,0.04); }
     .event-card.past { opacity: 0.5; }
 
-    .card-date-col {
+    .event-card-date-col {
       width: 88px; flex-shrink: 0;
       background: var(--accent);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       padding: 16px 8px; gap: 2px;
     }
-    .event-card.past .card-date-col { background: var(--text-dim); }
-    .event-card:hover .card-date-col { filter: brightness(1.08); }
-    .card-month {
-      font-family: var(--font-mono); font-size: 11px;
+    .event-card.past .event-card-date-col { background: var(--text); }
+    .event-card:hover .event-card-date-col { filter: brightness(1.08); }
+    .event-card-month {
+      font-family: var(--font-body); font-size: 11px;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: rgba(255,255,255,0.75);
     }
-    .card-day {
+    .event-card-day {
       font-family: var(--font-display); font-weight: 800;
       font-size: 42px; line-height: 1; color: #fff; letter-spacing: -0.02em;
     }
-    .card-year {
-      font-family: var(--font-mono); font-size: 10px;
+    .event-card-year {
+      font-family: var(--font-body); font-size: 10px;
       letter-spacing: 0.1em; color: rgba(255,255,255,0.55);
     }
-    .card-nodate-col {
+    .event-card-nodate-col {
       width: 88px; flex-shrink: 0; background: var(--border);
       display: flex; align-items: center; justify-content: center;
     }
-    .card-nodate-inner {
-      font-family: var(--font-mono); font-size: 10px;
+    .event-card-nodate-inner {
+      font-family: var(--font-body); font-size: 10px;
       letter-spacing: 0.1em; text-transform: uppercase;
       color: rgba(20,18,14,0.35);
       writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg);
     }
-    .card-body {
+    .event-card-body {
       flex: 1; padding: 18px 24px 16px;
       display: flex; flex-direction: column; justify-content: center; gap: 5px;
     }
-    .card-title {
+    .event-card-title {
       font-family: var(--font-display); font-weight: 700;
       font-size: 22px; line-height: 1.1;
       letter-spacing: 0.01em; text-transform: uppercase; color: var(--text);
     }
-    .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .card-meta-item { font-family: var(--font-body); font-size: var(--sz-label); color: var(--text-dim); }
-    .card-meta-dot { color: var(--border); }
-    .card-arrow {
+    .event-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .event-card-meta-item { font-family: var(--font-body); font-size: var(--sz-label); color: var(--text); }
+    .event-card-meta-dot { color: var(--border); }
+    .event-card-arrow {
       flex-shrink: 0; display: flex; align-items: center;
       padding: 0 20px 0 8px;
-      font-family: var(--font-mono); font-size: 16px;
+      font-family: var(--font-body); font-size: 16px;
       color: var(--border); transition: color .15s, transform .15s;
     }
-    .event-card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
+    .event-card:hover .event-card-arrow { color: var(--accent); transform: translateX(3px); }
 
     /* ─── PAST LABEL ────────────────────────── */
-    .past-label {
-      font-family: var(--font-mono); font-size: var(--sz-label);
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-dim); margin: 48px 0 16px;
-    }
+    .past-label { margin: 48px 0 16px; }
 
     /* ─── EVENT MODAL ───────────────────────── */
     .event-modal {
@@ -153,44 +130,34 @@
     .event-modal.open .event-modal-inner { transform: translateX(0); }
     .modal-date-row { display: flex; align-items: center; gap: 10px; }
     .modal-date { font-family: var(--font-body); font-size: var(--sz-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
-    .modal-time { font-family: var(--font-body); font-size: var(--sz-label); color: var(--text-dim); }
+    .modal-time { font-family: var(--font-body); font-size: var(--sz-label); color: var(--text); }
     .modal-dot { width: 3px; height: 3px; background: var(--border); border-radius: 50%; flex-shrink: 0; }
     .modal-title {
       font-family: var(--font-display); font-weight: 800;
       font-size: clamp(28px, 5vw, 40px); line-height: 1.05;
       letter-spacing: -0.01em; text-transform: uppercase; color: var(--text);
     }
-    .modal-desc { font-family: var(--font-body); font-size: 16px; color: var(--text-dim); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 20px; }
+    .modal-desc { font-family: var(--font-body); font-size: 16px; color: var(--text); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 20px; }
     .modal-details { display: flex; flex-direction: column; gap: 14px; border-top: 1px solid var(--border); padding-top: 20px; }
     .detail-row { display: flex; flex-direction: column; gap: 4px; }
-    .detail-label { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
     .detail-value { font-family: var(--font-body); font-size: 15px; color: var(--text); line-height: 1.5; }
     .detail-value a { color: var(--accent); text-decoration: none; }
     .detail-value a:hover { text-decoration: underline; }
-    .modal-close-hint { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); opacity: 0.45; text-align: center; padding-top: 8px; margin-top: auto; }
+    .modal-close-hint { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); text-align: center; padding-top: 8px; margin-top: auto; }
     .modal-share-row { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border); padding-top: 20px; }
-    .modal-share-url { font-family: var(--font-body); font-size: var(--sz-label); color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
-    .modal-copy-btn {
-      flex-shrink: 0; padding: 8px 14px; border: 1px solid var(--border);
-      background: transparent; color: var(--text); cursor: pointer;
-      font-family: var(--font-body); font-size: 12px; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      transition: background .15s, border-color .15s;
-    }
-    .modal-copy-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .modal-copy-btn.copied { background: var(--success); border-color: var(--success); color: #fff; }
+    .modal-share-url { font-family: var(--font-body); font-size: var(--sz-label); color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
 
     /* ─── RESPONSIVE ────────────────────────── */
     @media (max-width: 768px) {
       .events-header { flex-direction: column; gap: 10px; }
-      .card-day { font-size: 34px; }
-      .card-date-col, .card-nodate-col { width: 68px; }
+      .event-card-day { font-size: 34px; }
+      .event-card-date-col, .event-card-nodate-col { width: 68px; }
     }
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
-      .card-body { padding: 14px 16px 12px; }
-      .card-title { font-size: var(--sz-copy); }
-      .card-arrow { padding: 0 12px 0 4px; }
+      .event-card-body { padding: 14px 16px 12px; }
+      .event-card-title { font-size: var(--sz-copy); }
+      .event-card-arrow { padding: 0 12px 0 4px; }
     }
 
   </style>
@@ -211,7 +178,7 @@
       <div class="container">
         <div class="events-header">
           <h2 class="events-title">All Events</h2>
-          <a class="host-link" href="/organize">Want to host? →</a>
+          <a class="text-link" href="/organize">Want to host? →</a>
         </div>
         <div id="city-filter-wrap"></div>
         <div id="events-container">
@@ -264,13 +231,13 @@
       let dateColHTML;
       if (event.dateObj) {
         const d = event.dateObj;
-        dateColHTML = `<div class="card-date-col"><span class="card-month">${MONTHS[d.getMonth()]}</span><span class="card-day">${d.getDate()}</span><span class="card-year">${d.getFullYear()}</span></div>`;
+        dateColHTML = `<div class="event-card-date-col"><span class="event-card-month">${MONTHS[d.getMonth()]}</span><span class="event-card-day">${d.getDate()}</span><span class="event-card-year">${d.getFullYear()}</span></div>`;
       } else {
-        dateColHTML = `<div class="card-nodate-col"><span class="card-nodate-inner">TBD</span></div>`;
+        dateColHTML = `<div class="event-card-nodate-col"><span class="event-card-nodate-inner">TBD</span></div>`;
       }
       const metaParts = [event.city, event.time].filter(Boolean);
-      const metaHTML = metaParts.map((p,i) => `<span class="card-meta-item">${p}</span>${i<metaParts.length-1?'<span class="card-meta-dot">·</span>':''}`).join('');
-      card.innerHTML = `${dateColHTML}<div class="card-body"><div class="card-title">${event.title}</div>${metaHTML?`<div class="card-meta">${metaHTML}</div>`:''}</div><div class="card-arrow">→</div>`;
+      const metaHTML = metaParts.map((p,i) => `<span class="event-card-meta-item">${p}</span>${i<metaParts.length-1?'<span class="event-card-meta-dot">·</span>':''}`).join('');
+      card.innerHTML = `${dateColHTML}<div class="event-card-body"><div class="event-card-title">${event.title}</div>${metaHTML?`<div class="event-card-meta">${metaHTML}</div>`:''}</div><div class="event-card-arrow">→</div>`;
       card.addEventListener('click', () => openModal(event));
       return card;
     }
@@ -293,13 +260,13 @@
         <div class="modal-title">${event.title}</div>
         ${event.desc?`<p class="modal-desc">${event.desc}</p>`:''}
         ${hasDetails?`<div class="modal-details">
-          ${event.address?`<div class="detail-row"><span class="detail-label">Location</span><span class="detail-value">${mapsHref?`<a href="${mapsHref}" target="_blank" rel="noopener">${event.address}${event.city?', '+event.city:''}</a>`:event.address+(event.city?', '+event.city:'')}</span></div>`:''}
-          ${event.bring?`<div class="detail-row"><span class="detail-label">What to bring</span><span class="detail-value">${event.bring}</span></div>`:''}
-          ${event.orgName?`<div class="detail-row"><span class="detail-label">Organizer</span><span class="detail-value">${event.orgName}${event.orgPhone?' · '+event.orgPhone:''}</span></div>`:''}
+          ${event.address?`<div class="detail-row"><span class="eyebrow">Location</span><span class="detail-value">${mapsHref?`<a href="${mapsHref}" target="_blank" rel="noopener">${event.address}${event.city?', '+event.city:''}</a>`:event.address+(event.city?', '+event.city:'')}</span></div>`:''}
+          ${event.bring?`<div class="detail-row"><span class="eyebrow">What to bring</span><span class="detail-value">${event.bring}</span></div>`:''}
+          ${event.orgName?`<div class="detail-row"><span class="eyebrow">Organizer</span><span class="detail-value">${event.orgName}${event.orgPhone?' · '+event.orgPhone:''}</span></div>`:''}
         </div>`:''}
         <div class="modal-share-row">
           <span class="modal-share-url">${shareUrl}</span>
-          <button class="modal-copy-btn" id="modal-copy-btn">Copy link</button>
+          <button class="btn" id="modal-copy-btn">Copy link</button>
         </div>
         <p class="modal-close-hint">Click outside to close</p>`;
       document.getElementById('modal-copy-btn').addEventListener('click', function() {
@@ -347,7 +314,7 @@
         container.appendChild(list);
       }
       if (past.length > 0) {
-        const lbl = document.createElement('p'); lbl.className = 'past-label'; lbl.textContent = 'Past Events';
+        const lbl = document.createElement('p'); lbl.className = 'eyebrow past-label'; lbl.textContent = 'Past Events';
         container.appendChild(lbl);
         const list = document.createElement('div'); list.className = 'events-list';
         past.forEach(e => list.appendChild(buildCard(e)));
