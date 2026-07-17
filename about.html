@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Sapiens First</title>
   <meta name="description" content="Learn about Sapiens First — who we are, what we do, and the values that guide our fight for humanity's future.">
+  <!-- BUILD:HEAD-COMMON:START -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +13,7 @@
   <script>document.documentElement.classList.add('js'); if (!('IntersectionObserver' in window)) document.documentElement.classList.add('no-io');</script>
   <link rel="stylesheet" href="shared.css">
   <script src="config.js"></script>
+  <!-- BUILD:HEAD-COMMON:END -->
   <style>
     .founder-icon { color: var(--text-dim); transition: color .2s; }
     .founder-icon:hover { color: var(--accent); }
@@ -32,42 +34,37 @@
     .values-list li strong { font-weight: 638; }
 
     .focus-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
+      --focus-panel-bg: color-mix(in srgb, var(--surface) 62%, transparent);
       margin: 34px auto 0;
       max-width: 920px;
-      align-items: start;
     }
-    .focus-tile {
+    .focus-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .focus-tab {
       border: 1px solid var(--border);
       border-top: 3px solid var(--accent);
       background: color-mix(in srgb, var(--surface) 42%, transparent);
-      overflow: hidden;
-      transition: background .22s ease, box-shadow .22s ease, transform .22s ease;
-    }
-    .focus-tile.is-open {
-      grid-column: 1 / -1;
-      background: color-mix(in srgb, var(--surface) 62%, transparent);
-      box-shadow: 0 18px 38px rgba(20,18,14,0.1);
-      transform: translateY(-2px);
-    }
-    .focus-summary {
       width: 100%;
-      border: 0;
-      background: transparent;
       cursor: pointer;
       padding: 22px 26px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 18px;
+      justify-content: center;
+      gap: 14px;
       color: inherit;
-      text-align: left;
+      text-align: center;
+      transition: background .22s ease, border-color .22s ease;
     }
-    .focus-summary:focus-visible {
+    .focus-tab:focus-visible {
       outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
       outline-offset: -3px;
+    }
+    .focus-tab.is-active {
+      background: var(--focus-panel-bg);
+      border-bottom-color: var(--focus-panel-bg);
     }
     .focus-title {
       font-family: var(--font-display);
@@ -76,7 +73,7 @@
       line-height: 1.25;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--text);
     }
     .focus-chevron {
       width: 11px;
@@ -89,133 +86,63 @@
       opacity: 0.84;
       transition: transform .28s cubic-bezier(0.22, 1, 0.36, 1), opacity .2s ease;
     }
-    .focus-tile.is-open .focus-chevron { transform: rotate(225deg); opacity: 1; }
+    .focus-tab.is-active .focus-chevron { transform: rotate(225deg); opacity: 1; }
     .focus-panel {
-      max-height: 0;
-      overflow: hidden;
+      display: grid;
+      grid-template-rows: 0fr;
       opacity: 0;
-      transition: max-height .42s cubic-bezier(0.22, 1, 0.36, 1), opacity .24s ease;
+      border: 1px solid var(--border);
+      border-top: none;
+      background: var(--focus-panel-bg);
+      transition: grid-template-rows .45s cubic-bezier(0.22, 1, 0.36, 1), opacity .3s ease;
     }
-    .focus-tile.is-open .focus-panel {
-      max-height: 620px;
+    .focus-panel.is-open {
+      grid-template-rows: 1fr;
       opacity: 1;
     }
+    .focus-panel-inner {
+      overflow: hidden;
+      min-height: 0;
+      transition: opacity .15s ease;
+    }
+    .focus-panel-inner.is-fading {
+      opacity: 0;
+    }
     .focus-long {
-      padding: 2px 30px 28px;
+      padding: 24px 30px;
       font-size: var(--sz-copy);
       line-height: 1.66;
       color: var(--text);
     }
 
-    .strategy-cycle {
-      margin: 42px auto 0;
-      max-width: 720px;
-    }
-    .flywheel {
-      position: relative; width: 100%; max-width: 540px;
-      aspect-ratio: 380 / 330; margin: 0 auto;
-    }
-    .flywheel-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-    .flywheel-lines path { stroke: var(--accent); stroke-width: 2.5; fill: none; opacity: 0.55; }
-    .flywheel-core ellipse {
-      fill: color-mix(in srgb, var(--bg) 82%, transparent);
-      stroke: color-mix(in srgb, var(--accent) 36%, transparent);
-      stroke-width: 1;
-    }
-    .flywheel-core text {
-      font-family: var(--font-mono);
-      font-size: var(--sz-label);
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      fill: var(--text);
-      text-anchor: middle;
-      dominant-baseline: middle;
-    }
-    .flywheel-node {
-      position: absolute; width: 34%; aspect-ratio: 1; border-radius: 50%;
-      border: 2.5px solid var(--accent); background: color-mix(in srgb, var(--surface) 60%, transparent);
-      display: flex; align-items: center; justify-content: center;
-      padding: 6%; box-sizing: border-box;
-      color: var(--accent); cursor: pointer;
-      transition: background .2s, box-shadow .2s, transform .2s;
-    }
-    .flywheel-node:hover,
-    .flywheel-node:focus-visible,
-    .flywheel-node.is-active {
-      background: color-mix(in srgb, var(--accent) 12%, var(--bg));
-      box-shadow: 0 16px 34px rgba(20,18,14,0.12);
-      transform: translateY(-3px);
-    }
-    .flywheel-node:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset: 4px; }
-    .flywheel-node-top { top: 0; left: 50%; margin-left: -17%; }
-    .flywheel-node-right { bottom: 0; right: 0; }
-    .flywheel-node-left { bottom: 0; left: 0; }
-    .flywheel-label {
-      font-family: var(--font-display); font-size: var(--sz-title); line-height: 1.2;
-      letter-spacing: 0.02em; text-transform: uppercase;
-      color: currentColor; font-weight: 700; text-align: center;
-    }
-    .flywheel-tip {
-      position: absolute; z-index: 4;
-      left: 50%; bottom: calc(100% + 12px);
-      width: min(240px, 64vw); transform: translate(-50%, 8px);
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      background: rgba(250,245,238,0.96);
-      color: var(--text);
-      font-size: 15px; line-height: 1.45; font-weight: 500;
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transition: opacity .18s, visibility .18s, transform .18s;
-    }
-    .flywheel-tip::after {
-      content: ''; position: absolute; left: 50%; bottom: -6px;
-      width: 10px; height: 10px;
-      background: rgba(250,245,238,0.96);
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transform: translateX(-50%) rotate(45deg);
-    }
-    .flywheel-node:hover .flywheel-tip,
-    .flywheel-node:focus-visible .flywheel-tip {
-      opacity: 1; visibility: visible; transform: translate(-50%, 0);
-    }
-    .flywheel-node-right .flywheel-tip { left: auto; right: 0; transform: translate(0, 8px); }
-    .flywheel-node-right .flywheel-tip::after { left: auto; right: 34px; transform: rotate(45deg); }
-    .flywheel-node-right:hover .flywheel-tip,
-    .flywheel-node-right:focus-visible .flywheel-tip { transform: translate(0, 0); }
-    .flywheel-node-left .flywheel-tip { left: 0; transform: translate(0, 8px); }
-    .flywheel-node-left .flywheel-tip::after { left: 34px; transform: rotate(45deg); }
-    .flywheel-node-left:hover .flywheel-tip,
-    .flywheel-node-left:focus-visible .flywheel-tip { transform: translate(0, 0); }
-
-    .roadmap { display: flex; align-items: flex-start; margin: 36px 0 0; }
+    .roadmap { display: flex; flex-direction: column; align-items: flex-start; margin: 36px auto 0; width: fit-content; gap: 0; }
     .roadmap-step {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 10px; flex: 1; text-align: center;
+      display: flex; flex-direction: row; align-items: center;
+      gap: 16px; text-align: left; width: 100%;
     }
     .roadmap-num {
       width: 44px; height: 44px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-weight: 700; font-size: 18px;
+      font-family: var(--font-display); font-weight: 700; font-size: var(--sz-copy);
       border: 2px solid var(--border); color: var(--text-dim);
       background: var(--bg);
+      flex: 0 0 auto;
     }
     .roadmap-current .roadmap-num { border-color: var(--accent); color: #fff; background: var(--accent); }
-    .roadmap-connector { flex: 0 0 auto; width: 60px; height: 2px; background: var(--border); margin-top: 22px; }
-    .roadmap-body { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+    .roadmap-connector { width: 2px; height: 28px; background: var(--border); margin: 0 0 0 21px; }
+    .roadmap-body { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
     .roadmap-tag {
       font-family: var(--font-mono); font-size: var(--sz-label);
       letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
     }
     .roadmap-title {
-      font-family: var(--font-display); font-weight: 700; font-size: var(--sz-title);
+      font-family: var(--font-display); font-weight: 700; font-size: calc(var(--sz-title) * 1.2);
       letter-spacing: 0.02em; text-transform: uppercase; color: var(--text);
     }
     .roadmap-current .roadmap-title { color: var(--accent); }
 
     .handbook-callout {
-      margin-top: 12px;
+      margin-top: 48px;
       display: flex;
       justify-content: flex-end;
       text-align: right;
@@ -228,6 +155,8 @@
       white-space: nowrap; opacity: 0.85; transition: opacity .2s;
     }
     .handbook-callout-link:hover { opacity: 1; }
+    #strategy { padding-bottom: 28px; }
+    #strategy + .section { padding-top: 28px; }
 
     .founder-copy a { color: var(--accent); }
 
@@ -240,25 +169,21 @@
     @media (max-width: 768px) {
       .section { padding: 56px 0; }
       .section-compact { padding: 44px 0; }
+      #strategy { padding-bottom: 22px; }
+      #strategy + .section { padding-top: 22px; }
       .values-list { max-width: 100%; gap: 10px; }
       .focus-grid { max-width: 100%; }
-      .focus-summary { padding: 22px 20px; }
-      .focus-long { padding: 0 20px 24px; }
-      .focus-tile.is-open .focus-panel { max-height: 760px; }
+      .focus-tab { padding: 22px 20px; }
+      .focus-long { padding: 20px; }
       .strategy-cycle { margin-top: 34px; }
     }
     @media (max-width: 700px) {
-      .roadmap { flex-direction: column; align-items: flex-start; gap: 0; }
-      .roadmap-step { flex-direction: row; align-items: center; text-align: left; gap: 16px; width: 100%; }
-      .roadmap-body { align-items: flex-start; }
-      .roadmap-connector { width: 2px; height: 28px; margin: 0 0 0 21px; }
+      .focus-row { grid-template-columns: 1fr; }
+      .focus-tab.is-active { border-bottom-color: var(--border); }
+      .focus-panel { border-top: 3px solid var(--accent); }
     }
     @media (max-width: 600px) {
       .values-list { padding-left: 1.15em; }
-      .flywheel { max-width: 390px; }
-      .flywheel-core text { font-size: 11px; }
-      .flywheel-label { font-size: 15px; }
-      .flywheel-tip { display: none; }
       .handbook-callout { justify-content: flex-end; }
     }
   </style>
@@ -287,39 +212,33 @@
           We imagine a world where AI serves the common good. Our campaigns focus on:
         </p>
         <div class="focus-grid" data-focus-accordion>
-          <article class="focus-tile reveal">
-            <button class="focus-summary" type="button" aria-expanded="false" aria-controls="focus-panel-democracy" data-focus-trigger>
+          <div class="focus-row">
+            <button class="focus-tab reveal" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-democracy">
               <span class="focus-title">Democratic Renewal</span>
               <span class="focus-chevron" aria-hidden="true"></span>
             </button>
-            <div class="focus-panel" id="focus-panel-democracy">
-              <p class="focus-long">
-                We believe that AI poses a dire threat to the foundations of American democracy, but also has the potential to greatly enhance it. AI strengthens the surveillance apparatus; wealth gains from AI have corrupted our electoral process; and unchecked, algorithmic social media has created a severely polarized society. Democratic renewal means putting an end to these evils, and instead directing technology to enhance our democratic process.
-              </p>
-            </div>
-          </article>
-          <article class="focus-tile reveal reveal-d1">
-            <button class="focus-summary" type="button" aria-expanded="false" aria-controls="focus-panel-prosperity" data-focus-trigger>
+            <button class="focus-tab reveal reveal-d1" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-prosperity">
               <span class="focus-title">Common Prosperity</span>
               <span class="focus-chevron" aria-hidden="true"></span>
             </button>
-            <div class="focus-panel" id="focus-panel-prosperity">
-              <p class="focus-long">
-                The gains of AI should be shared broadly, and intelligence should be directed to address societal problems. As with the Industrial Revolution, the gains from AI will increase the size of the pie and create vast abundant resources in the economy. However, currently, this wealth is likely to concentrate in the hands of the rich few, leading to the economic disenfranchisement of the majority of human beings. We believe that AI is a public good, and windfall profits from AI should be distributed through taxes, subsidies, and re-investing in public institutions. We also believe that publicly-directed AI should be used to optimize existing government institutions, and dramatically accelerate advances in medicine, science, and technology.
-              </p>
-            </div>
-          </article>
-          <article class="focus-tile reveal reveal-d2">
-            <button class="focus-summary" type="button" aria-expanded="false" aria-controls="focus-panel-humanity" data-focus-trigger>
-              <span class="focus-title">Protecting Humanity</span>
+            <button class="focus-tab reveal reveal-d2" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-humanity">
+              <span class="focus-title">Securing Our Future</span>
               <span class="focus-chevron" aria-hidden="true"></span>
             </button>
-            <div class="focus-panel" id="focus-panel-humanity">
-              <p class="focus-long">
-                Much like nuclear weapons, powerful AI has the potential to cause mass devastation. We believe that major powers should lead a global treaty on the development of safe superintelligence. Frontier AI should be developed transparently, with extensive safety testing. Additionally, the creation of superintelligence should be a global project, with appropriate checks and balances so its power does not fall into one person's hands.
+          </div>
+          <div class="focus-panel" id="focus-shared-panel">
+            <div class="focus-panel-inner">
+              <p class="focus-long" id="focus-content-democracy" hidden>
+                AI will have profound impacts on our democratic institutions. Done wrong, AI could mean: empower authoritarians to violate our civil liberties; corrupt politicians through unchecked wealth; sully public discourse with deepfakes, addictive technology, and sensationalist media. We believe that instead, AI should enhance democratic institutions, and empower ordinary citizens to have greater participation in public life.
+              </p>
+              <p class="focus-long" id="focus-content-prosperity" hidden>
+                The gains from AI will be vast, and must be shared broadly across society. Currently, wealth gains from AI have concentrated in the hands of the rich few. We believe that it should be instead used to uplift all people in society through redistribution and a reinvestment in public institutions. We also believe that AI should reduce dysfunction in government, and should be used to accelerate advances in science and technology.
+              </p>
+              <p class="focus-long" id="focus-content-humanity" hidden>
+                Cutting-edge artificial intelligence has the potential to cause mass devastation if left unchecked. To combat this, major powers must cooperate to lead the development of safe superintelligence. Frontier AI must be developed transparently, and we should have the best scientists working to ensure AI remains under human control. Additionally, we must have civil society input on AI governance, so that the power of superintelligence benefits all of humanity.
               </p>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -361,51 +280,23 @@
     <!-- ═══════════ STRATEGY ═══════════ -->
     <section class="section section-compact" id="strategy">
       <div class="container">
-        <div class="section-label reveal"><span class="title">Our Strategy</span></div>
+        <div class="section-label reveal"><span class="title">Strategy</span></div>
         <p class="body-large reveal">
           We build power through a virtuous cycle of civic engagement.
         </p>
         <div class="strategy-cycle reveal">
-          <div class="flywheel" data-flywheel>
-            <svg class="flywheel-lines" viewBox="0 0 380 330" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <marker id="flywheel-arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                  <path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"></path>
-                </marker>
-              </defs>
-              <path d="M230 118 C258 142 282 174 294 210" marker-end="url(#flywheel-arrowhead)"></path>
-              <path d="M246 262 C210 282 168 282 132 262" marker-end="url(#flywheel-arrowhead)"></path>
-              <path d="M88 210 C100 174 124 142 152 118" marker-end="url(#flywheel-arrowhead)"></path>
-              <g class="flywheel-core" transform="translate(190 205)">
-                <ellipse rx="66" ry="33"></ellipse>
-                <text y="-7">Movement</text>
-                <text y="11">power</text>
-              </g>
-            </svg>
-            <button class="flywheel-node flywheel-node-top" type="button" data-step="act" aria-pressed="false">
-              <span class="flywheel-label">Act</span>
-              <span class="flywheel-tip">Visible, peaceful pressure makes AI governance impossible to ignore.</span>
-            </button>
-            <button class="flywheel-node flywheel-node-right" type="button" data-step="recruit" aria-pressed="false">
-              <span class="flywheel-label">Recruit</span>
-              <span class="flywheel-tip">Every public action creates conversations, gatherings, and local relationships.</span>
-            </button>
-            <button class="flywheel-node flywheel-node-left" type="button" data-step="train" aria-pressed="false">
-              <span class="flywheel-label">Train</span>
-              <span class="flywheel-tip">New advocates learn organizing skills and become leaders for the next action.</span>
-            </button>
-          </div>
+          <div data-flywheel-mount></div>
         </div>
         <div class="handbook-callout reveal">
-          <a href="/learn" class="handbook-callout-link">Read the Organizer Handbook →</a>
+          <a href="/learn" class="handbook-callout-link">Read the Guide →</a>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ VALUES ═══════════ -->
+    <!-- ═══════════ VALUES ═══════════
     <section class="section section-compact" id="values">
       <div class="container">
-        <div class="section-label reveal"><span class="title"> Core Values</span></div>
+        <div class="section-label reveal"><span class="title">Core Values</span></div>
         <p class="body-large reveal">
           Activists with Sapiens First must follow our Core Values.
         </p>
@@ -417,6 +308,7 @@
         </ul>
       </div>
     </section>
+    -->
 
     <!-- ═══════════ FOUNDER ═══════════ -->
     <section class="section section-compact">
@@ -435,55 +327,46 @@
   <footer class="footer"></footer>
 
   <script>
-    const progressBar = document.querySelector('.progress-bar');
-    window.addEventListener('scroll', () => {
-      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
-      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
-    }, { passive: true });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     const focusAccordion = document.querySelector('[data-focus-accordion]');
     if (focusAccordion) {
-      const focusTiles = Array.from(focusAccordion.querySelectorAll('.focus-tile'));
-      const openTile = (targetTile) => {
-        const shouldOpenTarget = !targetTile.classList.contains('is-open');
-        focusTiles.forEach(tile => {
-          const isOpen = tile === targetTile && shouldOpenTarget;
-          tile.classList.toggle('is-open', isOpen);
-          const trigger = tile.querySelector('[data-focus-trigger]');
-          trigger.setAttribute('aria-expanded', String(isOpen));
+      const focusTabs = Array.from(focusAccordion.querySelectorAll('[data-focus-trigger]'));
+      const focusPanel = focusAccordion.querySelector('.focus-panel');
+      const focusInner = focusPanel.querySelector('.focus-panel-inner');
+      const focusContents = Array.from(focusPanel.querySelectorAll('.focus-long'));
+
+      focusTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const shouldActivate = !tab.classList.contains('is-active');
+          focusTabs.forEach(t => {
+            const isActive = t === tab && shouldActivate;
+            t.classList.toggle('is-active', isActive);
+            t.setAttribute('aria-expanded', String(isActive));
+          });
+
+          const showTarget = () => {
+            focusContents.forEach(content => {
+              content.hidden = content.id !== tab.dataset.focusTarget;
+            });
+            focusPanel.classList.add('is-open');
+            requestAnimationFrame(() => focusInner.classList.remove('is-fading'));
+          };
+
+          if (!shouldActivate) {
+            focusPanel.classList.remove('is-open');
+          } else if (focusPanel.classList.contains('is-open')) {
+            focusInner.classList.add('is-fading');
+            setTimeout(showTarget, 150);
+          } else {
+            showTarget();
+          }
         });
-      };
-
-      focusTiles.forEach(tile => {
-        tile.querySelector('[data-focus-trigger]').addEventListener('click', () => openTile(tile));
-      });
-    }
-
-    const flywheel = document.querySelector('[data-flywheel]');
-    if (flywheel) {
-      const nodes = Array.from(document.querySelectorAll('.flywheel-node[data-step]'));
-      const activateStep = (step) => {
-        nodes.forEach(node => {
-          const isActive = node.dataset.step === step;
-          node.classList.toggle('is-active', isActive);
-          node.setAttribute('aria-pressed', String(isActive));
-        });
-      };
-
-      nodes.forEach(node => {
-        node.addEventListener('mouseenter', () => activateStep(node.dataset.step));
-        node.addEventListener('focus', () => activateStep(node.dataset.step));
-        node.addEventListener('click', () => activateStep(node.dataset.step));
       });
     }
 
     initEmberField();
   </script>
+  <script src="flywheel.js"></script>
+  <script src="reveal.js"></script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>
   <script src="nav-circle.js"></script>

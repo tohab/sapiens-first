@@ -4,16 +4,26 @@
 
   const path = window.location.pathname.replace(/\/$/, '') || '/';
   const file = path.split('/').pop().replace(/\.html$/, '');
-  const activeAbout = (path === '/about' || path.startsWith('/about/') || file === 'about') ? ' active' : '';
-  const activeJoin = (path === '/join' || file === 'join' || file === 'membership') ? ' active' : '';
+
+  // Per-page active-state rules; each page can match multiple URL shapes
+  // (extensionless production paths, raw .html files, path prefixes, etc.)
+  // so this can't be derived purely from the flat NAV_LINKS data.
+  const activeMatchers = {
+    about: () => path === '/about' || path.startsWith('/about/') || file === 'about',
+    join: () => path === '/join' || file === 'join' || file === 'membership',
+  };
+
+  const navLinksHtml = SITE_CONFIG.NAV_LINKS.map(({ page, label }) => {
+    const active = (activeMatchers[page] && activeMatchers[page]()) ? ' active' : '';
+    return `<a class="nav-link${active}" href="${SITE_CONFIG.pageLink(page)}">${label}</a>`;
+  }).join('\n      ');
 
   nav.innerHTML = `
     <a class="nav-wordmark" href="/">
       <img class="nav-logo" src="/favicons/favicon-32x32.png" alt="Sapiens First">
     </a>
     <div class="nav-links">
-      <a class="nav-link${activeAbout}" href="/about">About</a>
-      <a class="nav-link${activeJoin}" href="/join">Join</a>
+      ${navLinksHtml}
       <a class="nav-link nav-donate" href="${SITE_CONFIG.DONATION_URL}" target="_blank" rel="noopener">Donate</a>
     </div>
     <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>

@@ -7,6 +7,29 @@ const SITE_CONFIG = {
   EMBER_COUNT: 174,
 };
 
+// Resolve a page name to a link, working both in production (clean, extensionless
+// URLs served via .htaccess rewrites) and when the site is opened directly from
+// disk via file:// (no rewrite support, so the real .html file must be targeted).
+SITE_CONFIG.pageLink = function (page) {
+  return window.location.protocol === 'file:' ? `${page}.html` : `/${page}`;
+};
+
+// Single source of truth for the top nav links (excludes Donate, which is
+// rendered separately in nav.js as a distinct external/styled item).
+SITE_CONFIG.NAV_LINKS = [
+  { page: 'about', label: 'About' },
+  { page: 'join', label: 'Join' },
+];
+
+// Single source of truth for the footer links, in render order.
+SITE_CONFIG.FOOTER_LINKS = [
+  { page: 'about', label: 'About' },
+  { page: 'join', label: 'Join' },
+  { label: 'Donate', href: SITE_CONFIG.DONATION_URL, external: true },
+  { page: 'learn', label: 'Learn' },
+  { page: 'privacy', label: 'Privacy' },
+];
+
 function initEmberField() {
   const field = document.querySelector('.ember-field');
   if (!field) return;

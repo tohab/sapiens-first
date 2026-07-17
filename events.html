@@ -9,6 +9,7 @@
   <meta property="og:description" content="Find events near you and show up for the revolution.">
   <meta property="og:url" content="https://sapiensfirst.org/events">
   <meta property="og:type" content="website">
+  <!-- BUILD:HEAD-COMMON:START -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +17,7 @@
   <script>document.documentElement.classList.add('js'); if (!('IntersectionObserver' in window)) document.documentElement.classList.add('no-io');</script>
   <link rel="stylesheet" href="shared.css">
   <script src="config.js"></script>
+  <!-- BUILD:HEAD-COMMON:END -->
   <style>
 
     /* ─── EVENTS SECTION ─────────────────────── */
@@ -167,7 +169,7 @@
     .detail-value a:hover { text-decoration: underline; }
     .modal-close-hint { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); opacity: 0.45; text-align: center; padding-top: 8px; margin-top: auto; }
     .modal-share-row { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border); padding-top: 20px; }
-    .modal-share-url { font-family: var(--font-body); font-size: 13px; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+    .modal-share-url { font-family: var(--font-body); font-size: var(--sz-label); color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
     .modal-copy-btn {
       flex-shrink: 0; padding: 8px 14px; border: 1px solid var(--border);
       background: transparent; color: var(--text); cursor: pointer;
@@ -176,7 +178,7 @@
       transition: background .15s, border-color .15s;
     }
     .modal-copy-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .modal-copy-btn.copied { background: #2a7a3b; border-color: #2a7a3b; color: #fff; }
+    .modal-copy-btn.copied { background: var(--success); border-color: var(--success); color: #fff; }
 
     /* ─── RESPONSIVE ────────────────────────── */
     @media (max-width: 768px) {
@@ -187,7 +189,7 @@
     @media (max-width: 600px) {
       .container { padding: 0 20px; }
       .card-body { padding: 14px 16px 12px; }
-      .card-title { font-size: 18px; }
+      .card-title { font-size: var(--sz-copy); }
       .card-arrow { padding: 0 12px 0 4px; }
     }
 

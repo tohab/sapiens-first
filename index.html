@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sapiens First</title>
+  <!-- BUILD:HEAD-COMMON:START -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +12,7 @@
   <script>document.documentElement.classList.add('js'); if (!('IntersectionObserver' in window)) document.documentElement.classList.add('no-io');</script>
   <link rel="stylesheet" href="shared.css">
   <script src="config.js"></script>
+  <!-- BUILD:HEAD-COMMON:END -->
   <style>
     /* index.html — page-specific only; shared rules in shared.css */
     body { min-height: unset; display: block; }
@@ -20,7 +22,7 @@
       display: flex; flex-direction: column; justify-content: center;
       padding: 80px 0;
       position: relative; overflow: hidden;
-      background-color: #000;
+      background-color: var(--hero-bg);
     }
     .hero-headline {
       font-family: var(--font-display);
@@ -30,7 +32,7 @@
       letter-spacing: -0.04em;
       text-transform: uppercase;
       margin-bottom: 22px; text-align: center;
-      color: #fff;
+      color: var(--on-dark);
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.45s;
     }
@@ -256,7 +258,7 @@
     <div class="container">
       <div class="section-label reveal"><span class="title">Vision</span></div>
       <p class="body-large reveal">
-        In the age of powerful AI, <strong> technology should serve the common good.</strong> We believe AI should be governed democratically, and used to serve the public interest. Our focus areas are <strong>democratic renewal, common prosperity, and protecting humanity.</strong>
+        We imagine <strong> a world where AI serves the common good.</strong> We believe in technology that uplifts all people, not just a rich few. We fight for  <strong>democracy, prosperity, and security</strong> in the age of AI.
       </p>
       <a href="/about#vision" class="learn-more reveal">Our focus areas →</a>
     </div>
@@ -268,23 +270,12 @@
   <section class="section strategy-section">
     <img class="us-map-bg" src="assets/us.svg" aria-hidden="true" alt="">
     <div class="container">
-      <div class="section-label reveal"><span class="title"> Our Strategy</span></div>
+      <div class="section-label reveal"><span class="title">  Strategy</span></div>
       <p class="body-large reveal">
-        We build power through a virtuous cycle of <strong>civic engagement.</strong>
+        We build movement power through <strong>civic engagement.</strong>
       </p>
-      <div class="pillars">
-        <div class="pillar reveal">
-          <div class="pillar-title">Act</div>
-          <div class="pillar-text">We take visible, peaceful action that forces AI governance into public life.</div>
-        </div>
-        <div class="pillar reveal reveal-d1">
-          <div class="pillar-title">Recruit</div>
-          <div class="pillar-text">Every action brings in new supporters through conversations, gatherings, and local relationships.</div>
-        </div>
-        <div class="pillar reveal reveal-d2">
-          <div class="pillar-title">Train</div>
-          <div class="pillar-text">New advocates learn organizing, nonviolent discipline, and campaign skills so they can lead.</div>
-        </div>
+      <div class="strategy-cycle reveal">
+        <div data-flywheel-mount></div>
       </div>
       <a href="/about" class="learn-more reveal">Learn more →</a>
     </div>
@@ -304,23 +295,14 @@
   <footer class="footer"></footer>
 
   <script src="signup.js"></script>
+  <script src="flywheel.js"></script>
   <script>
-    const progressBar = document.querySelector('.progress-bar');
-    window.addEventListener('scroll', () => {
-      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
-      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
-    }, { passive: true });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     document.getElementById('hero-signup').appendChild(createSignupForm({ theme: 'dark' }));
     document.getElementById('cta-signup').appendChild(createSignupForm({ theme: 'light' }));
 
     initEmberField();
   </script>
+  <script src="reveal.js"></script>
   <script src="nav.js"></script>
   <script src="footer.js"></script>
   <script src="nav-circle.js"></script>
