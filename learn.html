@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js'); if (!('IntersectionObserver' in window)) document.documentElement.classList.add('no-io');</script>
   <link rel="stylesheet" href="shared.css">
   <script src="config.js"></script>
   <style>
@@ -53,7 +54,7 @@
     .error-state a { color: var(--accent); }
 
     /* DOCUMENT TYPOGRAPHY */
-    .doc-body { line-height: 1.75; }
+    .doc-body { line-height: 1.68; }
 
     .doc-body h1 {
       font-family: var(--font-display); font-weight: 800;
@@ -81,14 +82,14 @@
     }
 
     .doc-body p {
-      font-family: var(--font-body); font-size: var(--sz-body);
-      color: var(--text); margin: 0 0 18px; line-height: 1.75;
+      font-family: var(--font-body); font-size: 18px;
+      color: var(--text); margin: 0 0 18px; line-height: 1.68;
     }
     .doc-body p:empty { display: none; }
 
     .doc-body ul, .doc-body ol {
-      font-family: var(--font-body); font-size: var(--sz-body);
-      color: var(--text); line-height: 1.75;
+      font-family: var(--font-body); font-size: 18px;
+      color: var(--text); line-height: 1.68;
       padding-left: 28px; margin: 0 0 20px;
     }
     .doc-body ul { list-style: disc; }
@@ -183,7 +184,7 @@
       .toc-h3-list { padding-left: 36px; }
     }
 
-    @media (max-width: 768px) { .doc-body p, .doc-body li { font-size: 18px; } }
+    @media (max-width: 768px) { .doc-body p, .doc-body li { font-size: 17px; line-height: 1.65; } }
     @media (max-width: 600px) { .container { padding: 0 20px; } }
 
   </style>

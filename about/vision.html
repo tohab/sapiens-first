@@ -2,104 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vision — Sapiens First</title>
-  <meta name="description" content="Our vision, mission, and focus areas — how Sapiens First is directing technology toward the common good.">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared.css">
-  <script src="../config.js"></script>
-  <style>
-    .method-title { min-width: 200px; }
-    .label-tag {
-      display: block; margin-top: 8px;
-      font-family: var(--font-mono); font-size: 12px;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-dim); font-weight: 400; -webkit-text-stroke: 0;
-    }
-    @media (max-width: 900px) {
-      .method-title { min-width: unset; }
-    }
-  </style>
+  <meta http-equiv="refresh" content="0; url=/about#vision">
+  <title>Redirecting — Sapiens First</title>
+  <script>window.location.replace('/about#vision');</script>
 </head>
 <body>
-
-  <div class="progress-bar"></div>
-
-  <nav class="site-nav"></nav>
-
-  <!-- ═══════════ PAGE HERO ═══════════ -->
-  <div class="page-hero">
-    <div class="ember-field" aria-hidden="true"></div>
-    <div class="container">
-      <h1 class="page-title">Our <span class="title-accent">Vision</span></h1>
-    </div>
-  </div>
-
-  <main>
-
-    <!-- ═══════════ VISION ═══════════ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-label reveal"><span class="title">Vision</span></div>
-        <p class="body-large reveal">We imagine a world where technology serves the common good.</p>
-      </div>
-    </section>
-
-    <!-- ═══════════ MISSION ═══════════ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-label reveal"><span class="title">Mission</span></div>
-        <p class="body-large reveal">Our mission is to protect liberal democracy from the dangers of artificial intelligence.</p>
-      </div>
-    </section>
-
-    <!-- ═══════════ FOCUS AREAS ═══════════ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-label reveal">
-          <span class="title">Focus Areas</span>
-          <span class="label-tag">Policy recommendations forthcoming</span>
-        </div>
-        <div class="methods">
-          <div class="method reveal">
-            <div class="method-title">Democratic Renewal</div>
-            <div class="method-text">We believe that AI poses a dire threat to the foundations of American democracy, but also has the potential to greatly enhance it. AI enhances the functioning of the surveillance apparatus; wealth gains from AI have corrupted our electoral process; and unchecked, algorithmic-driven social media has created a severely polarized society. Democratic renewal means putting an end to these evils, and instead directing technology to enhance our democratic process.</div>
-          </div>
-          <div class="method reveal reveal-d1">
-            <div class="method-title">Common Prosperity</div>
-            <div class="method-text">The gains of AI should be shared broadly, and intelligence should be directed to address societal problems. As with the Industrial Revolution, the gains from AI will increase the size of the pie and create vast abundant resources in the economy. However, currently, this wealth is likely to concentrate in the hands of the rich few, leading to the economic disenfranchisement of the majority of human beings. We believe that AI is a public good, and windfall profits from AI should be distributed through taxes, subsidies, and re-investing in public institutions. We also believe that publicly-directed AI should be used to optimize existing government institutions, and dramatically accelerate advances in medicine, science, and technology.</div>
-          </div>
-          <div class="method reveal reveal-d2">
-            <div class="method-title">Protecting Humanity</div>
-            <div class="method-text">Much like nuclear weapons, powerful AI has the potential to cause mass devastation. We believe that major powers should lead a global treaty on the development of safe superintelligence. Frontier AI should be developed transparently, with extensive safety testing. Additionally, the creation of superintelligence should be a global project, with appropriate checks and balances so its power does not fall into one person's hands.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer"></footer>
-
-  <script>
-    const progressBar = document.querySelector('.progress-bar');
-    window.addEventListener('scroll', () => {
-      const s = window.scrollY, m = document.documentElement.scrollHeight - window.innerHeight;
-      progressBar.style.transform = `scaleX(${m > 0 ? s / m : 0})`;
-    }, { passive: true });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    initEmberField();
-  </script>
-  <script src="../nav.js"></script>
-  <script src="../footer.js"></script>
-  <script src="../nav-circle.js"></script>
+  <p>Redirecting… <a href="/about#vision">Click here if you are not redirected.</a></p>
 </body>
 </html>
