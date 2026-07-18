@@ -10,6 +10,7 @@
   // so this can't be derived purely from the flat NAV_LINKS data.
   const activeMatchers = {
     about: () => path === '/about' || path.startsWith('/about/') || file === 'about',
+    fellowship: () => path === '/fellowship' || file === 'fellowship',
     join: () => path === '/join' || file === 'join' || file === 'membership',
   };
 

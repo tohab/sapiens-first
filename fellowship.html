@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fellowship — Sapiens First</title>
+  <meta name="description" content="Join the Sapiens First Fellowship — a 12-week volunteer program building the movement's early community, systems, and marketing infrastructure.">
+  <meta property="og:title" content="Fellowship — Sapiens First">
+  <meta property="og:description" content="A 12-week volunteer program building the movement's early community, systems, and marketing infrastructure.">
+  <meta property="og:url" content="https://sapiensfirst.org/fellowship">
+  <meta property="og:type" content="website">
+  <!-- BUILD:HEAD-COMMON:START -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js'); if (!('IntersectionObserver' in window)) document.documentElement.classList.add('no-io');</script>
+  <link rel="stylesheet" href="shared.css">
+  <script src="config.js"></script>
+  <!-- BUILD:HEAD-COMMON:END -->
+  <style>
+    .section { padding: 48px 0; }
+    .section-compact { padding: 32px 0; }
+    @media (max-width: 768px) { .section { padding: 40px 0; } .section-compact { padding: 28px 0; } }
+
+    /* ─── QUICK FACTS ────────────────────────── */
+    .fact-pills {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      margin: 24px auto 0; max-width: 720px;
+    }
+    .fact-pill {
+      font-family: var(--font-body); font-size: var(--sz-label);
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark);
+      border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px;
+    }
+
+    /* ─── ROLE CARDS ─────────────────────────── */
+    .role-card { margin-top: 18px; }
+    .role-card:first-of-type { margin-top: 30px; }
+    .role-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 12px 16px; flex-wrap: wrap; margin-bottom: 10px;
+    }
+    .role-card .card-title { color: var(--text); }
+    .role-tag {
+      font-family: var(--font-body); font-size: 11px; letter-spacing: 0.07em;
+      color: var(--text); padding: 3px 9px; border: 1px solid var(--border);
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .role-desc { margin-bottom: 16px; }
+    .role-activities-label { display: block; margin-bottom: 8px; }
+    .role-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .role-list li {
+      font-size: var(--sz-copy); line-height: 1.5; color: var(--text);
+      font-weight: 500; padding-left: 16px; position: relative;
+    }
+    .role-list li::before { content: '–'; position: absolute; left: 0; color: var(--accent); opacity: 0.6; }
+    .role-note { font-style: italic; margin-top: 14px; margin-bottom: 0; }
+
+    /* ─── FIT CHECKLIST ──────────────────────── */
+    .fit-list {
+      margin-top: 24px; max-width: 720px; margin-left: auto; margin-right: auto;
+      padding-left: 1.25em; display: flex; flex-direction: column; gap: 12px;
+      list-style: disc;
+    }
+    .fit-list li::marker { color: var(--accent); }
+    .fit-list li { font-size: var(--sz-lead); line-height: 1.58; color: var(--text); font-weight: 400; }
+
+    .apply-cta { text-align: center; margin-top: 30px; }
+    .hero-cta { margin-top: 26px; }
+
+    @media (max-width: 768px) {
+      .fit-list li { font-size: var(--sz-body); }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .fit-list { padding-left: 1.15em; }
+      .fit-list li { font-size: 18px; line-height: 1.62; }
+      .role-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
+
+    /* ─── EXPERIMENT: left-justify everything (delete this block to undo) ─── */
+    .page-title,
+    .section-label,
+    .body-large,
+    .apply-cta { text-align: left; }
+    .body-large,
+    .fit-list { max-width: none; margin-left: 0; margin-right: 0; }
+    .fact-pills { justify-content: flex-start; }
+    .role-header { justify-content: flex-start; }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav"></nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <div class="page-hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="container">
+      <h1 class="page-title">Become a<br><span class="title-accent">Fellow.</span></h1>
+      <div class="fact-pills reveal">
+        <span class="fact-pill">12 weeks</span>
+        <span class="fact-pill">8–12 hrs / week</span>
+        <span class="fact-pill">Volunteer</span>
+      </div>
+      <div class="hero-cta reveal">
+        <a href="/fellowship-app" class="btn btn--solid" target="_blank" rel="noopener noreferrer">Apply now →</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════ INTRO ═══════════ -->
+    <section class="section section-compact">
+      <div class="container">
+        <p class="body-large reveal">
+          Sapiens First is building a movement to put powerful AI in the hands of the people.
+          We imagine a world where AI serves the common good. We fight for
+          <strong>democracy, prosperity, and security</strong> in the age of AI.
+          You can learn more about our theory of change on our <a href="/about" class="text-link" style="text-transform:none;letter-spacing:normal;font-size:inherit;">About page</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════ THE ROLE ═══════════ -->
+    <section class="section" id="the-role">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">The Role</span></div>
+        <p class="body-large reveal">
+          We're founding a volunteer team to build the movement's early infrastructure. We currently have three roles available.
+        </p>
+
+        <div class="role-card card reveal">
+          <div class="role-header">
+            <div class="card-title" style="margin-bottom:0;">Community Fellow</div>
+            <span class="role-tag">In-person · SF Bay</span>
+          </div>
+          <p class="role-desc card-text">
+            You enjoy talking to new people, are a great listener, and care deeply about
+            community. You're great at making people feel empowered, with the goal of them
+            joining the movement.
+          </p>
+          <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
+          <ul class="role-list">
+            <li>Designing events for people</li>
+            <li>Door-to-door conversations with people</li>
+            <li>Creating curriculum and documentation for volunteers to train up</li>
+          </ul>
+          <p class="role-note card-text">Community Fellows should be able to commute to SF, Berkeley, or Oakland about twice a week to help with in-person community building.</p>
+        </div>
+
+        <div class="role-card card reveal reveal-d1">
+          <div class="role-header">
+            <div class="card-title" style="margin-bottom:0;">Systems Fellow</div>
+            <span class="role-tag">Remote-friendly</span>
+          </div>
+          <p class="role-desc card-text">
+            You enjoy building scalable systems and automations to empower communities.
+            You're a fast learner and excellent at incorporating AI to assist you in the
+            process, with the goal of streamlining our supporter and membership onboarding
+            and retention processes.
+          </p>
+          <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
+          <ul class="role-list">
+            <li>Rigging up an open-source CRM to our membership sign-up page</li>
+            <li>Creating an email automation protocol for sign-ups, event attendees, and supporters</li>
+            <li>Automating member onboarding on Discord</li>
+          </ul>
+        </div>
+
+        <div class="role-card card reveal reveal-d2">
+          <div class="role-header">
+            <div class="card-title" style="margin-bottom:0;">Marketing Fellow</div>
+            <span class="role-tag">Remote-friendly</span>
+          </div>
+          <p class="role-desc card-text">
+            You enjoy communicating big ideas clearly and learning what inspires people to
+            take action. You will test messaging and branding, with the goal of expanding
+            our digital reach.
+          </p>
+          <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
+          <ul class="role-list">
+            <li>Refining our brand marketing strategy</li>
+            <li>Designing and executing our digital marketing strategy</li>
+            <li>Designing materials like business cards, banners, and lawn signs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ WHO WE'RE LOOKING FOR ═══════════ -->
+    <section class="section section-compact">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Who We're Looking For</span></div>
+        <p class="body-large reveal">You may be a strong fit if you:</p>
+        <ul class="fit-list">
+          <li class="reveal">Care deeply about how advanced AI will affect humanity</li>
+          <li class="reveal">Want to help build an ambitious movement from an early stage</li>
+          <li class="reveal">Take initiative and follow through reliably</li>
+          <li class="reveal">Are comfortable experimenting and learning quickly</li>
+          <li class="reveal">Welcome direct feedback</li>
+          <li class="reveal">Care about measurable results</li>
+        </ul>
+        <p class="body-large reveal" style="margin-top:26px;">
+          Formal credentials are not required. We care more about judgment, initiative,
+          reliability, and demonstrated ability to get things done.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════ WHAT FELLOWS RECEIVE ═══════════ -->
+    <section class="section section-compact">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">What Fellows Receive</span></div>
+        <p class="body-large reveal">
+          This is an unpaid volunteer fellowship. Fellows receive meaningful ownership, close
+          collaboration with the founder, regular feedback and coaching, reimbursement for
+          approved work expenses, and meals during relevant in-person activities. Strong
+          fellows may be invited to extend their work after the initial term.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════ COMMITMENT ═══════════ -->
+    <section class="section section-compact">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">Commitment</span></div>
+        <p class="body-large reveal">
+          The fellowship lasts <strong>12 weeks</strong> and requires approximately
+          <strong>8–12 hours per week</strong>. Scheduling is generally flexible, with a
+          regular weekly meeting.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════ HOW TO APPLY ═══════════ -->
+    <section class="section section-compact">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">How to Apply</span></div>
+        <p class="body-large reveal">
+          We're excited to hear from you! Applications are accepted on a rolling basis. Please email questions to rohan@sapiensfirst.org.
+        </p>
+        <div class="apply-cta reveal">
+          <a href="/fellowship-app" class="btn btn--solid" target="_blank" rel="noopener noreferrer">Apply now →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script>
+    initEmberField();
+  </script>
+  <script src="reveal.js"></script>
+  <script src="nav.js"></script>
+  <script src="footer.js"></script>
+  <script src="nav-circle.js"></script>
+</body>
+</html>

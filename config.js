@@ -18,12 +18,14 @@ SITE_CONFIG.pageLink = function (page) {
 // rendered separately in nav.js as a distinct external/styled item).
 SITE_CONFIG.NAV_LINKS = [
   { page: 'about', label: 'About' },
+  { page: 'fellowship', label: 'Fellowship' },
   { page: 'join', label: 'Join' },
 ];
 
 // Single source of truth for the footer links, in render order.
 SITE_CONFIG.FOOTER_LINKS = [
   { page: 'about', label: 'About' },
+  { page: 'fellowship', label: 'Fellowship' },
   { page: 'join', label: 'Join' },
   { label: 'Donate', href: SITE_CONFIG.DONATION_URL, external: true },
   { page: 'learn', label: 'Learn' },
