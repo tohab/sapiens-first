@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policy — Sapiens First</title>
+  <meta name="description" content="A People's Agenda for the Age of AI — Sapiens First's policy recommendations for democratic renewal, common prosperity, and a secure future.">
+  <meta property="og:title" content="Policy — Sapiens First">
+  <meta property="og:description" content="A People's Agenda for the Age of AI — our policy recommendations for democratic renewal, common prosperity, and a secure future.">
+  <meta property="og:url" content="https://sapiensfirst.org/policy">
+  <meta property="og:type" content="website">
+  <!-- BUILD:HEAD-COMMON:START -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js'); if (!('IntersectionObserver' in window)) document.documentElement.classList.add('no-io');</script>
+  <link rel="stylesheet" href="shared.css">
+  <script src="config.js"></script>
+  <!-- BUILD:HEAD-COMMON:END -->
+  <style>
+    /* ─── MASTHEAD (hero eyebrow + metadata line) ───────────── */
+    .policy-eyebrow {
+      display: block; margin-bottom: 20px; text-align: center;
+      font-family: 'Special Elite', var(--font-body); font-size: 13px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+      opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.15s;
+    }
+    .policy-meta {
+      margin: 26px 0 0; text-align: center;
+      font-family: var(--font-body); font-size: var(--sz-label);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--on-dark) 62%, transparent);
+      opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.75s;
+    }
+
+    /* Document-style prose — left-aligned, measured width, not centered
+       marketing copy — since this content sits beside a sidebar TOC. */
+    .guide-main .body-large {
+      text-align: left; max-width: none; margin: 0 0 18px;
+      font-size: 19px; line-height: 1.7; font-weight: 400;
+    }
+    .guide-main .body-large:last-child { margin-bottom: 0; }
+
+    /* ─── GUIDE-STYLE LAYOUT (sidebar TOC + content) ───────────── */
+    .guide-section { padding: 24px 0 120px; }
+    .guide-layout { display: flex; gap: 56px; align-items: start; }
+    .guide-sidebar {
+      width: 240px; flex-shrink: 0; position: sticky; top: 96px;
+      max-height: calc(100vh - 116px); overflow-y: auto;
+      scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+    }
+    .guide-main { flex: 1; min-width: 0; }
+
+    @media (max-width: 900px) {
+      .guide-layout { flex-direction: column; gap: 32px; }
+      .guide-sidebar { width: 100%; position: static; max-height: none; overflow-y: visible; }
+    }
+
+    /* TOC */
+    .toc-label { display: block; padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
+    .toc-group-header {
+      margin: 16px 0 2px; padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .toc-group-header:first-of-type { margin-top: 6px; padding-top: 0; border-top: none; }
+    .toc-group-header a {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: var(--sz-label); letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text); text-decoration: none; border-bottom: none;
+      display: block; padding: 2px 8px; transition: color .15s;
+    }
+    .toc-group-header a:hover { color: var(--accent); }
+    .toc-item-link {
+      display: block; padding: 6px 8px; margin: 1px 0;
+      font-family: var(--font-body); font-size: 15px; font-weight: 500;
+      color: var(--text); text-decoration: none; border-bottom: none;
+      line-height: 1.32; transition: color .15s;
+    }
+    .toc-item-link:hover, .toc-item-link.toc-active { color: var(--accent); border-bottom: none; }
+    .toc-item-link.toc-active { font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .toc { border: 1px solid var(--border); padding: 16px 20px 14px; margin-bottom: 8px; }
+      .toc-label { margin-bottom: 8px; }
+      .toc-item-link { font-size: 16px; padding: 8px; }
+    }
+
+    /* ─── PILLARS + POLICY ACCORDION CARDS ───────────── */
+    .policy-pillar { margin: 0 0 64px; }
+    .policy-pillar:last-of-type { margin-bottom: 0; }
+
+    /* Document-style section heading — left-aligned with a rule, like a
+       formal report heading, rather than the centered marketing label. */
+    .guide-main .section-label {
+      text-align: left; margin: 0 0 14px;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(28px, 4vw, 40px); line-height: 1.1;
+      letter-spacing: -0.01em; -webkit-text-stroke: 0;
+      padding-bottom: 12px; border-bottom: 2px solid var(--accent);
+    }
+    .guide-main .section-label .title { color: var(--text); }
+
+    .guide-main .pillar-lead {
+      margin: 18px 0 32px;
+    }
+
+    /* Numbered dossier entries — thin rules, not boxed cards */
+    #policy-content { counter-reset: policy-num; }
+    .policy-card {
+      counter-increment: policy-num;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+    .policy-pillar .policy-card:last-child { border-bottom: 1px solid var(--border); }
+    .policy-card-toggle {
+      width: 100%; border: none; background: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 20px 24px; text-align: left; color: inherit;
+    }
+    .policy-card-toggle:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      outline-offset: -3px;
+    }
+    .policy-card-title {
+      font-family: var(--font-body); font-weight: 700;
+      font-size: clamp(17px, 2vw, 20px); line-height: 1.35;
+      letter-spacing: 0; color: var(--text);
+    }
+    .policy-card-title::before {
+      content: counter(policy-num, decimal-leading-zero); margin-right: 12px;
+      color: var(--accent); opacity: 0.6; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .policy-chevron {
+      flex: 0 0 auto; width: 9px; height: 9px;
+      border-right: 1.5px solid var(--accent); border-bottom: 1.5px solid var(--accent);
+      transform: rotate(45deg); transform-origin: 60% 60%; opacity: 0.55;
+      transition: transform .28s cubic-bezier(0.22, 1, 0.36, 1), opacity .2s ease;
+    }
+    .policy-card-toggle[aria-expanded="true"] .policy-chevron { transform: rotate(225deg); opacity: 1; }
+
+    .policy-card-panel {
+      display: grid; grid-template-rows: 0fr; opacity: 0;
+      transition: grid-template-rows .4s cubic-bezier(0.22, 1, 0.36, 1), opacity .28s ease;
+    }
+    .policy-card-panel.is-open { grid-template-rows: 1fr; opacity: 1; }
+    .policy-card-panel-inner { overflow: hidden; min-height: 0; }
+    .policy-card-body {
+      padding: 4px 24px 28px; border-top: 1px solid var(--border);
+    }
+
+    .policy-card-body h4 {
+      font-family: var(--font-body); font-weight: 600; font-size: 14px;
+      letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent);
+      margin: 26px 0 10px;
+    }
+    .policy-card-body h4:first-child { margin-top: 22px; }
+    .policy-card-body p {
+      font-family: var(--font-body); font-size: var(--sz-copy); color: var(--text);
+      line-height: 1.62; margin: 0 0 14px;
+    }
+    .policy-card-body p:last-child { margin-bottom: 0; }
+    .policy-card-body ul {
+      font-family: var(--font-body); font-size: var(--sz-copy); color: var(--text);
+      line-height: 1.55; margin: 0 0 14px; padding-left: 22px; list-style: disc;
+    }
+    .policy-card-body li { margin-bottom: 6px; }
+    .policy-card-body li:last-child { margin-bottom: 0; }
+    .policy-card-body li::marker { color: var(--accent); }
+    .policy-card-body strong { font-weight: 700; }
+
+    /* How it's done — Cities vs. State tabs */
+    .howits { margin: 0 0 14px; }
+    .howits-tabs { display: flex; gap: 2px; flex-wrap: wrap; }
+    .howits-tab {
+      border: 1px solid var(--border); border-bottom: none;
+      background: transparent; cursor: pointer;
+      padding: 9px 16px; font-family: var(--font-body); font-size: 14px;
+      font-weight: 600; letter-spacing: 0.02em; color: var(--text);
+      opacity: 0.6; transition: opacity .18s ease, background .18s ease;
+    }
+    .howits-tab:hover { opacity: 0.85; }
+    .howits-tab.is-active { opacity: 1; background: var(--bg); }
+    .howits-tab:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset: -2px; }
+    .howits-panel { border: 1px solid var(--border); background: var(--bg); padding: 16px 18px 2px; }
+    .howits-content { opacity: 0; transition: opacity .2s ease; }
+    .howits-content.is-visible { opacity: 1; }
+    .howits-content p:last-child, .howits-content ul:last-child { margin-bottom: 14px; }
+
+    @media (max-width: 600px) {
+      .policy-card-toggle { padding: 16px 18px; }
+      .policy-card-body { padding: 4px 18px 22px; }
+      .howits-tab { padding: 8px 12px; font-size: 13px; }
+      .howits-panel { padding: 14px 14px 2px; }
+    }
+
+    /* Closing colophon */
+    .policy-colophon-meta {
+      margin-top: 4px; text-align: left;
+      font-family: var(--font-body); font-size: var(--sz-label);
+      letter-spacing: 0.06em; color: var(--text); opacity: 0.6;
+    }
+
+    @media (max-width: 600px) { .container { padding: 0 20px; } }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav"></nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <div class="page-hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="container">
+      <span class="policy-eyebrow">Policy Brief — Sapiens First</span>
+      <h1 class="page-title">A People's Agenda<br>for the <span class="title-accent">Age of AI.</span></h1>
+      <p class="policy-meta">3 Pillars · 12 Policies · Updated July 2026</p>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════ POLICIES (sidebar TOC + accordion cards) ═══════════ -->
+    <section class="guide-section">
+      <div class="container">
+        <div class="guide-layout">
+          <aside class="guide-sidebar">
+            <div id="toc-container"></div>
+          </aside>
+          <div class="guide-main">
+            <div id="policy-content">
+  <section class="policy-pillar" id="overview">
+    <div class="section-label reveal"><span class="title">Overview</span></div>
+    <p class="body-large reveal">Artificial intelligence could bring extraordinary abundance—or concentrate wealth and power beyond anything democracy has faced before.</p>
+    <p class="body-large reveal">Our agenda rests on a simple principle: <strong>AI should serve humanity, not rule it.</strong> We seek to renew democracy, share the gains from technological progress, and protect humanity from systems that no one can reliably control.</p>
+    <p class="body-large reveal">Each of the twelve policies below is organized in four parts: <strong>the policy</strong> states the proposal in plain language; <strong>public messaging</strong> gives organizers language for protests, signs, speeches, and social media; <strong>how it's done</strong> translates the proposal into concrete campaigns for cities, states, and the federal government; and <strong>learn more</strong> situates it in precedent and research.</p>
+    <p class="body-large reveal">At the local level, our campaigns favor tools that cities, universities, congregations, and civic organizations already have—resolutions, procurement conditions, zoning and permitting authority, and existing budget lines—over asks that require new offices, standing audit bureaucracies, or new administrative funds. This keeps the agenda winnable at the local level, and it means the same language can travel from a city council to a university senate to a congregation's governing board with only the names changed. States, which have broader authority and administrative capacity, carry the comprehensive version of each policy.</p>
+  </section>
+  <section class="policy-pillar" id="democratic-renewal">
+    <div class="section-label reveal"><span class="title">Democratic Renewal</span></div>
+    <p class="pillar-lead body-large reveal">AI could give governments and corporations unprecedented power to watch people, manipulate public debate, and shape policy behind closed doors. We should use this moment to strengthen democracy instead: defending civil liberties, breaking corporate control over policymaking, and giving ordinary people a direct role in decisions about our future.</p>
+    <div class="policy-card" id="ban-ai-powered-mass-surveillance">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="ban-ai-powered-mass-surveillance-body">
+        <span class="policy-card-title">Ban AI-Powered Mass Surveillance</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="ban-ai-powered-mass-surveillance-body">
+        <h4>The Policy</h4>
+          <p>No government or corporation should be able to continuously identify, track, and profile people as they move through public life.</p>
+          <p>Ban real-time facial recognition, biometric dragnet surveillance, emotion recognition, predictive policing, and AI systems used to monitor lawful political activity. Require public approval before government agencies acquire new surveillance technologies, close the loophole that allows agencies to buy equivalent information from data brokers, and give people meaningful remedies when their rights are violated.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>No AI Police State.</strong></li>
+            <li><strong>Your Face Is Not a Tracking Number.</strong></li>
+            <li><strong>Freedom Means Not Being Watched.</strong></li>
+            <li><strong>Privacy Is a Public Right.</strong></li>
+            <li><strong>People Are Not Data Points.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="ban-ai-powered-mass-surveillance-tab-cities-universities-and-civil-society">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="ban-ai-powered-mass-surveillance-tab-state-governments">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="ban-ai-powered-mass-surveillance-tab-federal-government">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="ban-ai-powered-mass-surveillance-tab-cities-universities-and-civil-society">
+              <p>Pass a <strong>Freedom from AI Surveillance Resolution</strong> that:</p>
+              <ul>
+                <li>Declares city policy against facial recognition, emotion recognition, biometric identification, predictive-policing tools, and AI systems that monitor lawful political activity.</li>
+                <li>Directs the city attorney and procurement office to insert a no-surveillance clause into new and renewed vendor contracts going forward.</li>
+                <li>Directs staff to disclose any current surveillance technology in use as part of existing budget and contract reporting.</li>
+                <li>Calls on the state legislature and Congress to enact binding statutory bans with real enforcement teeth.</li>
+              </ul>
+              <p>This is achievable in a single council vote and easily adapted for a university senate (barring surveillance tech from campus contracts) or a congregation's governing board (the same clause in vendor and security-system agreements).</p>
+            </div>
+            <div class="howits-content" id="ban-ai-powered-mass-surveillance-tab-state-governments" hidden>
+              <p>Enact a statewide ban governing state and local agencies, with only narrow exceptions based on a warrant, documented necessity, defined targets, strict time limits, human authorization, and independent review. The law should:</p>
+              <ul>
+                <li>Cover both direct government use and information purchased from data brokers.</li>
+                <li>Establish a public surveillance-technology registry.</li>
+                <li>Give the attorney general enforcement authority.</li>
+                <li>Create statutory damages and a private right of action.</li>
+                <li>Protect whistleblowers who disclose unlawful surveillance.</li>
+              </ul>
+            </div>
+            <div class="howits-content" id="ban-ai-powered-mass-surveillance-tab-federal-government" hidden>
+              <p>Congress should enact a nationwide ban on real-time facial recognition, biometric dragnet surveillance, emotion recognition, predictive policing, and AI-enabled monitoring of lawful political activity by federal agencies, with narrow, auditable exceptions requiring a warrant, defined targets, and time limits:</p>
+              <ul>
+                <li>Close the data-broker loophole at the source — prohibit federal agencies, and any state or local agency receiving federal law-enforcement grants, from buying data that would otherwise require a warrant to collect directly.</li>
+                <li>Condition Byrne-JAG and Homeland Security grant funding on compliance.</li>
+                <li>Give the public a private right of action and statutory damages, and set a federal floor that states remain free to exceed.</li>
+                <li>Assign a dedicated inspector-general function — not a new standalone agency — to audit compliance.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>San Francisco adopted a surveillance-technology ordinance in 2019 that prohibited municipal facial-recognition use, subject to limited later exceptions, and required public disclosure of surveillance technologies held by city departments.</p>
+          <p>Portland went further by prohibiting private entities from using facial-recognition technology in places of public accommodation—a model for campaigns regulating both government and corporate tracking.</p>
+          <p>These precedents demonstrate that cities need not wait for federal legislation before establishing enforceable limits on biometric surveillance.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="end-big-tech-s-control-of-ai-policy">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="end-big-tech-s-control-of-ai-policy-body">
+        <span class="policy-card-title">End Big Tech's Control of AI Policy</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="end-big-tech-s-control-of-ai-policy-body">
+        <h4>The Policy</h4>
+          <p>The companies building the most powerful technology in history should not be allowed to buy the rules governing it.</p>
+          <p>Expose AI lobbying, political spending, front groups, sponsored research, and private meetings with public officials. Close the revolving door between government and industry, restrict pay-to-play political influence, and guarantee workers, affected communities, civil-liberties advocates, and independent researchers meaningful representation in AI policymaking.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Our Future Is Not for Sale.</strong></li>
+            <li><strong>People Write the Rules—not AI Companies.</strong></li>
+            <li><strong>Break Big Tech's Grip on Government.</strong></li>
+            <li><strong>No Secret Lobbyists for Secret Machines.</strong></li>
+            <li><strong>Democracy Is Not a Corporate Advisory Board.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="end-big-tech-s-control-of-ai-policy-tab-cities-universities-and-civil-society-1">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="end-big-tech-s-control-of-ai-policy-tab-state-governments-1">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="end-big-tech-s-control-of-ai-policy-tab-federal-government-1">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="end-big-tech-s-control-of-ai-policy-tab-cities-universities-and-civil-society-1">
+              <p>Pass an <strong>AI Integrity Resolution</strong> that works through the ethics and disclosure rules a city already has:</p>
+              <ul>
+                <li>Directs the city clerk or ethics officer to log and publicly post meetings between covered officials and AI companies, lobbyists, or their representatives.</li>
+                <li>Where the city has an ethics commission or campaign-finance office, directs it to flag contributions from companies competing for AI, surveillance, or data-center contracts under the city's existing conflict-of-interest rules.</li>
+                <li>Declares that any city advisory body on AI must include labor, civil-society, and affected-community seats.</li>
+                <li>Calls on the state to require public disclosure of AI-related lobbying, sponsored research, and revolving-door hiring.</li>
+              </ul>
+              <p>A university can adopt the same resolution to require disclosure of corporate funding behind AI research centers and faculty testimony.</p>
+            </div>
+            <div class="howits-content" id="end-big-tech-s-control-of-ai-policy-tab-state-governments-1" hidden>
+              <p>Build a statewide AI-integrity regime:</p>
+              <ul>
+                <li>Create rapid, searchable, machine-readable disclosure of AI-related lobbying and political spending, sponsored research, coalition funding, and communications between covered officials and frontier-AI companies.</li>
+                <li>Strengthen revolving-door restrictions and prohibit pay-to-play contributions from major AI contractors.</li>
+                <li>Make disclosure of political spending a condition of public contracts, tax benefits, and subsidies.</li>
+                <li>Establish an independently funded <strong>Office of Public-Interest Participation</strong> that supplies technical and legal assistance to communities, workers, and civil-society organizations participating in AI proceedings, and require agencies to explain how public comments affected final decisions.</li>
+              </ul>
+            </div>
+            <div class="howits-content" id="end-big-tech-s-control-of-ai-policy-tab-federal-government-1" hidden>
+              <p>Amend the Lobbying Disclosure Act to require rapid, machine-readable reporting of AI-specific lobbying, sponsored research, and coalition funding, closing the loopholes that let strategic-communications and "AI safety" consulting arrangements avoid registration:</p>
+              <ul>
+                <li>Strengthen the Ethics in Government Act's revolving-door rules with longer cooling-off periods for officials moving between AI-relevant agencies and the companies they regulate.</li>
+                <li>Bar federal contractors from directing campaign contributions toward officials who oversee their AI contracts.</li>
+                <li>Revive and fund an independent body along the lines of the former Office of Technology Assessment, so Congress has in-house technical expertise that doesn't depend on industry-funded briefings.</li>
+                <li>Require agencies conducting AI rulemakings to formally respond to public comment rather than simply logging it.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>Recent analysis of federal disclosures has documented movement between public AI-policy positions and industry lobbying or government-affairs roles. Stronger disclosures and cooling-off periods would make those relationships easier for the public to evaluate.</p>
+          <p>The answer is not to exclude technical expertise. It is to prevent expertise purchased by financially interested companies from becoming the only expertise government hears.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="citizens-assemblies-for-ai">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="citizens-assemblies-for-ai-body">
+        <span class="policy-card-title">Citizens' Assemblies for AI</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="citizens-assemblies-for-ai-body">
+        <h4>The Policy</h4>
+          <p>Decisions that could transform every job, institution, and human relationship should not be left to executives, professional lobbyists, and political insiders.</p>
+          <p>Convene representative groups of ordinary people through civic lotteries. Pay them for their time, give them access to competing evidence and experts, and require elected governments to debate, answer, and vote on their recommendations.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Everyone Gets a Voice in the Future.</strong></li>
+            <li><strong>Nothing About Humanity Without Humanity.</strong></li>
+            <li><strong>AI Policy by the People.</strong></li>
+            <li><strong>Our Future Needs More Than a Focus Group.</strong></li>
+            <li><strong>Let the People Deliberate.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="citizens-assemblies-for-ai-tab-cities-universities-and-civil-society-2">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="citizens-assemblies-for-ai-tab-state-governments-2">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="citizens-assemblies-for-ai-tab-federal-government-2">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="citizens-assemblies-for-ai-tab-cities-universities-and-civil-society-2">
+              <p>This is one place where a city needs to actually build something for the policy to mean anything—but it can be a single pilot, not a standing institution.</p>
+              <p>Pass a resolution commissioning a <strong>one-time Residents' Assembly</strong> on a single, concrete AI question (facial recognition, automated benefits decisions, or school technology, for example):</p>
+              <ul>
+                <li>Members selected by civic lottery from the voter or utility rolls.</li>
+                <li>A single contracted independent facilitator (not new permanent staff) runs the process.</li>
+                <li>Participants are paid for their time from a one-time council appropriation.</li>
+                <li>The assembly produces a public report; the council commits, in the same resolution, to a public hearing and a recorded vote on its recommendations within a fixed period.</li>
+              </ul>
+              <p>Once a pilot succeeds, the council can decide separately whether to fund a recurring version—but the initial ask is scoped to one process and one budget line. Universities can run the identical model through student-government or provost's-office channels; congregations can run it through an adult-education or social-justice committee.</p>
+            </div>
+            <div class="howits-content" id="citizens-assemblies-for-ai-tab-state-governments-2" hidden>
+              <p>Create a standing statewide assembly with rotating, randomly selected membership:</p>
+              <ul>
+                <li>An independent secretariat and research budget.</li>
+                <li>Authority to request relevant government information.</li>
+                <li>Publicly defined standards for balanced testimony.</li>
+                <li>A requirement that recommendations be introduced as legislation, resolutions, or formal committee business, with recorded legislative votes or detailed government responses.</li>
+                <li>Independent evaluation after each assembly.</li>
+              </ul>
+            </div>
+            <div class="howits-content" id="citizens-assemblies-for-ai-tab-federal-government-2" hidden>
+              <p>Congress or an independent commission should convene a standing <strong>National Citizens' Assembly on AI</strong>, with members selected by civic lottery from voter and Census-derived sampling frames to ensure the body is demographically representative rather than self-selected:</p>
+              <ul>
+                <li>A permanent secretariat and independent research budget.</li>
+                <li>Authority to request information from federal agencies comparable to what congressional committees already enjoy.</li>
+                <li>Published standards for balanced expert testimony.</li>
+                <li>A requirement that recommendations receive a formal committee hearing and a recorded vote or detailed written response within a fixed statutory period.</li>
+              </ul>
+              <p>This is the same discipline the state-level model applies, scaled to the body actually writing national AI law.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>The OECD has documented hundreds of citizens' assemblies, juries, panels, and related deliberative processes used by governments to address complex questions. Its research finds that well-designed deliberation can improve policymaking, broaden participation, build democratic capacity, and sometimes help break political deadlock.</p>
+          <p>Taiwan's Ministry of Digital Affairs has convened deliberative work on AI and information integrity, while researchers associated with Stanford's Deliberative Democracy Lab have documented how participants considered platform accountability and the use of AI against manipulation and fraud.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="strengthen-democratic-participation-tools">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="strengthen-democratic-participation-tools-body">
+        <span class="policy-card-title">Strengthen Democratic Participation Tools</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="strengthen-democratic-participation-tools-body">
+        <h4>The Policy</h4>
+          <p>Technology has been used to manipulate, divide, and monitor the public. Government should also use it to give people more power.</p>
+          <p>Direct government to build and adopt open, plain-language, and widely accessible tools for public participation—not merely collect comments after decisions have effectively been made.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Upgrade Democracy.</strong></li>
+            <li><strong>Technology for the People.</strong></li>
+            <li><strong>Build the Democracy of the Future.</strong></li>
+            <li><strong>Public Technology, Public Power.</strong></li>
+            <li><strong>Make Government Ours Again.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="strengthen-democratic-participation-tools-tab-cities-universities-and-civil-society-3">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="strengthen-democratic-participation-tools-tab-state-governments-3">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="strengthen-democratic-participation-tools-tab-federal-government-3">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="strengthen-democratic-participation-tools-tab-cities-universities-and-civil-society-3">
+              <p>Pass a <strong>Democratic Participation Directive</strong> that instructs the city clerk, communications office, and IT department to adopt specific practices:</p>
+              <ul>
+                <li>Publish plain-language summaries of major legislation and budget items alongside the technical documents already produced.</li>
+                <li>Offer multilingual public comment using translation services the city already contracts for.</li>
+                <li>Where the city uses AI tools to summarize public testimony, require human review and publish the underlying method.</li>
+                <li>Prefer open-source civic software where a free or low-cost option meets the need, so the city isn't locked into a single vendor.</li>
+                <li>Report participation numbers as part of the city's annual report.</li>
+              </ul>
+              <p>This can pass in one meeting and be copied by a university registrar's office or a congregation's communications committee.</p>
+            </div>
+            <div class="howits-content" id="strengthen-democratic-participation-tools-tab-state-governments-3" hidden>
+              <p>Establish a cabinet-level department or independent agency with:</p>
+              <ul>
+                <li>Permanent appropriations.</li>
+                <li>Public-interest product and engineering teams.</li>
+                <li>Experts in deliberative democracy and accessibility.</li>
+                <li>Grants and shared technical infrastructure for local governments.</li>
+                <li>A mandate to maintain open-source civic software that cities can adopt without dependence on private vendors.</li>
+              </ul>
+            </div>
+            <div class="howits-content" id="strengthen-democratic-participation-tools-tab-federal-government-3" hidden>
+              <p>Direct the U.S. Digital Service and GSA's 18F to build and maintain open-source civic-participation infrastructure that federal agencies must use and that states and cities can adopt without paying a private vendor:</p>
+              <ul>
+                <li>Plain-language legislative summaries, multilingual comment tools, and transparent AI-assisted comment analysis with mandatory human review.</li>
+                <li>Governmentwide standards from OMB for accessibility and plain language in rulemaking dockets.</li>
+                <li>A grant program that helps state and local governments deploy the same open-source tools rather than building duplicate systems from scratch.</li>
+              </ul>
+              <p>This is the piece of the agenda where federal capacity does something no city or state can efficiently replicate on its own: building the software once and giving it away.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>Taiwan's vTaiwan platform offers a prominent model of open collaboration among citizens, experts, civil society, and public officials on contested policy questions.</p>
+          <p>Taiwan has also experimented with digital participation, petitions, deliberative workshops, and AI-assisted public engagement. These examples demonstrate that democratic technology can be treated as a core function of government rather than a side project—something a state, with real administrative capacity, is far better positioned to build than any single city.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section class="policy-pillar" id="common-prosperity">
+    <div class="section-label reveal"><span class="title">Common Prosperity</span></div>
+    <p class="pillar-lead body-large reveal">AI could create immense wealth while eliminating jobs, weakening workers' bargaining power, and concentrating ownership in a small number of companies. The gains should instead be shared broadly through dividends, public ownership, creator compensation, worker protections, and renewed investment in public institutions.</p>
+    <div class="policy-card" id="an-ai-dividend-for-everyone">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="an-ai-dividend-for-everyone-body">
+        <span class="policy-card-title">An AI Dividend for Everyone</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="an-ai-dividend-for-everyone-body">
+        <h4>The Policy</h4>
+          <p>Artificial intelligence is built on generations of publicly funded science, human knowledge, cultural production, public infrastructure, and the work of billions of people.</p>
+          <p>A portion of the wealth it creates should therefore belong equally to everyone. Establish public funds capitalized by AI-related taxes, compute permits, public equity, data-center revenue, and other economic rents, then return part of the proceeds to residents as equal dividends.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>AI Wealth Belongs to All of Us.</strong></li>
+            <li><strong>When the Machines Work, the People Get Paid.</strong></li>
+            <li><strong>Everyone Deserves an AI Dividend.</strong></li>
+            <li><strong>Shared Knowledge. Shared Wealth.</strong></li>
+            <li><strong>The Future Pays Dividends.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="an-ai-dividend-for-everyone-tab-cities-universities-and-civil-society-4">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="an-ai-dividend-for-everyone-tab-state-governments-4">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="an-ai-dividend-for-everyone-tab-federal-government-4">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="an-ai-dividend-for-everyone-tab-cities-universities-and-civil-society-4">
+              <p>Pass a resolution calling for a statewide and national AI dividend. Where the city negotiates a data-center agreement, tax subsidy, or development deal with an AI company, require that any resulting revenue-sharing payment be deposited into the city's general fund or a designated reserve, earmarked for resident benefit.</p>
+              <p>Where municipal authority is limited, campaigns can still demand that every large data-center agreement include a recurring per-megawatt, per-acre, or revenue-based community payment routed through the budget process the city already runs.</p>
+              <p>Public universities should negotiate equity, royalties, or licensing income when university research, data, or facilities contribute to commercially valuable AI systems, depositing proceeds into the university's endowment or research fund.</p>
+            </div>
+            <div class="howits-content" id="an-ai-dividend-for-everyone-tab-state-governments-4" hidden>
+              <p>Create an independently governed <strong>AI Dividend Corporation</strong> or permanent fund owned for the benefit of state residents, capitalized through:</p>
+              <ul>
+                <li>Compute-related taxes or permit auctions.</li>
+                <li>Frontier-AI revenue assessments.</li>
+                <li>Data-center utility charges.</li>
+                <li>Taxes on extraordinary automation profits.</li>
+                <li>Public equity received in exchange for subsidies, and settlement proceeds.</li>
+              </ul>
+              <p>Protect the principal through statute or constitutional provisions, and establish a transparent payout rule that balances current dividends with long-term growth.</p>
+            </div>
+            <div class="howits-content" id="an-ai-dividend-for-everyone-tab-federal-government-4" hidden>
+              <p>Establish a <strong>National AI Dividend Fund</strong>, capitalized by:</p>
+              <ul>
+                <li>A federal compute-permit or excise structure on frontier training runs.</li>
+                <li>Royalties from AI-related federal research and patents.</li>
+                <li>Auction proceeds from spectrum or federal land leased to data centers.</li>
+                <li>A share of any federal equity received in exchange for subsidies or loan guarantees.</li>
+              </ul>
+              <p>Model its governance on the Alaska Permanent Fund but at national scale — statutory protection of the principal, an independent board insulated from year-to-year political pressure, and a transparent payout formula that returns part of the proceeds to every resident as an annual dividend while reinvesting the rest for long-term growth. A national fund also solves a problem no city or state fund can: AI's gains are not evenly distributed by geography, and a federal dividend reaches people regardless of whether a data center happens to be sited in their jurisdiction.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>The Alaska Permanent Fund demonstrates the underlying principle: when private development draws value from a shared resource, part of that value can be saved, invested, and returned to residents.</p>
+          <p>Research on compute governance notes that advanced computing resources are relatively measurable and concentrated compared with data and algorithms, making compute a potentially useful basis for registration, fees, and permits—though poorly designed systems could create privacy or centralization risks.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="a-public-fund-for-creators">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="a-public-fund-for-creators-body">
+        <span class="policy-card-title">A Public Fund for Creators</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="a-public-fund-for-creators-body">
+        <h4>The Policy</h4>
+          <p>Writers, artists, musicians, journalists, programmers, educators, and ordinary internet users created much of the culture and information on which AI systems depend.</p>
+          <p>AI companies should contribute to a democratically governed fund that supports the people and institutions whose work makes these systems valuable. Compensation should complement—not replace—consent, attribution, licensing rights, collective bargaining, and the right to refuse use.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Pay the People Who Made AI Possible.</strong></li>
+            <li><strong>Culture Is Work.</strong></li>
+            <li><strong>No Automation Without Compensation.</strong></li>
+            <li><strong>Our Work Trained Your Machine.</strong></li>
+            <li><strong>No Creation Without Creators.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="a-public-fund-for-creators-tab-cities-universities-and-civil-society-5">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="a-public-fund-for-creators-tab-state-governments-5">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="a-public-fund-for-creators-tab-federal-government-5">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="a-public-fund-for-creators-tab-cities-universities-and-civil-society-5">
+              <p>Pass a resolution supporting statewide and national creator-compensation legislation. Where the city contracts with an AI vendor, require basic disclosure of training-data and licensing policy as a standard contract term in the procurement process the city already runs.</p>
+              <p>Any settlement or licensing revenue the city receives related to AI use of local creative or journalistic work should be deposited into the city's arts or cultural-affairs budget line, administered by the existing arts commission or cultural office.</p>
+              <p>Universities and libraries can adopt parallel disclosure requirements in their own vendor contracts and direct any resulting revenue to their library or arts endowments.</p>
+            </div>
+            <div class="howits-content" id="a-public-fund-for-creators-tab-state-governments-5" hidden>
+              <p>Create a statewide creator-compensation system financed through a levy on major commercial generative-AI providers, compute or data-center revenue, collective licensing, or copyright-related settlements:</p>
+              <ul>
+                <li>Representative governing bodies for different creative sectors.</li>
+                <li>Meaningful transparency about copyrighted training materials.</li>
+                <li>Creators' ability to pursue direct licensing or legal claims.</li>
+                <li>Journalists, independent creators, and open-source communities — not only large entertainment companies.</li>
+              </ul>
+              <p>Federal copyright law limits what states and cities can do directly. Local and state programs should be designed with legal counsel and should supplement, rather than replace, national copyright reform.</p>
+            </div>
+            <div class="howits-content" id="a-public-fund-for-creators-tab-federal-government-5" hidden>
+              <p>This is the tier where the real solution has to live, since federal copyright law preempts most of what cities and states can do directly. Congress should establish a statutory <strong>creator-compensation system</strong>, financed through a levy on commercial generative-AI providers tied to training-data use or revenue, administered through the Copyright Office and the Library of Congress:</p>
+              <ul>
+                <li>Representative governing boards for music, publishing, journalism, visual art, software, and open-source communities.</li>
+                <li>Meaningful disclosure of copyrighted material used in training.</li>
+                <li>Creators' right to pursue direct licensing or infringement claims rather than being forced into the compensation system.</li>
+                <li>A seat at the table for independent and freelance creators, not just major studios and publishers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>The U.S. Copyright Office has been examining AI-generated works, digital replicas, training on copyrighted material, licensing, and potential liability.</p>
+          <p>Economic research has examined several possible regimes, including licensing, remuneration rights, downstream levies, and royalty sharing. There is no settled consensus, but compensation is a serious policy option rather than merely a symbolic demand.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="no-data-center-without-community-benefits">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="no-data-center-without-community-benefits-body">
+        <span class="policy-card-title">No Data Center Without Community Benefits</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="no-data-center-without-community-benefits-body">
+        <h4>The Policy</h4>
+          <p>Data centers should not consume a community's land, electricity, water, infrastructure, and public subsidies while sending nearly all of the profits elsewhere.</p>
+          <p>No major project should proceed without a binding public agreement guaranteeing direct community benefits, strong labor standards, environmental protections, transparent resource use, and infrastructure that improves rather than burdens the host community.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>No Data Center Without a People's Deal.</strong></li>
+            <li><strong>Our Power. Our Water. Our Benefit.</strong></li>
+            <li><strong>Make Big Tech Pay Its Way.</strong></li>
+            <li><strong>No Blank Check for Big Tech.</strong></li>
+            <li><strong>Build Here? Benefit Here.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="no-data-center-without-community-benefits-tab-cities-universities-and-civil-society-6">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="no-data-center-without-community-benefits-tab-state-governments-6">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="no-data-center-without-community-benefits-tab-federal-government-6">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="no-data-center-without-community-benefits-tab-cities-universities-and-civil-society-6">
+              <p>This is a place where cities already hold real leverage: zoning and permitting decisions are a core, ordinary function of city government, and conditioning approval on a binding agreement is well within existing authority.</p>
+              <p>Condition any large data-center rezoning or permit approval on:</p>
+              <ul>
+                <li>A disclosure of electricity, water, land, and tax-subsidy impacts, prepared by the developer and reviewed by the planning department.</li>
+                <li>A negotiated <strong>Community Benefits Agreement</strong>, approved as part of the standard permit vote, covering local hiring, infrastructure cost-sharing, and clean-energy procurement.</li>
+                <li>A recurring community payment, deposited into the city's general fund or an infrastructure reserve.</li>
+                <li>Compliance reporting folded into the planning department's permit-renewal cycle.</li>
+              </ul>
+              <p>This works through zoning and contract conditions the city already controls, making it one of the more achievable asks in this agenda. Universities can apply the same conditions when leasing land or supplying power to AI companies.</p>
+            </div>
+            <div class="howits-content" id="no-data-center-without-community-benefits-tab-state-governments-6" hidden>
+              <p>Set minimum statewide standards covering:</p>
+              <ul>
+                <li>Environmental and cumulative-impact review.</li>
+                <li>Grid and water planning.</li>
+                <li>Public disclosure.</li>
+                <li>Labor standards and community consultation.</li>
+                <li>Utility-cost allocation, tax subsidies, and benefit payments.</li>
+                <li>Enforcement.</li>
+              </ul>
+              <p>Require data-center developers—not residential ratepayers—to bear infrastructure costs attributable to their projects, and maintain a public database showing facility ownership, resource demand, subsidies, and compliance records. Local governments should retain authority to impose stronger requirements.</p>
+            </div>
+            <div class="howits-content" id="no-data-center-without-community-benefits-tab-federal-government-6" hidden>
+              <p>Set a federal floor requiring any data center receiving federal tax credits, CHIPS-style incentives, or expedited federal permitting to disclose electricity, water, and land impacts and to execute a binding Community Benefits Agreement as a condition of that support:</p>
+              <ul>
+                <li>Use FERC's authority over interstate transmission and interconnection to require utilities to disclose how data-center demand is affecting grid capacity and residential rates, and prohibit passing data-center infrastructure costs onto residential ratepayers.</li>
+                <li>Maintain a public national database — modeled on Virginia's site-assessment disclosures but covering every state — of data-center ownership, resource demand, subsidies received, and compliance history, so a project's full public cost is visible regardless of where it's built.</li>
+              </ul>
+              <p>States and cities should retain authority to impose stronger local requirements on top of this floor.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>Virginia law now allows or requires forms of site assessment for very high-energy-use facilities, including examination of effects on water, agriculture, parks, historic sites, forests, noise, and local comprehensive plans.</p>
+          <p>Such assessment is only a starting point. A strong public framework should connect disclosure to enforceable permitting conditions, cost allocation, community benefits, and the ability to deny projects whose burdens outweigh their benefits.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="make-automation-pay-its-fair-share">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="make-automation-pay-its-fair-share-body">
+        <span class="policy-card-title">Make Automation Pay Its Fair Share</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="make-automation-pay-its-fair-share-body">
+        <h4>The Policy</h4>
+          <p>When a company replaces large numbers of workers with AI, the financial gains should not flow entirely to owners while workers, families, and communities absorb the disruption.</p>
+          <p>Require major automators to contribute to income protection, wage insurance, shorter working hours, retraining, worker ownership, and the creation of good public jobs. Reward companies that use AI to improve work and share productivity gains rather than simply eliminating workers.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Robots Pay Taxes Too.</strong></li>
+            <li><strong>No Layoffs Without Payback.</strong></li>
+            <li><strong>Automation Should Work for Workers.</strong></li>
+            <li><strong>Share the Productivity.</strong></li>
+            <li><strong>Machines Rise. Wages Should Too.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="make-automation-pay-its-fair-share-tab-cities-universities-and-civil-society-7">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="make-automation-pay-its-fair-share-tab-state-governments-7">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="make-automation-pay-its-fair-share-tab-federal-government-7">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="make-automation-pay-its-fair-share-tab-cities-universities-and-civil-society-7">
+              <p>Cities generally lack authority to tax automation economy-wide, so the achievable local lever is procurement and subsidy conditions the city already applies to economic-development deals.</p>
+              <p>Pass a resolution requiring that any company receiving a city contract, tax abatement, or discretionary subsidy submit a workforce-impact disclosure—positions eliminated, jobs created, expected productivity gains—as part of the approval package the council already reviews for such deals. Any resulting contribution should be deposited into the city's workforce-development fund, administered by the department that already runs job-training programs.</p>
+              <p>Universities can apply the same disclosure requirement before automating large categories of clerical or instructional work, using the existing HR and shared-governance process.</p>
+            </div>
+            <div class="howits-content" id="make-automation-pay-its-fair-share-tab-state-governments-7" hidden>
+              <p>Create an <strong>automation adjustment contribution</strong> through the corporate-tax or unemployment-insurance system, triggered when a large employer substantially reduces payroll or hours, attributes the reduction to AI, and maintains or increases revenue, profits, or executive compensation without providing comparable roles:</p>
+              <ul>
+                <li>Revenue finances wage insurance, extended unemployment support, portable benefits, retraining, and reduced working hours.</li>
+                <li>Revenue also supports community recovery in regions experiencing concentrated displacement.</li>
+                <li>Credits are available for employers that retain workers or raise wages instead.</li>
+              </ul>
+            </div>
+            <div class="howits-content" id="make-automation-pay-its-fair-share-tab-federal-government-7" hidden>
+              <p>Create a federal <strong>automation adjustment contribution</strong> through the corporate tax code, triggered when a large employer substantially reduces payroll or hours, attributes the reduction to AI adoption, and maintains or increases revenue, profits, or executive compensation without offering displaced workers comparable roles:</p>
+              <ul>
+                <li>Route the revenue through the Department of Labor to fund wage insurance, extended unemployment support, portable benefits that follow workers between jobs, and retraining — structured like an AI-era extension of Trade Adjustment Assistance rather than a new bureaucracy built from scratch.</li>
+                <li>Offer credits to employers that retain workers, raise wages, or share productivity gains, so the incentive favors using AI to improve jobs rather than simply eliminating them.</li>
+              </ul>
+              <p>A federal program is also the only version that avoids a race to the bottom, where employers relocate operations to whichever state declines to act.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>The economic design matters. IMF research suggests that taxing automation can reduce inequality but may also slow productivity and investment if designed too bluntly. Broader fiscal packages—including capital-income taxation, social insurance, and worker support—may distribute gains with fewer distortions, which argues for a targeted <strong>automation adjustment contribution</strong> rather than a blunt tax on every robot or piece of software.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="build-a-people-s-ai-wealth-fund">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="build-a-people-s-ai-wealth-fund-body">
+        <span class="policy-card-title">Build a People's AI Wealth Fund</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="build-a-people-s-ai-wealth-fund-body">
+        <h4>The Policy</h4>
+          <p>The public should permanently own part of the infrastructure and companies shaping the future.</p>
+          <p>Whenever government provides valuable land, research, electricity arrangements, tax benefits, grants, loans, procurement commitments, or emergency support, it should seek equity, warrants, royalties, or revenue-sharing in return. Place those assets in an independently managed public wealth fund that grows alongside the AI economy.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Own the Future Together.</strong></li>
+            <li><strong>Public Money, Public Ownership.</strong></li>
+            <li><strong>A People's Stake in AI.</strong></li>
+            <li><strong>We Invest. We Own.</strong></li>
+            <li><strong>Public Risk Deserves Public Reward.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="build-a-people-s-ai-wealth-fund-tab-cities-universities-and-civil-society-8">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="build-a-people-s-ai-wealth-fund-tab-state-governments-8">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="build-a-people-s-ai-wealth-fund-tab-federal-government-8">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="build-a-people-s-ai-wealth-fund-tab-cities-universities-and-civil-society-8">
+              <p>Pass a resolution directing city negotiators to seek equity, warrants, royalties, or revenue-sharing whenever the city provides substantial land, tax abatements, infrastructure, or procurement commitments to an AI company. Deposit any resulting proceeds into the city's investment or reserve fund, publicly reported through the city's normal financial disclosures.</p>
+              <p>Public universities should retain equity or royalty interests when university-funded discoveries or facilities create commercially valuable AI companies, held through the university's endowment structure.</p>
+            </div>
+            <div class="howits-content" id="build-a-people-s-ai-wealth-fund-tab-state-governments-8" hidden>
+              <p>Establish a professionally managed <strong>sovereign wealth fund</strong> with:</p>
+              <ul>
+                <li>Independent trustees and fiduciary duties to residents.</li>
+                <li>Transparent fees and holdings.</li>
+                <li>Limits on political interference.</li>
+                <li>Long-term investment horizons.</li>
+              </ul>
+              <p>Require public upside in exchange for major subsidies, state-funded research, infrastructure access, and loan guarantees, and diversify the portfolio over time beyond AI so residents are not exposed to a single industry's risks.</p>
+            </div>
+            <div class="howits-content" id="build-a-people-s-ai-wealth-fund-tab-federal-government-8" hidden>
+              <p>Establish a federally chartered <strong>sovereign wealth fund</strong>, professionally managed with independent trustees and fiduciary duties to the public, that takes equity, warrants, royalties, or revenue-sharing whenever the federal government provides substantial value to an AI company — research funding, land, spectrum, loan guarantees, export authorizations, or subsidies under programs like the CHIPS Act:</p>
+              <ul>
+                <li>Transparent reporting of fees and holdings.</li>
+                <li>Statutory limits on political interference in investment decisions.</li>
+                <li>A long-term horizon that diversifies beyond AI as the fund grows, so the public isn't left holding concentrated risk in a single industry.</li>
+              </ul>
+              <p>The federal government routinely provides AI companies with more valuable support — basic research, defense contracts, spectrum, export licenses — than any city or state can offer, which makes this the tier where public equity stakes matter most.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>The Alaska Permanent Fund offers a practical precedent for converting finite shared wealth into a durable public asset and resident dividends.</p>
+          <p>The broader principle is common in private finance: investors receiving substantial risk or providing scarce resources seek ownership or contractual upside. Governments should not routinely provide better terms to private companies than a sophisticated private investor would accept.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section class="policy-pillar" id="a-secure-future">
+    <div class="section-label reveal"><span class="title">A Secure Future</span></div>
+    <p class="pillar-lead body-large reveal">Cutting-edge AI systems could create catastrophic risks if developed through an uncontrolled race among companies and nations. Governments need independent scientific capacity, enforceable transparency, and international agreements that keep advanced AI under meaningful human control.</p>
+    <div class="policy-card" id="build-a-powerful-independent-ai-safety-institute">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="build-a-powerful-independent-ai-safety-institute-body">
+        <span class="policy-card-title">Build a Powerful Independent AI Safety Institute</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="build-a-powerful-independent-ai-safety-institute-body">
+        <h4>The Policy</h4>
+          <p>The public needs scientists with the authority, independence, expertise, and secure facilities to test the world's most powerful AI systems.</p>
+          <p>Congress should permanently authorize and adequately fund the Center for AI Standards and Innovation, while states build complementary evaluation capacity. Independent public experts should be able to investigate dangerous capabilities, security failures, loss-of-control risks, and serious incidents before systems are widely deployed—not merely after harm occurs.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Test AI Before It Tests Us.</strong></li>
+            <li><strong>A Safety Institute as Powerful as the Technology.</strong></li>
+            <li><strong>No More Self-Regulation.</strong></li>
+            <li><strong>Trust Requires Testing.</strong></li>
+            <li><strong>Public Safety Needs Public Scientists.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="build-a-powerful-independent-ai-safety-institute-tab-cities-universities-and-civil-society-9">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="build-a-powerful-independent-ai-safety-institute-tab-state-governments-9">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="build-a-powerful-independent-ai-safety-institute-tab-federal-government-9">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="build-a-powerful-independent-ai-safety-institute-tab-cities-universities-and-civil-society-9">
+              <p>At the local level, this is a purely symbolic resolution—and that's by design. No city has the technical capacity to test frontier AI systems; the value of local action here is building a visible, widely-adopted chorus that federal legislators can't ignore.</p>
+              <p>Pass a <strong>resolution calling on Congress to permanently authorize and independently fund CAISI</strong>, and direct it to the city's congressional delegation. That's the entire local ask: one vote, one letter, no staff, no budget, no new capacity.</p>
+              <p>This resolution is designed to be copied word-for-word by university senates, congregations, professional associations, and civic organizations.</p>
+            </div>
+            <div class="howits-content" id="build-a-powerful-independent-ai-safety-institute-tab-state-governments-9" hidden>
+              <p>Create a state AI evaluation institute, ideally as an independent body or public-university consortium, with:</p>
+              <ul>
+                <li>Secure research facilities and expert technical staff at competitive salaries.</li>
+                <li>Independent governance and whistleblower channels.</li>
+                <li>Authority to evaluate high-impact systems procured or deployed in the state.</li>
+              </ul>
+            </div>
+            <div class="howits-content" id="build-a-powerful-independent-ai-safety-institute-tab-federal-government-9" hidden>
+              <p>Congress should permanently authorize the Center for AI Standards and Innovation by statute rather than leaving it to executive discretion:</p>
+              <ul>
+                <li>Durable multi-year appropriations, secure testing facilities, competitive technical salaries, and whistleblower protections comparable to those in other safety-critical agencies.</li>
+                <li>Clear legal authority to compel access to frontier models before and after deployment.</li>
+                <li>Authority to investigate dangerous-capability claims, security failures, and loss-of-control incidents.</li>
+                <li>Publish findings on a timeline that isn't subject to negotiation with the companies being evaluated.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>CAISI currently operates within the National Institute of Standards and Technology. Its stated work includes testing, collaborative research, standards, and the security of commercial AI systems.</p>
+          <p>NIST's broader AI Consortium includes hundreds of participating organizations working on science-based measurement and standards.</p>
+          <p>Voluntary cooperation can build useful capacity, but a durable public-safety institution should not depend entirely on whether regulated companies choose to provide access.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="open-the-black-box-of-frontier-ai">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="open-the-black-box-of-frontier-ai-body">
+        <span class="policy-card-title">Open the Black Box of Frontier AI</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="open-the-black-box-of-frontier-ai-body">
+        <h4>The Policy</h4>
+          <p>A small number of corporations should not be allowed to develop civilization-changing systems in secret and then ask the public to trust them.</p>
+          <p>Require transparency about major training runs, dangerous-capability evaluations, safety evidence, serious incidents, internal warnings, ownership and financing, environmental demands, government relationships, and material changes to safeguards. Protect genuinely dangerous technical details through secure regulatory review rather than either publishing them recklessly or concealing everything as a trade secret.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>No Secret Race to Superintelligence.</strong></li>
+            <li><strong>Open the Black Box.</strong></li>
+            <li><strong>Humanity Has a Right to Know.</strong></li>
+            <li><strong>No Power Without Accountability.</strong></li>
+            <li><strong>Trust Is Not a Safety Plan.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="open-the-black-box-of-frontier-ai-tab-cities-universities-and-civil-society-10">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="open-the-black-box-of-frontier-ai-tab-state-governments-10">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="open-the-black-box-of-frontier-ai-tab-federal-government-10">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="open-the-black-box-of-frontier-ai-tab-cities-universities-and-civil-society-10">
+              <p>Pass a <strong>resolution calling for state and federal frontier-AI transparency legislation</strong>. Where the city itself buys or deploys AI systems, add a basic disclosure requirement—known limitations, serious incidents, whether a human can reverse a decision—as a standard clause in the procurement process the city already runs.</p>
+              <p>Protect city employees who disclose concealed dangers using the whistleblower protections most cities already have on the books.</p>
+              <p>Universities can require the same disclosure clause in AI-vendor contracts and direct faculty senates to disclose industry funding behind AI policy research, through their existing conflict-of-interest process.</p>
+            </div>
+            <div class="howits-content" id="open-the-black-box-of-frontier-ai-tab-state-governments-10" hidden>
+              <p>Require covered frontier developers to register very large training runs, disclose ownership and major financing, submit safety and security frameworks, report dangerous-capability evaluations and serious incidents, and preserve internal safety records. Use tiered transparency:</p>
+              <ul>
+                <li>Public disclosure for governance and incidents.</li>
+                <li>Confidential regulatory disclosure for sensitive technical details.</li>
+                <li>Controlled researcher access for approved independent experts.</li>
+              </ul>
+              <p>Protect employees who raise safety concerns, and give regulators meaningful penalties and authority to delay deployment when a company conceals serious risks.</p>
+            </div>
+            <div class="howits-content" id="open-the-black-box-of-frontier-ai-tab-federal-government-10" hidden>
+              <p>Enact federal frontier-AI transparency legislation requiring developers above a compute or capability threshold to register major training runs, disclose ownership and financing, submit safety and security frameworks, and report dangerous-capability evaluations and serious incidents to a designated federal body. Use tiered disclosure so transparency doesn't become an argument for reckless publication of genuinely dangerous specifics:</p>
+              <ul>
+                <li>Public reporting for governance, incidents, and safety frameworks.</li>
+                <li>Confidential regulatory disclosure for sensitive technical details.</li>
+                <li>Controlled access for vetted independent researchers.</li>
+              </ul>
+              <p>Attach real enforcement: civil penalties, authority to delay deployment when a company conceals a serious risk, and statutory whistleblower protections for employees who raise safety concerns internally or to regulators.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>Policy work on frontier-AI regulation commonly identifies registration, reporting, safety standards, and compliance mechanisms as basic building blocks for public oversight.</p>
+          <p>The International AI Safety Report documents rapid capability advances, continuing reliability challenges, and risks involving areas such as cyberattacks and biological misuse. It also notes the growing use of frontier safety frameworks and risk-management systems, while emphasizing that important scientific and governance uncertainties remain.</p>
+          <p>Transparency must be carefully designed. Publishing certain model details could itself increase danger. The correct alternative to blanket secrecy is secure scrutiny by accountable public institutions and qualified independent researchers.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="policy-card" id="a-u-s-china-treaty-to-stop-the-ai-arms-race">
+      <button class="policy-card-toggle" type="button" aria-expanded="false" aria-controls="a-u-s-china-treaty-to-stop-the-ai-arms-race-body">
+        <span class="policy-card-title">A U.S.–China Treaty to Stop the AI Arms Race</span>
+        <span class="policy-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="policy-card-panel">
+      <div class="policy-card-panel-inner">
+      <div class="policy-card-body" id="a-u-s-china-treaty-to-stop-the-ai-arms-race-body">
+        <h4>The Policy</h4>
+          <p>The United States and China must not gamble humanity's future in a race neither side can safely win.</p>
+          <p>Begin sustained negotiations toward a verifiable agreement covering frontier-AI transparency, emergency communication, shared scientific assessment, compute monitoring, and reciprocal limits on the most dangerous development activities. The immediate goal is not perfect trust; it is building institutions that can prevent misunderstanding, detect violations, and make cooperation safer than a secret race toward uncontrollable systems.</p>
+        <h4>Public Messaging</h4>
+          <ul>
+            <li><strong>Cooperate or Lose Control.</strong></li>
+            <li><strong>No AI Arms Race.</strong></li>
+            <li><strong>Humanity Before National Rivalry.</strong></li>
+            <li><strong>No Country Wins the End of Human Control.</strong></li>
+            <li><strong>Slow Down Together. Stay Safe Together.</strong></li>
+          </ul>
+        <h4>How It's Done</h4>
+        <div class="howits" data-howits>
+          <div class="howits-tabs" role="tablist">
+            <button class="howits-tab is-active" type="button" role="tab" aria-selected="true" data-howits-target="a-u-s-china-treaty-to-stop-the-ai-arms-race-tab-cities-universities-and-civil-society-11">Cities & Civil Society</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="a-u-s-china-treaty-to-stop-the-ai-arms-race-tab-state-governments-11">State Governments</button>
+            <button class="howits-tab" type="button" role="tab" aria-selected="false" data-howits-target="a-u-s-china-treaty-to-stop-the-ai-arms-race-tab-federal-government-11">Federal Government</button>
+          </div>
+          <div class="howits-panel">
+            <div class="howits-content" id="a-u-s-china-treaty-to-stop-the-ai-arms-race-tab-cities-universities-and-civil-society-11">
+              <p>Pass a <strong>No AI Arms Race Resolution</strong> calling on the president and Congress to pursue sustained U.S.–China negotiations on frontier-AI safety, emergency incident communication, and reciprocal limits on dangerous development. Send it to federal representatives and, where the city has a sister-city relationship in China, to that counterpart.</p>
+              <p>Reject the stigmatization of peaceful scientific engagement solely because it involves Chinese researchers or institutions, and include Chinese-American communities in policy development. Universities can support existing scientific-exchange programs and Track II dialogues.</p>
+            </div>
+            <div class="howits-content" id="a-u-s-china-treaty-to-stop-the-ai-arms-race-tab-state-governments-11" hidden>
+              <p>Adopt a joint legislative resolution supporting bilateral negotiations and create a <strong>Commission on International AI Safety and Cooperation</strong> comprising technical experts, diplomats, labor representatives, civil-society organizations, and researchers in verification and international law. The commission should fund and publish research on monitoring large compute clusters, inspections, emergency communication, reciprocal limits, and economic adjustment under coordinated slowdowns, while avoiding discriminatory or politically motivated scientific restrictions.</p>
+            </div>
+            <div class="howits-content" id="a-u-s-china-treaty-to-stop-the-ai-arms-race-tab-federal-government-11" hidden>
+              <p>This is fundamentally a federal and executive-branch undertaking: only the federal government can negotiate and ratify a treaty. The State Department and National Security Council should pursue sustained, staged negotiations with China—beginning with scientific exchange and an incident hotline, then reciprocal reporting on major training runs, joint safety evaluations, and verification pilots for compute monitoring, before attempting binding limits on the most dangerous development activities.</p>
+              <p>Fund the technical verification infrastructure this requires, since compute is comparatively measurable and concentrated compared with other AI inputs, and appoint negotiators who include AI-safety researchers, not just diplomats. Reject discriminatory restrictions on peaceful scientific exchange with Chinese researchers and institutions as a substitute for real verification—stigmatizing collaboration weakens the trust-building the treaty depends on without slowing the underlying race.</p>
+            </div>
+          </div>
+        </div>
+        <h4>Learn More</h4>
+          <p>Research on international institutions for advanced AI identifies several possible functions: shared scientific assessment, international standards, monitoring and compliance, access arrangements, and collaborative safety research.</p>
+          <p>Compute may provide one possible basis for verification because advanced chips and large computing clusters are comparatively concentrated and measurable. Verification remains technically and politically difficult, but it is an active research field rather than an inherently impossible idea.</p>
+          <p>The International AI Safety Report demonstrates that substantial scientific cooperation is already possible: its expert process has included nominees from dozens of countries and international organizations. The 2026 report continued that shared scientific assessment of advanced-AI capabilities and risks.</p>
+          <p>A treaty would likely emerge in stages: scientific exchange, incident hotlines, reciprocal reporting on major training activities, joint evaluations, verification pilots, narrow limits on particularly dangerous activities, and broader enforceable agreements as technical and political confidence grows.</p>
+          <p>The alternative is not a world without risk. It is an opaque race in which each side cites the other's secrecy as justification for moving faster.</p>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+  <section class="policy-pillar" id="about-this-agenda">
+    <div class="section-label reveal"><span class="title">About This Agenda</span></div>
+    <p class="body-large reveal">These policies operate at five scales that reinforce one another. Cities, universities, and civil-society organizations can act immediately with tools they already have—resolutions, contract conditions, and public pressure—building the political case for state legislation. States carry the comprehensive version of each policy and the administrative capacity to enforce it. The federal government holds powers that no city or state can replace: regulating interstate commerce, funding national scientific institutions, and negotiating treaties. Read together, local action builds the case for state action, and state action builds the case for national policy.</p>
+    <p class="policy-colophon-meta reveal">Sapiens First — A People's Agenda for the Age of AI · Updated July 2026</p>
+  </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script>
+    function buildTOC() {
+      var content = document.getElementById('policy-content');
+      var tocContainer = document.getElementById('toc-container');
+      if (!content || !tocContainer) return;
+
+      var html = '';
+      Array.from(content.querySelectorAll('.policy-pillar')).forEach(function (pillar) {
+        var labelEl = pillar.querySelector('.section-label .title');
+        var title = labelEl ? labelEl.textContent.trim() : '';
+        html += '<div class="toc-group-header"><a href="#' + pillar.id + '">' + title + '</a></div>';
+        Array.from(pillar.querySelectorAll('.policy-card')).forEach(function (card) {
+          var cardTitle = card.querySelector('.policy-card-title');
+          if (!cardTitle) return;
+          html += '<a class="toc-item-link" href="#' + card.id + '">' + cardTitle.textContent.trim() + '</a>';
+        });
+      });
+
+      tocContainer.innerHTML = '<nav class="toc"><span class="toc-label eyebrow">Contents</span>' + html + '</nav>';
+    }
+
+    function scrollToEl(el) {
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+    }
+
+    // Accordion panels animate height over .4s (see .policy-card-panel transition).
+    // Re-anchor scroll once that settles, since a collapsing sibling panel shifts
+    // layout out from under a plain scrollTo/scrollIntoView call.
+    function scrollToElSettled(el) {
+      scrollToEl(el);
+      window.setTimeout(function () { scrollToEl(el); }, 420);
+    }
+
+    function openCard(card) {
+      var toggle = card.querySelector('.policy-card-toggle');
+      var panel = card.querySelector('.policy-card-panel');
+      if (!toggle || !panel) return;
+      document.querySelectorAll('.policy-card-toggle').forEach(function (other) {
+        if (other !== toggle) closeCard(other.closest('.policy-card'));
+      });
+      toggle.setAttribute('aria-expanded', 'true');
+      panel.classList.add('is-open');
+    }
+
+    function closeCard(card) {
+      var toggle = card.querySelector('.policy-card-toggle');
+      var panel = card.querySelector('.policy-card-panel');
+      if (!toggle || !panel) return;
+      toggle.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('is-open');
+    }
+
+    function setupAccordion() {
+      var toggles = document.querySelectorAll('.policy-card-toggle');
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+          var panel = toggle.nextElementSibling;
+          var open = toggle.getAttribute('aria-expanded') === 'true';
+          if (!open) {
+            toggles.forEach(function (other) {
+              if (other !== toggle) closeCard(other.closest('.policy-card'));
+            });
+          }
+          toggle.setAttribute('aria-expanded', String(!open));
+          panel.classList.toggle('is-open', !open);
+          if (!open) scrollToElSettled(toggle.closest('.policy-card'));
+        });
+      });
+    }
+
+    function setupHowits() {
+      document.querySelectorAll('[data-howits]').forEach(function (block) {
+        var tabs = Array.from(block.querySelectorAll('.howits-tab'));
+        var contents = Array.from(block.querySelectorAll('.howits-content'));
+        contents.forEach(function (c) { if (!c.hidden) c.classList.add('is-visible'); });
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            if (tab.classList.contains('is-active')) return;
+            tabs.forEach(function (t) {
+              t.classList.toggle('is-active', t === tab);
+              t.setAttribute('aria-selected', String(t === tab));
+            });
+            var targetId = tab.getAttribute('data-howits-target');
+            contents.forEach(function (c) {
+              var show = c.id === targetId;
+              c.classList.remove('is-visible');
+              c.hidden = !show;
+              if (show) requestAnimationFrame(function () { c.classList.add('is-visible'); });
+            });
+          });
+        });
+      });
+    }
+
+    function setupTOCInteraction() {
+      var tocContainer = document.getElementById('toc-container');
+      if (!tocContainer) return;
+      tocContainer.addEventListener('click', function (e) {
+        var link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        e.preventDefault();
+        var el = document.getElementById(link.getAttribute('href').slice(1));
+        if (!el) return;
+        if (link.classList.contains('toc-item-link') && el.classList.contains('policy-card')) {
+          openCard(el);
+          scrollToElSettled(el);
+        } else {
+          scrollToEl(el);
+        }
+      });
+    }
+
+    function setupScrollSpy() {
+      var tocContainer = document.getElementById('toc-container');
+      if (!tocContainer) return;
+      var anchors = Array.from(document.querySelectorAll('.policy-pillar, .policy-card'));
+      if (!anchors.length) return;
+      var lastId = null, rafPending = false;
+
+      function activate(id) {
+        if (id === lastId) return;
+        lastId = id;
+        tocContainer.querySelectorAll('.toc-active').forEach(function (el) { el.classList.remove('toc-active'); });
+        var link = tocContainer.querySelector('a[href="#' + CSS.escape(id) + '"]');
+        if (link) link.classList.add('toc-active');
+      }
+
+      function update() {
+        var threshold = 110;
+        var activeId = anchors[0].id;
+        for (var i = 0; i < anchors.length; i++) {
+          if (anchors[i].getBoundingClientRect().top <= threshold) {
+            activeId = anchors[i].id;
+          } else {
+            break;
+          }
+        }
+        activate(activeId);
+        rafPending = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!rafPending) { rafPending = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    }
+
+    buildTOC();
+    setupAccordion();
+    setupHowits();
+    setupTOCInteraction();
+    setupScrollSpy();
+
+    initEmberField();
+  </script>
+  <script src="reveal.js"></script>
+  <script src="nav.js"></script>
+  <script src="footer.js"></script>
+  <script src="nav-circle.js"></script>
+</body>
+</html>

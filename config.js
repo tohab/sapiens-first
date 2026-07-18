@@ -29,6 +29,7 @@ SITE_CONFIG.FOOTER_LINKS = [
   { page: 'join', label: 'Join' },
   { label: 'Donate', href: SITE_CONFIG.DONATION_URL, external: true },
   { page: 'learn', label: 'Learn' },
+  { page: 'policy', label: 'Policy' },
   { page: 'privacy', label: 'Privacy' },
 ];
 
