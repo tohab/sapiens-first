@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/join">
   <title>Redirecting — Sapiens First</title>
-  <script>window.location.replace('/join');</script>
+  <script>
+    var isLocal = window.location.protocol === 'file:'
+      || window.location.hostname === 'localhost'
+      || window.location.hostname === '127.0.0.1';
+    window.location.replace(isLocal ? 'join.html' : '/join');
+  </script>
 </head>
 <body>
   <p>Redirecting… <a href="/join">Click here if you are not redirected.</a></p>

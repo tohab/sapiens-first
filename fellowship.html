@@ -29,25 +29,49 @@
       margin: 24px auto 0; max-width: 720px;
     }
     .fact-pill {
-      font-family: var(--font-body); font-size: var(--sz-label);
+      font-family: var(--font-body); font-size: calc(var(--sz-label) * 1.3);
       letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark);
       border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px;
     }
 
-    /* ─── ROLE CARDS ─────────────────────────── */
-    .role-card { margin-top: 18px; }
+    /* ─── ROLE CARDS (accordion) ─────────────── */
+    .role-card { margin-top: 18px; padding: 0; cursor: default; }
+    .role-card:hover { transform: none; }
     .role-card:first-of-type { margin-top: 30px; }
+    .role-toggle {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; border: none; background: none; cursor: pointer; text-align: left;
+      padding: 24px 28px; color: inherit; font: inherit;
+    }
+    .role-toggle:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      outline-offset: -3px;
+    }
     .role-header {
       display: flex; align-items: baseline; justify-content: space-between;
-      gap: 12px 16px; flex-wrap: wrap; margin-bottom: 10px;
+      gap: 12px 16px; flex-wrap: wrap; flex: 1; min-width: 0;
     }
-    .role-card .card-title { color: var(--text); }
+    .role-card .card-title { color: var(--text); margin-bottom: 0; }
     .role-tag {
       font-family: var(--font-body); font-size: 11px; letter-spacing: 0.07em;
       color: var(--text); padding: 3px 9px; border: 1px solid var(--border);
       text-transform: uppercase; white-space: nowrap;
     }
-    .role-desc { margin-bottom: 16px; }
+    .role-chevron {
+      flex: 0 0 auto; width: 9px; height: 9px;
+      border-right: 1.5px solid var(--accent); border-bottom: 1.5px solid var(--accent);
+      transform: rotate(45deg); transform-origin: 60% 60%; opacity: 0.55;
+      transition: transform .28s cubic-bezier(0.22, 1, 0.36, 1), opacity .2s ease;
+    }
+    .role-toggle[aria-expanded="true"] .role-chevron { transform: rotate(225deg); opacity: 1; }
+    .role-panel {
+      display: grid; grid-template-rows: 0fr; opacity: 0;
+      transition: grid-template-rows .4s cubic-bezier(0.22, 1, 0.36, 1), opacity .28s ease;
+    }
+    .role-panel.is-open { grid-template-rows: 1fr; opacity: 1; }
+    .role-panel-inner { overflow: hidden; min-height: 0; }
+    .role-body { padding: 2px 28px 26px; border-top: 1px solid var(--border); }
+    .role-desc { margin: 16px 0; }
     .role-activities-label { display: block; margin-bottom: 8px; }
     .role-list {
       list-style: none; padding: 0; margin: 0;
@@ -71,6 +95,8 @@
 
     .apply-cta { text-align: center; margin-top: 30px; }
     .hero-cta { margin-top: 26px; }
+    .btn--apply-big { font-size: var(--sz-title); letter-spacing: 0.06em; padding: 24px 56px; }
+    @media (max-width: 600px) { .btn--apply-big { font-size: 22px; padding: 20px 32px; } }
 
     @media (max-width: 768px) {
       .fit-list li { font-size: var(--sz-body); }
@@ -106,11 +132,11 @@
       <h1 class="page-title">Become a<br><span class="title-accent">Fellow.</span></h1>
       <div class="fact-pills reveal">
         <span class="fact-pill">12 weeks</span>
-        <span class="fact-pill">8–12 hrs / week</span>
+        <span class="fact-pill">8–10 hrs / week</span>
         <span class="fact-pill">Volunteer</span>
       </div>
       <div class="hero-cta reveal">
-        <a href="/fellowship-app" class="btn btn--solid" target="_blank" rel="noopener noreferrer">Apply now →</a>
+        <a href="/fellowship-app" class="btn btn--solid btn--apply-big" target="_blank" rel="noopener noreferrer">Apply →</a>
       </div>
     </div>
   </div>
@@ -121,10 +147,31 @@
     <section class="section section-compact">
       <div class="container">
         <p class="body-large reveal">
-          Sapiens First is building a movement to put powerful AI in the hands of the people.
-          We imagine a world where AI serves the common good. We fight for
-          <strong>democracy, prosperity, and security</strong> in the age of AI.
-          You can learn more about our theory of change on our <a href="/about" class="text-link" style="text-transform:none;letter-spacing:normal;font-size:inherit;">About page</a>.
+          We're creating a volunteer team to build the foundations of Sapiens First.
+        </p>
+        <p class="body-large reveal">
+          You'll
+          work with the <a href="https://www.rohanprasad.org" class="text-link" target="_blank" rel="noopener noreferrer" style="text-transform:none;letter-spacing:normal;font-size:inherit;">founder</a>
+          to pilot our initial activities in California.
+        </p>
+        <p class="body-large reveal">
+          Fellows get <strong>mentorship</strong> and <strong>hands-on experience</strong>, and will be part of a fast and growing movement.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════ WHO WE'RE LOOKING FOR ═══════════ -->
+    <section class="section section-compact">
+      <div class="container">
+        <div class="section-label reveal"><span class="title">About You</span></div>
+        <p class="body-large reveal">We're looking for people who:</p>
+        <ul class="fit-list">
+          <li class="reveal"><strong>Care deeply</strong> about how AI &amp; technology will affect humanity</li>
+          <li class="reveal">Are <strong>inspired by activism </strong> and movement-building</li>
+          <li class="reveal">Welcome direct feedback and reflection</li>
+        </ul>
+        <p class="body-large reveal" style="margin-top:26px;">
+          <strong> Formal experience is not required </strong> — just enthusiasm and a desire to grow.
         </p>
       </div>
     </section>
@@ -132,98 +179,103 @@
     <!-- ═══════════ THE ROLE ═══════════ -->
     <section class="section" id="the-role">
       <div class="container">
-        <div class="section-label reveal"><span class="title">The Role</span></div>
+        <div class="section-label reveal"><span class="title">Roles</span></div>
         <p class="body-large reveal">
-          We're founding a volunteer team to build the movement's early infrastructure. We currently have three roles available.
+          We are currently looking for people to work on <strong>three major workstreams</strong>.
         </p>
 
-        <div class="role-card card reveal">
-          <div class="role-header">
-            <div class="card-title" style="margin-bottom:0;">Community Fellow</div>
-            <span class="role-tag">In-person · SF Bay</span>
+        <div class="role-card card reveal" id="role-community">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="role-community-body">
+            <span class="role-header">
+              <span class="card-title">Community Organizing</span>
+              <span class="role-tag">In-person · SF Bay</span>
+            </span>
+            <span class="role-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="role-panel">
+          <div class="role-panel-inner">
+          <div class="role-body" id="role-community-body">
+            <p class="role-desc card-text">
+              You enjoy talking to new people, are a <strong>great listener</strong>, and care deeply about
+              community. You're great at making people feel empowered, with the goal of them
+              joining the movement.
+            </p>
+            <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
+            <ul class="role-list">
+              <li>Designing events for people</li>
+              <li>Door-to-door conversations with people</li>
+              <li>Creating curriculum and documentation for volunteers to train up</li>
+            </ul>
+            <p class="role-note card-text">Community Fellows should be able to commute to SF, Berkeley, or Oakland about twice a week to help with in-person community building.</p>
           </div>
-          <p class="role-desc card-text">
-            You enjoy talking to new people, are a great listener, and care deeply about
-            community. You're great at making people feel empowered, with the goal of them
-            joining the movement.
-          </p>
-          <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
-          <ul class="role-list">
-            <li>Designing events for people</li>
-            <li>Door-to-door conversations with people</li>
-            <li>Creating curriculum and documentation for volunteers to train up</li>
-          </ul>
-          <p class="role-note card-text">Community Fellows should be able to commute to SF, Berkeley, or Oakland about twice a week to help with in-person community building.</p>
+          </div>
+          </div>
         </div>
 
-        <div class="role-card card reveal reveal-d1">
-          <div class="role-header">
-            <div class="card-title" style="margin-bottom:0;">Systems Fellow</div>
-            <span class="role-tag">Remote-friendly</span>
+        <div class="role-card card reveal reveal-d1" id="role-systems">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="role-systems-body">
+            <span class="role-header">
+              <span class="card-title">Campaign Operations</span>
+              <span class="role-tag">Remote-friendly</span>
+            </span>
+            <span class="role-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="role-panel">
+          <div class="role-panel-inner">
+          <div class="role-body" id="role-systems-body">
+            <p class="role-desc card-text">
+              You enjoy building <strong>scalable systems and automations</strong> to empower communities.
+              You're a fast learner and excellent at incorporating AI to assist you in the
+              process, with the goal of streamlining our supporter and membership onboarding
+              and retention processes.
+            </p>
+            <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
+            <ul class="role-list">
+              <li>Rigging up an open-source CRM to our membership sign-up page</li>
+              <li>Creating an email automation protocol for sign-ups, event attendees, and supporters</li>
+              <li>Automating member onboarding on Discord</li>
+            </ul>
           </div>
-          <p class="role-desc card-text">
-            You enjoy building scalable systems and automations to empower communities.
-            You're a fast learner and excellent at incorporating AI to assist you in the
-            process, with the goal of streamlining our supporter and membership onboarding
-            and retention processes.
-          </p>
-          <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
-          <ul class="role-list">
-            <li>Rigging up an open-source CRM to our membership sign-up page</li>
-            <li>Creating an email automation protocol for sign-ups, event attendees, and supporters</li>
-            <li>Automating member onboarding on Discord</li>
-          </ul>
+          </div>
+          </div>
         </div>
 
-        <div class="role-card card reveal reveal-d2">
-          <div class="role-header">
-            <div class="card-title" style="margin-bottom:0;">Marketing Fellow</div>
-            <span class="role-tag">Remote-friendly</span>
+        <div class="role-card card reveal reveal-d2" id="role-marketing">
+          <button class="role-toggle" type="button" aria-expanded="false" aria-controls="role-marketing-body">
+            <span class="role-header">
+              <span class="card-title">Digital Marketing</span>
+              <span class="role-tag">Remote-friendly</span>
+            </span>
+            <span class="role-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="role-panel">
+          <div class="role-panel-inner">
+          <div class="role-body" id="role-marketing-body">
+            <p class="role-desc card-text">
+              You enjoy <strong>communicating big ideas clearly</strong> and learning what inspires people to
+              take action. You will test messaging and branding, with the goal of expanding
+              our digital reach.
+            </p>
+            <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
+            <ul class="role-list">
+              <li>Refining our brand marketing strategy</li>
+              <li>Designing and executing our digital marketing strategy</li>
+              <li>Designing materials like business cards, banners, and lawn signs</li>
+            </ul>
           </div>
-          <p class="role-desc card-text">
-            You enjoy communicating big ideas clearly and learning what inspires people to
-            take action. You will test messaging and branding, with the goal of expanding
-            our digital reach.
-          </p>
-          <span class="eyebrow eyebrow--accent role-activities-label">Example activities</span>
-          <ul class="role-list">
-            <li>Refining our brand marketing strategy</li>
-            <li>Designing and executing our digital marketing strategy</li>
-            <li>Designing materials like business cards, banners, and lawn signs</li>
-          </ul>
+          </div>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ WHO WE'RE LOOKING FOR ═══════════ -->
-    <section class="section section-compact">
-      <div class="container">
-        <div class="section-label reveal"><span class="title">Who We're Looking For</span></div>
-        <p class="body-large reveal">You may be a strong fit if you:</p>
-        <ul class="fit-list">
-          <li class="reveal">Care deeply about how advanced AI will affect humanity</li>
-          <li class="reveal">Want to help build an ambitious movement from an early stage</li>
-          <li class="reveal">Take initiative and follow through reliably</li>
-          <li class="reveal">Are comfortable experimenting and learning quickly</li>
-          <li class="reveal">Welcome direct feedback</li>
-          <li class="reveal">Care about measurable results</li>
-        </ul>
-        <p class="body-large reveal" style="margin-top:26px;">
-          Formal credentials are not required. We care more about judgment, initiative,
-          reliability, and demonstrated ability to get things done.
-        </p>
       </div>
     </section>
 
     <!-- ═══════════ WHAT FELLOWS RECEIVE ═══════════ -->
     <section class="section section-compact">
       <div class="container">
-        <div class="section-label reveal"><span class="title">What Fellows Receive</span></div>
+        <div class="section-label reveal"><span class="title">Benefits</span></div>
         <p class="body-large reveal">
-          This is an unpaid volunteer fellowship. Fellows receive meaningful ownership, close
-          collaboration with the founder, regular feedback and coaching, reimbursement for
-          approved work expenses, and meals during relevant in-person activities. Strong
-          fellows may be invited to extend their work after the initial term.
+          This is a
+          volunteer program, but we provide support (travel, meals) for in-person activities, and will reimburse organization expenses. Strong fellows may be invited to extend after the initial term.
         </p>
       </div>
     </section>
@@ -233,9 +285,8 @@
       <div class="container">
         <div class="section-label reveal"><span class="title">Commitment</span></div>
         <p class="body-large reveal">
-          The fellowship lasts <strong>12 weeks</strong> and requires approximately
-          <strong>8–12 hours per week</strong>. Scheduling is generally flexible, with a
-          regular weekly meeting.
+          The fellowship lasts <strong>12 weeks</strong> and requires about
+          <strong>8–10 hours per week</strong>.
         </p>
       </div>
     </section>
@@ -243,12 +294,12 @@
     <!-- ═══════════ HOW TO APPLY ═══════════ -->
     <section class="section section-compact">
       <div class="container">
-        <div class="section-label reveal"><span class="title">How to Apply</span></div>
+        <div class="section-label reveal"><span class="title">Apply</span></div>
         <p class="body-large reveal">
-          We're excited to hear from you! Applications are accepted on a rolling basis. Please email questions to rohan@sapiensfirst.org.
+          <strong>We're excited to hear from you!</strong> Applications are accepted on a rolling basis. Please email questions to rohan@sapiensfirst.org.
         </p>
         <div class="apply-cta reveal">
-          <a href="/fellowship-app" class="btn btn--solid" target="_blank" rel="noopener noreferrer">Apply now →</a>
+          <a href="/fellowship-app" class="btn btn--solid btn--apply-big" target="_blank" rel="noopener noreferrer">Apply →</a>
         </div>
       </div>
     </section>
@@ -257,7 +308,9 @@
 
   <footer class="footer"></footer>
 
+  <script src="accordion.js"></script>
   <script>
+    createAccordion('.role-toggle');
     initEmberField();
   </script>
   <script src="reveal.js"></script>

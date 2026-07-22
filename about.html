@@ -37,13 +37,12 @@
       --focus-panel-bg: color-mix(in srgb, var(--surface) 62%, transparent);
       margin: 34px auto 0;
       max-width: 920px;
-    }
-    .focus-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
     .focus-tab {
+      grid-row: 1;
       border: 1px solid var(--border);
       border-top: 3px solid var(--accent);
       background: color-mix(in srgb, var(--surface) 42%, transparent);
@@ -58,6 +57,9 @@
       text-align: center;
       transition: background .22s ease, border-color .22s ease;
     }
+    .focus-tab:nth-of-type(1) { grid-column: 1; }
+    .focus-tab:nth-of-type(2) { grid-column: 2; }
+    .focus-tab:nth-of-type(3) { grid-column: 3; }
     .focus-tab:focus-visible {
       outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
       outline-offset: -3px;
@@ -88,6 +90,8 @@
     }
     .focus-tab.is-active .focus-chevron { transform: rotate(225deg); opacity: 1; }
     .focus-panel {
+      grid-column: 1 / -1;
+      grid-row: 2;
       display: grid;
       grid-template-rows: 0fr;
       opacity: 0;
@@ -166,7 +170,7 @@
       .strategy-cycle { margin-top: 34px; }
     }
     @media (max-width: 700px) {
-      .focus-row { grid-template-columns: 1fr; }
+      .focus-grid { display: flex; flex-direction: column; }
       .focus-tab.is-active { border-bottom-color: var(--border); }
       .focus-panel { border-top: 3px solid var(--accent); }
     }
@@ -195,25 +199,23 @@
     <!-- ═══════════ VISION ═══════════ -->
     <section class="section" id="vision">
       <div class="container">
-        <div class="section-label reveal"><span class="title">Our Vision</span></div>
+        <div class="section-label reveal"><span class="title">Vision</span></div>
         <p class="body-large reveal">
           We imagine a world where AI serves the common good. Our campaigns focus on:
         </p>
         <div class="focus-grid" data-focus-accordion>
-          <div class="focus-row">
-            <button class="focus-tab reveal" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-democracy">
-              <span class="focus-title">Democratic Renewal</span>
-              <span class="focus-chevron" aria-hidden="true"></span>
-            </button>
-            <button class="focus-tab reveal reveal-d1" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-prosperity">
-              <span class="focus-title">Common Prosperity</span>
-              <span class="focus-chevron" aria-hidden="true"></span>
-            </button>
-            <button class="focus-tab reveal reveal-d2" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-humanity">
-              <span class="focus-title">A Secure Future</span>
-              <span class="focus-chevron" aria-hidden="true"></span>
-            </button>
-          </div>
+          <button class="focus-tab reveal" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-democracy">
+            <span class="focus-title">Democratic Renewal</span>
+            <span class="focus-chevron" aria-hidden="true"></span>
+          </button>
+          <button class="focus-tab reveal reveal-d1" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-prosperity">
+            <span class="focus-title">Common Prosperity</span>
+            <span class="focus-chevron" aria-hidden="true"></span>
+          </button>
+          <button class="focus-tab reveal reveal-d2" type="button" aria-expanded="false" aria-controls="focus-shared-panel" data-focus-trigger data-focus-target="focus-content-humanity">
+            <span class="focus-title">A Secure Future</span>
+            <span class="focus-chevron" aria-hidden="true"></span>
+          </button>
           <div class="focus-panel" id="focus-shared-panel">
             <div class="focus-panel-inner">
               <p class="focus-long" id="focus-content-democracy" hidden>
@@ -227,6 +229,9 @@
               </p>
             </div>
           </div>
+        </div>
+        <div class="handbook-callout reveal">
+          <a href="/policy" class="text-link">Read our Recommendations →</a>
         </div>
       </div>
     </section>
@@ -332,6 +337,7 @@
           });
 
           const showTarget = () => {
+            tab.insertAdjacentElement('afterend', focusPanel);
             focusContents.forEach(content => {
               content.hidden = content.id !== tab.dataset.focusTarget;
             });

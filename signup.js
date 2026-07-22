@@ -13,45 +13,7 @@
 
 const SIGNUP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwq5O0dKmyb7g2phwi0eyM0WXTyFKJfSfG8WpDRnfl426C-LcSIcfQeMYx9N-8Vp3gC/exec';
 
-// ─── STYLES ───────────────────────────────────────────────────────────────────
-(function () {
-  var s = document.createElement('style');
-  s.textContent =
-    '.sf{display:flex;gap:8px;max-width:460px;}' +
-    '.sf input{' +
-      'flex:1;min-width:0;' +
-      'font-family:var(--font-body,sans-serif);font-size:16px;font-weight:400;' +
-      'padding:13px 16px;border-radius:5px;outline:none;' +
-      'transition:border-color .2s,background .2s;' +
-    '}' +
-    '.sf--dark input{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);color:#fff;}' +
-    '.sf--dark input::placeholder{color:rgba(255,255,255,0.38);}' +
-    '.sf--dark input:focus{border-color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.14);}' +
-    '.sf--light input{background:rgba(20,18,14,0.04);border:1px solid rgba(20,18,14,0.15);color:#141210;}' +
-    '.sf--light input::placeholder{color:rgba(20,18,14,0.35);}' +
-    '.sf--light input:focus{border-color:var(--accent,#CD551D);background:rgba(205,85,29,0.04);}' +
-    '.sf input.sf-err{border-color:#b91c1c!important;}' +
-    '.sf button{' +
-      'font-family:var(--font-body,sans-serif);font-size:13px;font-weight:600;' +
-      'letter-spacing:0.10em;text-transform:uppercase;' +
-      'padding:13px 22px;' +
-      'background:var(--accent,#CD551D);color:#fff;' +
-      'border:none;border-radius:5px;cursor:pointer;' +
-      'white-space:nowrap;flex-shrink:0;' +
-      'transition:opacity .2s;' +
-    '}' +
-    '.sf button:hover:not(:disabled){opacity:0.84;}' +
-    '.sf button:disabled{opacity:0.5;cursor:default;}' +
-    '.sf-done{' +
-      'font-family:var(--font-body,sans-serif);font-size:14px;font-weight:500;' +
-      'letter-spacing:0.06em;text-transform:uppercase;' +
-      'padding:14px 0;display:block;' +
-    '}' +
-    '.sf--dark .sf-done{color:rgba(255,255,255,0.85);}' +
-    '.sf--light .sf-done{color:var(--accent,#CD551D);}' +
-    '@media(max-width:600px){.sf{flex-direction:column;}.sf button{width:100%;}}';
-  document.head.appendChild(s);
-})();
+// Styles for .sf/.sf-done live in shared.css alongside the rest of the design system.
 
 // ─── FACTORY ──────────────────────────────────────────────────────────────────
 // createSignupForm({ theme: 'dark'|'light', placeholder, buttonText })

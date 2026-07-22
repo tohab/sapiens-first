@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No AI Kings — Sapiens First</title>
+  <meta name="description" content="No AI Kings — Sapiens First's campaign to ban AI-powered mass surveillance and end the AI police state.">
+  <meta property="og:title" content="No AI Kings — Sapiens First">
+  <meta property="og:description" content="No AI Kings — Sapiens First's campaign to ban AI-powered mass surveillance and end the AI police state.">
+  <meta property="og:url" content="https://sapiensfirst.org/no-ai-kings">
+  <meta property="og:type" content="website">
+  <!-- BUILD:HEAD-COMMON:START -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js'); if (!('IntersectionObserver' in window)) document.documentElement.classList.add('no-io');</script>
+  <link rel="stylesheet" href="shared.css">
+  <script src="config.js"></script>
+  <!-- BUILD:HEAD-COMMON:END -->
+  <style>
+    /* ─── HERO (eyebrow) ────────────────────── */
+    .rally-eyebrow {
+      display: block; margin-bottom: 20px; text-align: center;
+      font-family: 'Special Elite', var(--font-body); font-size: 13px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+      opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.15s;
+    }
+
+    /* ─── MEMO LAYOUT (document-style prose, not centered marketing copy) ── */
+    .memo-section { padding: 24px 0 56px; }
+    .memo-block { margin: 0 0 40px; }
+    .memo-block:last-of-type { margin-bottom: 0; }
+    .memo-block .section-label {
+      text-align: left; margin: 0 0 14px;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(22px, 3vw, 28px); line-height: 1.1;
+      letter-spacing: -0.01em; -webkit-text-stroke: 0;
+      padding-bottom: 10px; border-bottom: 2px solid var(--accent);
+    }
+    .memo-block .section-label .title { color: var(--text); }
+    .memo-block .body-large {
+      text-align: left; max-width: none; margin: 0 0 14px;
+      font-size: 18px; line-height: 1.65; font-weight: 400;
+    }
+    .memo-block .body-large:last-child { margin-bottom: 0; }
+
+    /* ─── "COMING SOON" (open letter not yet live) ───────────── */
+    .coming-soon {
+      color: color-mix(in srgb, var(--text) 50%, transparent);
+      font-style: italic;
+    }
+
+    /* ─── SIGNUP BOX ────────────────────────── */
+    .signup-box {
+      border: 1px solid var(--border);
+      padding: 28px 32px; margin-top: 18px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .signup-box .sf { width: 100%; max-width: 100%; }
+    #no-ai-kings-signup .sf { max-width: 100%; }
+    #no-ai-kings-signup .sf input  { font-size: 19.2px; padding: 15.6px 19.2px; }
+    #no-ai-kings-signup .sf button { font-size: 14.4px;  padding: 15.6px 26.4px; }
+
+    /* ─── CLOSING LINE ──────────────────────── */
+    .rally-close {
+      text-align: left;
+      padding-top: 24px; margin-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .rally-close .body-large { max-width: none; }
+    .rally-close .text-link { display: inline-block; margin-top: 6px; }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .signup-box { padding: 22px 20px; }
+      #no-ai-kings-signup .sf input  { font-size: 16px;   padding: 13px 16px; }
+      #no-ai-kings-signup .sf button { font-size: 12.5px; padding: 13px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar"></div>
+
+  <nav class="site-nav"></nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <div class="page-hero">
+    <div class="ember-field" aria-hidden="true"></div>
+    <div class="container">
+      <span class="rally-eyebrow">Sapiens First</span>
+      <h1 class="page-title">No AI <span class="title-accent">Kings.</span></h1>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ═══════════ MEMO BODY (why / what / how / join / closing) ═══════════ -->
+    <section class="memo-section">
+      <div class="container">
+
+        <div class="memo-block" id="why">
+          <div class="section-label reveal"><span class="title">Why</span></div>
+          <p class="body-large reveal">Mass surveillance is a fundamental threat to our civil liberties. With AI, the government could surveil all citizens intelligently, significantly curtailing our freedoms.</p>
+        </div>
+
+        <div class="memo-block" id="what">
+          <div class="section-label reveal"><span class="title">What</span></div>
+          <p class="body-large reveal">We call on the California state government to ban AI-enabled mass surveillance.</p>
+        </div>
+
+        <div class="memo-block" id="how">
+          <div class="section-label reveal"><span class="title">How</span></div>
+          <p class="body-large reveal">Local governments and civil society organizations can sign our open letter to the California governor.</p>
+          <p class="body-large coming-soon reveal">Open letter — coming soon</p>
+          <p class="body-large reveal">We'll also be educating citizens and law-makers on how they can protect democracy in the age of AI.</p>
+        </div>
+
+        <div class="memo-block" id="join">
+          <p class="body-large reveal">To get involved, join our email list:</p>
+          <div class="signup-box reveal">
+            <div id="no-ai-kings-signup"></div>
+          </div>
+        </div>
+
+        <div class="memo-block rally-close" id="closing">
+          <p class="body-large reveal">This is one of twelve policies in Sapiens First's full policy agenda.</p>
+          <a href="/policy" class="text-link">Read the Full Agenda →</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script src="signup.js"></script>
+  <script>
+    document.getElementById('no-ai-kings-signup').appendChild(createSignupForm({ theme: 'light', buttonText: 'Sign up →' }));
+
+    initEmberField();
+  </script>
+  <script src="reveal.js"></script>
+  <script src="nav.js"></script>
+  <script src="footer.js"></script>
+  <script src="nav-circle.js"></script>
+</body>
+</html>

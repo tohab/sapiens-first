@@ -12,11 +12,26 @@
     about: () => path === '/about' || path.startsWith('/about/') || file === 'about',
     fellowship: () => path === '/fellowship' || file === 'fellowship',
     join: () => path === '/join' || file === 'join' || file === 'membership',
+    'no-ai-kings': () => path === '/no-ai-kings' || file === 'no-ai-kings',
   };
 
-  const navLinksHtml = SITE_CONFIG.NAV_LINKS.map(({ page, label }) => {
-    const active = (activeMatchers[page] && activeMatchers[page]()) ? ' active' : '';
+  const isActive = page => (activeMatchers[page] && activeMatchers[page]());
+
+  const navLink = ({ page, label }, forceActive) => {
+    const active = (forceActive || isActive(page)) ? ' active' : '';
     return `<a class="nav-link${active}" href="${SITE_CONFIG.pageLink(page)}">${label}</a>`;
+  };
+
+  const navLinksHtml = SITE_CONFIG.NAV_LINKS.map(link => {
+    if (!link.children) return navLink(link);
+    const childActive = link.children.some(child => isActive(child.page));
+    return `
+      <div class="nav-item nav-dropdown">
+        ${navLink(link, childActive)}
+        <div class="nav-dropdown-menu">
+          ${link.children.map(child => navLink(child)).join('\n          ')}
+        </div>
+      </div>`;
   }).join('\n      ');
 
   nav.innerHTML = `

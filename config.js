@@ -14,24 +14,74 @@ SITE_CONFIG.pageLink = function (page) {
   return window.location.protocol === 'file:' ? `${page}.html` : `/${page}`;
 };
 
-// Single source of truth for the top nav links (excludes Donate, which is
-// rendered separately in nav.js as a distinct external/styled item).
-SITE_CONFIG.NAV_LINKS = [
-  { page: 'about', label: 'About' },
-  { page: 'fellowship', label: 'Fellowship' },
-  { page: 'join', label: 'Join' },
-];
+// Single source of truth for where each page appears in site chrome. To add,
+// move, or hide a page, edit its entry here only — NAV_LINKS and
+// FOOTER_GROUPS below are both derived from this registry.
+//
+//   label:  display text.
+//   nav:    true       -> root-level nav item, in declared order.
+//           '<pageKey>' -> dropdown child of that other page's nav item
+//                          (that page must itself have nav: true).
+//           omitted/false -> not in the nav bar.
+//   footer: '<Group Title>' -> listed under that footer column (columns are
+//                               created in first-seen order).
+//           omitted/false -> not in the footer.
+//   external/href: for entries that aren't a local page (e.g. Donate).
+SITE_CONFIG.PAGES = {
+  about:      { label: 'About',        nav: true,   footer: 'About' },
+  privacy:    { label: 'Privacy',      footer: 'About' },
+  donate:     { label: 'Donate', href: SITE_CONFIG.DONATION_URL, external: true, footer: 'About' },
+  fellowship: { label: 'Fellowship',   nav: true,   footer: 'Get Involved' },
+  join:       { label: 'Join',         nav: true,   footer: 'Get Involved' },
+  'no-ai-kings': { label: 'No AI Kings', footer: 'Get Involved' },
+  membership: { label: 'Membership' },
+  events:     { label: 'Events' },
+  learn:      { label: 'Learn',        footer: 'Resources' },
+  policy:     { label: 'Policy',       footer: 'Resources' },
+};
 
-// Single source of truth for the footer links, in render order.
-SITE_CONFIG.FOOTER_LINKS = [
-  { page: 'about', label: 'About' },
-  { page: 'fellowship', label: 'Fellowship' },
-  { page: 'join', label: 'Join' },
-  { label: 'Donate', href: SITE_CONFIG.DONATION_URL, external: true },
-  { page: 'learn', label: 'Learn' },
-  { page: 'policy', label: 'Policy' },
-  { page: 'privacy', label: 'Privacy' },
-];
+// Builds the root nav list (with nested `children` for dropdown items) from
+// SITE_CONFIG.PAGES. Note: nav.js renders Donate separately as a styled CTA,
+// so a page with only `nav` set (no root/parent matching it) is skipped here.
+function buildNavLinks(pages) {
+  const roots = [];
+  const byKey = {};
+  Object.keys(pages).forEach((key) => {
+    if (pages[key].nav !== true) return;
+    byKey[key] = { page: key, label: pages[key].label };
+    roots.push(byKey[key]);
+  });
+  Object.keys(pages).forEach((key) => {
+    const parentKey = pages[key].nav;
+    if (typeof parentKey !== 'string' || !byKey[parentKey]) return;
+    const parent = byKey[parentKey];
+    parent.children = parent.children || [];
+    parent.children.push({ page: key, label: pages[key].label });
+  });
+  return roots;
+}
+
+// Builds the grouped footer columns from SITE_CONFIG.PAGES, preserving the
+// order groups and links first appear in.
+function buildFooterGroups(pages) {
+  const groups = [];
+  const byTitle = {};
+  Object.keys(pages).forEach((key) => {
+    const page = pages[key];
+    if (!page.footer) return;
+    if (!byTitle[page.footer]) {
+      byTitle[page.footer] = { title: page.footer, links: [] };
+      groups.push(byTitle[page.footer]);
+    }
+    byTitle[page.footer].links.push(
+      page.external ? { label: page.label, href: page.href, external: true } : { page: key, label: page.label }
+    );
+  });
+  return groups;
+}
+
+SITE_CONFIG.NAV_LINKS = buildNavLinks(SITE_CONFIG.PAGES);
+SITE_CONFIG.FOOTER_GROUPS = buildFooterGroups(SITE_CONFIG.PAGES);
 
 function initEmberField() {
   const field = document.querySelector('.ember-field');
